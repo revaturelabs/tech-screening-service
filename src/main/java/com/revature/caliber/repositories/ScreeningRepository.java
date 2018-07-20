@@ -13,4 +13,9 @@ public interface ScreeningRepository extends JpaRepository<SimpleScreening, Inte
 	List<SimpleScreening> getByStatus(String status);
 	
 	void setStatus(String status);
+	
+	@RequestMapping(value = "/screening/pending/{simpleScheduledScreeningId}")
+	public SimpleScreening pendingScreeningsByScreeningId(@PathVariable (value="simpleScheduledScreeningId") Integer simpleScheduledScreeningId){
+		
+	}
 }
