@@ -1,4 +1,4 @@
-package com.revature.caliber;
+package com.revature.caliber.screening;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
