@@ -8,21 +8,21 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.revature.caliber.beans.Screening;
 import com.revature.caliber.beans.SimpleScreening;
 
 import ch.qos.logback.core.net.SyslogOutputStream;
 
 @Repository
-public interface ScreeningRepository extends JpaRepository<SimpleScreening, Integer>{
-	List<SimpleScreening> getByStatus(String status);
+public interface ScreeningRepository extends JpaRepository<Screening, Integer>{
 	
-	void findByStatus(String status);
+	List<Screening> getByStatus(String status);
 	
 	@Transactional
 	@Modifying(clearAutomatically = true)
 	@Query("update SimpleScheduledScreening s set s.status = ?1 where s.scheduledScreeningId = ?2")
 	void updateStatus(String screened, Integer scheduledScreeningId);
 	
-	SimpleScreening findByScreeningId(SimpleScreening simpleScreening);
+	Screening findByScreeningId(Screening simpleScreening);
 
 }

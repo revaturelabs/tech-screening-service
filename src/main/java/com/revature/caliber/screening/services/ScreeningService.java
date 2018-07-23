@@ -1,4 +1,4 @@
-package com.revature.caliber.services;
+package com.revature.caliber.screening.services;
 
 import java.util.List;
 
@@ -17,5 +17,10 @@ public class ScreeningService {
 	
 	public SimpleScreening screeningByScreeningId (Integer screeningId){
 		return screeningRepository.findByScreeningId(new SimpleScreening(screeningId));
+	}
+
+	public List<Screening> getByStatus(String string) {
+		// TODO Auto-generated method stub
+		
 	}
 }
