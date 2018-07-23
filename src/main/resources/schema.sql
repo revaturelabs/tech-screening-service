@@ -48,7 +48,20 @@ create table question_score(
           time timestamp
 );
 
-
+create table candidate(
+		       	id number(20) primary key,
+       resource_id varchar(50),
+		      name varchar(100),
+             email varchar(100),
+      phone_number varchar(20),
+          skype_id varchar(100),
+       profile_url varchar(100),
+    recruiter_name varchar(100),
+           college varchar(100),
+            degree varchar(100),
+             major varchar(100),
+tech_screener_name varchar(100)
+);
 
 DROP SEQUENCE IF EXISTS SCHEDULED_SCREENING_SEQUENCE;
 CREATE SEQUENCE  IF NOT EXISTS  SCHEDULED_SCREENING_SEQUENCE  MINVALUE 1  INCREMENT BY 1 START WITH 1;
@@ -61,5 +74,8 @@ CREATE SEQUENCE  IF NOT EXISTS  VIOLATION_SEQUENCE  MINVALUE 5600  INCREMENT BY 
 
 DROP SEQUENCE IF EXISTS SOFT_SKILL_VIOLATION_SEQUENCE;
 CREATE SEQUENCE  IF NOT EXISTS  SOFT_SKILL_VIOLATION_SEQUENCE  MINVALUE 1  INCREMENT BY 1 START WITH 1;
+
+DROP SEQUENCE IF EXISTS CANDIDATE_SEQUENCE;
+CREATE SEQUENCE  IF NOT EXISTS  CANDIDATE_SEQUENCE  MINVALUE 1  INCREMENT BY 1 START WITH 1;
 
 
