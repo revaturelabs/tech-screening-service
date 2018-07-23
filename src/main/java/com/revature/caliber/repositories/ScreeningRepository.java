@@ -8,6 +8,8 @@ import org.springframework.stereotype.Repository;
 
 import com.revature.caliber.beans.SimpleScreening;
 
+import ch.qos.logback.core.net.SyslogOutputStream;
+
 @Repository
 public interface ScreeningRepository extends JpaRepository<SimpleScreening, Integer>{
 	List<SimpleScreening> getByStatus(String status);
