@@ -15,7 +15,6 @@ public class Candidate implements Serializable {
 	private String name;
 	private String email;
 	private TrainingStatus trainingStatus;
-	private Batch batch;
 	private String phoneNumber;
 	private String skypeId;
 	private String profileUrl;
