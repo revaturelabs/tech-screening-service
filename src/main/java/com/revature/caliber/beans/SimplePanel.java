@@ -10,7 +10,7 @@ public class SimplePanel implements Serializable {
 	private static final long serialVersionUID = 7473663118455489828L;
 
 	private Integer panelId;
-	private Integer traineeId;
+	private Integer CandidateId;
 	private Integer panelist;
 	private Date interviewDate;
 	private String duration;
@@ -33,13 +33,13 @@ public class SimplePanel implements Serializable {
 		this.interviewDate = new Date();
 	}
 
-	public SimplePanel(Integer panelId, Integer traineeId, Integer panelist, Date interviewDate, String duration,
+	public SimplePanel(Integer panelId, Integer CandidateId, Integer panelist, Date interviewDate, String duration,
 			InterviewFormat formatId, String internet, Integer panelRound, Boolean recordingConsent,
 			String recordingLink, PanelStatus statusId, String associateIntro, String projectOneDescription,
 			String projectTwoDescription, String projectThreeDescription, String communicationSkills, String overall) {
 		super();
 		this.panelId = panelId;
-		this.traineeId = traineeId;
+		this.CandidateId = CandidateId;
 		this.panelist = panelist;
 		this.interviewDate = interviewDate;
 		this.duration = duration;
@@ -60,7 +60,7 @@ public class SimplePanel implements Serializable {
 	public SimplePanel(Panel panel) {
 		super();
 		this.panelId = panel.getId();
-		this.traineeId = panel.getTrainee() != null ? panel.getTrainee().getTraineeId() : null;
+		this.CandidateId = panel.getCandidate() != null ? panel.getCandidate().getCandidateId() : null;
 		this.panelist = panel.getPanelist() != null ? panel.getPanelist().getTrainerId() : null;
 		this.interviewDate = panel.getInterviewDate();
 		this.duration = panel.getDuration();
@@ -87,12 +87,12 @@ public class SimplePanel implements Serializable {
 		this.panelId = panelId;
 	}
 
-	public Integer getTraineeId() {
-		return traineeId;
+	public Integer getCandidateId() {
+		return CandidateId;
 	}
 
-	public void setTraineeId(Integer traineeId) {
-		this.traineeId = traineeId;
+	public void setCandidateId(Integer CandidateId) {
+		this.CandidateId = CandidateId;
 	}
 
 	public Integer getPanelist() {
@@ -236,7 +236,7 @@ public class SimplePanel implements Serializable {
 		result = prime * result + (recordingConsent ? 1231 : 1237);
 		result = prime * result + ((recordingLink == null) ? 0 : recordingLink.hashCode());
 		result = prime * result + ((statusId == null) ? 0 : statusId.hashCode());
-		result = prime * result + ((traineeId == null) ? 0 : traineeId.hashCode());
+		result = prime * result + ((CandidateId == null) ? 0 : CandidateId.hashCode());
 		return result;
 	}
 
@@ -327,10 +327,10 @@ public class SimplePanel implements Serializable {
 				return false;
 		} else if (!statusId.equals(other.statusId))
 			return false;
-		if (traineeId == null) {
-			if (other.traineeId != null)
+		if (CandidateId == null) {
+			if (other.CandidateId != null)
 				return false;
-		} else if (!traineeId.equals(other.traineeId))
+		} else if (!CandidateId.equals(other.CandidateId))
 			return false;
 		return true;
 	}

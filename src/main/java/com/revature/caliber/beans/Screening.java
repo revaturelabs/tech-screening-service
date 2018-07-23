@@ -5,7 +5,6 @@ import java.util.Date;
 public class Screening {
 	private Integer screeningId;
 	private SimpleTrainer trainer;
-	private SimpleTrainee trainee;
 	private SkillType skillType;
 
 	private Double compositeScore;
@@ -23,12 +22,11 @@ public class Screening {
 		super();
 	}
 
-	public Screening(SimpleTrainer trainer, SimpleTrainee trainee, SkillType skillType, Double compositeScore,
+	public Screening(SimpleTrainer trainer, SkillType skillType, Double compositeScore,
 			String aboutMeCommentary, String generalCommentary, String softSkillCommentary, Date startDateTime,
 			Date endDateTime, Boolean softSkillsVerdict, String status) {
 		super();
 		this.trainer = trainer;
-		this.trainee = trainee;
 		this.skillType = skillType;
 		this.compositeScore = compositeScore;
 		this.aboutMeCommentary = aboutMeCommentary;
@@ -56,13 +54,6 @@ public class Screening {
 		this.trainer = trainer;
 	}
 
-	public SimpleTrainee getTrainee() {
-		return trainee;
-	}
-
-	public void setTrainee(SimpleTrainee trainee) {
-		this.trainee = trainee;
-	}
 
 	public SkillType getSkillType() {
 		return skillType;

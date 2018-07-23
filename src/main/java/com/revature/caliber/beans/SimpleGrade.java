@@ -11,7 +11,7 @@ public class SimpleGrade implements Serializable {
 
 	private Long gradeId;
 	private Long assessmentId;
-	private Integer traineeId;
+	private Integer CandidateId;
 	private Date dateReceived;
 	private Double score;
 
@@ -19,10 +19,10 @@ public class SimpleGrade implements Serializable {
 		super();
 	}
 
-	public SimpleGrade(Long assessmentId, Integer traineeId, Date dateReceived, Double score) {
+	public SimpleGrade(Long assessmentId, Integer CandidateId, Date dateReceived, Double score) {
 		super();
 		this.assessmentId = assessmentId;
-		this.traineeId = traineeId;
+		this.CandidateId = CandidateId;
 		this.dateReceived = dateReceived;
 		this.score = score;
 	}
@@ -31,7 +31,7 @@ public class SimpleGrade implements Serializable {
 		super();
 		this.gradeId = grade.getGradeId();
 		this.assessmentId = grade.getAssessment() != null ? grade.getAssessment().getAssessmentId() : null;
-		this.traineeId = grade.getTrainee() != null ? grade.getTrainee().getTraineeId() : null;
+		this.CandidateId = grade.getCandidate() != null ? grade.getCandidate().getCandidateId() : null;
 		this.dateReceived = grade.getDateReceived();
 		this.score = grade.getScore();
 	}
@@ -52,12 +52,12 @@ public class SimpleGrade implements Serializable {
 		this.assessmentId = assessmentId;
 	}
 
-	public Integer getTraineeId() {
-		return traineeId;
+	public Integer getCandidateId() {
+		return CandidateId;
 	}
 
-	public void setTraineeId(Integer traineeId) {
-		this.traineeId = traineeId;
+	public void setCandidateId(Integer CandidateId) {
+		this.CandidateId = CandidateId;
 	}
 
 	public Date getDateReceived() {
@@ -86,7 +86,7 @@ public class SimpleGrade implements Serializable {
 		long temp;
 		temp = Double.doubleToLongBits(score);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
-		result = prime * result + ((traineeId == null) ? 0 : traineeId.hashCode());
+		result = prime * result + ((CandidateId == null) ? 0 : CandidateId.hashCode());
 		return result;
 	}
 
@@ -113,17 +113,17 @@ public class SimpleGrade implements Serializable {
 			return false;
 		if (Double.doubleToLongBits(score) != Double.doubleToLongBits(other.score))
 			return false;
-		if (traineeId == null) {
-			if (other.traineeId != null)
+		if (CandidateId == null) {
+			if (other.CandidateId != null)
 				return false;
-		} else if (!traineeId.equals(other.traineeId))
+		} else if (!CandidateId.equals(other.CandidateId))
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Grade [gradeId=" + gradeId + ", assessmentId=" + assessmentId + ", traineeId=" + traineeId
+		return "Grade [gradeId=" + gradeId + ", assessmentId=" + assessmentId + ", CandidateId=" + CandidateId
 				+ ", dateReceived=" + dateReceived + ", score=" + score + "]";
 	}
 }

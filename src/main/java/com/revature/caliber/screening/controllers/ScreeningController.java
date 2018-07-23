@@ -1,4 +1,4 @@
-package com.revature.caliber.controller;
+package com.revature.caliber.screening.controllers;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,9 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.caliber.beans.ScheduledScreening;
 import com.revature.caliber.beans.ScheduledStatus;
-import com.revature.caliber.beans.SimpleScheduledScreening;
-import com.revature.caliber.beans.SimpleTrainee;
-import com.revature.caliber.beans.Trainee;
+import com.revature.caliber.beans.Candidate;
 import com.revature.caliber.screening.data.ScheduledScreeningRepository;
 import com.revature.caliber.screening.data.ScreeningRepository;
 import com.revature.caliber.screening.data.SoftSkillViolationRepository;
@@ -37,13 +35,7 @@ public class ScreeningController {
 	
 	@Autowired
 	private ViolationTypeRepository violationTypeRepository;
-	
-	private ScreeningCompositionService scs;
 
-	@Autowired
-	public void setScreeningCompositionService(ScreeningCompositionService scs) {
-		this.scs = scs;
-	}
 	/**
 	 * Get screenings based on the status provided.
 	 * 
@@ -53,23 +45,9 @@ public class ScreeningController {
 	@RequestMapping(value="/screening/scheduledScreenings", method=RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<ScheduledScreening>> getAllScheduledScreenings(){
 		
-		List<SimpleScheduledScreening> simpleScheduledScreenings = scheduledScreeningRepository.findByStatus("PENDING");
+		List<ScheduledScreening> ScheduledScreenings = scheduledScreeningRepository.findByStatus("PENDING");
 
 		List<ScheduledScreening> scheduledScreenings=new ArrayList<>();
-		
-		for(SimpleScheduledScreening screening : simpleScheduledScreenings) {
-			Integer traineeId = screening.getTrainee();
-			SimpleTrainee simpleTrainee = scs.getOneTrainee(traineeId);
-			
-			scheduledScreenings.add(new ScheduledScreening(
-					new Trainee(simpleTrainee),
-					0,
-					ScheduledStatus.PENDING, 
-					screening.getScheduledScreeningId(),
-					screening.getSkillTypeId(),
-					screening.getScheduledDate())
-					);
-		}
 		
 		return new ResponseEntity<>(scheduledScreenings, HttpStatus.OK);
 	}

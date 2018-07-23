@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.revature.caliber.beans.SimpleScreening;
+import com.revature.caliber.beans.Screening;
 
 /**
  * A JpaRepository for interacting with the Screening H2 database
@@ -19,7 +19,7 @@ import com.revature.caliber.beans.SimpleScreening;
  * @author batem, echamp, sungkwon
  */
 @Repository
-public interface ScreeningRepository extends JpaRepository<SimpleScreening, Integer> {
+public interface ScreeningRepository extends JpaRepository<Screening, Integer> {
 	
 	/**
 	 * Updates the aboutMeCommentary variable of a Screening object
@@ -66,5 +66,5 @@ public interface ScreeningRepository extends JpaRepository<SimpleScreening, Inte
 	 * @param status - the pending or complete status of a SimpleScreening
 	 * @return List of SimpleScreening objects
 	 */
-	List<SimpleScreening> findByStatus(String status);
+	List<Screening> findByStatus(String status);
 }

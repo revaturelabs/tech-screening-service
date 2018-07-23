@@ -4,10 +4,10 @@ import java.io.Serializable;
 import java.util.Set;
 import java.util.TreeSet;
 
-public class Trainee implements Serializable {
+public class Candidate implements Serializable {
 	private static final long serialVersionUID = -9090223980655307018L;
 
-	private Integer traineeId;
+	private Integer CandidateId;
 	private String resourceId;
 	private String name;
 	private String email;
@@ -26,7 +26,7 @@ public class Trainee implements Serializable {
 	private Set<Note> notes;
 	private Set<Panel> panelInterviews = new TreeSet<>();
 
-	public Trainee() {
+	public Candidate() {
 		super();
 	}
 
@@ -38,7 +38,7 @@ public class Trainee implements Serializable {
 	 * @param email
 	 * @param batch
 	 */
-	public Trainee(String name, String resourceId, String email, Batch batch) {
+	public Candidate(String name, String resourceId, String email, Batch batch) {
 		this();
 		this.name = name;
 		this.resourceId = resourceId;
@@ -47,30 +47,12 @@ public class Trainee implements Serializable {
 		this.batch = batch;
 	}
 
-	public Trainee(SimpleTrainee simpleTrainee){
-		this();
-		this.traineeId = simpleTrainee.getTraineeId();
-		this.resourceId = simpleTrainee.getResourceId();
-		this.name = simpleTrainee.getName();
-		this.email = simpleTrainee.getEmail();
-		this.trainingStatus = simpleTrainee.getTrainingStatus();
-		this.phoneNumber = simpleTrainee.getPhoneNumber();
-		this.skypeId = simpleTrainee.getSkypeId();
-		this.profileUrl = simpleTrainee.getProfileUrl();
-		this.recruiterName = simpleTrainee.getRecruiterName();
-		this.college = simpleTrainee.getCollege();
-		this.degree = simpleTrainee.getDegree();
-		this.major = simpleTrainee.getMajor();
-		this.techScreenerName = simpleTrainee.getTechScreenerName();
-		this.projectCompletion = simpleTrainee.getProjectCompletion();
+	public Integer getCandidateId() {
+		return CandidateId;
 	}
 
-	public Integer getTraineeId() {
-		return traineeId;
-	}
-
-	public void setTraineeId(Integer traineeId) {
-		this.traineeId = traineeId;
+	public void setCandidateId(Integer CandidateId) {
+		this.CandidateId = CandidateId;
 	}
 
 	public String getName() {
@@ -183,7 +165,7 @@ public class Trainee implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Trainee other = (Trainee) obj;
+		Candidate other = (Candidate) obj;
 		if (email == null) {
 			if (other.email != null)
 				return false;
@@ -221,7 +203,7 @@ public class Trainee implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Trainee [traineeId=" + traineeId + ", name=" + name + ", email=" + email + ", trainingStatus="
+		return "Candidate [CandidateId=" + CandidateId + ", name=" + name + ", email=" + email + ", trainingStatus="
 				+ trainingStatus + ", major=" + major + "]";
 	}
 

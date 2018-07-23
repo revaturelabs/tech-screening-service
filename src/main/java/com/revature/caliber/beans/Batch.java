@@ -21,7 +21,7 @@ public class Batch implements Serializable {
 	private Address address;
 	private Short goodGradeThreshold;
 	private Short borderlineGradeThreshold;
-	private Set<Trainee> trainees;
+	private Set<Candidate> Candidates;
 	private Integer weeks;
 	private Integer gradedWeeks;
 	private Set<Note> notes;
@@ -33,7 +33,7 @@ public class Batch implements Serializable {
 		this.goodGradeThreshold = 80;
 		this.borderlineGradeThreshold = 70;
 		this.trainingType = TrainingType.Revature;
-		this.trainees = new HashSet<>();
+		this.Candidates = new HashSet<>();
 		this.notes = new HashSet<>();
 	}
 
@@ -168,12 +168,12 @@ public class Batch implements Serializable {
 		this.borderlineGradeThreshold = borderlineGradeThreshold;
 	}
 
-	public Set<Trainee> getTrainees() {
-		return trainees;
+	public Set<Candidate> getCandidates() {
+		return Candidates;
 	}
 
-	public void setTrainees(Set<Trainee> trainees) {
-		this.trainees = trainees;
+	public void setCandidates(Set<Candidate> Candidates) {
+		this.Candidates = Candidates;
 	}
 
 	public Integer getWeeks() {
