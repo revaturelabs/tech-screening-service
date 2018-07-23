@@ -5,8 +5,8 @@ import java.util.Date;
 //TODO Annotation for the bean
 public class Screening {
 	private Integer screeningId;
-	private SimpleTrainer trainer;
-	private SkillType skillType;
+	private Candidate candidate;
+	private Integer skillType;
 
 	private Double compositeScore;
 	private String aboutMeCommentary;
@@ -23,11 +23,11 @@ public class Screening {
 		super();
 	}
 
-	public Screening(SimpleTrainer trainer, SkillType skillType, Double compositeScore,
+	public Screening(Candidate candidate, Integer skillType, Double compositeScore,
 			String aboutMeCommentary, String generalCommentary, String softSkillCommentary, Date startDateTime,
 			Date endDateTime, Boolean softSkillsVerdict, String status) {
 		super();
-		this.trainer = trainer;
+		this.candidate = candidate;
 		this.skillType = skillType;
 		this.compositeScore = compositeScore;
 		this.aboutMeCommentary = aboutMeCommentary;
@@ -47,20 +47,20 @@ public class Screening {
 		this.screeningId = screeningId;
 	}
 
-	public SimpleTrainer getTrainer() {
-		return trainer;
+	public Candidate getCandidate() {
+		return candidate;
 	}
 
-	public void setTrainer(SimpleTrainer trainer) {
-		this.trainer = trainer;
+	public void setCandidate(Candidate candidate) {
+		this.candidate = candidate;
 	}
 
 
-	public SkillType getSkillType() {
+	public Integer getSkillType() {
 		return skillType;
 	}
 
-	public void setSkillType(SkillType skillType) {
+	public void setSkillType(Integer skillType) {
 		this.skillType = skillType;
 	}
 

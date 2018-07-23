@@ -1,20 +1,12 @@
 package com.revature.caliber.beans;
 
-import java.io.Serializable;
-import java.util.Set;
-import java.util.TreeSet;
-
-
 //TODO Annotation for the bean
 
-public class Candidate implements Serializable {
-	private static final long serialVersionUID = -9090223980655307018L;
-
-	private Integer CandidateId;
+public class Candidate {
+	private Integer id;
 	private String resourceId;
 	private String name;
 	private String email;
-	private TrainingStatus trainingStatus;
 	private String phoneNumber;
 	private String skypeId;
 	private String profileUrl;
@@ -23,38 +15,142 @@ public class Candidate implements Serializable {
 	private String degree;
 	private String major;
 	private String techScreenerName;
-	private String projectCompletion;
-	private Set<Grade> grades;
-	private Set<Note> notes;
-	private Set<Panel> panelInterviews = new TreeSet<>();
 
 	public Candidate() {
 		super();
 	}
 
-	/**
-	 * Constructor used mostly for testing. Default TrainingStatus as Training
-	 *
-	 * @param name
-	 * @param resourceId
-	 * @param email
-	 * @param batch
-	 */
-	public Candidate(String name, String resourceId, String email, Batch batch) {
-		this();
-		this.name = name;
+	public Candidate(Integer id, String resourceId, String name, String email, String phoneNumber, String skypeId,
+			String profileUrl, String recruiterName, String college, String degree, String major,
+			String techScreenerName) {
+		super();
+		this.id = id;
 		this.resourceId = resourceId;
+		this.name = name;
 		this.email = email;
-		this.trainingStatus = TrainingStatus.Training;
-		this.batch = batch;
+		this.phoneNumber = phoneNumber;
+		this.skypeId = skypeId;
+		this.profileUrl = profileUrl;
+		this.recruiterName = recruiterName;
+		this.college = college;
+		this.degree = degree;
+		this.major = major;
+		this.techScreenerName = techScreenerName;
 	}
 
-	public Integer getCandidateId() {
-		return CandidateId;
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((college == null) ? 0 : college.hashCode());
+		result = prime * result + ((degree == null) ? 0 : degree.hashCode());
+		result = prime * result + ((email == null) ? 0 : email.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((major == null) ? 0 : major.hashCode());
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + ((phoneNumber == null) ? 0 : phoneNumber.hashCode());
+		result = prime * result + ((profileUrl == null) ? 0 : profileUrl.hashCode());
+		result = prime * result + ((recruiterName == null) ? 0 : recruiterName.hashCode());
+		result = prime * result + ((resourceId == null) ? 0 : resourceId.hashCode());
+		result = prime * result + ((skypeId == null) ? 0 : skypeId.hashCode());
+		result = prime * result + ((techScreenerName == null) ? 0 : techScreenerName.hashCode());
+		return result;
 	}
 
-	public void setCandidateId(Integer CandidateId) {
-		this.CandidateId = CandidateId;
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Candidate other = (Candidate) obj;
+		if (college == null) {
+			if (other.college != null)
+				return false;
+		} else if (!college.equals(other.college))
+			return false;
+		if (degree == null) {
+			if (other.degree != null)
+				return false;
+		} else if (!degree.equals(other.degree))
+			return false;
+		if (email == null) {
+			if (other.email != null)
+				return false;
+		} else if (!email.equals(other.email))
+			return false;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		if (major == null) {
+			if (other.major != null)
+				return false;
+		} else if (!major.equals(other.major))
+			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		if (phoneNumber == null) {
+			if (other.phoneNumber != null)
+				return false;
+		} else if (!phoneNumber.equals(other.phoneNumber))
+			return false;
+		if (profileUrl == null) {
+			if (other.profileUrl != null)
+				return false;
+		} else if (!profileUrl.equals(other.profileUrl))
+			return false;
+		if (recruiterName == null) {
+			if (other.recruiterName != null)
+				return false;
+		} else if (!recruiterName.equals(other.recruiterName))
+			return false;
+		if (resourceId == null) {
+			if (other.resourceId != null)
+				return false;
+		} else if (!resourceId.equals(other.resourceId))
+			return false;
+		if (skypeId == null) {
+			if (other.skypeId != null)
+				return false;
+		} else if (!skypeId.equals(other.skypeId))
+			return false;
+		if (techScreenerName == null) {
+			if (other.techScreenerName != null)
+				return false;
+		} else if (!techScreenerName.equals(other.techScreenerName))
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Candidate [id=" + id + ", resourceId=" + resourceId + ", name=" + name + ", email=" + email
+				+ ", phoneNumber=" + phoneNumber + ", skypeId=" + skypeId + ", profileUrl=" + profileUrl
+				+ ", recruiterName=" + recruiterName + ", college=" + college + ", degree=" + degree + ", major="
+				+ major + ", techScreenerName=" + techScreenerName + "]";
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getResourceId() {
+		return resourceId;
+	}
+
+	public void setResourceId(String resourceId) {
+		this.resourceId = resourceId;
 	}
 
 	public String getName() {
@@ -71,38 +167,6 @@ public class Candidate implements Serializable {
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	public TrainingStatus getTrainingStatus() {
-		return trainingStatus;
-	}
-
-	public void setTrainingStatus(TrainingStatus trainingStatus) {
-		this.trainingStatus = trainingStatus;
-	}
-
-	public Batch getBatch() {
-		return batch;
-	}
-
-	public void setBatch(Batch batch) {
-		this.batch = batch;
-	}
-
-	public Set<Grade> getGrades() {
-		return grades;
-	}
-
-	public void setGrades(Set<Grade> grades) {
-		this.grades = grades;
-	}
-
-	public Set<Note> getNotes() {
-		return notes;
-	}
-
-	public void setNotes(Set<Note> notes) {
-		this.notes = notes;
 	}
 
 	public String getPhoneNumber() {
@@ -127,86 +191,6 @@ public class Candidate implements Serializable {
 
 	public void setProfileUrl(String profileUrl) {
 		this.profileUrl = profileUrl;
-	}
-
-	public String getResourceId() {
-		return resourceId;
-	}
-
-	public void setResourceId(String resourceId) {
-		this.resourceId = resourceId;
-	}
-
-	public Set<Panel> getPanelInterviews() {
-		return panelInterviews;
-	}
-
-	public void setPanelInterviews(Set<Panel> panelInterviews) {
-		this.panelInterviews = panelInterviews;
-	}
-
-	@Override
-	public int hashCode() {
-		final Integer prime = 31;
-		Integer result = 1;
-		result = prime * result + ((email == null) ? 0 : email.hashCode());
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + ((phoneNumber == null) ? 0 : phoneNumber.hashCode());
-		result = prime * result + ((profileUrl == null) ? 0 : profileUrl.hashCode());
-		result = prime * result + ((skypeId == null) ? 0 : skypeId.hashCode());
-		result = prime * result + ((trainingStatus == null) ? 0 : trainingStatus.hashCode());
-		result = prime * result + ((resourceId == null) ? 0 : resourceId.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Candidate other = (Candidate) obj;
-		if (email == null) {
-			if (other.email != null)
-				return false;
-		} else if (!email.equals(other.email))
-			return false;
-		if (name == null) {
-			if (other.name != null)
-				return false;
-		} else if (!name.equals(other.name))
-			return false;
-		if (phoneNumber == null) {
-			if (other.phoneNumber != null)
-				return false;
-		} else if (!phoneNumber.equals(other.phoneNumber))
-			return false;
-		if (profileUrl == null) {
-			if (other.profileUrl != null)
-				return false;
-		} else if (!profileUrl.equals(other.profileUrl))
-			return false;
-		if (skypeId == null) {
-			if (other.skypeId != null)
-				return false;
-		} else if (!skypeId.equals(other.skypeId))
-			return false;
-		if (trainingStatus != other.trainingStatus)
-			return false;
-		if (resourceId == null) {
-			if (other.resourceId != null)
-				return false;
-		} else if (!resourceId.equals(other.resourceId))
-			return false;
-		return true;
-	}
-
-	@Override
-	public String toString() {
-		return "Candidate [CandidateId=" + CandidateId + ", name=" + name + ", email=" + email + ", trainingStatus="
-				+ trainingStatus + ", major=" + major + "]";
 	}
 
 	public String getRecruiterName() {
@@ -249,11 +233,5 @@ public class Candidate implements Serializable {
 		this.techScreenerName = techScreenerName;
 	}
 
-	public String getProjectCompletion() {
-		return projectCompletion;
-	}
-
-	public void setProjectCompletion(String projectCompletion) {
-		this.projectCompletion = projectCompletion;
-	}
+	
 }
