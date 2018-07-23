@@ -5,12 +5,25 @@ import org.springframework.stereotype.Repository;
 
 import com.revature.caliber.beans.SimpleScheduledScreening;
 import com.revature.caliber.beans.SimpleScreening;
+import com.revature.caliber.beans.Screening;
 
 @Repository
 public interface ScreeningRepository extends JpaRepository<SimpleScreening, Integer> {
-	// Returns SimpleScreening object that contains the SimpleScheduledScreeningId
+	 // @author Jakob
+	
+	/*
+	 *  Returns SimpleScreening object that contains the SimpleScheduledScreeningId
+	 *  
+	 *  @param simpleScheduledScreening - A simpleScheduledScreening object
+	 *  @return SimpleScreening object
+	 */
 	SimpleScreening findBySimpleScheduledScreening(SimpleScheduledScreening simpleScheduledScreening);
 	
-	// Returns id of SimpleScreening object
-	Integer screeningId(SimpleScreening simpleScreening);
+	/*
+	 *  Returns id of SimpleScreening object
+	 *  
+	 *  @param simpleScreening - A ScreeningObject
+	 *  @return unique id of a screening object
+	 */
+	Integer screeningId(Screening screening);
 }
