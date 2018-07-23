@@ -104,15 +104,6 @@ public class SimpleScreening {
 		this.simpleScheduledScreening = simpleScheduledScreening;
 	}
 
-	/**
-	 * Custom constructors to fit the ReqeustBody of the controllers.
-	 * 
-	 */
-
-	// /screening/introcomment
-	// /screening/generalcomment
-	// Both will have the exact same signature.
-	// AboutMeCommentary was chosen at random to be used for both.
 	public SimpleScreening(Integer screeningId, String aboutMeCommentary) {
 		super();
 		this.screeningId = screeningId;
