@@ -4,6 +4,9 @@ import java.io.Serializable;
 import java.util.Set;
 import java.util.TreeSet;
 
+
+//TODO Annotation for the bean
+
 public class Candidate implements Serializable {
 	private static final long serialVersionUID = -9090223980655307018L;
 

@@ -2,6 +2,7 @@ package com.revature.caliber.beans;
 
 import java.util.Date;
 
+//TODO Annotation for the bean
 public class Screening {
 	private Integer screeningId;
 	private SimpleTrainer trainer;
