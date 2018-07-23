@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.revature.caliber.beans.ScheduledScreening;
+import com.revature.caliber.beans.SimpleScheduledScreening;
 
 /**
  * Business logic for Scheduled Screening operations

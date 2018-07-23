@@ -8,13 +8,14 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.revature.caliber.beans.ScheduledScreening;
 import com.revature.caliber.beans.SimpleScheduledScreening;
 
 /**
  * DAO for ScheduledScreening
  */
 @Repository
-public interface ScheduledScreeningRepository extends JpaRepository<SimpleScheduledScreening, Integer> {
+public interface ScheduledScreeningRepository extends JpaRepository<ScheduledScreening, Integer> {
 
 	/**
 	 * Finds the SimpleScheduledScreening instances associated
@@ -24,7 +25,7 @@ public interface ScheduledScreeningRepository extends JpaRepository<SimpleSchedu
 	 * @return List of SimpleScheduledScreening instances associated
 	 * with the given Status string
 	 */
-	List<SimpleScheduledScreening> findByStatus(String string);
+	List<ScheduledScreening> findByStatus(String string);
 
 	/**
 	 * Sets the status to given string

@@ -17,41 +17,18 @@ import com.revature.caliber.screening.data.ScheduledScreeningRepository;
 public class ScheduledScreeningServiceImpl implements ScheduledScreeningService {
 
 	@Autowired 
-	private ScheduledScreeningRepository ssr;
-	
-	@Autowired
-	private TrainingService ts;
+	private ScheduledScreeningRepository scheduledScreeningRepository;
 	
 	@Override
 	public List<ScheduledScreening> findByStatus(String string) {
-		List<SimpleScheduledScreening> simpleScheduledScreenings = ssr.findByStatus("PENDING");
-		List<SimpleTrainee> simpleTrainees = ts.getAllTrainees();
-
-		List<ScheduledScreening> scheduledScreenings=new ArrayList<>();
+		List<ScheduledScreening> simpleScheduledScreenings = scheduledScreeningRepository.findByStatus(string);
 		
-		for(SimpleScheduledScreening screening : simpleScheduledScreenings) {
-			Integer traineeId = screening.getTrainee();
-			for (SimpleTrainee trainee : simpleTrainees) {
-				if (traineeId == trainee.getTraineeId()) {
-					scheduledScreenings.add(new ScheduledScreening(
-						new Trainee(trainee),
-						0,
-						ScheduledStatus.PENDING, 
-						screening.getScheduledScreeningId(),
-						screening.getSkillTypeId(),
-						screening.getScheduledDate())
-						);
-				}
-				
-			}
-		}
-		
-		return scheduledScreenings;
+		return simpleScheduledScreenings;
 	}
 
 	@Override
 	public void updateStatus(String screened, Integer scheduledScreeningId) {
-		ssr.updateStatus(screened, scheduledScreeningId);
+		scheduledScreeningRepository.updateStatus(screened, scheduledScreeningId);
 	}
 
 }
