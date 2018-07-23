@@ -11,7 +11,7 @@ import com.revature.caliber.screening.data.ScheduledScreeningRepository;
 @Service
 public class ScheduledScreeningServiceImpl implements ScheduledScreeningService {
 
-	@Autowired 
+//	@Autowired 
 	private ScheduledScreeningRepository ssr;
 	
 	@Override
