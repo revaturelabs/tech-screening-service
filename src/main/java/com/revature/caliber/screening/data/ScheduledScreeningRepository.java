@@ -9,7 +9,6 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.revature.caliber.beans.ScheduledScreening;
-import com.revature.caliber.beans.SimpleScheduledScreening;
 
 /**
  * DAO for ScheduledScreening

@@ -29,7 +29,7 @@ public class SoftSkillViolation {
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="SCREENING_ID")
-	private SimpleScreening screeningId;
+	private Screening screeningId;
 	
 	@Column(name="VIOLATION_TYPE_ID")
 	private Integer violationId;
@@ -46,7 +46,7 @@ public class SoftSkillViolation {
 		super();
 	}
 	
-	public SoftSkillViolation(Integer id, SimpleScreening screeningId, Integer violationId, String comment, Date time) {
+	public SoftSkillViolation(Integer id, Screening screeningId, Integer violationId, String comment, Date time) {
 		super();
 		this.id = id;
 		this.screeningId = screeningId;
@@ -55,7 +55,7 @@ public class SoftSkillViolation {
 		Time = time;
 	}
 	
-	public SoftSkillViolation(SimpleScreening screeningId, Integer violationId, String comment, Date time) {
+	public SoftSkillViolation(Screening screeningId, Integer violationId, String comment, Date time) {
 		super();
 		this.screeningId = screeningId;
 		this.violationId = violationId;
@@ -71,11 +71,11 @@ public class SoftSkillViolation {
 		this.id = id;
 	}
 
-	public SimpleScreening getScreeningId() {
+	public Screening getScreeningId() {
 		return screeningId;
 	}
 
-	public void setScreeningId(SimpleScreening screeningId) {
+	public void setScreeningId(Screening screeningId) {
 		this.screeningId = screeningId;
 	}
 

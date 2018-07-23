@@ -8,7 +8,7 @@ public class Grade implements Serializable {
 
 	private Long gradeId;
 	private Assessment assessment;
-	private Trainee trainee;
+	private Candidate Candidate;
 	private Date dateReceived;
 	private Double score;
 
@@ -16,10 +16,10 @@ public class Grade implements Serializable {
 		super();
 	}
 
-	public Grade(Assessment assessment, Trainee trainee, Date dateReceived, Double score) {
+	public Grade(Assessment assessment, Candidate Candidate, Date dateReceived, Double score) {
 		this();
 		this.assessment = assessment;
-		this.trainee = trainee;
+		this.Candidate = Candidate;
 		this.dateReceived = dateReceived;
 		this.score = score;
 	}
@@ -47,12 +47,12 @@ public class Grade implements Serializable {
 		this.assessment = assessment;
 	}
 
-	public Trainee getTrainee() {
-		return trainee;
+	public Candidate getCandidate() {
+		return Candidate;
 	}
 
-	public void setTrainee(Trainee trainee) {
-		this.trainee = trainee;
+	public void setCandidate(Candidate Candidate) {
+		this.Candidate = Candidate;
 	}
 
 	public Date getDateReceived() {
@@ -80,7 +80,7 @@ public class Grade implements Serializable {
 		long temp;
 		temp = Double.doubleToLongBits(score);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
-		result = prime * result + ((trainee == null) ? 0 : trainee.hashCode());
+		result = prime * result + ((Candidate == null) ? 0 : Candidate.hashCode());
 		return result;
 	}
 
@@ -105,17 +105,17 @@ public class Grade implements Serializable {
 			return false;
 		if (Double.doubleToLongBits(score) != Double.doubleToLongBits(other.score))
 			return false;
-		if (trainee == null) {
-			if (other.trainee != null)
+		if (Candidate == null) {
+			if (other.Candidate != null)
 				return false;
-		} else if (!trainee.equals(other.trainee))
+		} else if (!Candidate.equals(other.Candidate))
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Grade [gradeId=" + gradeId + ", assessment=" + assessment + ", trainee=" + trainee + ", dateReceived="
+		return "Grade [gradeId=" + gradeId + ", assessment=" + assessment + ", Candidate=" + Candidate + ", dateReceived="
 				+ dateReceived + ", score=" + score + "]";
 	}
 }

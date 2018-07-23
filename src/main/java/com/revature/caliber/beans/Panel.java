@@ -8,7 +8,7 @@ public class Panel implements Serializable {
 	private static final long serialVersionUID = -3904962254572382770L;
 
 	private Integer panelId;
-	private Trainee trainee;
+	private Candidate Candidate;
 	private Trainer panelist;
 	private Date interviewDate;
 	private String duration; // 1hr 30 minutes
@@ -58,12 +58,12 @@ public class Panel implements Serializable {
 		this.panelId = id;
 	}
 
-	public Trainee getTrainee() {
-		return trainee;
+	public Candidate getCandidate() {
+		return Candidate;
 	}
 
-	public void setTrainee(Trainee trainee) {
-		this.trainee = trainee;
+	public void setCandidate(Candidate Candidate) {
+		this.Candidate = Candidate;
 	}
 
 	public Trainer getPanelist() {
@@ -213,7 +213,7 @@ public class Panel implements Serializable {
 		result = prime * result + (recordingConsent ? 1231 : 1237);
 		result = prime * result + ((recordingLink == null) ? 0 : recordingLink.hashCode());
 		result = prime * result + ((status == null) ? 0 : status.hashCode());
-		result = prime * result + ((trainee == null) ? 0 : trainee.hashCode());
+		result = prime * result + ((Candidate == null) ? 0 : Candidate.hashCode());
 		return result;
 	}
 
@@ -289,17 +289,17 @@ public class Panel implements Serializable {
 			return false;
 		if (status != other.status)
 			return false;
-		if (trainee == null) {
-			if (other.trainee != null)
+		if (Candidate == null) {
+			if (other.Candidate != null)
 				return false;
-		} else if (!trainee.equals(other.trainee))
+		} else if (!Candidate.equals(other.Candidate))
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Panel [id=" + panelId + ", trainee=" + trainee + ", panelist=" + panelist + ", interviewDate="
+		return "Panel [id=" + panelId + ", Candidate=" + Candidate + ", panelist=" + panelist + ", interviewDate="
 				+ interviewDate + ", duration=" + duration + ", format=" + format + ", internet=" + internet
 				+ ", panelRound=" + panelRound + ", recordingConsent=" + recordingConsent + ", recordingLink="
 				+ recordingLink + ", status=" + status + ", feedback=" + feedback + ", associateIntro=" + associateIntro

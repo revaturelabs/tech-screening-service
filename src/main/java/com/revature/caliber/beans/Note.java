@@ -9,7 +9,7 @@ public class Note implements Serializable {
 	private String content;
 	private Short week;
 	private Batch batch;
-	private Trainee trainee;
+	private Candidate Candidate;
 	private TrainerRole maxVisibility;
 	private NoteType type;
 	private Boolean qcFeedback;
@@ -59,7 +59,7 @@ public class Note implements Serializable {
 	}
 
 	/**
-	 * QC Status for each trainee. Constructs the note and it's visibility If the
+	 * QC Status for each Candidate. Constructs the note and it's visibility If the
 	 * feedback is public, anyone can view. If not, the feedback can only be viewed
 	 * by QC and the VP.
 	 *
@@ -71,12 +71,12 @@ public class Note implements Serializable {
 	 * @param qcFeedback
 	 * @param qcStatus
 	 */
-	private Note(String content, Short week, Trainee trainee, NoteType type, QCStatus qcStatus) {
+	private Note(String content, Short week, Candidate Candidate, NoteType type, QCStatus qcStatus) {
 		this();
 		this.content = content;
 		this.week = week;
-		this.trainee = trainee;
-		if (type == NoteType.QC_TRAINEE)
+		this.Candidate = Candidate;
+		if (type == NoteType.QC_Candidate)
 			this.maxVisibility = TrainerRole.ROLE_QC;
 		else
 			throw new IllegalArgumentException("Select proper NoteType");
@@ -86,21 +86,21 @@ public class Note implements Serializable {
 	}
 
 	/**
-	 * Trainer feedback for a trainee
+	 * Trainer feedback for a Candidate
 	 *
 	 * @param content
 	 * @param week
-	 * @param trainee
+	 * @param Candidate
 	 * @param maxVisibility
 	 * @param type
 	 */
-	private Note(String content, Short week, Trainee trainee) {
+	private Note(String content, Short week, Candidate Candidate) {
 		this();
 		this.content = content;
 		this.week = week;
-		this.trainee = trainee;
+		this.Candidate = Candidate;
 		this.maxVisibility = TrainerRole.ROLE_TRAINER;
-		this.type = NoteType.TRAINEE;
+		this.type = NoteType.Candidate;
 		this.qcFeedback = false;
 	}
 
@@ -109,7 +109,7 @@ public class Note implements Serializable {
 	 *
 	 * @param content
 	 * @param week
-	 * @param trainee
+	 * @param Candidate
 	 * @param maxVisibility
 	 * @param type
 	 */
@@ -138,17 +138,17 @@ public class Note implements Serializable {
 	}
 
 	/**
-	 * Factory method for creating new QC weekly individual trainee note
+	 * Factory method for creating new QC weekly individual Candidate note
 	 *
 	 * @param content
 	 * @param week
-	 * @param trainee
+	 * @param Candidate
 	 * @param qcStatus
 	 * @param isPublic
 	 * @return
 	 */
-	public static Note qcIndividualNote(String content, Integer week, Trainee trainee, QCStatus qcStatus) {
-		return new Note(content, week.shortValue(), trainee, NoteType.QC_TRAINEE, qcStatus);
+	public static Note qcIndividualNote(String content, Integer week, Candidate Candidate, QCStatus qcStatus) {
+		return new Note(content, week.shortValue(), Candidate, NoteType.QC_Candidate, qcStatus);
 	}
 
 	/**
@@ -164,15 +164,15 @@ public class Note implements Serializable {
 	}
 
 	/**
-	 * Factory method for creating a new Trainer weekly individual trainee note
+	 * Factory method for creating a new Trainer weekly individual Candidate note
 	 *
 	 * @param content
 	 * @param week
-	 * @param trainee
+	 * @param Candidate
 	 * @return
 	 */
-	public static Note trainerIndividualNote(String content, Integer week, Trainee trainee) {
-		return new Note(content, week.shortValue(), trainee);
+	public static Note trainerIndividualNote(String content, Integer week, Candidate Candidate) {
+		return new Note(content, week.shortValue(), Candidate);
 	}
 
 	public Integer getNoteId() {
@@ -207,12 +207,12 @@ public class Note implements Serializable {
 		this.batch = batch;
 	}
 
-	public Trainee getTrainee() {
-		return trainee;
+	public Candidate getCandidate() {
+		return Candidate;
 	}
 
-	public void setTrainee(Trainee trainee) {
-		this.trainee = trainee;
+	public void setCandidate(Candidate Candidate) {
+		this.Candidate = Candidate;
 	}
 
 	public TrainerRole getMaxVisibility() {
@@ -256,7 +256,7 @@ public class Note implements Serializable {
 		result = prime * result + ((maxVisibility == null) ? 0 : maxVisibility.hashCode());
 		result = prime * result + (qcFeedback ? 1231 : 1237);
 		result = prime * result + ((qcStatus == null) ? 0 : qcStatus.hashCode());
-		result = prime * result + ((trainee == null) ? 0 : trainee.hashCode());
+		result = prime * result + ((Candidate == null) ? 0 : Candidate.hashCode());
 		result = prime * result + ((type == null) ? 0 : type.hashCode());
 		result = prime * result + week;
 		return result;
@@ -287,10 +287,10 @@ public class Note implements Serializable {
 			return false;
 		if (qcStatus != other.qcStatus)
 			return false;
-		if (trainee == null) {
-			if (other.trainee != null)
+		if (Candidate == null) {
+			if (other.Candidate != null)
 				return false;
-		} else if (!trainee.equals(other.trainee))
+		} else if (!Candidate.equals(other.Candidate))
 			return false;
 		if (type != other.type)
 			return false;
@@ -301,7 +301,7 @@ public class Note implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Note [noteId=" + noteId + ", content=" + content + ", week=" + week + ", trainee=" + trainee
+		return "Note [noteId=" + noteId + ", content=" + content + ", week=" + week + ", Candidate=" + Candidate
 				+ ", maxVisibility=" + maxVisibility + ", type=" + type + ", qcFeedback=" + qcFeedback + ", qcStatus="
 				+ qcStatus + "]";
 	}

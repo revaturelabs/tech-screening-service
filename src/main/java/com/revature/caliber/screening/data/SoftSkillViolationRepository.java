@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.revature.caliber.beans.SimpleScreening;
+import com.revature.caliber.beans.Screening;
 import com.revature.caliber.beans.SoftSkillViolation;
 
 /**
@@ -22,5 +22,5 @@ public interface SoftSkillViolationRepository extends JpaRepository<SoftSkillVio
 	 * @param ss - a SimpleScreening that is related to SoftSkillViolation objects
 	 * @return A list of SoftSkillViolation objects
 	 */
-	List<SoftSkillViolation> findByScreeningId(SimpleScreening ss);
+	List<SoftSkillViolation> findByScreeningId(Screening ss);
 }

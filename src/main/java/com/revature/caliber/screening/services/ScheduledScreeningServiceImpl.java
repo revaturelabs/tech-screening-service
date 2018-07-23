@@ -1,16 +1,11 @@
 package com.revature.caliber.screening.services;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.revature.caliber.beans.ScheduledScreening;
-import com.revature.caliber.beans.ScheduledStatus;
-import com.revature.caliber.beans.SimpleScheduledScreening;
-import com.revature.caliber.beans.SimpleTrainee;
-import com.revature.caliber.beans.Trainee;
 import com.revature.caliber.screening.data.ScheduledScreeningRepository;
 
 @Service

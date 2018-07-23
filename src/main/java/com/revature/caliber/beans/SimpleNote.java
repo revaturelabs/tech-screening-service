@@ -12,7 +12,7 @@ public class SimpleNote implements Serializable {
 	private String content;
 	private Short week;
 	private Integer batchId;
-	private Integer traineeId;
+	private Integer CandidateId;
 	private TrainerRole maxVisibility;
 	private NoteType type;
 	private Boolean qcFeedback;
@@ -23,14 +23,14 @@ public class SimpleNote implements Serializable {
 		this.maxVisibility = TrainerRole.ROLE_TRAINER;
 	}
 
-	public SimpleNote(Integer noteId, String content, Short week, Integer batchId, Integer traineeId,
+	public SimpleNote(Integer noteId, String content, Short week, Integer batchId, Integer CandidateId,
 			TrainerRole maxVisibility, NoteType type, Boolean qcFeedback, QCStatus qcStatus) {
 		super();
 		this.noteId = noteId;
 		this.content = content;
 		this.week = week;
 		this.batchId = batchId;
-		this.traineeId = traineeId;
+		this.CandidateId = CandidateId;
 		this.maxVisibility = maxVisibility;
 		this.type = type;
 		this.qcFeedback = qcFeedback;
@@ -43,7 +43,7 @@ public class SimpleNote implements Serializable {
 		this.content = src.getContent();
 		this.week = src.getWeek();
 		this.batchId = src.getBatch() != null ? src.getBatch().getBatchId() : null;
-		this.traineeId = src.getTrainee() != null ? src.getTrainee().getTraineeId() : null;
+		this.CandidateId = src.getCandidate() != null ? src.getCandidate().getCandidateId() : null;
 		this.maxVisibility = src.getMaxVisibility();
 		this.type = src.getType();
 		this.qcFeedback = src.isQcFeedback();
@@ -74,22 +74,22 @@ public class SimpleNote implements Serializable {
 	}
 
 	/**
-	 * Factory method for creating new QC weekly individual trainee note
+	 * Factory method for creating new QC weekly individual Candidate note
 	 * 
 	 * @param content
 	 * @param week
-	 * @param traineeId
+	 * @param CandidateId
 	 * @param qcStatus
 	 * @return
 	 */
-	public static SimpleNote qcIndividualNote(String content, Short week, Integer traineeId, QCStatus qcStatus) {
+	public static SimpleNote qcIndividualNote(String content, Short week, Integer CandidateId, QCStatus qcStatus) {
 		SimpleNote note = new SimpleNote();
 
 		note.setContent(content);
 		note.setWeek(week);
-		note.setTraineeId(traineeId);
+		note.setCandidateId(CandidateId);
 		note.setMaxVisibility(TrainerRole.ROLE_QC);
-		note.setType(NoteType.QC_TRAINEE);
+		note.setType(NoteType.QC_Candidate);
 		note.setQcFeedback(true);
 		note.setQcStatus(qcStatus);
 		;
@@ -119,21 +119,21 @@ public class SimpleNote implements Serializable {
 	}
 
 	/**
-	 * Factory method for creating a new Trainer weekly individual trainee note
+	 * Factory method for creating a new Trainer weekly individual Candidate note
 	 * 
 	 * @param content
 	 * @param week
-	 * @param traineeId
+	 * @param CandidateId
 	 * @return
 	 */
-	public static SimpleNote trainerIndividualNote(String content, Short week, Integer traineeId) {
+	public static SimpleNote trainerIndividualNote(String content, Short week, Integer CandidateId) {
 		SimpleNote note = new SimpleNote();
 
 		note.setContent(content);
 		note.setWeek(week);
-		note.setTraineeId(traineeId);
+		note.setCandidateId(CandidateId);
 		note.setMaxVisibility(TrainerRole.ROLE_TRAINER);
-		note.setType(NoteType.TRAINEE);
+		note.setType(NoteType.Candidate);
 		note.setQcFeedback(false);
 
 		return note;
@@ -171,12 +171,12 @@ public class SimpleNote implements Serializable {
 		this.batchId = batchId;
 	}
 
-	public Integer getTraineeId() {
-		return traineeId;
+	public Integer getCandidateId() {
+		return CandidateId;
 	}
 
-	public void setTraineeId(Integer traineeId) {
-		this.traineeId = traineeId;
+	public void setCandidateId(Integer CandidateId) {
+		this.CandidateId = CandidateId;
 	}
 
 	public TrainerRole getMaxVisibility() {
@@ -221,7 +221,7 @@ public class SimpleNote implements Serializable {
 		result = prime * result + ((noteId == null) ? 0 : noteId.hashCode());
 		result = prime * result + (qcFeedback ? 1231 : 1237);
 		result = prime * result + ((qcStatus == null) ? 0 : qcStatus.hashCode());
-		result = prime * result + ((traineeId == null) ? 0 : traineeId.hashCode());
+		result = prime * result + ((CandidateId == null) ? 0 : CandidateId.hashCode());
 		result = prime * result + ((type == null) ? 0 : type.hashCode());
 		result = prime * result + ((week == null) ? 0 : week.hashCode());
 		return result;
@@ -257,10 +257,10 @@ public class SimpleNote implements Serializable {
 			return false;
 		if (qcStatus != other.qcStatus)
 			return false;
-		if (traineeId == null) {
-			if (other.traineeId != null)
+		if (CandidateId == null) {
+			if (other.CandidateId != null)
 				return false;
-		} else if (!traineeId.equals(other.traineeId))
+		} else if (!CandidateId.equals(other.CandidateId))
 			return false;
 		if (type != other.type)
 			return false;
@@ -275,7 +275,7 @@ public class SimpleNote implements Serializable {
 	@Override
 	public String toString() {
 		return "Note [noteId=" + noteId + ", content=" + content + ", week=" + week + ", batchId=" + batchId
-				+ ", traineeId=" + traineeId + ", maxVisibility=" + maxVisibility + ", type=" + type + ", qcFeedback="
+				+ ", CandidateId=" + CandidateId + ", maxVisibility=" + maxVisibility + ", type=" + type + ", qcFeedback="
 				+ qcFeedback + ", qcStatus=" + qcStatus + "]";
 	}
 

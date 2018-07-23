@@ -13,13 +13,26 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.caliber.beans.ScheduledScreening;
-import com.revature.caliber.screening.services.ScheduledScreeningService;
+import com.revature.caliber.screening.data.ScheduledScreeningRepository;
+import com.revature.caliber.screening.data.ScreeningRepository;
+import com.revature.caliber.screening.data.SoftSkillViolationRepository;
+import com.revature.caliber.screening.data.ViolationTypeRepository;
 
 @RestController
 @CrossOrigin
 public class ScreeningController {
+	
 	@Autowired
-	private ScheduledScreeningService scheduledScreeningService;
+	private ScreeningRepository screeningRepository;
+	
+	@Autowired
+	private SoftSkillViolationRepository softSkillViolationRepository;
+
+	@Autowired
+	private ScheduledScreeningRepository scheduledScreeningRepository;
+	
+	@Autowired
+	private ViolationTypeRepository violationTypeRepository;
 
 	/**
 	 * Get screenings based on the status provided.
@@ -28,9 +41,12 @@ public class ScreeningController {
 	 * @return - List of SimpleScreening objects corresponding to status.
 	 */
 	@RequestMapping(value="/screening/scheduledScreenings", method=RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<List<ScheduledScreening>> getAllScheduledScreenings() {
-		List<ScheduledScreening> scheduledScreenings = scheduledScreeningService.findByStatus("PENDING");
+	public ResponseEntity<List<ScheduledScreening>> getAllScheduledScreenings(){
+		
+		List<ScheduledScreening> ScheduledScreenings = scheduledScreeningRepository.findByStatus("PENDING");
 
+		List<ScheduledScreening> scheduledScreenings=new ArrayList<>();
+		
 		return new ResponseEntity<>(scheduledScreenings, HttpStatus.OK);
 	}
 }
