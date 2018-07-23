@@ -1,4 +1,4 @@
-package com.revature.caliber.swagger;
+package com.revature.caliber.screening.swagger;
 
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Controller;
