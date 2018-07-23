@@ -2,6 +2,7 @@ package com.revature.caliber.beans;
 
 import java.util.Date;
 
+//TODO Annotation for the bean
 public class ScheduledScreening {
 	private Candidate Candidate;
 	private Integer trainer;
