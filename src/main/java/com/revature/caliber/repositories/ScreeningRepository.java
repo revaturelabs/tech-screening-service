@@ -7,13 +7,14 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import com.revature.caliber.beans.SimpleScreening;
+import com.revature.caliber.beans.SimpleScheduledScreening;
 
 @Repository
 public interface ScreeningRepository extends JpaRepository<SimpleScreening, Integer>{
 	
 	// Returns SimpleScreening object that contains the SimpleScheduledScreeningId
-	SimpleScreening getBySimpleScheduledScreeningId(Integer simpleScheduledScreeningId);
+	SimpleScreening findBySimpleScheduledScreening(SimpleScheduledScreening simpleScheduledScreening);
 	
 	// Returns id of SimpleScreening object
-	Integer getId(SimpleScreening simpleScreening);
+	Integer screeningId(SimpleScreening simpleScreening);
 }
