@@ -11,18 +11,19 @@ import com.revature.caliber.screening.data.ScheduledScreeningRepository;
 @Service
 public class ScheduledScreeningServiceImpl implements ScheduledScreeningService {
 
-//	@Autowired 
-	private ScheduledScreeningRepository ssr;
+	@Autowired 
+	private ScheduledScreeningRepository scheduledScreeningRepository;
 	
 	@Override
 	public List<ScheduledScreening> findByStatus(String string) {
-		// TODO Auto-generated method stub
-		return null;
+		List<ScheduledScreening> simpleScheduledScreenings = scheduledScreeningRepository.findByStatus(string);
+		
+		return simpleScheduledScreenings;
 	}
 
 	@Override
 	public void updateStatus(String screened, Integer scheduledScreeningId) {
-		ssr.updateStatus(screened, scheduledScreeningId);
+		scheduledScreeningRepository.updateStatus(screened, scheduledScreeningId);
 	}
 
 }

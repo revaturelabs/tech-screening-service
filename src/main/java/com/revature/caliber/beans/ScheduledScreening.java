@@ -2,21 +2,42 @@ package com.revature.caliber.beans;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+@Entity
+@Table(name = "scheduled_screening")
 public class ScheduledScreening {
-	private Trainee trainee;
+
+	@OneToOne
+	@JoinColumn(name="id")
+	private Candidate Candidate;
+	
 	private Integer trainer;
+	
+	@Column(name = "STATUS")
 	private ScheduledStatus status;
+	
+	@Id
 	private Integer scheduledScreeningId;
+	
+	@Column(name = "SKILL_TYPE_ID")
 	private Integer skillTypeId;
+	
+	@Column(name = "SCHEDULED_DATE")
 	private Date scheduledDate;
+	
 	public ScheduledScreening() {
 		super();
 	}
 
-	public ScheduledScreening(Trainee trainee, Integer trainer, ScheduledStatus status, Integer skillTypeId,
+	public ScheduledScreening(Candidate Candidate, Integer trainer, ScheduledStatus status, Integer skillTypeId,
 			Date scheduledDate) {
 		super();
-		this.trainee = trainee;
+		this.Candidate = Candidate;
 		this.trainer = trainer;
 		this.status = status;
 		this.skillTypeId = skillTypeId;
@@ -24,10 +45,10 @@ public class ScheduledScreening {
 	}
 
 
-	public ScheduledScreening(Trainee trainee, Integer trainer, ScheduledStatus status, Integer scheduledScreeningId,
+	public ScheduledScreening(Candidate Candidate, Integer trainer, ScheduledStatus status, Integer scheduledScreeningId,
 			Integer skillTypeId, Date scheduledDate) {
 		super();
-		this.trainee = trainee;
+		this.Candidate = Candidate;
 		this.trainer = trainer;
 		this.status = status;
 		this.scheduledScreeningId = scheduledScreeningId;
@@ -35,12 +56,12 @@ public class ScheduledScreening {
 		this.scheduledDate = scheduledDate;
 	}
 
-	public Trainee getTrainee() {
-		return trainee;
+	public Candidate getCandidate() {
+		return Candidate;
 	}
 
-	public void setTrainee(Trainee trainee) {
-		this.trainee = trainee;
+	public void setCandidate(Candidate Candidate) {
+		this.Candidate = Candidate;
 	}
 
 	public Integer getTrainer() {
@@ -85,9 +106,9 @@ public class ScheduledScreening {
 
 	@Override
 	public String toString() {
-		return "ScheduledScreening [trainee=" + trainee + ", trainer=" + trainer + ", status=" + status
+		return "ScheduledScreening [Candidate=" + Candidate + ", trainer=" + trainer + ", status=" + status
 				+ ", scheduledScreeningId=" + scheduledScreeningId + ", skillTypeId=" + skillTypeId + ", scheduledDate="
-				+ scheduledDate + ", getTrainee()=" + getTrainee() + ", getTrainer()=" + getTrainer() + ", getStatus()="
+				+ scheduledDate + ", getCandidate()=" + getCandidate() + ", getTrainer()=" + getTrainer() + ", getStatus()="
 				+ getStatus() + ", getScheduledScreeningId()=" + getScheduledScreeningId() + ", getSkillTypeId()="
 				+ getSkillTypeId() + ", getScheduledDate()=" + getScheduledDate() + ", hashCode()=" + hashCode()
 				+ ", getClass()=" + getClass() + ", toString()=" + super.toString() + "]";
@@ -101,7 +122,7 @@ public class ScheduledScreening {
 		result = prime * result + ((scheduledScreeningId == null) ? 0 : scheduledScreeningId.hashCode());
 		result = prime * result + ((skillTypeId == null) ? 0 : skillTypeId.hashCode());
 		result = prime * result + ((status == null) ? 0 : status.hashCode());
-		result = prime * result + ((trainee == null) ? 0 : trainee.hashCode());
+		result = prime * result + ((Candidate == null) ? 0 : Candidate.hashCode());
 		result = prime * result + ((trainer == null) ? 0 : trainer.hashCode());
 		return result;
 	}
@@ -132,10 +153,10 @@ public class ScheduledScreening {
 			return false;
 		if (status != other.status)
 			return false;
-		if (trainee == null) {
-			if (other.trainee != null)
+		if (Candidate == null) {
+			if (other.Candidate != null)
 				return false;
-		} else if (!trainee.equals(other.trainee))
+		} else if (!Candidate.equals(other.Candidate))
 			return false;
 		if (trainer == null) {
 			if (other.trainer != null)
