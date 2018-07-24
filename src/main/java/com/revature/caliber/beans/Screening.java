@@ -2,28 +2,65 @@ package com.revature.caliber.beans;
 
 import java.util.Date;
 
-//TODO Annotation for the bean
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+
+@Entity
+@Table(name = "SCREENING")
+
 public class Screening {
+	@Id
+	@Column(name = "id")
 	private Integer screeningId;
+
+
+	@OneToOne
+	@JoinColumn(name="id")
 	private Candidate candidate;
+
+	@Column(name = "TRAINER_ID")
+	private Integer trainerId;
+
+	@Column(name = "SKILL_TYPE_ID")
 	private Integer skillType;
 
+	@Column(name = "COMPOSITE_SCORE")
 	private Double compositeScore;
+
+	@Column(name = "ABOUT_COMMENT")
 	private String aboutMeCommentary;
+
+	@Column(name = "GENERAL_COMMENT")
 	private String generalCommentary;
+	
+	@Column(name = "SOFT_SKILL_COMMENT")
 	private String softSkillCommentary;
 
+	@Column(name = "START_DATE")
 	private Date startDateTime;
+	
+	@Column(name = "END_DATE")
 	private Date endDateTime;
+	
+	@Column(name = "SOFT_SKILL_VERDICT")
 	private Boolean softSkillsVerdict;
 
+	@Column(name = "STATUS")
 	private String status;
-
+	
+	@Column(name = "SCHEDULED_SCREENING_ID")
+	private Integer schuledDcreeningId;
+	
 	public Screening() {
 		super();
 	}
 
-	public Screening(Candidate candidate, Integer skillType, Double compositeScore,
+	public Screening(Candidate candidate,Integer trainerId, Integer skillType, Double compositeScore,
 			String aboutMeCommentary, String generalCommentary, String softSkillCommentary, Date startDateTime,
 			Date endDateTime, Boolean softSkillsVerdict, String status) {
 		super();
@@ -54,7 +91,7 @@ public class Screening {
 	public void setCandidate(Candidate candidate) {
 		this.candidate = candidate;
 	}
-
+	
 
 	public Integer getSkillType() {
 		return skillType;

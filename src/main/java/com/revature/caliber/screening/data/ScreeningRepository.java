@@ -28,7 +28,7 @@ public interface ScreeningRepository extends JpaRepository<Screening, Integer> {
 	 * @param screeningId - the unique id of a Screening
 	 */
 	@Modifying(clearAutomatically = true)
-	@Query("update SimpleScreening s set s.aboutMeCommentary = ?1 where s.screeningId = ?2")
+	@Query("update Screening s set s.aboutMeCommentary = ?1 where s.screeningId = ?2")
 	@Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
 	void changeAboutMeCommentaryByScreeningId(String introComment, Integer screeningId);
 	
@@ -39,7 +39,7 @@ public interface ScreeningRepository extends JpaRepository<Screening, Integer> {
 	 * @param screeningId - the unique id of a Screening
 	 */
 	@Modifying(clearAutomatically = true)
-	@Query("update SimpleScreening s set s.generalCommentary = ?1 where s.screeningId = ?2")
+	@Query("update Screening s set s.generalCommentary = ?1 where s.screeningId = ?2")
 	@Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
 	void changeGeneralCommentaryByScreeningId(String generalComment, Integer screeningId);
 	
@@ -54,7 +54,7 @@ public interface ScreeningRepository extends JpaRepository<Screening, Integer> {
 	 * @param screeningId - the unique id of a Screening object
 	 */
 	@Modifying(clearAutomatically = true)
-	@Query("update SimpleScreening s set s.status = ?1, s.softSkillsVerdict = ?2, s.softSkillCommentary = ?3,"+
+	@Query("update Screening s set s.status = ?1, s.softSkillsVerdict = ?2, s.softSkillCommentary = ?3,"+
 			"s.endDateTime = ?4, s.compositeScore = ?5 where s.screeningId = ?6")
 	@Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
 	void updateScreeningInformationByScreeningId(String status, Boolean softSkillsVerdict, String softSkillCommentary, 

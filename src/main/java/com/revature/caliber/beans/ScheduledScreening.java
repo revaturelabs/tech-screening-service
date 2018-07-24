@@ -2,14 +2,34 @@ package com.revature.caliber.beans;
 
 import java.util.Date;
 
-//TODO Annotation for the bean
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+@Entity
+@Table(name = "scheduled_screening")
 public class ScheduledScreening {
+
+	@OneToOne
+	@JoinColumn(name="id")
 	private Candidate Candidate;
+	
 	private Integer trainer;
+	
+	@Column(name = "STATUS")
 	private ScheduledStatus status;
+	
+	@Id
 	private Integer scheduledScreeningId;
+	
+	@Column(name = "SKILL_TYPE_ID")
 	private Integer skillTypeId;
+	
+	@Column(name = "SCHEDULED_DATE")
 	private Date scheduledDate;
+	
 	public ScheduledScreening() {
 		super();
 	}
