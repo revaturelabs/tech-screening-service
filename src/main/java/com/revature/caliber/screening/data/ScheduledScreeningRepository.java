@@ -34,7 +34,7 @@ public interface ScheduledScreeningRepository extends JpaRepository<ScheduledScr
 	 */
 	@Transactional
 	@Modifying(clearAutomatically = true)
-	@Query("update SimpleScheduledScreening s set s.status = ?1 where s.scheduledScreeningId = ?2")
+	@Query("update ScheduledScreening s set s.status = ?1 where s.scheduledScreeningId = ?2")
 	void updateStatus(String screened, Integer scheduledScreeningId);
 
 }

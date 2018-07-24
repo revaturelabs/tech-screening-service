@@ -1,19 +1,54 @@
 package com.revature.caliber.beans;
 
-//TODO Annotation for the bean
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+
+
+@Entity
+@Table(name="CANDIDATE")
 
 public class Candidate {
+	@Id
+	@Column(name="id")
 	private Integer id;
+
+	@Column(name = "RESOURCE_ID")
 	private String resourceId;
+
+	@Column(name = "NAME")
 	private String name;
+	
+	@Column(name = "EMAIL")
 	private String email;
+
+	@Column(name = "PHONE_NUMBER")
 	private String phoneNumber;
-	private String skypeId;
+
+	@Column(name = "SKYPE_ID")
+	private String skypeId;	
+	
+	@Column(name = "PROFILE_URL")
 	private String profileUrl;
+
+	@Column(name = "RECRUITER_NAME")
 	private String recruiterName;
+
+	@Column(name = "COLLEGE")
 	private String college;
+
+	@Column(name = "DEGREE")
 	private String degree;
+
+	@Column(name = "MAJOR")
 	private String major;
+
+	@Column(name = "TECH_SCREENER_NAME")
 	private String techScreenerName;
 
 	public Candidate() {

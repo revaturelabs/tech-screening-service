@@ -2,7 +2,7 @@
 
 create table scheduled_screening (
             id number(20) primary key,
-    trainee_id number(20) not null,
+    candidate_id number(20) not null,
     trainer_id number(20) not null,
  skill_type_id number(20),
         status varchar2(10),
@@ -11,7 +11,7 @@ scheduled_date timestamp
 
 create table screening (
                      id number(20) primary key,
-             trainee_id number(20) not null,
+             candidate_id number(20) not null,
              trainer_id number(20) not null,
           skill_type_id number(20),
         composite_score number(5, 2),
@@ -67,10 +67,10 @@ DROP SEQUENCE IF EXISTS SCHEDULED_SCREENING_SEQUENCE;
 CREATE SEQUENCE  IF NOT EXISTS  SCHEDULED_SCREENING_SEQUENCE  MINVALUE 1  INCREMENT BY 1 START WITH 1;
 
 DROP SEQUENCE IF EXISTS SCREENING_SEQUENCE;
-CREATE SEQUENCE  IF NOT EXISTS  SCREENING_SEQUENCE  MINVALUE 5600  INCREMENT BY 1 START WITH 1;
+CREATE SEQUENCE  IF NOT EXISTS  SCREENING_SEQUENCE  MINVALUE 1  INCREMENT BY 1 START WITH 1;
 
 DROP SEQUENCE IF EXISTS VIOLATION_SEQUENCE;
-CREATE SEQUENCE  IF NOT EXISTS  VIOLATION_SEQUENCE  MINVALUE 5600  INCREMENT BY 1 START WITH 1;
+CREATE SEQUENCE  IF NOT EXISTS  VIOLATION_SEQUENCE  MINVALUE 1  INCREMENT BY 1 START WITH 1;
 
 DROP SEQUENCE IF EXISTS SOFT_SKILL_VIOLATION_SEQUENCE;
 CREATE SEQUENCE  IF NOT EXISTS  SOFT_SKILL_VIOLATION_SEQUENCE  MINVALUE 1  INCREMENT BY 1 START WITH 1;
