@@ -21,7 +21,7 @@ public class ScreeningController {
 	
 	@Transactional
 	@RequestMapping(value = "/screening/start", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Integer> createScreening(@RequestBody Screening screening){
+	public ResponseEntity<Integer> createScreening(Screening screening){
 
 		screening.setStatus("Pending");
 		Screening i = screeningRepository.save(screening);

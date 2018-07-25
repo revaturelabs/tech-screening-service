@@ -18,7 +18,6 @@ public class Screening {
 	@Column(name = "id")
 	private Integer screeningId;
 
-
 	@OneToOne
 	@JoinColumn(name="id")
 	private Candidate candidate;
@@ -54,7 +53,7 @@ public class Screening {
 	private String status;
 	
 	@Column(name = "SCHEDULED_SCREENING_ID")
-	private Integer schuledDcreeningId;
+	private Integer scheduledScreeningId;
 	
 	public Screening() {
 		super();
@@ -92,6 +91,15 @@ public class Screening {
 		this.candidate = candidate;
 	}
 	
+	
+
+	public Integer getTrainerId() {
+		return trainerId;
+	}
+
+	public void setTrainerId(Integer trainerId) {
+		this.trainerId = trainerId;
+	}
 
 	public Integer getSkillType() {
 		return skillType;

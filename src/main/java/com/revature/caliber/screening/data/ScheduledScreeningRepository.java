@@ -38,6 +38,6 @@ public interface ScheduledScreeningRepository extends JpaRepository<ScheduledScr
 	void updateStatus(String screened, Integer scheduledScreeningId);
 	
 	// Returns the SimpleScheduledScreening object containing the scheduledScreeningId
-	SimpleScheduledScreening findByScheduledScreeningId(Integer scheduledScreeningId);
+	ScheduledScreening findByScheduledScreeningId(Integer scheduledScreeningId);
 
 }
