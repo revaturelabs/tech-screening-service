@@ -13,9 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.caliber.beans.ScheduledScreening;
 import com.revature.caliber.screening.data.ScheduledScreeningRepository;
-import com.revature.caliber.screening.data.ScreeningRepository;
-import com.revature.caliber.screening.data.SoftSkillViolationRepository;
-import com.revature.caliber.screening.data.ViolationTypeRepository;
 
 
 /**
@@ -28,19 +25,10 @@ import com.revature.caliber.screening.data.ViolationTypeRepository;
 @RestController
 @CrossOrigin
 public class ScreeningController {
-	
-	@Autowired
-	private ScreeningRepository screeningRepository;
-	
-	@Autowired
-	private SoftSkillViolationRepository softSkillViolationRepository;
 
 	@Autowired
-	private ScheduledScreeningRepository scheduledScreeningRepository;
+	private ScheduledScreeningRepository scheduledScreeningService;
 	
-	@Autowired
-	private ViolationTypeRepository violationTypeRepository;
-
 	/**
 	 * Get screenings based on the status provided.
 	 * 
@@ -49,7 +37,7 @@ public class ScreeningController {
 	 */
 	@RequestMapping(value="/screening/scheduledScreenings", method=RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<ScheduledScreening>> getAllScheduledScreenings(){
-		List<ScheduledScreening> scheduledScreenings = scheduledScreeningRepository.findByStatus("PENDING");
+		List<ScheduledScreening> scheduledScreenings = scheduledScreeningService.findByStatus("PENDING");
 		
 		return new ResponseEntity<>(scheduledScreenings, HttpStatus.OK);
 	}

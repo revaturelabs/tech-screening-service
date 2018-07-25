@@ -24,9 +24,10 @@ public class ScheduledScreeningServiceImpl implements ScheduledScreeningService 
 	}
 
 	@Override
-	public void updateStatus(String screened, Integer scheduledScreeningId) throws IllegalArgumentException {
+	public void updateStatus(String screened, ScheduledScreening scheduledScreening) throws IllegalArgumentException {
 		if ("PENDING".equals(screened) || "SCREENED".equals(screened)) {
-			scheduledScreeningRepository.updateStatus(screened, scheduledScreeningId);
+			scheduledScreening.setStatus(screened);
+			scheduledScreeningRepository.save(scheduledScreening);
 		} else {
 			throw new IllegalArgumentException("Status must be 'PENDING' or 'SCREENED'");
 		}

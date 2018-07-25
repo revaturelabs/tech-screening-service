@@ -28,15 +28,4 @@ public interface ScheduledScreeningRepository extends JpaRepository<ScheduledScr
 	 */
 	List<ScheduledScreening> findByStatus(String status);
 
-	/**
-	 * Sets the status to given string
-	 * 
-	 * @param screened New Status string
-	 * @param scheduledScreeningId Id of ScheduledScreening
-	 */
-	@Transactional
-	@Modifying(clearAutomatically = true)
-	@Query("update ScheduledScreening s set s.status = ?1 where s.scheduledScreeningId = ?2")
-	void updateStatus(String screened, Integer scheduledScreeningId);
-
 }

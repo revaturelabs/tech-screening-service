@@ -7,6 +7,7 @@ import java.util.List;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -39,7 +40,7 @@ public class ScheduledScreeningServiceTest {
 		int count = scheduledScreenings.size();
 
 		ScheduledScreening scheduledScreening = scheduledScreenings.get(0);
-		sss.updateStatus("SCREENED", scheduledScreening.getScheduledScreeningId());
+		sss.updateStatus("SCREENED", scheduledScreening);
 		scheduledScreenings = sss.findByStatus("PENDING");
 
 		assertTrue(count > scheduledScreenings.size());
@@ -51,7 +52,7 @@ public class ScheduledScreeningServiceTest {
 		int count = scheduledScreenings.size();
 
 		ScheduledScreening scheduledScreening = scheduledScreenings.get(0);
-		sss.updateStatus("invalid input", scheduledScreening.getScheduledScreeningId());
+		sss.updateStatus("invalid input", scheduledScreening);
 	}
 	
 	

@@ -7,6 +7,7 @@ import java.util.List;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -44,16 +45,5 @@ public class ScheduledScreeningRepositoryTest {
 		List<ScheduledScreening> scheduledScreenings = ssr.findByStatus("PENDING");
 		assertTrue(scheduledScreenings != null && !scheduledScreenings.isEmpty());
 	}
-	
-	@Test
-	public void updateStatusTest() {
-		List<ScheduledScreening> scheduledScreenings = ssr.findByStatus("PENDING");
-
-		ScheduledScreening scheduledScreening = scheduledScreenings.get(0);
-		ssr.updateStatus("SCREENED", scheduledScreening.getScheduledScreeningId());
-		scheduledScreening = ssr.findOne(scheduledScreening.getScheduledScreeningId());
-		assertTrue("SCREENED".equals(scheduledScreening.getStatus()));
-	}
-	
 	
 }
