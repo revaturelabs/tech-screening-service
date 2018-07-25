@@ -54,6 +54,55 @@ public class ScheduledScreening {
 		this.scheduledDate = scheduledDate;
 	}
 
+	public int getScheduledScreeningId() {
+		return scheduledScreeningId;
+	}
+
+	public void setScheduledScreeningId(int scheduledScreeningId) {
+		this.scheduledScreeningId = scheduledScreeningId;
+	}
+
+	public Candidate getCandidate() {
+		return candidate;
+	}
+
+	public void setCandidate(Candidate candidate) {
+		this.candidate = candidate;
+	}
+
+	public int getTrainer() {
+		return trainer;
+	}
+
+	public void setTrainer(int trainer) {
+		this.trainer = trainer;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public int getSkillTypeId() {
+		return skillTypeId;
+	}
+
+	public void setSkillTypeId(int skillTypeId) {
+		this.skillTypeId = skillTypeId;
+	}
+
+	public Date getScheduledDate() {
+		return scheduledDate;
+	}
+
+	public void setScheduledDate(Date scheduledDate) {
+		this.scheduledDate = scheduledDate;
+	}
+
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -105,55 +154,5 @@ public class ScheduledScreening {
 		return "ScheduledScreening [scheduledScreeningId=" + scheduledScreeningId + ", candidate=" + candidate
 				+ ", trainer=" + trainer + ", status=" + status + ", skillTypeId=" + skillTypeId + ", scheduledDate="
 				+ scheduledDate + "]";
-	}
-
-	public int getScheduledScreeningId() {
-		return scheduledScreeningId;
-	}
-
-	public void setScheduledScreeningId(int scheduledScreeningId) {
-		this.scheduledScreeningId = scheduledScreeningId;
-	}
-
-	public Candidate getCandidate() {
-		return candidate;
-	}
-
-	public void setCandidate(Candidate candidate) {
-		this.candidate = candidate;
-	}
-
-	public int getTrainer() {
-		return trainer;
-	}
-
-	public void setTrainer(int trainer) {
-		this.trainer = trainer;
-	}
-
-	public String getStatus() {
-		return status;
-	}
-
-	public void setStatus(String status) {
-		this.status = status;
-	}
-
-	public int getSkillTypeId() {
-		return skillTypeId;
-	}
-
-	public void setSkillTypeId(int skillTypeId) {
-		this.skillTypeId = skillTypeId;
-	}
-
-	public Date getScheduledDate() {
-		return scheduledDate;
-	}
-
-	public void setScheduledDate(Date scheduledDate) {
-		this.scheduledDate = scheduledDate;
-	}
-
-	
+	}	
 }
