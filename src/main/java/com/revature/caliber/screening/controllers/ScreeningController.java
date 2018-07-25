@@ -42,10 +42,7 @@ public class ScreeningController {
 	 */
 	@RequestMapping(value="/screening/scheduledScreenings", method=RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<ScheduledScreening>> getAllScheduledScreenings(){
-		
-		List<ScheduledScreening> ScheduledScreenings = scheduledScreeningRepository.findByStatus("PENDING");
-
-		List<ScheduledScreening> scheduledScreenings=new ArrayList<>();
+		List<ScheduledScreening> scheduledScreenings = scheduledScreeningRepository.findByStatus("PENDING");
 		
 		return new ResponseEntity<>(scheduledScreenings, HttpStatus.OK);
 	}

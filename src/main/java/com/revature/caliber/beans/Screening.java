@@ -4,30 +4,35 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 
 @Entity
 @Table(name = "SCREENING")
-
 public class Screening {
 	@Id
+	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="SCREENING_SEQUENCE")
+	@SequenceGenerator(allocationSize=1,name="SCREENING_SEQUENCE",sequenceName="SCREENING_SEQUENCE")
 	@Column(name = "id")
-	private Integer screeningId;
+	private int screeningId;
 
 
-	@OneToOne
-	@JoinColumn(name="id")
+	@OneToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="candidate_id")
 	private Candidate candidate;
 
 	@Column(name = "TRAINER_ID")
-	private Integer trainerId;
+	private int trainerId;
 
 	@Column(name = "SKILL_TYPE_ID")
-	private Integer skillType;
+	private int skillType;
 
 	@Column(name = "COMPOSITE_SCORE")
 	private Double compositeScore;
@@ -53,18 +58,21 @@ public class Screening {
 	@Column(name = "STATUS")
 	private String status;
 	
-	@Column(name = "SCHEDULED_SCREENING_ID")
-	private Integer schuledDcreeningId;
+	@OneToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="scheduled_screening_id")
+	private ScheduledScreening scheduledScreening;
 	
 	public Screening() {
 		super();
 	}
 
-	public Screening(Candidate candidate,Integer trainerId, Integer skillType, Double compositeScore,
+	public Screening(int screeningId, Candidate candidate, int trainerId, int skillType, Double compositeScore,
 			String aboutMeCommentary, String generalCommentary, String softSkillCommentary, Date startDateTime,
-			Date endDateTime, Boolean softSkillsVerdict, String status) {
+			Date endDateTime, Boolean softSkillsVerdict, String status, ScheduledScreening scheduledScreening) {
 		super();
+		this.screeningId = screeningId;
 		this.candidate = candidate;
+		this.trainerId = trainerId;
 		this.skillType = skillType;
 		this.compositeScore = compositeScore;
 		this.aboutMeCommentary = aboutMeCommentary;
@@ -74,13 +82,112 @@ public class Screening {
 		this.endDateTime = endDateTime;
 		this.softSkillsVerdict = softSkillsVerdict;
 		this.status = status;
+		this.scheduledScreening = scheduledScreening;
 	}
 
-	public Integer getScreeningId() {
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((aboutMeCommentary == null) ? 0 : aboutMeCommentary.hashCode());
+		result = prime * result + ((candidate == null) ? 0 : candidate.hashCode());
+		result = prime * result + ((compositeScore == null) ? 0 : compositeScore.hashCode());
+		result = prime * result + ((endDateTime == null) ? 0 : endDateTime.hashCode());
+		result = prime * result + ((generalCommentary == null) ? 0 : generalCommentary.hashCode());
+		result = prime * result + ((scheduledScreening == null) ? 0 : scheduledScreening.hashCode());
+		result = prime * result + screeningId;
+		result = prime * result + skillType;
+		result = prime * result + ((softSkillCommentary == null) ? 0 : softSkillCommentary.hashCode());
+		result = prime * result + ((softSkillsVerdict == null) ? 0 : softSkillsVerdict.hashCode());
+		result = prime * result + ((startDateTime == null) ? 0 : startDateTime.hashCode());
+		result = prime * result + ((status == null) ? 0 : status.hashCode());
+		result = prime * result + trainerId;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Screening other = (Screening) obj;
+		if (aboutMeCommentary == null) {
+			if (other.aboutMeCommentary != null)
+				return false;
+		} else if (!aboutMeCommentary.equals(other.aboutMeCommentary))
+			return false;
+		if (candidate == null) {
+			if (other.candidate != null)
+				return false;
+		} else if (!candidate.equals(other.candidate))
+			return false;
+		if (compositeScore == null) {
+			if (other.compositeScore != null)
+				return false;
+		} else if (!compositeScore.equals(other.compositeScore))
+			return false;
+		if (endDateTime == null) {
+			if (other.endDateTime != null)
+				return false;
+		} else if (!endDateTime.equals(other.endDateTime))
+			return false;
+		if (generalCommentary == null) {
+			if (other.generalCommentary != null)
+				return false;
+		} else if (!generalCommentary.equals(other.generalCommentary))
+			return false;
+		if (scheduledScreening == null) {
+			if (other.scheduledScreening != null)
+				return false;
+		} else if (!scheduledScreening.equals(other.scheduledScreening))
+			return false;
+		if (screeningId != other.screeningId)
+			return false;
+		if (skillType != other.skillType)
+			return false;
+		if (softSkillCommentary == null) {
+			if (other.softSkillCommentary != null)
+				return false;
+		} else if (!softSkillCommentary.equals(other.softSkillCommentary))
+			return false;
+		if (softSkillsVerdict == null) {
+			if (other.softSkillsVerdict != null)
+				return false;
+		} else if (!softSkillsVerdict.equals(other.softSkillsVerdict))
+			return false;
+		if (startDateTime == null) {
+			if (other.startDateTime != null)
+				return false;
+		} else if (!startDateTime.equals(other.startDateTime))
+			return false;
+		if (status == null) {
+			if (other.status != null)
+				return false;
+		} else if (!status.equals(other.status))
+			return false;
+		if (trainerId != other.trainerId)
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Screening [screeningId=" + screeningId + ", candidate=" + candidate + ", trainerId=" + trainerId
+				+ ", skillType=" + skillType + ", compositeScore=" + compositeScore + ", aboutMeCommentary="
+				+ aboutMeCommentary + ", generalCommentary=" + generalCommentary + ", softSkillCommentary="
+				+ softSkillCommentary + ", startDateTime=" + startDateTime + ", endDateTime=" + endDateTime
+				+ ", softSkillsVerdict=" + softSkillsVerdict + ", status=" + status + ", scheduledScreening="
+				+ scheduledScreening + "]";
+	}
+
+	public int getScreeningId() {
 		return screeningId;
 	}
 
-	public void setScreeningId(Integer screeningId) {
+	public void setScreeningId(int screeningId) {
 		this.screeningId = screeningId;
 	}
 
@@ -91,13 +198,20 @@ public class Screening {
 	public void setCandidate(Candidate candidate) {
 		this.candidate = candidate;
 	}
-	
 
-	public Integer getSkillType() {
+	public int getTrainerId() {
+		return trainerId;
+	}
+
+	public void setTrainerId(int trainerId) {
+		this.trainerId = trainerId;
+	}
+
+	public int getSkillType() {
 		return skillType;
 	}
 
-	public void setSkillType(Integer skillType) {
+	public void setSkillType(int skillType) {
 		this.skillType = skillType;
 	}
 
@@ -165,4 +279,13 @@ public class Screening {
 		this.status = status;
 	}
 
+	public ScheduledScreening getScheduledScreening() {
+		return scheduledScreening;
+	}
+
+	public void setScheduledScreening(ScheduledScreening scheduledScreening) {
+		this.scheduledScreening = scheduledScreening;
+	}
+
+	
 }
