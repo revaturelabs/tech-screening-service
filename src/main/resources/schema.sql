@@ -62,14 +62,17 @@ create table if not exists soft_skill_violation(
 drop table if exists question_score;
 create table if not exists question_score(
             id number(20) primary key,
-   question_id number(20),
-  screening_id number(20),
+   question_id number(20) not null,
+  screening_id number(20) not null,
          score number(1),
        comment varchar2(400),
           time timestamp
 );
 
-create sequence QUESTION_SCORE_SEQUENCE;
+
+
+DROP SEQUENCE IF EXISTS QUESTION_SCORE_SEQUENCE;
+CREATE SEQUENCE  IF NOT EXISTS  QUESTION_SCORE_SEQUENCE;
 
 DROP SEQUENCE IF EXISTS SCHEDULED_SCREENING_SEQUENCE;
 CREATE SEQUENCE  IF NOT EXISTS  SCHEDULED_SCREENING_SEQUENCE  MINVALUE 1  INCREMENT BY 1 START WITH 1;
