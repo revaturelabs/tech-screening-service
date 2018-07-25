@@ -94,7 +94,7 @@ public class SoftSkillViolation {
 	public void setTime(Date time) {
 		Time = time;
 	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
