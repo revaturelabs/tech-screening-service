@@ -35,7 +35,7 @@ public class ScreeningController {
 	 * @param status - A string notifying whether the screening is pending or complete.
 	 * @return - List of SimpleScreening objects corresponding to status.
 	 */
-	@RequestMapping(value="/screening/scheduled/pending", method=RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value="/screening/scheduled", method=RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<ScheduledScreening>> getAllScheduledScreenings(){
 		List<ScheduledScreening> scheduledScreenings = scheduledScreeningService.findByStatus("PENDING");
 		
