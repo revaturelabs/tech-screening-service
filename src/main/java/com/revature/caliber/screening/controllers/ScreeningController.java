@@ -3,7 +3,6 @@ package com.revature.caliber.screening.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
->>>>>>> fffdfc9e3721279af19c750a8c16a75dfb2f0399
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
