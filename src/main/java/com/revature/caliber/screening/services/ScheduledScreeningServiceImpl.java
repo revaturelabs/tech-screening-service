@@ -15,15 +15,22 @@ public class ScheduledScreeningServiceImpl implements ScheduledScreeningService 
 	private ScheduledScreeningRepository scheduledScreeningRepository;
 	
 	@Override
-	public List<ScheduledScreening> findByStatus(String string) {
-		List<ScheduledScreening> simpleScheduledScreenings = scheduledScreeningRepository.findByStatus(string);
-		
+	public List<ScheduledScreening> findByStatus(String status) {
+		List<ScheduledScreening> simpleScheduledScreenings = null;
+		if ("PENDING".equals(status) || "SCREENED".equals(status)) {
+			simpleScheduledScreenings = scheduledScreeningRepository.findByStatus(status);
+		}
 		return simpleScheduledScreenings;
 	}
 
 	@Override
-	public void updateStatus(String screened, Integer scheduledScreeningId) {
-		scheduledScreeningRepository.updateStatus(screened, scheduledScreeningId);
+	public void updateStatus(String screened, Integer scheduledScreeningId) throws IllegalArgumentException {
+		if ("PENDING".equals(screened) || "SCREENED".equals(screened)) {
+			scheduledScreeningRepository.updateStatus(screened, scheduledScreeningId);
+		} else {
+			throw new IllegalArgumentException("Status must be 'PENDING' or 'SCREENED'");
+		}
 	}
+	
 
 }

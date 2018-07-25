@@ -19,7 +19,7 @@ public class ViolationType {
 	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="VIOLATION_SEQUENCE")
 	@SequenceGenerator(name="VIOLATION_SEQUENCE",sequenceName="VIOLATION_SEQUENCE")
 	@Column(name="VIOLATION_ID")
-	private Integer violationTypeId;
+	private int violationTypeId;
 	
 	@Column(name="VIOLATION")
 	private String violationTypeText;
@@ -30,25 +30,59 @@ public class ViolationType {
 	public ViolationType() {
 		super();
 	}
-	
-	public ViolationType(String violationTypeText, String description) {
-		super();
-		this.violationTypeText = violationTypeText;
-		this.description = description;
-	}
 
-	public ViolationType(Integer violationTypeId, String violationTypeText, String description) {
+	public ViolationType(int violationTypeId, String violationTypeText, String description) {
 		super();
 		this.violationTypeId = violationTypeId;
 		this.violationTypeText = violationTypeText;
 		this.description = description;
 	}
 
-	public Integer getViolationTypeId() {
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((description == null) ? 0 : description.hashCode());
+		result = prime * result + violationTypeId;
+		result = prime * result + ((violationTypeText == null) ? 0 : violationTypeText.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ViolationType other = (ViolationType) obj;
+		if (description == null) {
+			if (other.description != null)
+				return false;
+		} else if (!description.equals(other.description))
+			return false;
+		if (violationTypeId != other.violationTypeId)
+			return false;
+		if (violationTypeText == null) {
+			if (other.violationTypeText != null)
+				return false;
+		} else if (!violationTypeText.equals(other.violationTypeText))
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "ViolationType [violationTypeId=" + violationTypeId + ", violationTypeText=" + violationTypeText
+				+ ", description=" + description + "]";
+	}
+
+	public int getViolationTypeId() {
 		return violationTypeId;
 	}
 
-	public void setViolationTypeId(Integer violationTypeId) {
+	public void setViolationTypeId(int violationTypeId) {
 		this.violationTypeId = violationTypeId;
 	}
 
@@ -67,41 +101,7 @@ public class ViolationType {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((violationTypeId == null) ? 0 : violationTypeId.hashCode());
-		result = prime * result + ((violationTypeText == null) ? 0 : violationTypeText.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		ViolationType other = (ViolationType) obj;
-		if (violationTypeId == null) {
-			if (other.violationTypeId != null)
-				return false;
-		} else if (!violationTypeId.equals(other.violationTypeId))
-			return false;
-		if (violationTypeText == null) {
-			if (other.violationTypeText != null)
-				return false;
-		} else if (!violationTypeText.equals(other.violationTypeText))
-			return false;
-		return true;
-	}
-
-	@Override
-	public String toString() {
-		return "ViolationType [violationTypeId=" + violationTypeId + ", violationTypeText=" + violationTypeText + "]";
-	}
+	
+	
 
 }

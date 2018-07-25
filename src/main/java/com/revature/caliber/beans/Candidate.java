@@ -9,14 +9,15 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 
-
 @Entity
 @Table(name="CANDIDATE")
-
 public class Candidate {
+
 	@Id
+	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="CANDIDATE_SEQUENCE")
+	@SequenceGenerator(allocationSize=1,name="CANDIDATE_SEQUENCE",sequenceName="CANDIDATE_SEQUENCE")
 	@Column(name="id")
-	private Integer id;
+	private int id;
 
 	@Column(name = "RESOURCE_ID")
 	private String resourceId;
@@ -55,7 +56,7 @@ public class Candidate {
 		super();
 	}
 
-	public Candidate(Integer id, String resourceId, String name, String email, String phoneNumber, String skypeId,
+	public Candidate(int id, String resourceId, String name, String email, String phoneNumber, String skypeId,
 			String profileUrl, String recruiterName, String college, String degree, String major,
 			String techScreenerName) {
 		super();
@@ -80,7 +81,7 @@ public class Candidate {
 		result = prime * result + ((college == null) ? 0 : college.hashCode());
 		result = prime * result + ((degree == null) ? 0 : degree.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + id;
 		result = prime * result + ((major == null) ? 0 : major.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((phoneNumber == null) ? 0 : phoneNumber.hashCode());
@@ -116,10 +117,7 @@ public class Candidate {
 				return false;
 		} else if (!email.equals(other.email))
 			return false;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
+		if (id != other.id)
 			return false;
 		if (major == null) {
 			if (other.major != null)
@@ -172,11 +170,11 @@ public class Candidate {
 				+ major + ", techScreenerName=" + techScreenerName + "]";
 	}
 
-	public Integer getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -268,5 +266,6 @@ public class Candidate {
 		this.techScreenerName = techScreenerName;
 	}
 
+	
 	
 }
