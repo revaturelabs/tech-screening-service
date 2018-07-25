@@ -4,27 +4,20 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.annotation.DirtiesContext;
-import org.springframework.test.context.jdbc.Sql;
-import org.springframework.test.context.jdbc.Sql.ExecutionPhase;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import com.revature.caliber.beans.Candidate;
 import com.revature.caliber.beans.ScheduledScreening;
-import com.revature.caliber.beans.ScheduledStatus;
 import com.revature.caliber.screening.Application;
 
 /**
- * Parent test configuration class.
+ * Scheduled Screening Repository Testing class
  * 
- * @author Aaron Ware | 218-553-0455 | Richard Orr
+ * @author Aaron Ware | 1805-WVU-MAY29 | Richard Orr
  *
  */
 @RunWith(SpringJUnit4ClassRunner.class)

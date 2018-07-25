@@ -12,6 +12,8 @@ import com.revature.caliber.beans.ScheduledScreening;
 
 /**
  * DAO for ScheduledScreening
+ * 
+ * @author Aaron Ware | 1805-WVU-MAY29 | Richard Orr
  */
 @Repository
 public interface ScheduledScreeningRepository extends JpaRepository<ScheduledScreening, Integer> {
@@ -20,7 +22,7 @@ public interface ScheduledScreeningRepository extends JpaRepository<ScheduledScr
 	 * Finds the SimpleScheduledScreening instances associated
 	 * with the given Status string
 	 * 
-	 * @param string Status string
+	 * @param status "PENDING","SCREENED"
 	 * @return List of SimpleScheduledScreening instances associated
 	 * with the given Status string
 	 */

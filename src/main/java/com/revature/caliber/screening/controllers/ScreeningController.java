@@ -1,6 +1,5 @@
 package com.revature.caliber.screening.controllers;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +17,14 @@ import com.revature.caliber.screening.data.ScreeningRepository;
 import com.revature.caliber.screening.data.SoftSkillViolationRepository;
 import com.revature.caliber.screening.data.ViolationTypeRepository;
 
+
+/**
+ * The controller for incoming REST requests to the Screening service.
+ * 
+ * @author Aaron Ware | 1805-WVU-MAY29 | Richard Orr
+ *
+ * @author David Miller | 1805-WVU-MAY29 | Richard Orr
+ */
 @RestController
 @CrossOrigin
 public class ScreeningController {
