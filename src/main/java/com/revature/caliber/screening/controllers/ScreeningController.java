@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +16,6 @@ import com.revature.caliber.beans.ScheduledScreening;
 import com.revature.caliber.beans.Screening;
 import com.revature.caliber.screening.data.ScheduledScreeningRepository;
 import com.revature.caliber.screening.data.ScreeningRepository;
-import com.revature.caliber.screening.data.ViolationTypeRepository;
 
 
 /**
@@ -26,27 +24,25 @@ import com.revature.caliber.screening.data.ViolationTypeRepository;
  * @author Aaron Ware | 1805-WVU-MAY29 | Richard Orr
  *
  * @author David Miller | 1805-WVU-MAY29 | Richard Orr
+ * 
+ * @author Jakob LaSorella | 1805-WVU-MAY29 | Richard Orr
  */
 @RestController
 @CrossOrigin
 public class ScreeningController {
 	
+	@Autowired
 	ScreeningRepository screeningRepository;
 	
-	@Transactional
+	@Autowired
+	private ScheduledScreeningRepository scheduledScreeningRepository;
+	
 	@RequestMapping(value = "/screening/start", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Integer> createScreening(Screening screening){
-
+	public ResponseEntity<Integer> createScreening(@RequestBody Screening screening){
 		screening.setStatus("Pending");
 		Screening i = screeningRepository.save(screening);
 		return new ResponseEntity<>(i.getScreeningId(),HttpStatus.OK);
 	}
-
-	@Autowired
-	private ViolationTypeRepository violationTypeRepository;
-	
-	@Autowired
-	private ScheduledScreeningRepository scheduledScreeningRepository;
 
 	/**
 	 * Get screenings based on the status provided.
