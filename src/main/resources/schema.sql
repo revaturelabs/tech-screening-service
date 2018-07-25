@@ -48,3 +48,4 @@ create table question_score(
           time timestamp
 );
 
+create sequence QUESTION_SCORE_SEQUENCE;

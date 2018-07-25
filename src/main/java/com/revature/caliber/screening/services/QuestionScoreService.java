@@ -1,4 +1,4 @@
-package com.revature.caliber.screening.service;
+package com.revature.caliber.screening.services;
 
 import java.util.List;
 

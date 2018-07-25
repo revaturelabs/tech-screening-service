@@ -20,7 +20,7 @@ public class SimpleQuestionScore {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="QUESTION_SCORE_SEQUENCE")
-	@SequenceGenerator(name="QUESTION_SCORE_SEQUENCE",sequenceName="QUESTION_SCORE_SEQUENCE")
+	@SequenceGenerator(name="QUESTION_SCORE_SEQUENCE",sequenceName="QUESTION_SCORE_SEQUENCE", allocationSize=1)
 	@Column(name="ID")
 	private Integer questionScoreId;
 	

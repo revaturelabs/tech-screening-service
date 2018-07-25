@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.caliber.beans.SimpleQuestionScore;
-import com.revature.caliber.screening.service.QuestionScoreService;
+import com.revature.caliber.screening.services.QuestionScoreService;
 
 @RestController
 @CrossOrigin
