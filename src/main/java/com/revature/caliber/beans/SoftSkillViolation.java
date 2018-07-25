@@ -25,14 +25,14 @@ public class SoftSkillViolation {
 	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="SOFT_SKILL_VIOLATION_SEQUENCE")
 	@SequenceGenerator(allocationSize=1,name="SOFT_SKILL_VIOLATION_SEQUENCE",sequenceName="SOFT_SKILL_VIOLATION_SEQUENCE")
 	@Column(name="SOFT_SKILL_VIOLATION_ID")
-	private Integer id;
+	private int id;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="SCREENING_ID")
-	private SimpleScreening screeningId;
+	private Screening screeningId;
 	
 	@Column(name="VIOLATION_TYPE_ID")
-	private Integer violationId;
+	private int violationId;
 	
 	@Column(name="SOFT_SKILL_VIOLATION_COMMENT")
 	private String comment;
@@ -45,61 +45,13 @@ public class SoftSkillViolation {
 	public SoftSkillViolation() {
 		super();
 	}
-	
-	public SoftSkillViolation(Integer id, SimpleScreening screeningId, Integer violationId, String comment, Date time) {
+
+	public SoftSkillViolation(int id, Screening screeningId, int violationId, String comment, Date time) {
 		super();
 		this.id = id;
 		this.screeningId = screeningId;
 		this.violationId = violationId;
 		this.comment = comment;
-		Time = time;
-	}
-	
-	public SoftSkillViolation(SimpleScreening screeningId, Integer violationId, String comment, Date time) {
-		super();
-		this.screeningId = screeningId;
-		this.violationId = violationId;
-		this.comment = comment;
-		Time = time;
-	}
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public SimpleScreening getScreeningId() {
-		return screeningId;
-	}
-
-	public void setScreeningId(SimpleScreening screeningId) {
-		this.screeningId = screeningId;
-	}
-
-	public Integer getViolationId() {
-		return violationId;
-	}
-
-	public void setViolationId(Integer violationId) {
-		this.violationId = violationId;
-	}
-
-	public String getComment() {
-		return comment;
-	}
-
-	public void setComment(String comment) {
-		this.comment = comment;
-	}
-
-	public Date getTime() {
-		return Time;
-	}
-
-	public void setTime(Date time) {
 		Time = time;
 	}
 
@@ -109,9 +61,9 @@ public class SoftSkillViolation {
 		int result = 1;
 		result = prime * result + ((Time == null) ? 0 : Time.hashCode());
 		result = prime * result + ((comment == null) ? 0 : comment.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + id;
 		result = prime * result + ((screeningId == null) ? 0 : screeningId.hashCode());
-		result = prime * result + ((violationId == null) ? 0 : violationId.hashCode());
+		result = prime * result + violationId;
 		return result;
 	}
 
@@ -134,20 +86,14 @@ public class SoftSkillViolation {
 				return false;
 		} else if (!comment.equals(other.comment))
 			return false;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
+		if (id != other.id)
 			return false;
 		if (screeningId == null) {
 			if (other.screeningId != null)
 				return false;
 		} else if (!screeningId.equals(other.screeningId))
 			return false;
-		if (violationId == null) {
-			if (other.violationId != null)
-				return false;
-		} else if (!violationId.equals(other.violationId))
+		if (violationId != other.violationId)
 			return false;
 		return true;
 	}
@@ -157,5 +103,47 @@ public class SoftSkillViolation {
 		return "SoftSkillViolation [id=" + id + ", screeningId=" + screeningId + ", violationId=" + violationId
 				+ ", comment=" + comment + ", Time=" + Time + "]";
 	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public Screening getScreeningId() {
+		return screeningId;
+	}
+
+	public void setScreeningId(Screening screeningId) {
+		this.screeningId = screeningId;
+	}
+
+	public int getViolationId() {
+		return violationId;
+	}
+
+	public void setViolationId(int violationId) {
+		this.violationId = violationId;
+	}
+
+	public String getComment() {
+		return comment;
+	}
+
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
+
+	public Date getTime() {
+		return Time;
+	}
+
+	public void setTime(Date time) {
+		Time = time;
+	}
+	
+	
 	
 }
