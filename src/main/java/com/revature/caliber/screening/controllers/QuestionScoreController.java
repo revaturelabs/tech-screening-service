@@ -51,7 +51,7 @@ public class QuestionScoreController {
 	 * @param screeningId Id of Screening
 	 * @return List of Question scores
 	 */
-	@RequestMapping(value = "question/viewScoresByScreening/{screeningId}", method = RequestMethod.GET)
+	@RequestMapping(value = "question/scores/{screeningId}", method = RequestMethod.GET)
 	public ResponseEntity<List<SimpleQuestionScore>> getScoresByScreeningId(
 			@PathVariable("screeningId") Integer screeningId) {
 		List<SimpleQuestionScore> scoreList = questionScoreService.findByScreeningId(screeningId);
