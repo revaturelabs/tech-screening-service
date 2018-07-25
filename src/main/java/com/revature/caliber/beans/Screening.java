@@ -85,104 +85,6 @@ public class Screening {
 		this.scheduledScreening = scheduledScreening;
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((aboutMeCommentary == null) ? 0 : aboutMeCommentary.hashCode());
-		result = prime * result + ((candidate == null) ? 0 : candidate.hashCode());
-		result = prime * result + ((compositeScore == null) ? 0 : compositeScore.hashCode());
-		result = prime * result + ((endDateTime == null) ? 0 : endDateTime.hashCode());
-		result = prime * result + ((generalCommentary == null) ? 0 : generalCommentary.hashCode());
-		result = prime * result + ((scheduledScreening == null) ? 0 : scheduledScreening.hashCode());
-		result = prime * result + screeningId;
-		result = prime * result + skillType;
-		result = prime * result + ((softSkillCommentary == null) ? 0 : softSkillCommentary.hashCode());
-		result = prime * result + ((softSkillsVerdict == null) ? 0 : softSkillsVerdict.hashCode());
-		result = prime * result + ((startDateTime == null) ? 0 : startDateTime.hashCode());
-		result = prime * result + ((status == null) ? 0 : status.hashCode());
-		result = prime * result + trainerId;
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Screening other = (Screening) obj;
-		if (aboutMeCommentary == null) {
-			if (other.aboutMeCommentary != null)
-				return false;
-		} else if (!aboutMeCommentary.equals(other.aboutMeCommentary))
-			return false;
-		if (candidate == null) {
-			if (other.candidate != null)
-				return false;
-		} else if (!candidate.equals(other.candidate))
-			return false;
-		if (compositeScore == null) {
-			if (other.compositeScore != null)
-				return false;
-		} else if (!compositeScore.equals(other.compositeScore))
-			return false;
-		if (endDateTime == null) {
-			if (other.endDateTime != null)
-				return false;
-		} else if (!endDateTime.equals(other.endDateTime))
-			return false;
-		if (generalCommentary == null) {
-			if (other.generalCommentary != null)
-				return false;
-		} else if (!generalCommentary.equals(other.generalCommentary))
-			return false;
-		if (scheduledScreening == null) {
-			if (other.scheduledScreening != null)
-				return false;
-		} else if (!scheduledScreening.equals(other.scheduledScreening))
-			return false;
-		if (screeningId != other.screeningId)
-			return false;
-		if (skillType != other.skillType)
-			return false;
-		if (softSkillCommentary == null) {
-			if (other.softSkillCommentary != null)
-				return false;
-		} else if (!softSkillCommentary.equals(other.softSkillCommentary))
-			return false;
-		if (softSkillsVerdict == null) {
-			if (other.softSkillsVerdict != null)
-				return false;
-		} else if (!softSkillsVerdict.equals(other.softSkillsVerdict))
-			return false;
-		if (startDateTime == null) {
-			if (other.startDateTime != null)
-				return false;
-		} else if (!startDateTime.equals(other.startDateTime))
-			return false;
-		if (status == null) {
-			if (other.status != null)
-				return false;
-		} else if (!status.equals(other.status))
-			return false;
-		if (trainerId != other.trainerId)
-			return false;
-		return true;
-	}
-
-	@Override
-	public String toString() {
-		return "Screening [screeningId=" + screeningId + ", candidate=" + candidate + ", trainerId=" + trainerId
-				+ ", skillType=" + skillType + ", compositeScore=" + compositeScore + ", aboutMeCommentary="
-				+ aboutMeCommentary + ", generalCommentary=" + generalCommentary + ", softSkillCommentary="
-				+ softSkillCommentary + ", startDateTime=" + startDateTime + ", endDateTime=" + endDateTime
-				+ ", softSkillsVerdict=" + softSkillsVerdict + ", status=" + status + ", scheduledScreening="
-				+ scheduledScreening + "]";
-	}
-
 	public int getScreeningId() {
 		return screeningId;
 	}
@@ -285,6 +187,104 @@ public class Screening {
 
 	public void setScheduledScreening(ScheduledScreening scheduledScreening) {
 		this.scheduledScreening = scheduledScreening;
+	}
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((aboutMeCommentary == null) ? 0 : aboutMeCommentary.hashCode());
+		result = prime * result + ((candidate == null) ? 0 : candidate.hashCode());
+		result = prime * result + ((compositeScore == null) ? 0 : compositeScore.hashCode());
+		result = prime * result + ((endDateTime == null) ? 0 : endDateTime.hashCode());
+		result = prime * result + ((generalCommentary == null) ? 0 : generalCommentary.hashCode());
+		result = prime * result + ((scheduledScreening == null) ? 0 : scheduledScreening.hashCode());
+		result = prime * result + screeningId;
+		result = prime * result + skillType;
+		result = prime * result + ((softSkillCommentary == null) ? 0 : softSkillCommentary.hashCode());
+		result = prime * result + ((softSkillsVerdict == null) ? 0 : softSkillsVerdict.hashCode());
+		result = prime * result + ((startDateTime == null) ? 0 : startDateTime.hashCode());
+		result = prime * result + ((status == null) ? 0 : status.hashCode());
+		result = prime * result + trainerId;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Screening other = (Screening) obj;
+		if (aboutMeCommentary == null) {
+			if (other.aboutMeCommentary != null)
+				return false;
+		} else if (!aboutMeCommentary.equals(other.aboutMeCommentary))
+			return false;
+		if (candidate == null) {
+			if (other.candidate != null)
+				return false;
+		} else if (!candidate.equals(other.candidate))
+			return false;
+		if (compositeScore == null) {
+			if (other.compositeScore != null)
+				return false;
+		} else if (!compositeScore.equals(other.compositeScore))
+			return false;
+		if (endDateTime == null) {
+			if (other.endDateTime != null)
+				return false;
+		} else if (!endDateTime.equals(other.endDateTime))
+			return false;
+		if (generalCommentary == null) {
+			if (other.generalCommentary != null)
+				return false;
+		} else if (!generalCommentary.equals(other.generalCommentary))
+			return false;
+		if (scheduledScreening == null) {
+			if (other.scheduledScreening != null)
+				return false;
+		} else if (!scheduledScreening.equals(other.scheduledScreening))
+			return false;
+		if (screeningId != other.screeningId)
+			return false;
+		if (skillType != other.skillType)
+			return false;
+		if (softSkillCommentary == null) {
+			if (other.softSkillCommentary != null)
+				return false;
+		} else if (!softSkillCommentary.equals(other.softSkillCommentary))
+			return false;
+		if (softSkillsVerdict == null) {
+			if (other.softSkillsVerdict != null)
+				return false;
+		} else if (!softSkillsVerdict.equals(other.softSkillsVerdict))
+			return false;
+		if (startDateTime == null) {
+			if (other.startDateTime != null)
+				return false;
+		} else if (!startDateTime.equals(other.startDateTime))
+			return false;
+		if (status == null) {
+			if (other.status != null)
+				return false;
+		} else if (!status.equals(other.status))
+			return false;
+		if (trainerId != other.trainerId)
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Screening [screeningId=" + screeningId + ", candidate=" + candidate + ", trainerId=" + trainerId
+				+ ", skillType=" + skillType + ", compositeScore=" + compositeScore + ", aboutMeCommentary="
+				+ aboutMeCommentary + ", generalCommentary=" + generalCommentary + ", softSkillCommentary="
+				+ softSkillCommentary + ", startDateTime=" + startDateTime + ", endDateTime=" + endDateTime
+				+ ", softSkillsVerdict=" + softSkillsVerdict + ", status=" + status + ", scheduledScreening="
+				+ scheduledScreening + "]";
 	}
 
 	

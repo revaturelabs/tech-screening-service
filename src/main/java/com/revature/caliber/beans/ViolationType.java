@@ -37,7 +37,31 @@ public class ViolationType {
 		this.violationTypeText = violationTypeText;
 		this.description = description;
 	}
+	
+	public int getViolationTypeId() {
+		return violationTypeId;
+	}
 
+	public void setViolationTypeId(int violationTypeId) {
+		this.violationTypeId = violationTypeId;
+	}
+
+	public String getViolationTypeText() {
+		return violationTypeText;
+	}
+
+	public void setViolationTypeText(String violationTypeText) {
+		this.violationTypeText = violationTypeText;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -77,31 +101,4 @@ public class ViolationType {
 		return "ViolationType [violationTypeId=" + violationTypeId + ", violationTypeText=" + violationTypeText
 				+ ", description=" + description + "]";
 	}
-
-	public int getViolationTypeId() {
-		return violationTypeId;
-	}
-
-	public void setViolationTypeId(int violationTypeId) {
-		this.violationTypeId = violationTypeId;
-	}
-
-	public String getViolationTypeText() {
-		return violationTypeText;
-	}
-
-	public void setViolationTypeText(String violationTypeText) {
-		this.violationTypeText = violationTypeText;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-	
-	
-
 }

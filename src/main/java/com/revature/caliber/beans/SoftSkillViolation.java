@@ -54,6 +54,46 @@ public class SoftSkillViolation {
 		this.comment = comment;
 		Time = time;
 	}
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public Screening getScreeningId() {
+		return screeningId;
+	}
+
+	public void setScreeningId(Screening screeningId) {
+		this.screeningId = screeningId;
+	}
+
+	public int getViolationId() {
+		return violationId;
+	}
+
+	public void setViolationId(int violationId) {
+		this.violationId = violationId;
+	}
+
+	public String getComment() {
+		return comment;
+	}
+
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
+
+	public Date getTime() {
+		return Time;
+	}
+
+	public void setTime(Date time) {
+		Time = time;
+	}
 
 	@Override
 	public int hashCode() {
@@ -102,48 +142,5 @@ public class SoftSkillViolation {
 	public String toString() {
 		return "SoftSkillViolation [id=" + id + ", screeningId=" + screeningId + ", violationId=" + violationId
 				+ ", comment=" + comment + ", Time=" + Time + "]";
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public Screening getScreeningId() {
-		return screeningId;
-	}
-
-	public void setScreeningId(Screening screeningId) {
-		this.screeningId = screeningId;
-	}
-
-	public int getViolationId() {
-		return violationId;
-	}
-
-	public void setViolationId(int violationId) {
-		this.violationId = violationId;
-	}
-
-	public String getComment() {
-		return comment;
-	}
-
-	public void setComment(String comment) {
-		this.comment = comment;
-	}
-
-	public Date getTime() {
-		return Time;
-	}
-
-	public void setTime(Date time) {
-		Time = time;
-	}
-	
-	
-	
+	}	
 }
