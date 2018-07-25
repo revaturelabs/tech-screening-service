@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.revature.caliber.beans.ScheduledScreening;
 import com.revature.caliber.beans.Screening;
 import com.revature.caliber.screening.data.ScheduledScreeningRepository;
-import com.revature.caliber.screening.data.ScreeningRepository;
+import com.revature.caliber.screening.services.ScreeningServiceImpl;
 
 
 /**
@@ -32,15 +32,14 @@ import com.revature.caliber.screening.data.ScreeningRepository;
 public class ScreeningController {
 	
 	@Autowired
-	ScreeningRepository screeningRepository;
+	private ScreeningServiceImpl screeningService;
 	
 	@Autowired
 	private ScheduledScreeningRepository scheduledScreeningRepository;
 	
 	@RequestMapping(value = "/screening/start", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Integer> createScreening(@RequestBody Screening screening){
-		screening.setStatus("Pending");
-		Screening i = screeningRepository.save(screening);
+		Screening i = screeningService.setPending(screening);
 		return new ResponseEntity<>(i.getScreeningId(),HttpStatus.OK);
 	}
 

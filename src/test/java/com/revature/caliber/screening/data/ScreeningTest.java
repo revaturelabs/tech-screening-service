@@ -1,5 +1,6 @@
 package com.revature.caliber.screening.data;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
@@ -12,18 +13,22 @@ import com.revature.caliber.beans.Candidate;
 import com.revature.caliber.beans.Screening;
 import com.revature.caliber.screening.Application;
 import com.revature.caliber.screening.data.ScreeningRepository;
+import com.revature.caliber.screening.services.ScreeningService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes=Application.class)
-public class ScreeningRepositoryTest {
+public class ScreeningTest {
 	
 	 // @author Jakob LaSorella | 1805-WVU-MAY29 | Richard Orr
 	
 	@Autowired
 	ScreeningRepository sr;
+	
+	@Autowired
+	ScreeningService ss;
 
 	@Test
-	public final void testSave() {
+	public final void testRepositorySave() {
 		Screening testScreening = new Screening();
 		testScreening.setCandidate(new Candidate());
 		testScreening.getCandidate().setId(1);
@@ -31,5 +36,17 @@ public class ScreeningRepositoryTest {
 		testScreening.setTrainerId(1);
 		sr.save(testScreening);
 		assertTrue(testScreening.getScreeningId() != 0);
+	}
+	
+	@Test
+	public final void testServiceSave() {
+		Screening testScreening = new Screening();
+		testScreening.setCandidate(new Candidate());
+		testScreening.getCandidate().setId(1);
+		testScreening.setScreeningId(0);
+		testScreening.setTrainerId(1);
+		ss.setPending(testScreening);
+		assertTrue(testScreening.getScreeningId() != 0);
+		assertEquals("Pending", testScreening.getStatus());
 	}
 }
