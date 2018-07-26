@@ -2,7 +2,6 @@ package com.revature.caliber.screening.controllers;
 
 import java.util.List;
 
-//import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,7 +25,6 @@ import com.revature.caliber.screening.services.QuestionScoreService;
 @CrossOrigin
 public class QuestionScoreController {
 
-	//private static final Logger log = Logger.getLogger(QuestionScoreController.class);
 
 	@Autowired
 	private QuestionScoreService questionScoreService;

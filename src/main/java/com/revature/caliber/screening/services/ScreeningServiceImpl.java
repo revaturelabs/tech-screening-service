@@ -16,8 +16,7 @@ public class ScreeningServiceImpl implements ScreeningService{
 	
 	public Screening setPending(Screening screening) {
 		screening.setStatus("Pending");
-		Screening i = screeningRepository.save(screening);
-		return i;
+		return screeningRepository.save(screening);
 	}
 
 }
