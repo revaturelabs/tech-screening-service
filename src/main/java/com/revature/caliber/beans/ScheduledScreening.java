@@ -53,7 +53,7 @@ public class ScheduledScreening {
 		this.skillTypeId = skillTypeId;
 		this.scheduledDate = scheduledDate;
 	}
-	
+
 	public int getScheduledScreeningId() {
 		return scheduledScreeningId;
 	}
@@ -154,5 +154,5 @@ public class ScheduledScreening {
 				+ ", trainer=" + trainer + ", status=" + status + ", skillTypeId=" + skillTypeId + ", scheduledDate="
 				+ scheduledDate + "]";
 	}
-	
+
 }

@@ -54,7 +54,7 @@ public class SoftSkillViolation {
 		this.comment = comment;
 		Time = time;
 	}
-	
+
 	public int getId() {
 		return id;
 	}
@@ -142,5 +142,7 @@ public class SoftSkillViolation {
 	public String toString() {
 		return "SoftSkillViolation [id=" + id + ", screeningId=" + screeningId + ", violationId=" + violationId
 				+ ", comment=" + comment + ", Time=" + Time + "]";
+
 	}	
+
 }
