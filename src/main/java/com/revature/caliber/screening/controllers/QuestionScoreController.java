@@ -1,4 +1,4 @@
-package com.revature.caliber.screening.controller;
+package com.revature.caliber.screening.controllers;
 
 import java.util.List;
 
@@ -16,6 +16,12 @@ import org.springframework.web.bind.annotation.RestController;
 import com.revature.caliber.beans.SimpleQuestionScore;
 import com.revature.caliber.screening.services.QuestionScoreService;
 
+/**
+ * The controller for incoming REST requests to the Question Score part of the Screening service.
+ * 
+ * @author Thomas Santillan| 1805-WVU-MAY29 | Richard Orr
+ *
+ */
 @RestController
 @CrossOrigin
 public class QuestionScoreController {
@@ -45,7 +51,7 @@ public class QuestionScoreController {
 	 * @param screeningId Id of Screening
 	 * @return List of Question scores
 	 */
-	@RequestMapping(value = "question/viewScoresByScreening/{screeningId}", method = RequestMethod.GET)
+	@RequestMapping(value = "question/score/{screeningId}", method = RequestMethod.GET)
 	public ResponseEntity<List<SimpleQuestionScore>> getScoresByScreeningId(
 			@PathVariable("screeningId") Integer screeningId) {
 		List<SimpleQuestionScore> scoreList = questionScoreService.findByScreeningId(screeningId);

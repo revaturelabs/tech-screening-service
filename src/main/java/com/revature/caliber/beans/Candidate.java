@@ -266,4 +266,5 @@ public class Candidate {
 				+ major + ", techScreenerName=" + techScreenerName + "]";
 	}
 
+
 }

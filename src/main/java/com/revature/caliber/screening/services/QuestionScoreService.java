@@ -8,6 +8,13 @@ import org.springframework.stereotype.Service;
 import com.revature.caliber.beans.SimpleQuestionScore;
 import com.revature.caliber.screening.data.QuestionScoreRepository;
 
+/**
+ * The service for the Question Score part of the Screening service.
+ * 
+ * @author Thomas Santillan | 1805-WVU-MAY29 | Richard Orr
+ *
+ */
+
 @Service
 public class QuestionScoreService {
 
