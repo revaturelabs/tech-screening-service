@@ -2,8 +2,6 @@ package com.revature.caliber.screening.services;
 
 import java.util.List;
 
-import org.springframework.stereotype.Service;
-
 import com.revature.caliber.beans.ScheduledScreening;
 
 /**
@@ -14,16 +12,17 @@ public interface ScheduledScreeningService {
 	/**
 	 * Get ScheduledScreening by status
 	 * 
-	 * @param string
+	 * @param status "PENDING","SCREENED"
 	 * @return list of ScheduledScreening objects with the given status
 	 */
-	List<ScheduledScreening> findByStatus(String string);
+	List<ScheduledScreening> findByStatus(String status);
 	
 	/**
 	 * Update status of a ScheduledScreening
+	 * Throws IllegalArgumentException if screened is not "PENDING" or "SCREENED"
 	 * 
-	 * @param screened
-	 * @param scheduledScreeningId
+	 * @param screened "PENDING","SCREENED"
+	 * @param scheduledScreeningId ID of the ScheduledScreening object to be updated
 	 */
-	void updateStatus(String screened, Integer scheduledScreeningId);
+	void updateStatus(String screened, ScheduledScreening scheduledScreening) throws IllegalArgumentException;
 }

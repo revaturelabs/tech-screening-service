@@ -8,33 +8,24 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.revature.caliber.beans.SimpleScheduledScreening;
+import com.revature.caliber.beans.ScheduledScreening;
 
 /**
  * DAO for ScheduledScreening
+ * 
+ * @author Aaron Ware | 1805-WVU-MAY29 | Richard Orr
  */
 @Repository
-public interface ScheduledScreeningRepository extends JpaRepository<SimpleScheduledScreening, Integer> {
+public interface ScheduledScreeningRepository extends JpaRepository<ScheduledScreening, Integer> {
 
 	/**
 	 * Finds the SimpleScheduledScreening instances associated
 	 * with the given Status string
 	 * 
-	 * @param string Status string
+	 * @param status "PENDING","SCREENED"
 	 * @return List of SimpleScheduledScreening instances associated
 	 * with the given Status string
 	 */
-	List<SimpleScheduledScreening> findByStatus(String string);
-
-	/**
-	 * Sets the status to given string
-	 * 
-	 * @param screened New Status string
-	 * @param scheduledScreeningId Id of ScheduledScreening
-	 */
-	@Transactional
-	@Modifying(clearAutomatically = true)
-	@Query("update SimpleScheduledScreening s set s.status = ?1 where s.scheduledScreeningId = ?2")
-	void updateStatus(String screened, Integer scheduledScreeningId);
+	List<ScheduledScreening> findByStatus(String status);
 
 }

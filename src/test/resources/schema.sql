@@ -69,7 +69,6 @@ create table if not exists question_score(
           time timestamp
 );
 
-
 CREATE SEQUENCE  IF NOT EXISTS  QUESTION_SCORE_SEQUENCE;
 
 DROP SEQUENCE IF EXISTS SCHEDULED_SCREENING_SEQUENCE;

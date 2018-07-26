@@ -1,68 +1,42 @@
 package com.revature.caliber.beans;
 
-import java.io.Serializable;
-
-import javax.persistence.Cacheable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 
-import org.hibernate.validator.constraints.Email;
-import org.hibernate.validator.constraints.NotEmpty;
 
-/**
- * The type Simple Trainee.
- */
 @Entity
-@Table(name = "CALIBER_TRAINEE")
-@Cacheable
-public class SimpleTrainee implements Serializable {
-	private static final long serialVersionUID = -5478972218765858144L;
+@Table(name="CANDIDATE")
+public class Candidate {
 
 	@Id
-	@Column(name = "TRAINEE_ID")
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "TRAINEE_ID_SEQUENCE")
-	@SequenceGenerator(name = "TRAINEE_ID_SEQUENCE", sequenceName = "TRAINEE_ID_SEQUENCE")
-	private Integer traineeId;
+	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="CANDIDATE_SEQUENCE")
+	@SequenceGenerator(allocationSize=1,name="CANDIDATE_SEQUENCE",sequenceName="CANDIDATE_SEQUENCE")
+	@Column(name="id")
+	private int id;
 
 	@Column(name = "RESOURCE_ID")
 	private String resourceId;
 
-	@NotEmpty
-	@Column(name = "TRAINEE_NAME")
+	@Column(name = "NAME")
 	private String name;
-
-	@NotEmpty
-	@Email
-	@Column(name = "TRAINEE_EMAIL", nullable = false)
+	
+	@Column(name = "EMAIL")
 	private String email;
-
-	@NotNull
-	@Enumerated(EnumType.STRING)
-	@Column(name = "TRAINING_STATUS")
-	private TrainingStatus trainingStatus;
-
-	@NotNull
-	@Column(name = "BATCH_ID")
-	private Integer batchId;
 
 	@Column(name = "PHONE_NUMBER")
 	private String phoneNumber;
 
 	@Column(name = "SKYPE_ID")
-	private String skypeId;
-
+	private String skypeId;	
+	
 	@Column(name = "PROFILE_URL")
 	private String profileUrl;
 
-	// new columns
 	@Column(name = "RECRUITER_NAME")
 	private String recruiterName;
 
@@ -78,23 +52,18 @@ public class SimpleTrainee implements Serializable {
 	@Column(name = "TECH_SCREENER_NAME")
 	private String techScreenerName;
 
-	@Column(name = "REVPRO_PROJECT_COMPLETION")
-	private String projectCompletion;
-
-	public SimpleTrainee() {
+	public Candidate() {
 		super();
 	}
 
-	public SimpleTrainee(Integer traineeId, String resourceId, String name, String email, TrainingStatus trainingStatus,
-			Integer batchId, String phoneNumber, String skypeId, String profileUrl, String recruiterName,
-			String college, String degree, String major, String techScreenerName, String projectCompletion) {
+	public Candidate(int id, String resourceId, String name, String email, String phoneNumber, String skypeId,
+			String profileUrl, String recruiterName, String college, String degree, String major,
+			String techScreenerName) {
 		super();
-		this.traineeId = traineeId;
+		this.id = id;
 		this.resourceId = resourceId;
 		this.name = name;
 		this.email = email;
-		this.trainingStatus = trainingStatus;
-		this.batchId = batchId;
 		this.phoneNumber = phoneNumber;
 		this.skypeId = skypeId;
 		this.profileUrl = profileUrl;
@@ -103,35 +72,14 @@ public class SimpleTrainee implements Serializable {
 		this.degree = degree;
 		this.major = major;
 		this.techScreenerName = techScreenerName;
-		this.projectCompletion = projectCompletion;
 	}
 
-	
-	public SimpleTrainee(Trainee trainee) {
-		super();
-		this.traineeId = trainee.getTraineeId();
-		this.resourceId = trainee.getResourceId();
-		this.name = trainee.getName();
-		this.email = trainee.getEmail();
-		this.trainingStatus = trainee.getTrainingStatus();
-		this.batchId = trainee.getBatch() != null ? trainee.getBatch().getBatchId() : null;
-		this.phoneNumber = trainee.getPhoneNumber();
-		this.skypeId = trainee.getSkypeId();
-		this.profileUrl = trainee.getProfileUrl();
-		this.college = trainee.getCollege();
-		this.degree = trainee.getDegree();
-		this.major = trainee.getMajor();
-		this.techScreenerName = trainee.getTechScreenerName();
-		this.projectCompletion = trainee.getProjectCompletion();
-	}
-	
-
-	public Integer getTraineeId() {
-		return traineeId;
+	public int getId() {
+		return id;
 	}
 
-	public void setTraineeId(Integer traineeId) {
-		this.traineeId = traineeId;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getResourceId() {
@@ -156,22 +104,6 @@ public class SimpleTrainee implements Serializable {
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	public TrainingStatus getTrainingStatus() {
-		return trainingStatus;
-	}
-
-	public void setTrainingStatus(TrainingStatus trainingStatus) {
-		this.trainingStatus = trainingStatus;
-	}
-
-	public Integer getBatchId() {
-		return batchId;
-	}
-
-	public void setBatchId(Integer batchId) {
-		this.batchId = batchId;
 	}
 
 	public String getPhoneNumber() {
@@ -238,33 +170,22 @@ public class SimpleTrainee implements Serializable {
 		this.techScreenerName = techScreenerName;
 	}
 
-	public String getProjectCompletion() {
-		return projectCompletion;
-	}
-
-	public void setProjectCompletion(String projectCompletion) {
-		this.projectCompletion = projectCompletion;
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + batchId;
 		result = prime * result + ((college == null) ? 0 : college.hashCode());
 		result = prime * result + ((degree == null) ? 0 : degree.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
+		result = prime * result + id;
 		result = prime * result + ((major == null) ? 0 : major.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((phoneNumber == null) ? 0 : phoneNumber.hashCode());
 		result = prime * result + ((profileUrl == null) ? 0 : profileUrl.hashCode());
-		result = prime * result + ((projectCompletion == null) ? 0 : projectCompletion.hashCode());
 		result = prime * result + ((recruiterName == null) ? 0 : recruiterName.hashCode());
 		result = prime * result + ((resourceId == null) ? 0 : resourceId.hashCode());
 		result = prime * result + ((skypeId == null) ? 0 : skypeId.hashCode());
 		result = prime * result + ((techScreenerName == null) ? 0 : techScreenerName.hashCode());
-		result = prime * result + traineeId;
-		result = prime * result + ((trainingStatus == null) ? 0 : trainingStatus.hashCode());
 		return result;
 	}
 
@@ -276,9 +197,7 @@ public class SimpleTrainee implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		SimpleTrainee other = (SimpleTrainee) obj;
-		if (batchId != other.batchId)
-			return false;
+		Candidate other = (Candidate) obj;
 		if (college == null) {
 			if (other.college != null)
 				return false;
@@ -293,6 +212,8 @@ public class SimpleTrainee implements Serializable {
 			if (other.email != null)
 				return false;
 		} else if (!email.equals(other.email))
+			return false;
+		if (id != other.id)
 			return false;
 		if (major == null) {
 			if (other.major != null)
@@ -314,11 +235,6 @@ public class SimpleTrainee implements Serializable {
 				return false;
 		} else if (!profileUrl.equals(other.profileUrl))
 			return false;
-		if (projectCompletion == null) {
-			if (other.projectCompletion != null)
-				return false;
-		} else if (!projectCompletion.equals(other.projectCompletion))
-			return false;
 		if (recruiterName == null) {
 			if (other.recruiterName != null)
 				return false;
@@ -339,20 +255,16 @@ public class SimpleTrainee implements Serializable {
 				return false;
 		} else if (!techScreenerName.equals(other.techScreenerName))
 			return false;
-		if (traineeId != other.traineeId)
-			return false;
-		if (trainingStatus != other.trainingStatus)
-			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "SimpleTrainee [traineeId=" + traineeId + ", resourceId=" + resourceId + ", name=" + name + ", email="
-				+ email + ", trainingStatus=" + trainingStatus + ", batchId=" + batchId + ", phoneNumber=" + phoneNumber
-				+ ", skypeId=" + skypeId + ", profileUrl=" + profileUrl + ", recruiterName=" + recruiterName
-				+ ", college=" + college + ", degree=" + degree + ", major=" + major + ", techScreenerName="
-				+ techScreenerName + ", projectCompletion=" + projectCompletion + "]";
+		return "Candidate [id=" + id + ", resourceId=" + resourceId + ", name=" + name + ", email=" + email
+				+ ", phoneNumber=" + phoneNumber + ", skypeId=" + skypeId + ", profileUrl=" + profileUrl
+				+ ", recruiterName=" + recruiterName + ", college=" + college + ", degree=" + degree + ", major="
+				+ major + ", techScreenerName=" + techScreenerName + "]";
 	}
 
+	
 }
