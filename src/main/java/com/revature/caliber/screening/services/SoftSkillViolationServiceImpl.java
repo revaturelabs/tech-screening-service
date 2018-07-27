@@ -1,0 +1,31 @@
+package com.revature.caliber.screening.services;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.revature.caliber.beans.SoftSkillViolation;
+import com.revature.caliber.screening.data.SoftSkillViolationRepository;
+
+@Service
+public class SoftSkillViolationServiceImpl implements SoftSkillViolationService {
+
+	@Autowired
+	SoftSkillViolationRepository softSkillViolationRepository;
+	
+	@Override
+	public SoftSkillViolation save(SoftSkillViolation ssv) {
+		return softSkillViolationRepository.save(ssv);
+	}
+
+	@Override
+	public void delete(int id) {
+		softSkillViolationRepository.delete(id);
+
+	}
+
+	@Override
+	public SoftSkillViolation getByScreeningId(int screeningId) {
+		return softSkillViolationRepository.findByScreeningScreeningId(screeningId);
+	}
+
+}

@@ -19,4 +19,8 @@ public class ScreeningServiceImpl implements ScreeningService{
 		return screeningRepository.save(screening);
 	}
 
+	@Override
+	public Screening getScreening(int id) {
+		return screeningRepository.findOne(id);
+	}
 }

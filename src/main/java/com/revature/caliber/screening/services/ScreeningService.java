@@ -13,4 +13,6 @@ public interface ScreeningService {
 	 * @return a screening object
 	 */
 	public Screening setPending(Screening screening);
+
+	public Screening getScreening(int id);
 }
