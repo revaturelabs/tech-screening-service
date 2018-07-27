@@ -29,10 +29,11 @@ public class SoftSkillViolation {
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="SCREENING_ID")
-	private Screening screeningId;
-	
-	@Column(name="VIOLATION_TYPE_ID")
-	private int violationId;
+	private Screening screening;
+
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="VIOLATION_TYPE_ID")
+	private ViolationType violation;
 	
 	@Column(name="SOFT_SKILL_VIOLATION_COMMENT")
 	private String comment;
@@ -40,21 +41,29 @@ public class SoftSkillViolation {
 	@CreationTimestamp
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="TIME")
-	private Date Time;
+	private Date time;
 	
 	public SoftSkillViolation() {
 		super();
 	}
 
-	public SoftSkillViolation(int id, Screening screeningId, int violationId, String comment, Date time) {
+	public SoftSkillViolation(int id, Screening screening, ViolationType violation, String comment, Date time) {
 		super();
 		this.id = id;
-		this.screeningId = screeningId;
-		this.violationId = violationId;
+		this.screening = screening;
+		this.violation = violation;
 		this.comment = comment;
-		Time = time;
+		this.time = time;
 	}
 	
+	public SoftSkillViolation(Screening screening, ViolationType violation, String comment, Date time) {
+		super();
+		this.screening = screening;
+		this.violation = violation;
+		this.comment = comment;
+		this.time = time;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -63,20 +72,20 @@ public class SoftSkillViolation {
 		this.id = id;
 	}
 
-	public Screening getScreeningId() {
-		return screeningId;
+	public Screening getScreening() {
+		return screening;
 	}
 
-	public void setScreeningId(Screening screeningId) {
-		this.screeningId = screeningId;
+	public void setScreening(Screening screening) {
+		this.screening = screening;
 	}
 
-	public int getViolationId() {
-		return violationId;
+	public ViolationType getViolation() {
+		return violation;
 	}
 
-	public void setViolationId(int violationId) {
-		this.violationId = violationId;
+	public void setViolation(ViolationType violation) {
+		this.violation = violation;
 	}
 
 	public String getComment() {
@@ -88,22 +97,22 @@ public class SoftSkillViolation {
 	}
 
 	public Date getTime() {
-		return Time;
+		return time;
 	}
 
 	public void setTime(Date time) {
-		Time = time;
+		this.time = time;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((Time == null) ? 0 : Time.hashCode());
 		result = prime * result + ((comment == null) ? 0 : comment.hashCode());
 		result = prime * result + id;
-		result = prime * result + ((screeningId == null) ? 0 : screeningId.hashCode());
-		result = prime * result + violationId;
+		result = prime * result + ((screening == null) ? 0 : screening.hashCode());
+		result = prime * result + ((time == null) ? 0 : time.hashCode());
+		result = prime * result + ((violation == null) ? 0 : violation.hashCode());
 		return result;
 	}
 
@@ -116,11 +125,6 @@ public class SoftSkillViolation {
 		if (getClass() != obj.getClass())
 			return false;
 		SoftSkillViolation other = (SoftSkillViolation) obj;
-		if (Time == null) {
-			if (other.Time != null)
-				return false;
-		} else if (!Time.equals(other.Time))
-			return false;
 		if (comment == null) {
 			if (other.comment != null)
 				return false;
@@ -128,19 +132,27 @@ public class SoftSkillViolation {
 			return false;
 		if (id != other.id)
 			return false;
-		if (screeningId == null) {
-			if (other.screeningId != null)
+		if (screening == null) {
+			if (other.screening != null)
 				return false;
-		} else if (!screeningId.equals(other.screeningId))
+		} else if (!screening.equals(other.screening))
 			return false;
-		if (violationId != other.violationId)
+		if (time == null) {
+			if (other.time != null)
+				return false;
+		} else if (!time.equals(other.time))
+			return false;
+		if (violation == null) {
+			if (other.violation != null)
+				return false;
+		} else if (!violation.equals(other.violation))
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "SoftSkillViolation [id=" + id + ", screeningId=" + screeningId + ", violationId=" + violationId
-				+ ", comment=" + comment + ", Time=" + Time + "]";
-	}	
+		return "SoftSkillViolation [id=" + id + ", screening=" + screening + ", violation=" + violation + ", comment="
+				+ comment + ", time=" + time + "]";
+	}
 }
