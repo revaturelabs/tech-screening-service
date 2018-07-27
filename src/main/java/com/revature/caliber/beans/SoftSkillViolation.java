@@ -24,7 +24,7 @@ public class SoftSkillViolation {
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="SOFT_SKILL_VIOLATION_SEQUENCE")
 	@SequenceGenerator(allocationSize=1,name="SOFT_SKILL_VIOLATION_SEQUENCE",sequenceName="SOFT_SKILL_VIOLATION_SEQUENCE")
-	@Column(name="SOFT_SKILL_VIOLATION_ID")
+	@Column(name="ID")
 	private int id;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
@@ -35,7 +35,7 @@ public class SoftSkillViolation {
 	@JoinColumn(name="VIOLATION_TYPE_ID")
 	private ViolationType violation;
 	
-	@Column(name="SOFT_SKILL_VIOLATION_COMMENT")
+	@Column(name="COMMENT")
 	private String comment;
 	
 	@CreationTimestamp

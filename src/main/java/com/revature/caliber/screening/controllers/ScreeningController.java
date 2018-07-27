@@ -2,6 +2,7 @@ package com.revature.caliber.screening.controllers;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -43,6 +44,7 @@ public class ScreeningController {
 	@RequestMapping(value="/screening/{id}/violation/", method= RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<SoftSkillViolation>  softSkillViolationByScreeningID(@PathVariable(value="id") Integer id){
 		SoftSkillViolation ssv = softSkillViolationService.getByScreeningId(id);
+
 		return new ResponseEntity<>(ssv, HttpStatus.OK);
 	}
 	
@@ -72,7 +74,7 @@ public class ScreeningController {
 	/**
 	 * Create a SoftSkillViolation for each ViolationID in the RequestBody, and associates it with the given Screening
 	 * 
-	 * @param violationFlag - a ViolationFlagWrapper that contains an array of ViolationIds, comment, time of violation, and screeningId
+	 * @param violationFlag - a ViolationFlagWrapper that contains a ViolationId, comment, time of violation, and screeningId
 	 * @return An HttpStatus of OK signaling the successful entry of SoftSkillViolation objects.
 	 */
 	@RequestMapping(value = "/violation/", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
