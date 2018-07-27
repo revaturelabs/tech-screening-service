@@ -101,4 +101,5 @@ public class ViolationType {
 		return "ViolationType [violationTypeId=" + violationTypeId + ", violationTypeText=" + violationTypeText
 				+ ", description=" + description + "]";
 	}
+
 }

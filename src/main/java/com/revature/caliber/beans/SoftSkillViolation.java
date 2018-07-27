@@ -142,5 +142,5 @@ public class SoftSkillViolation {
 	public String toString() {
 		return "SoftSkillViolation [id=" + id + ", screeningId=" + screeningId + ", violationId=" + violationId
 				+ ", comment=" + comment + ", Time=" + Time + "]";
-	}	
+	}
 }

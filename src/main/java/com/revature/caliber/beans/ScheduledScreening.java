@@ -53,7 +53,7 @@ public class ScheduledScreening {
 		this.skillTypeId = skillTypeId;
 		this.scheduledDate = scheduledDate;
 	}
-	
+
 	public int getScheduledScreeningId() {
 		return scheduledScreeningId;
 	}
@@ -101,6 +101,7 @@ public class ScheduledScreening {
 	public void setScheduledDate(Date scheduledDate) {
 		this.scheduledDate = scheduledDate;
 	}
+
 
 	@Override
 	public int hashCode() {
@@ -153,6 +154,5 @@ public class ScheduledScreening {
 		return "ScheduledScreening [scheduledScreeningId=" + scheduledScreeningId + ", candidate=" + candidate
 				+ ", trainer=" + trainer + ", status=" + status + ", skillTypeId=" + skillTypeId + ", scheduledDate="
 				+ scheduledDate + "]";
-	}
-	
+	}	
 }
