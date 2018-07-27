@@ -40,9 +40,9 @@ public class ScreeningController {
 	 * @param screeningID - the unique id of a Screening
 	 * @return List of SoftSkillViolation objects
 	 */
-	@RequestMapping(value="/screening/violation/{screeningID}", method= RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<List<SoftSkillViolation>>  softSkillViolationsByScreeningID(@PathVariable(value="screeningID") Integer screeningID){
-		List<SoftSkillViolation> ssv = softSkillViolationService.getAllByScreeningId(screeningID);
+	@RequestMapping(value="/screening/{id}/violation/", method= RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<List<SoftSkillViolation>>  softSkillViolationsByScreeningID(@PathVariable(value="id") Integer id){
+		List<SoftSkillViolation> ssv = softSkillViolationService.getAllByScreeningId(id);
 		
 		return new ResponseEntity<>(ssv, HttpStatus.OK);
 	}
@@ -52,7 +52,7 @@ public class ScreeningController {
 	 * 
 	 * @return List of ViolationType objects
 	 */
-	@RequestMapping(value="/violation/all", method= RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value="/violation/type", method= RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<ViolationType>>getViolationTypes(){
 		List<ViolationType> vios = violationTypeService.getAll();
 		return new ResponseEntity<>(vios, HttpStatus.OK);
@@ -64,9 +64,9 @@ public class ScreeningController {
 	 * @param softSkillViolationID - the unique id of the SoftSkillViolation object to be deleted
 	 * @return A ResponseEntity that contains a delete completed message and an HttpStatus of OK.
 	 */
-	@RequestMapping(value="/violation/delete/{softSkillViolationID}", method= RequestMethod.GET)
-	public ResponseEntity<String> deleteSoftSkillViolation (@PathVariable(value="softSkillViolationID") Integer softSkillViolationID) {
-		softSkillViolationService.delete(softSkillViolationID);
+	@RequestMapping(value="/violation/{id}", method= RequestMethod.DELETE)
+	public ResponseEntity<String> deleteSoftSkillViolation (@PathVariable(value="id") Integer id) {
+		softSkillViolationService.delete(id);
 		return new ResponseEntity<>("Delete Completed", HttpStatus.OK);
 	}
 	
@@ -76,7 +76,7 @@ public class ScreeningController {
 	 * @param violationFlag - a ViolationFlagWrapper that contains an array of ViolationIds, comment, time of violation, and screeningId
 	 * @return An HttpStatus of OK signaling the successful entry of SoftSkillViolation objects.
 	 */
-	@RequestMapping(value = "/violation/flag", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "/violation/", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Void> createSoftSkillViolationAndReturnSoftSkillViolationID (@RequestBody ViolationFlagWrapper violationFlag) {
 		Screening screening = screeningService.getScreening(violationFlag.screeningId);
 		for(Integer violationId : violationFlag.violationTypeId) {
