@@ -26,8 +26,8 @@ public class SoftSkillViolationServiceImpl implements SoftSkillViolationService 
 	}
 
 	@Override
-	public List<SoftSkillViolation> getAllByScreeningId(int screeningId) {
-		return softSkillViolationRepository.findAllByScreening(screeningId);
+	public SoftSkillViolation getByScreeningId(int screeningId) {
+		return softSkillViolationRepository.findByScreening(screeningId);
 	}
 
 }

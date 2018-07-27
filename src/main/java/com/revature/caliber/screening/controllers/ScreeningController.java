@@ -41,9 +41,8 @@ public class ScreeningController {
 	 * @return List of SoftSkillViolation objects
 	 */
 	@RequestMapping(value="/screening/{id}/violation/", method= RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<List<SoftSkillViolation>>  softSkillViolationsByScreeningID(@PathVariable(value="id") Integer id){
-		List<SoftSkillViolation> ssv = softSkillViolationService.getAllByScreeningId(id);
-		
+	public ResponseEntity<SoftSkillViolation>  softSkillViolationByScreeningID(@PathVariable(value="id") Integer id){
+		SoftSkillViolation ssv = softSkillViolationService.getByScreeningId(id);
 		return new ResponseEntity<>(ssv, HttpStatus.OK);
 	}
 	
@@ -53,7 +52,7 @@ public class ScreeningController {
 	 * @return List of ViolationType objects
 	 */
 	@RequestMapping(value="/violation/type", method= RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<List<ViolationType>>getViolationTypes(){
+	public ResponseEntity<List<ViolationType>> getViolationTypes(){
 		List<ViolationType> vios = violationTypeService.getAll();
 		return new ResponseEntity<>(vios, HttpStatus.OK);
 	}
@@ -79,12 +78,9 @@ public class ScreeningController {
 	@RequestMapping(value = "/violation/", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Void> createSoftSkillViolationAndReturnSoftSkillViolationID (@RequestBody ViolationFlagWrapper violationFlag) {
 		Screening screening = screeningService.getScreening(violationFlag.screeningId);
-		for(Integer violationId : violationFlag.violationTypeId) {
-			ViolationType vt = violationTypeService.getViolationType(violationId);
-			SoftSkillViolation ssv = new SoftSkillViolation(screening, vt, violationFlag.softSkillComment, violationFlag.violationTime);
-			softSkillViolationService.save(ssv);
-		}
-		
+		ViolationType vt = violationTypeService.getViolationType(violationFlag.violationTypeId);
+		SoftSkillViolation ssv = new SoftSkillViolation(screening, vt, violationFlag.softSkillComment, violationFlag.violationTime);
+		softSkillViolationService.save(ssv);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
