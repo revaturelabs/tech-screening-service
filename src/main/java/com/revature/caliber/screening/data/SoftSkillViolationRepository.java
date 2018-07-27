@@ -10,5 +10,5 @@ import com.revature.caliber.beans.SoftSkillViolation;
 
 @Repository
 public interface SoftSkillViolationRepository extends JpaRepository<SoftSkillViolation, Integer> {
-	List<SoftSkillViolation> findAllByScreeningId(int screeningId);
+	List<SoftSkillViolation> findAllByScreening(int screeningId);
 }

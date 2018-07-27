@@ -3,10 +3,12 @@ package com.revature.caliber.screening.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.revature.caliber.beans.SoftSkillViolation;
 import com.revature.caliber.screening.data.SoftSkillViolationRepository;
 
+@Service
 public class SoftSkillViolationServiceImpl implements SoftSkillViolationService {
 
 	@Autowired
@@ -25,7 +27,7 @@ public class SoftSkillViolationServiceImpl implements SoftSkillViolationService 
 
 	@Override
 	public List<SoftSkillViolation> getAllByScreeningId(int screeningId) {
-		return softSkillViolationRepository.findAllByScreeningId(screeningId);
+		return softSkillViolationRepository.findAllByScreening(screeningId);
 	}
 
 }
