@@ -145,7 +145,6 @@ Insert into SOFT_SKILL_VIOLATION (ID, SCREENING_ID, VIOLATION_TYPE_ID, COMMENT, 
 values (SOFT_SKILL_VIOLATION_SEQUENCE.NEXTVAL, 18, 3, 'He kept wandering off topic, was browsing a site.', '2018-03-06');
 Insert into SOFT_SKILL_VIOLATION (ID, SCREENING_ID, VIOLATION_TYPE_ID, COMMENT, TIME) 
 values (SOFT_SKILL_VIOLATION_SEQUENCE.NEXTVAL, 19, 3, 'Extremely distracted, was texting.', '2018-03-07');
->>>>>>> 0d493512acd266b481e3da4448a13b9e0c1fe132
  
 COMMIT;
 
