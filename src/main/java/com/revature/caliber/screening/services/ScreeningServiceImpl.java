@@ -14,10 +14,21 @@ public class ScreeningServiceImpl implements ScreeningService{
 	@Autowired
 	ScreeningRepository screeningRepository;
 	
-	public Screening setPending(Screening screening) {
+	@Autowired
+	ScheduledScreeningRepository scheduledScreeningRepository;
+	
+	
+	
+	public Screening setPending(StartingWrapper screeningInfo) {
+		Screening screening = new Screening();
+		ScheduledScreening scheduledScreening = scheduledScreeningRepository.findOne(screeningInfo.scheduledScreeningId);
+		scheduledScreening.setScheduledScreeningId(screeningInfo.scheduledScreeningId);
+		screening.setScheduledScreening(scheduledScreening);
+		screening.setStartDateTime(screeningInfo.beginTime);
+		screening.setTrainerId(screeningInfo.trainerId);
+		screening.setCandidate(scheduledScreening.getCandidate());
 		screening.setStatus("Pending");
-		Screening i = screeningRepository.save(screening);
-		return i;
+		return screeningRepository.save(screening);
 	}
 
 }
