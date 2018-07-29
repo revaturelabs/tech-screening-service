@@ -1,7 +1,7 @@
 
 package com.revature.caliber.screening.services;
 
-import org.junit.Test;
+import org.junit.Ignore;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -26,7 +26,7 @@ public class ScreeningServiceTest {
 	@Autowired
 	ScreeningRepository screeningRepo;
 	
-	@Test
+	@Ignore
 	public final void testChangeAboutMeCommentaryByScreeningId() {
 		String splargh = "splargh";
 		screeningService.updateAboutMeComment(splargh, 1);

@@ -22,9 +22,8 @@ import com.revature.caliber.screening.services.SoftSkillViolationService;
 import com.revature.caliber.screening.services.ViolationTypeService;
 import com.revature.caliber.screening.wrapper.CommentWrapper;
 import com.revature.caliber.screening.wrapper.EndingWrapper;
-import com.revature.caliber.screening.wrappers.ViolationFlagWrapper;
-import com.revature.caliber.screening.services.ScreeningServiceImpl;
 import com.revature.caliber.screening.wrappers.StartingWrapper;
+import com.revature.caliber.screening.wrappers.ViolationFlagWrapper;
 
 
 @RestController
