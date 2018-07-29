@@ -27,8 +27,8 @@ public class ScreeningController {
 	private ScreeningServiceImpl screeningService;
 	
 	@RequestMapping(value = "/screening/start", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Integer> createScreening(@RequestBody Screening screening){
-		Screening i = screeningService.setPending(screening);
+	public ResponseEntity<Integer> createScreening(@RequestBody StartingWrapper screeningInfo){
+		Screening i = screeningService.setPending(screeningInfo);
 		return new ResponseEntity<>(i.getScreeningId(),HttpStatus.OK);
 	}
 }
