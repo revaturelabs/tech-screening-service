@@ -52,11 +52,7 @@ violation_type varchar2(100),
 drop table if exists soft_skill_violation;
 create table if not exists soft_skill_violation(
         id number(20) primary key,
-<<<<<<< HEAD
          screening_id number(20) unique,
-=======
-         screening_id number(20),
->>>>>>> 2b72ce528cd879f1d53277b965d2726c7ad50432
     violation_type_id number(20),
                  time timestamp,
               comment varchar2(400)
@@ -77,10 +73,6 @@ create table if not exists question_score(
 
 
 DROP SEQUENCE IF EXISTS QUESTION_SCORE_SEQUENCE;
-<<<<<<< HEAD
-=======
-
->>>>>>> 2b72ce528cd879f1d53277b965d2726c7ad50432
 CREATE SEQUENCE  IF NOT EXISTS  QUESTION_SCORE_SEQUENCE;
 
 DROP SEQUENCE IF EXISTS SCHEDULED_SCREENING_SEQUENCE;
