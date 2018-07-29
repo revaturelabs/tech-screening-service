@@ -28,6 +28,7 @@ public class ScreeningServiceImpl implements ScreeningService{
 		screening.setStartDateTime(screeningInfo.beginTime);
 		screening.setTrainerId(screeningInfo.trainerId);
 		screening.setCandidate(scheduledScreening.getCandidate());
+		screening.setSkillType(screeningInfo.skillTypeId);
 		screening.setStatus("Pending");
 		return screeningRepository.save(screening);
 	}
