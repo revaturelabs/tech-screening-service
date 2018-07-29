@@ -34,27 +34,6 @@ public class ScheduledScreeningServiceTest {
 		assertTrue(scheduledScreenings != null && !scheduledScreenings.isEmpty());
 	}
 	
-	@Test
-	public void updateStatusTest() {
-		List<ScheduledScreening> scheduledScreenings = sss.findByStatus("PENDING");
-		int count = scheduledScreenings.size();
-
-		ScheduledScreening scheduledScreening = scheduledScreenings.get(0);
-		sss.updateStatus("SCREENED", scheduledScreening);
-		scheduledScreenings = sss.findByStatus("PENDING");
-
-		assertTrue(count > scheduledScreenings.size());
-	}
-	
-	@Test(expected = IllegalArgumentException.class)
-	public void updateStatusTestIllegalArgument() {
-		List<ScheduledScreening> scheduledScreenings = sss.findByStatus("PENDING");
-		int count = scheduledScreenings.size();
-
-		ScheduledScreening scheduledScreening = scheduledScreenings.get(0);
-		sss.updateStatus("invalid input", scheduledScreening);
-	}
-	
 	
 	@Test
 	public void findPendingTestIllegalArgument() {

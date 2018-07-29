@@ -15,7 +15,10 @@ spring:
   jpa:
     hibernate:
       ddl-auto: none
+<<<<<<< HEAD
 eureka:
   client:
     enabled: false
 
+=======
+>>>>>>> 2b72ce528cd879f1d53277b965d2726c7ad50432

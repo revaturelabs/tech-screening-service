@@ -24,5 +24,7 @@ public interface ScheduledScreeningService {
 	 * @param screened "PENDING","SCREENED"
 	 * @param scheduledScreeningId ID of the ScheduledScreening object to be updated
 	 */
-	void updateStatus(String screened, ScheduledScreening scheduledScreening) throws IllegalArgumentException;
+
+	void updateStatus(int scheduledScreeningId) throws IllegalArgumentException;
+
 }
