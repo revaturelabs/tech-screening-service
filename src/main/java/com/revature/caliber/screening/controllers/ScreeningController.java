@@ -23,6 +23,9 @@ import com.revature.caliber.screening.services.ViolationTypeService;
 import com.revature.caliber.screening.wrapper.CommentWrapper;
 import com.revature.caliber.screening.wrapper.EndingWrapper;
 import com.revature.caliber.screening.wrappers.ViolationFlagWrapper;
+import com.revature.caliber.screening.services.ScreeningServiceImpl;
+import com.revature.caliber.screening.wrappers.StartingWrapper;
+
 
 @RestController
 public class ScreeningController {
@@ -104,8 +107,8 @@ public class ScreeningController {
 	}
 	
 	@RequestMapping(value = "/screening/start", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Integer> createScreening(@RequestBody Screening screening){
-		Screening i = screeningService.setPending(screening);
+	public ResponseEntity<Integer> createScreening(@RequestBody StartingWrapper screeningInfo){
+		Screening i = screeningService.setPending(screeningInfo);
 		return new ResponseEntity<>(i.getScreeningId(),HttpStatus.OK);
 	}
 	
