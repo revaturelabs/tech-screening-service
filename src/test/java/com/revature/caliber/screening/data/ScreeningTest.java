@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Ignore;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -27,6 +28,7 @@ public class ScreeningTest {
 	ScreeningService ss;
 
 	@Ignore
+	@Test
 	public final void testRepositorySave() {
 		Screening testScreening = new Screening();
 		testScreening.setCandidate(new Candidate());
@@ -38,6 +40,7 @@ public class ScreeningTest {
 	}
 	
 	@Ignore
+	@Test
 	public final void testServiceSave() {
 		Screening testScreening = new Screening();
 		testScreening.setCandidate(new Candidate());
