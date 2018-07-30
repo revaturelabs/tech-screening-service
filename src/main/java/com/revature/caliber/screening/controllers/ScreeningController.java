@@ -20,8 +20,8 @@ import com.revature.caliber.screening.services.ScheduledScreeningService;
 import com.revature.caliber.screening.services.ScreeningService;
 import com.revature.caliber.screening.services.SoftSkillViolationService;
 import com.revature.caliber.screening.services.ViolationTypeService;
-import com.revature.caliber.screening.wrapper.CommentWrapper;
-import com.revature.caliber.screening.wrapper.EndingWrapper;
+import com.revature.caliber.screening.wrappers.CommentWrapper;
+import com.revature.caliber.screening.wrappers.EndingWrapper;
 import com.revature.caliber.screening.wrappers.StartingWrapper;
 import com.revature.caliber.screening.wrappers.ViolationFlagWrapper;
 

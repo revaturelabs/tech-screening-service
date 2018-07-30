@@ -7,8 +7,9 @@ import com.revature.caliber.beans.ScheduledScreening;
 import com.revature.caliber.beans.Screening;
 import com.revature.caliber.screening.data.ScheduledScreeningRepository;
 import com.revature.caliber.screening.data.ScreeningRepository;
-import com.revature.caliber.screening.wrapper.EndingWrapper;
 import com.revature.caliber.screening.wrappers.StartingWrapper;
+import com.revature.caliber.screening.wrappers.EndingWrapper;
+
 
 @Service
 public class ScreeningServiceImpl implements ScreeningService{

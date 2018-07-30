@@ -1,9 +1,9 @@
 package com.revature.caliber.screening.services;
 
-
 import com.revature.caliber.beans.Screening;
-import com.revature.caliber.screening.wrapper.EndingWrapper;
 import com.revature.caliber.screening.wrappers.StartingWrapper;
+import com.revature.caliber.screening.wrappers.EndingWrapper;
+
 
 public interface ScreeningService {
 	

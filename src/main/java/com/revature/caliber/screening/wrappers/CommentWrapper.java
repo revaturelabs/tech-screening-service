@@ -1,4 +1,4 @@
-package com.revature.caliber.screening.wrapper;
+package com.revature.caliber.screening.wrappers;
 
 /**
  * Wrapper class
