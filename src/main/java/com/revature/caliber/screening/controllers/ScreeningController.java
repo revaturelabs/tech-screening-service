@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -42,8 +43,8 @@ public class ScreeningController {
 	 * @return List of SoftSkillViolation objects
 	 */
 	@RequestMapping(value="/screening/{id}/violation/", method= RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<SoftSkillViolation>  softSkillViolationByScreeningID(@PathVariable(value="id") Integer id){
-		SoftSkillViolation ssv = softSkillViolationService.getByScreeningId(id);
+	public ResponseEntity<List<SoftSkillViolation>>  softSkillViolationByScreeningID(@PathVariable(value="id") Integer id){
+		List<SoftSkillViolation> ssv = softSkillViolationService.getAllByScreeningId(id);
 
 		return new ResponseEntity<>(ssv, HttpStatus.OK);
 	}
@@ -67,7 +68,11 @@ public class ScreeningController {
 	 */
 	@RequestMapping(value="/violation/{id}", method= RequestMethod.DELETE)
 	public ResponseEntity<String> deleteSoftSkillViolation (@PathVariable(value="id") Integer id) {
-		softSkillViolationService.delete(id);
+		try {
+			softSkillViolationService.delete(id);
+		} catch (EmptyResultDataAccessException e) {
+			return new ResponseEntity<>("id not found", HttpStatus.NOT_FOUND);
+		}
 		return new ResponseEntity<>("Delete Completed", HttpStatus.OK);
 	}
 	
@@ -79,9 +84,11 @@ public class ScreeningController {
 	 */
 	@RequestMapping(value = "/violation/", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Void> createSoftSkillViolationAndReturnSoftSkillViolationID (@RequestBody ViolationFlagWrapper violationFlag) {
-		Screening screening = screeningService.getScreening(violationFlag.screeningId);
-		ViolationType vt = violationTypeService.getViolationType(violationFlag.violationTypeId);
-		SoftSkillViolation ssv = new SoftSkillViolation(screening, vt, violationFlag.softSkillComment, violationFlag.violationTime);
+		SoftSkillViolation ssv = new SoftSkillViolation(violationFlag.screeningId, 
+				violationFlag.violationTypeId, 
+				violationFlag.softSkillComment,
+				violationFlag.violationTime);
+		
 		softSkillViolationService.save(ssv);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}

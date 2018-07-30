@@ -1,9 +1,7 @@
-package com.revature.caliber.screening.data;
+package com.revature.caliber.screening.services;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
-
-import java.util.List;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,7 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.revature.caliber.beans.SoftSkillViolation;
+import com.revature.caliber.beans.ViolationType;
 import com.revature.caliber.screening.Application;
 
 /**
@@ -24,19 +22,30 @@ import com.revature.caliber.screening.Application;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes=Application.class)
 @Sql("/data.sql")
-public class SoftSkillViolationRepositoryTest {
+public class ViolationTypeServiceTest {
 	
 	@Autowired
-	SoftSkillViolationRepository ssvr;
+	ViolationTypeService vts;
 	
 	@Test
-	public void findByScreeningScreeningIdTestNotNull() {
-		assertNotNull(ssvr.findAllByScreeningId(1));
+	public void getViolationTypeTestNotNull() {
+		ViolationType vt = vts.getViolationType(1);
+		assertNotNull(vt);
 	}
 	
 	@Test
-	public void findByScreeningScreeningIdTest() {
-		List<SoftSkillViolation> ssv = ssvr.findAllByScreeningId(1);
-		assertTrue(ssv.size() != 0);
+	public void getViolationTypeTest() {
+		ViolationType vt = vts.getViolationType(1);
+		assertTrue(vt.getId() == 1);
+	}
+	
+	@Test
+	public void getAllTestNotNull() {
+		assertNotNull(vts.getAll());
+	}
+	
+	@Test
+	public void getAllTest() {
+		assertTrue(vts.getAll().size() == 3);
 	}
 }
