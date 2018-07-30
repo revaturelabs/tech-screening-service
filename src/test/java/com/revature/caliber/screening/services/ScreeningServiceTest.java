@@ -1,6 +1,7 @@
 
 package com.revature.caliber.screening.services;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +31,14 @@ public class ScreeningServiceTest {
 	public final void testChangeAboutMeCommentaryByScreeningId() {
 		String splargh = "splargh";
 		screeningService.updateAboutMeComment(splargh, 1);
-		//assertsTrue(screeningRepo.findOne(1).getAboutMeCommentary(), splargh);
+		Assert.assertEquals(screeningRepo.findOne(1).getAboutMeCommentary(), splargh);
+	}
+	
+	@Test
+	public final void testChangeGeneralByScreeningId() {
+		String splargh = "splargh";
+		screeningService.updateGeneralComment(splargh, 1);
+		Assert.assertEquals(screeningRepo.findOne(1).getAboutMeCommentary(), splargh);
 	}
 
 }
