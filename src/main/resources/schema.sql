@@ -52,7 +52,7 @@ violation_type varchar2(100),
 drop table if exists soft_skill_violation;
 create table if not exists soft_skill_violation(
         id number(20) primary key,
-         screening_id number(20) unique,
+         screening_id number(20),
     violation_type_id number(20),
                  time timestamp,
               comment varchar2(400)
@@ -63,7 +63,7 @@ drop table if exists question_score;
 create table if not exists question_score(
             id number(20) primary key,
    question_id number(20) not null,
-  screening_id number(20) not null,
+  screening_id number(20),
          score number(1),
        comment varchar2(400),
           time timestamp

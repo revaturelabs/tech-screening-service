@@ -109,6 +109,11 @@ COMPOSITE_SCORE, ABOUT_COMMENT, GENERAL_COMMENT, SOFT_SKILL_COMMENT,
 START_DATE, END_DATE, SOFT_SKILL_VERDICT, STATUS, SCHEDULED_SCREENING_ID) 
 values (SCREENING_SEQUENCE.NEXTVAL, 3 , 8 , 2, 50.0, 'intoComment8','generalComment8','softskillComment8', '2018-03-12', '2018-03-14', 1, 'Pending', 8);
  
+Insert into SCREENING (ID, TRAINER_ID, CANDIDATE_ID, SKILL_TYPE_ID, 
+COMPOSITE_SCORE, ABOUT_COMMENT, GENERAL_COMMENT, SOFT_SKILL_COMMENT,
+START_DATE, END_DATE, SOFT_SKILL_VERDICT, STATUS, SCHEDULED_SCREENING_ID) 
+values (SCREENING_SEQUENCE.NEXTVAL, 3 , 8 , 2, 50.0, 'intoComment8','generalComment8','softskillComment8', '2018-03-12', '2018-03-14', 1, 'Pending', 8);
+ 
 
 --------------------------------------------------------
 --  DML for Sequence VIOLATION_SEQUENCE
@@ -140,11 +145,11 @@ values (SOFT_SKILL_VIOLATION_SEQUENCE.NEXTVAL, 3, 2, 'Was wearing pajamas', '201
 Insert into SOFT_SKILL_VIOLATION (ID, SCREENING_ID, VIOLATION_TYPE_ID, COMMENT, TIME) 
 values (SOFT_SKILL_VIOLATION_SEQUENCE.NEXTVAL, 5, 2, 'Wearing a graphic t-shirt.', '2018-03-04');
 Insert into SOFT_SKILL_VIOLATION (ID, SCREENING_ID, VIOLATION_TYPE_ID, COMMENT, TIME) 
-values (SOFT_SKILL_VIOLATION_SEQUENCE.NEXTVAL, 17, 3, 'Had many people in the same room. Was drinking.', '2018-03-05');
+values (SOFT_SKILL_VIOLATION_SEQUENCE.NEXTVAL, 6, 3, 'Had many people in the same room. Was drinking.', '2018-03-05');
 Insert into SOFT_SKILL_VIOLATION (ID, SCREENING_ID, VIOLATION_TYPE_ID, COMMENT, TIME)  
-values (SOFT_SKILL_VIOLATION_SEQUENCE.NEXTVAL, 18, 3, 'He kept wandering off topic, was browsing a site.', '2018-03-06');
+values (SOFT_SKILL_VIOLATION_SEQUENCE.NEXTVAL, 7, 3, 'He kept wandering off topic, was browsing a site.', '2018-03-06');
 Insert into SOFT_SKILL_VIOLATION (ID, SCREENING_ID, VIOLATION_TYPE_ID, COMMENT, TIME) 
-values (SOFT_SKILL_VIOLATION_SEQUENCE.NEXTVAL, 19, 3, 'Extremely distracted, was texting.', '2018-03-07');
+values (SOFT_SKILL_VIOLATION_SEQUENCE.NEXTVAL, 8, 3, 'Extremely distracted, was texting.', '2018-03-07');
  
 COMMIT;
 

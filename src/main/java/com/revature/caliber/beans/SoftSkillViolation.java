@@ -4,12 +4,9 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -27,13 +24,11 @@ public class SoftSkillViolation {
 	@Column(name="ID")
 	private int id;
 	
-	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name="SCREENING_ID")
-	private Screening screening;
+	@Column(name="SCREENING_ID")
+	private int screeningId;
 
-	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name="VIOLATION_TYPE_ID")
-	private ViolationType violation;
+	@Column(name="VIOLATION_TYPE_ID")
+	private int violationId;
 	
 	@Column(name="COMMENT")
 	private String comment;
@@ -47,19 +42,19 @@ public class SoftSkillViolation {
 		super();
 	}
 
-	public SoftSkillViolation(int id, Screening screening, ViolationType violation, String comment, Date time) {
+	public SoftSkillViolation(int id, int screeningId, int violationId, String comment, Date time) {
 		super();
 		this.id = id;
-		this.screening = screening;
-		this.violation = violation;
+		this.screeningId = screeningId;
+		this.violationId = violationId;
 		this.comment = comment;
 		this.time = time;
 	}
 
-	public SoftSkillViolation(Screening screening, ViolationType violation, String comment, Date time) {
+	public SoftSkillViolation(int screeningId, int violationId, String comment, Date time) {
 		super();
-		this.screening = screening;
-		this.violation = violation;
+		this.screeningId = screeningId;
+		this.violationId = violationId;
 		this.comment = comment;
 		this.time = time;
 	}
@@ -72,20 +67,20 @@ public class SoftSkillViolation {
 		this.id = id;
 	}
 
-	public Screening getScreening() {
-		return screening;
+	public int getScreeningId() {
+		return screeningId;
 	}
 
-	public void setScreening(Screening screening) {
-		this.screening = screening;
+	public void setScreeningId(int screeningId) {
+		this.screeningId = screeningId;
 	}
 
-	public ViolationType getViolation() {
-		return violation;
+	public int getViolationId() {
+		return violationId;
 	}
 
-	public void setViolation(ViolationType violation) {
-		this.violation = violation;
+	public void setViolationId(int violationId) {
+		this.violationId = violationId;
 	}
 
 	public String getComment() {
@@ -110,9 +105,9 @@ public class SoftSkillViolation {
 		int result = 1;
 		result = prime * result + ((comment == null) ? 0 : comment.hashCode());
 		result = prime * result + id;
-		result = prime * result + ((screening == null) ? 0 : screening.hashCode());
+		result = prime * result + screeningId;
 		result = prime * result + ((time == null) ? 0 : time.hashCode());
-		result = prime * result + ((violation == null) ? 0 : violation.hashCode());
+		result = prime * result + violationId;
 		return result;
 	}
 
@@ -132,27 +127,23 @@ public class SoftSkillViolation {
 			return false;
 		if (id != other.id)
 			return false;
-		if (screening == null) {
-			if (other.screening != null)
-				return false;
-		} else if (!screening.equals(other.screening))
+		if (screeningId != other.screeningId)
 			return false;
 		if (time == null) {
 			if (other.time != null)
 				return false;
 		} else if (!time.equals(other.time))
 			return false;
-		if (violation == null) {
-			if (other.violation != null)
-				return false;
-		} else if (!violation.equals(other.violation))
+		if (violationId != other.violationId)
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "SoftSkillViolation [id=" + id + ", screening=" + screening + ", violation=" + violation + ", comment="
-				+ comment + ", time=" + time + "]";
+		return "SoftSkillViolation [id=" + id + ", screeningId=" + screeningId + ", violationId=" + violationId
+				+ ", comment=" + comment + ", time=" + time + "]";
 	}
+
+	
 }

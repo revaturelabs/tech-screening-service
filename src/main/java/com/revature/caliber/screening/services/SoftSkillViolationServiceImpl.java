@@ -1,5 +1,7 @@
 package com.revature.caliber.screening.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,12 +22,11 @@ public class SoftSkillViolationServiceImpl implements SoftSkillViolationService 
 	@Override
 	public void delete(int id) {
 		softSkillViolationRepository.delete(id);
-
 	}
 
 	@Override
-	public SoftSkillViolation getByScreeningId(int screeningId) {
-		return softSkillViolationRepository.findByScreeningScreeningId(screeningId);
+	public List<SoftSkillViolation> getAllByScreeningId(int screeningId) {
+		return softSkillViolationRepository.findAllByScreeningId(screeningId);
 	}
 
 }
