@@ -26,6 +26,7 @@ public class ScreeningServiceImpl implements ScreeningService{
 	public Screening setPending(StartingWrapper screeningInfo) {
 		Screening screening = new Screening();
 		ScheduledScreening scheduledScreening = scheduledScreeningRepository.findOne(screeningInfo.scheduledScreeningId);
+		screening.setScreeningId(0);
 		screening.setScheduledScreening(scheduledScreening);
 		screening.setStartDateTime(screeningInfo.beginTime);
 		screening.setTrainerId(screeningInfo.trainerId);
