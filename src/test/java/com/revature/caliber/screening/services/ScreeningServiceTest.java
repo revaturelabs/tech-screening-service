@@ -29,7 +29,7 @@ public class ScreeningServiceTest {
 	@Autowired
 	ScreeningRepository screeningRepo;
 	
-	@Ignore
+
 	@Test
 	public final void testChangeAboutMeCommentaryByScreeningId() {
 		String splargh = "splargh";
@@ -41,7 +41,7 @@ public class ScreeningServiceTest {
 	public final void testChangeGeneralByScreeningId() {
 		String splargh = "splargh";
 		screeningService.updateGeneralComment(splargh, 1);
-		Assert.assertEquals(screeningRepo.findOne(1).getAboutMeCommentary(), splargh);
+		Assert.assertEquals(screeningRepo.findOne(1).getGeneralCommentary(), splargh);
 	}
 
 }
