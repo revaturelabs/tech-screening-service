@@ -1,4 +1,4 @@
-package com.revature.caliber.screening.contollers;
+package com.revature.caliber.screening.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.revature.caliber.screening.services.ScheduledScreeningService;
 import com.revature.caliber.screening.services.ScreeningService;
-import com.revature.caliber.screening.wrapper.CommentWrapper;
-import com.revature.caliber.screening.wrapper.EndingWrapper;
+import com.revature.caliber.screening.wrappers.CommentWrapper;
+import com.revature.caliber.screening.wrappers.EndingWrapper;
 
 
 public class ScreeningController {
