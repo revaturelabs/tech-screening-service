@@ -1,0 +1,109 @@
+{
+	"info": {
+		"_postman_id": "2fa998d4-c0ac-4f2f-9e1f-31f1c90696df",
+		"name": "Screening",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "localhost:10042/screening/generalcomment",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8e048953-c16a-44ee-a472-b9b42d41cf24",
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"pm.test(\"general comment succesfully updated\", function () {",
+							"   pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Body is correct\", function () {",
+							"    pm.response.to.have.body(\"Update General Comment Success!\");",
+							"});",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\t\n\t\"comment\": \"its the newest comment\",\n\t\"screeningId\": 5\n}\n"
+				},
+				"url": {
+					"raw": "localhost:10042/screening/generalcomment",
+					"host": [
+						"localhost"
+					],
+					"port": "10042",
+					"path": [
+						"screening",
+						"generalcomment"
+					]
+				},
+				"description": "updating general comment"
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:10042/screening/introcomment",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "29756e33-0b28-49c3-9d2c-060807ab0a0e",
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"pm.test(\"intro comment succesfully updated\", function () {",
+							"   pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Body is correct\", function () {",
+							"    pm.response.to.have.body(\"Update introComment Completed\");",
+							"});",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\t\n\t\"comment\": \"its the newest comment\",\n\t\"screeningId\": 5\n}\n"
+				},
+				"url": {
+					"raw": "localhost:10042/screening/introcomment",
+					"host": [
+						"localhost"
+					],
+					"port": "10042",
+					"path": [
+						"screening",
+						"introcomment"
+					]
+				},
+				"description": "updating about me comment"
+			},
+			"response": []
+		}
+	]
+}

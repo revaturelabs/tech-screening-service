@@ -23,7 +23,6 @@ public class Screening {
 	@Column(name = "id")
 	private int screeningId;
 
-
 	@OneToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="candidate_id")
 	private Candidate candidate;
@@ -188,7 +187,7 @@ public class Screening {
 	public void setScheduledScreening(ScheduledScreening scheduledScreening) {
 		this.scheduledScreening = scheduledScreening;
 	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -287,5 +286,4 @@ public class Screening {
 				+ scheduledScreening + "]";
 	}
 
-	
 }

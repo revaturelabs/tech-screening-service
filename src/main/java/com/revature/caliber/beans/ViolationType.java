@@ -37,6 +37,7 @@ public class ViolationType {
 		this.description = description;
 	}
 
+
 	public int getId() {
 		return id;
 	}
@@ -101,5 +102,4 @@ public class ViolationType {
 				+ "]";
 	}
 
-	
 }
