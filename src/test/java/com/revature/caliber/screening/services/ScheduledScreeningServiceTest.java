@@ -41,5 +41,17 @@ public class ScheduledScreeningServiceTest {
 		assertTrue(scheduledScreenings == null);
 	}
 	
+    @Test
+    public void updateStatusTest() {
+        List<ScheduledScreening> scheduledScreenings = sss.findByStatus("PENDING");
+        int count = scheduledScreenings.size();
+
+        ScheduledScreening scheduledScreening = scheduledScreenings.get(0);
+        sss.updateStatus(scheduledScreening.getScheduledScreeningId());
+        scheduledScreenings = sss.findByStatus("PENDING");
+
+        assertTrue(count > scheduledScreenings.size());
+    }
+	
 	
 }
