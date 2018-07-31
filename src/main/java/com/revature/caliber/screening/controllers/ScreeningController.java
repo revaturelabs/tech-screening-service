@@ -90,10 +90,10 @@ public class ScreeningController {
 	 */
 	@RequestMapping(value = "/violation/", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<SoftSkillViolation> createSoftSkillViolationAndReturnSoftSkillViolationID (@RequestBody ViolationFlagWrapper violationFlag) {
-		SoftSkillViolation ssv = new SoftSkillViolation(violationFlag.screeningId, 
-				violationFlag.violationTypeId, 
-				violationFlag.softSkillComment,
-				violationFlag.violationTime);
+		SoftSkillViolation ssv = new SoftSkillViolation(violationFlag.getScreeningId(), 
+				violationFlag.getViolationTypeId(), 
+				violationFlag.getSoftSkillComment(),
+				violationFlag.getViolationTime());
 		
 		ssv = softSkillViolationService.save(ssv);
 		return new ResponseEntity<>(ssv, HttpStatus.OK);
