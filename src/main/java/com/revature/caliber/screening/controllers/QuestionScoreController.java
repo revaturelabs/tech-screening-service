@@ -26,8 +26,6 @@ import com.revature.caliber.screening.services.QuestionScoreService;
 @CrossOrigin
 public class QuestionScoreController {
 
-	//private static final Logger log = Logger.getLogger(QuestionScoreController.class);
-
 	@Autowired
 	private QuestionScoreService questionScoreService;
 
