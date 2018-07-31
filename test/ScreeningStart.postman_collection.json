@@ -39,7 +39,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\t\"screeningId\" : 0,\r\n\t\"candidate\" : {\"id\" : 1, \"resourceId\": 1, \"name\": \"Bob\", \"email\": \"fake@email.com\", \"phoneNumber\": \"5555555555\", \"skypeId\": \"yes\", \"profileUrl\": \"www.website.com\", \"recruiterName\": \"Cob\", \"college\": \"University College\", \"degree\": \"possibly\", \"major\": \"also possibly\", \"techScreenerName\": \"Dob\" },\r\n\t\"trainerId\" : 2,\r\n\t\"skillType\" : 3,\r\n\t\"compositeScore\" : 2.6,\r\n\t\"aboutMeCommentary\" : \"Talks about himself too much\",\r\n\t\"generalCommentary\" : \"Average, no comment\",\r\n\t\"softSkillCommentary\" : \"Needs to speak up, too quiet\",\r\n\t\"startDateTime\" : \"2018-07-06\",\r\n\t\"endDateTime\" : \"2018-08-07\",\r\n\t\"softSkillsVerdict\" : true,\r\n\t\"status\" : \"Pass\",\r\n\t\"scheduledScreeningId\" : 13\r\n}"
+					"raw": "{\r\n\t\"scheduledScreeningId\" : 13,\r\n\t\"beginTime\" : \"2018-08-07\",\r\n\t\"trainerId\" : 2,\r\n\t\"skillType\" : 3\r\n}"
 				},
 				"url": {
 					"raw": "localhost:10042/screening/start",
