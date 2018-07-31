@@ -31,7 +31,7 @@ public class ScheduledScreening {
 	private int trainer;
 	
 	@Column(name = "STATUS")
-	private String status;
+	private String scheduledStatus;
 	
 	@Column(name = "SKILL_TYPE_ID")
 	private int skillTypeId;
@@ -43,13 +43,13 @@ public class ScheduledScreening {
 		super();
 	}
 
-	public ScheduledScreening(int scheduledScreeningId, Candidate candidate, int trainer, String status,
+	public ScheduledScreening(int scheduledScreeningId, Candidate candidate, int trainer, String scheduledStatus,
 			int skillTypeId, Date scheduledDate) {
 		super();
 		this.scheduledScreeningId = scheduledScreeningId;
 		this.candidate = candidate;
 		this.trainer = trainer;
-		this.status = status;
+		this.scheduledStatus = scheduledStatus;
 		this.skillTypeId = skillTypeId;
 		this.scheduledDate = scheduledDate;
 	}
@@ -78,12 +78,12 @@ public class ScheduledScreening {
 		this.trainer = trainer;
 	}
 
-	public String getStatus() {
-		return status;
+	public String getScheduledStatus() {
+		return scheduledStatus;
 	}
 
-	public void setStatus(String status) {
-		this.status = status;
+	public void setScheduledStatus(String scheduledStatus) {
+		this.scheduledStatus = scheduledStatus;
 	}
 
 	public int getSkillTypeId() {
@@ -102,7 +102,6 @@ public class ScheduledScreening {
 		this.scheduledDate = scheduledDate;
 	}
 
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -110,8 +109,8 @@ public class ScheduledScreening {
 		result = prime * result + ((candidate == null) ? 0 : candidate.hashCode());
 		result = prime * result + ((scheduledDate == null) ? 0 : scheduledDate.hashCode());
 		result = prime * result + scheduledScreeningId;
+		result = prime * result + ((scheduledStatus == null) ? 0 : scheduledStatus.hashCode());
 		result = prime * result + skillTypeId;
-		result = prime * result + ((status == null) ? 0 : status.hashCode());
 		result = prime * result + trainer;
 		return result;
 	}
@@ -137,12 +136,12 @@ public class ScheduledScreening {
 			return false;
 		if (scheduledScreeningId != other.scheduledScreeningId)
 			return false;
-		if (skillTypeId != other.skillTypeId)
-			return false;
-		if (status == null) {
-			if (other.status != null)
+		if (scheduledStatus == null) {
+			if (other.scheduledStatus != null)
 				return false;
-		} else if (!status.equals(other.status))
+		} else if (!scheduledStatus.equals(other.scheduledStatus))
+			return false;
+		if (skillTypeId != other.skillTypeId)
 			return false;
 		if (trainer != other.trainer)
 			return false;
@@ -152,8 +151,9 @@ public class ScheduledScreening {
 	@Override
 	public String toString() {
 		return "ScheduledScreening [scheduledScreeningId=" + scheduledScreeningId + ", candidate=" + candidate
-				+ ", trainer=" + trainer + ", status=" + status + ", skillTypeId=" + skillTypeId + ", scheduledDate="
-				+ scheduledDate + "]";
+				+ ", trainer=" + trainer + ", scheduledStatus=" + scheduledStatus + ", skillTypeId=" + skillTypeId
+				+ ", scheduledDate=" + scheduledDate + "]";
 	}
+
 
 }

@@ -26,14 +26,14 @@ public class ScreeningServiceImpl implements ScreeningService{
 	@Override
 	public Screening setPending(StartingWrapper screeningInfo) {
 		Screening screening = new Screening();
-		ScheduledScreening scheduledScreening = scheduledScreeningRepository.findOne(screeningInfo.scheduledScreeningId);
+		ScheduledScreening scheduledScreening = scheduledScreeningRepository.findOne(screeningInfo.getScheduledScreeningId());
 		screening.setScreeningId(0);
 		screening.setScheduledScreening(scheduledScreening);
-		screening.setStartDateTime(screeningInfo.beginTime);
-		screening.setTrainerId(screeningInfo.trainerId);
+		screening.setStartDateTime(screeningInfo.getBeginTime());
+		screening.setTrainerId(screeningInfo.getTrainerId());
 		screening.setCandidate(scheduledScreening.getCandidate());
-		screening.setSkillType(screeningInfo.skillTypeId);
-		screening.setStatus("Pending");
+		screening.setSkillType(screeningInfo.getSkillTypeId());
+		screening.setStatus("PENDING");
 		return screeningRepository.save(screening);
 	}
 

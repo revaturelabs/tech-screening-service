@@ -18,7 +18,7 @@ public class ScheduledScreeningServiceImpl implements ScheduledScreeningService 
 	public List<ScheduledScreening> findByStatus(String status) {
 		List<ScheduledScreening> simpleScheduledScreenings = null;
 		if ("PENDING".equals(status) || "SCREENED".equals(status)) {
-			simpleScheduledScreenings = scheduledScreeningRepository.findByStatus(status);
+			simpleScheduledScreenings = scheduledScreeningRepository.findByScheduledStatus(status);
 		}
 		return simpleScheduledScreenings;
 	}
@@ -27,7 +27,7 @@ public class ScheduledScreeningServiceImpl implements ScheduledScreeningService 
 	public void updateStatus(int scheduledScreeningId) throws IllegalArgumentException {
 		ScheduledScreening ss = scheduledScreeningRepository.findOne(scheduledScreeningId);
 		if (ss!=null) {
-			ss.setStatus("SCREENED");
+			ss.setScheduledStatus("SCREENED");
 			scheduledScreeningRepository.save(ss);
 		} else {
 			throw new IllegalArgumentException("Status must be 'PENDING' or 'SCREENED'");

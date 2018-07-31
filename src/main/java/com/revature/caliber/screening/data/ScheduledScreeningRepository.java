@@ -23,6 +23,6 @@ public interface ScheduledScreeningRepository extends JpaRepository<ScheduledScr
 	 * @return List of SimpleScheduledScreening instances associated
 	 * with the given Status string
 	 */
-	List<ScheduledScreening> findByStatus(String status);
+	List<ScheduledScreening> findByScheduledStatus(String status);
 
 }

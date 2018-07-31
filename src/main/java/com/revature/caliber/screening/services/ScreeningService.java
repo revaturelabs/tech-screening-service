@@ -11,11 +11,9 @@ public interface ScreeningService {
 	
 
 	public Screening getScreening(int id);
-
 	public void updateAboutMeComment(String aboutMeComment, Integer screeningId);
 	public void updateGeneralComment(String generalComment, Integer screeningId);
 	public void endScreening(EndingWrapper screeningInfo);
-
 	public Screening setPending(StartingWrapper screeningInfo);
 }
 
