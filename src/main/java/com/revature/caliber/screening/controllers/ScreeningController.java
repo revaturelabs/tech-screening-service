@@ -21,7 +21,6 @@ import com.revature.caliber.screening.wrappers.StartingWrapper;
  * @author Jakob LaSorella | 1805-WVU-MAY29 | Richard Orr
  */
 @RestController
-@CrossOrigin
 public class ScreeningController {
 	
 	@Autowired
