@@ -89,14 +89,14 @@ public class ScreeningController {
 	 * @return An HttpStatus of OK signaling the successful entry of SoftSkillViolation objects.
 	 */
 	@RequestMapping(value = "/violation/", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Void> createSoftSkillViolationAndReturnSoftSkillViolationID (@RequestBody ViolationFlagWrapper violationFlag) {
+	public ResponseEntity<SoftSkillViolation> createSoftSkillViolationAndReturnSoftSkillViolationID (@RequestBody ViolationFlagWrapper violationFlag) {
 		SoftSkillViolation ssv = new SoftSkillViolation(violationFlag.screeningId, 
 				violationFlag.violationTypeId, 
 				violationFlag.softSkillComment,
 				violationFlag.violationTime);
 		
-		softSkillViolationService.save(ssv);
-		return new ResponseEntity<>(HttpStatus.OK);
+		ssv = softSkillViolationService.save(ssv);
+		return new ResponseEntity<>(ssv, HttpStatus.OK);
 	}
 	
 	/**
