@@ -7,13 +7,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.caliber.screening.services.ScheduledScreeningService;
 import com.revature.caliber.screening.services.ScreeningService;
 import com.revature.caliber.screening.wrappers.CommentWrapper;
 import com.revature.caliber.screening.wrappers.EndingWrapper;
 
-
+@RestController
 public class ScreeningController {
 	
 	@Autowired
@@ -29,7 +30,7 @@ public class ScreeningController {
 	 */
 	@RequestMapping(value="/screening/introcomment", method=RequestMethod.POST)
 	public ResponseEntity<String> updateAboutMeCommentary (@RequestBody CommentWrapper comment){
-		screeningService.updateAboutMeComment(comment.comment, comment.screeningId);
+		screeningService.updateAboutMeComment(comment.getComment(), comment.getScreeningId());
 		return new ResponseEntity<>("Update introComment Completed", HttpStatus.OK); 
 	}
 	
@@ -41,7 +42,7 @@ public class ScreeningController {
 	 */
 	@RequestMapping(value = "/screening/generalcomment", method = RequestMethod.POST)
 	public ResponseEntity<String> storeGeneralComment(@RequestBody CommentWrapper comment){
-		screeningService.updateGeneralComment(comment.comment, comment.screeningId);
+		screeningService.updateGeneralComment(comment.getComment(), comment.getScreeningId());
 		return new ResponseEntity<>( "Update General Comment Success!",HttpStatus.OK);
 	}
 	
@@ -49,12 +50,12 @@ public class ScreeningController {
 	 * End a Screening and update the information by screeningId
 	 * 
 	 * @param simpleScreening - the status, softSkillsVerdict, softSkillsCommentary, endDateTime, compositeScore, and screeningId of a completed screening.
-	 * @return An HttpStatus of OK signalling the successful entry of a screening.
+	 * @return An HttpStatus of OK signaling the successful entry of a screening.
 	 */
 	@RequestMapping(value = "/screening/end", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Void> endScreening(@RequestBody EndingWrapper screeningInfo) {
 		screeningService.endScreening(screeningInfo);
-		scheduledScreeningService.updateStatus(screeningInfo.scheduledScreeningId);
+		scheduledScreeningService.updateStatus(screeningInfo.getScheduledScreeningId());
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 }

@@ -104,6 +104,48 @@
 				"description": "updating about me comment"
 			},
 			"response": []
+		},
+		{
+			"name": "localhost:10042/screening/end",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "34d3c5fe-3212-4f42-8563-15d91c901b69",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"response is ok\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"status\": \"SCREENED\",\r\n\t\"softSkillVerdict\": 1,\r\n\t\"softSkillCommentary\": \"average\",\r\n\t\"endDateTime\": \"2018-08-07\",\r\n\t\"screeningId\": 5,\r\n\t\"scheduledScreeningId\": 5,\r\n\t\"compositeScore\": 80\r\n}"
+				},
+				"url": {
+					"raw": "localhost:10042/screening/end",
+					"host": [
+						"localhost"
+					],
+					"port": "10042",
+					"path": [
+						"screening",
+						"end"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
