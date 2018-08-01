@@ -1,4 +1,4 @@
-package com.revature.caliber.screening.data;
+package com.revature.caliber.screening.services;
 
 import static org.junit.Assert.assertTrue;
 
@@ -14,32 +14,32 @@ import com.revature.caliber.beans.SimpleQuestionScore;
 import com.revature.caliber.screening.Application;
 
 /**
- * Question Score Repository Testing class
+ * Question Score Service Testing class
  * 
- * @author Thomas Santillan | 1805-WVU-MAY29 | Richard Orr
+ * @author Aaron Ware | 1805-WVU-MAY29 | Richard Orr
  *
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes=Application.class)
-public class QuestionScoreRepositoryTest {
+public class QuestionScoreServiceTest {
 	
 	
 	@Autowired
-	QuestionScoreRepository qsr;
+	QuestionScoreService qss;
 	
 	@Test
 	public void saveObjectTest() {
 		SimpleQuestionScore qs = new SimpleQuestionScore();
 		qs.setQuestionId(1);
 		qs.setScreeningId(1);
-		qsr.save(qs);
+		qss.save(qs);
 
 		assertTrue(qs.getScreeningId() != 0);
 	}
 	
 	@Test
 	public void findInterViewResultTest() {
-		List<SimpleQuestionScore> interviewResults = qsr.findByScreeningId(1);
+		List<SimpleQuestionScore> interviewResults = qss.findByScreeningId(1);
 		assertTrue(interviewResults != null && !interviewResults.isEmpty());
 	}
 	

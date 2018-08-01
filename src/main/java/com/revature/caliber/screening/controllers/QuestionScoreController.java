@@ -23,7 +23,6 @@ import com.revature.caliber.screening.services.QuestionScoreService;
 @RestController
 public class QuestionScoreController {
 
-
 	@Autowired
 	private QuestionScoreService questionScoreService;
 
@@ -51,7 +50,7 @@ public class QuestionScoreController {
 	public ResponseEntity<List<SimpleQuestionScore>> getScoresByScreeningId(
 			@PathVariable("screeningId") Integer screeningId) {
 		List<SimpleQuestionScore> scoreList = questionScoreService.findByScreeningId(screeningId);
-		return new ResponseEntity<List<SimpleQuestionScore>>(scoreList, HttpStatus.OK);
+		return new ResponseEntity<>(scoreList, HttpStatus.OK);
 	}
 
 }
