@@ -19,7 +19,6 @@ import com.revature.caliber.screening.Application;
  * @author Thomas Santillan | 1805-WVU-MAY29 | Richard Orr
  *
  */
-
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes=Application.class)
 public class QuestionScoreRepositoryTest {
