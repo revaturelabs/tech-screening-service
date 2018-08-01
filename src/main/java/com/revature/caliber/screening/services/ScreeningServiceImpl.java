@@ -75,11 +75,11 @@ public class ScreeningServiceImpl implements ScreeningService{
 	 */
 	@Override
 	public void endScreening(EndingWrapper screeningInfo) {
-		Screening s = screeningRepository.findOne(screeningInfo.screeningId);
-		s.setStatus(screeningInfo.status);
-		s.setSoftSkillsVerdict(screeningInfo.softSkillVerdict);
-		s.setSoftSkillCommentary(screeningInfo.softSkillCommentary);
-		s.setEndDateTime(screeningInfo.endDateTime);
+		Screening s = screeningRepository.findOne(screeningInfo.getScreeningId());
+		s.setStatus(screeningInfo.getStatus());
+		s.setSoftSkillsVerdict(screeningInfo.isSoftSkillVerdict());
+		s.setSoftSkillCommentary(screeningInfo.getSoftSkillCommentary());
+		s.setEndDateTime(screeningInfo.getEndDateTime());
 		screeningRepository.save(s);	
 	}
  
