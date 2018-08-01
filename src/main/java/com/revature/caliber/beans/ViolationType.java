@@ -18,10 +18,9 @@ public class ViolationType {
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="VIOLATION_SEQUENCE")
 	@SequenceGenerator(name="VIOLATION_SEQUENCE",sequenceName="VIOLATION_SEQUENCE")
-	@Column(name="VIOLATION_ID")
-	private int violationTypeId;
+	private int id;
 	
-	@Column(name="VIOLATION")
+	@Column(name="VIOLATION_TYPE")
 	private String violationTypeText;
 	
 	@Column(name = "DESCRIPTION")
@@ -31,19 +30,19 @@ public class ViolationType {
 		super();
 	}
 
-	public ViolationType(int violationTypeId, String violationTypeText, String description) {
+	public ViolationType(int id, String violationTypeText, String description) {
 		super();
-		this.violationTypeId = violationTypeId;
+		this.id = id;
 		this.violationTypeText = violationTypeText;
 		this.description = description;
 	}
-	
-	public int getViolationTypeId() {
-		return violationTypeId;
+
+	public int getId() {
+		return id;
 	}
 
-	public void setViolationTypeId(int violationTypeId) {
-		this.violationTypeId = violationTypeId;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getViolationTypeText() {
@@ -61,13 +60,13 @@ public class ViolationType {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
-		result = prime * result + violationTypeId;
+		result = prime * result + id;
 		result = prime * result + ((violationTypeText == null) ? 0 : violationTypeText.hashCode());
 		return result;
 	}
@@ -86,7 +85,7 @@ public class ViolationType {
 				return false;
 		} else if (!description.equals(other.description))
 			return false;
-		if (violationTypeId != other.violationTypeId)
+		if (id != other.id)
 			return false;
 		if (violationTypeText == null) {
 			if (other.violationTypeText != null)
@@ -98,7 +97,9 @@ public class ViolationType {
 
 	@Override
 	public String toString() {
-		return "ViolationType [violationTypeId=" + violationTypeId + ", violationTypeText=" + violationTypeText
-				+ ", description=" + description + "]";
+		return "ViolationType [id=" + id + ", violationTypeText=" + violationTypeText + ", description=" + description
+				+ "]";
 	}
+
+	
 }
