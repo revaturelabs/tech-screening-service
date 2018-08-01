@@ -69,7 +69,6 @@ public class ScreeningServiceTest {
 		Screening screening = ss.setPending(sw);
 		Assert.assertTrue(screening.getScreeningId() != 0);
 		Assert.assertEquals("PENDING", screening.getStatus());
-
 	}
 	
 
