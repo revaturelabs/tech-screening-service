@@ -37,7 +37,7 @@ public class ViolationType {
 		this.violationTypeText = violationTypeText;
 		this.description = description;
 	}
-	
+
 	public int getViolationTypeId() {
 		return violationTypeId;
 	}
