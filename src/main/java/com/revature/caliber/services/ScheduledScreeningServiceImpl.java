@@ -10,9 +10,9 @@ import java.util.List;
 @Service
 public class ScheduledScreeningServiceImpl implements ScheduledScreeningService {
 
-	@Autowired 
+	@Autowired
 	private ScheduledScreeningRepository scheduledScreeningRepository;
-	
+
 	@Override
 	public List<ScheduledScreening> findByStatus(String status) {
 		List<ScheduledScreening> simpleScheduledScreenings = null;
@@ -24,12 +24,12 @@ public class ScheduledScreeningServiceImpl implements ScheduledScreeningService 
 
 	@Override
 	public void updateStatus(int scheduledScreeningId) {
-		ScheduledScreening ss = scheduledScreeningRepository.findOne(scheduledScreeningId);
-		if (ss!=null) {
+		ScheduledScreening ss = scheduledScreeningRepository.findById(scheduledScreeningId).orElse(null);
+		if (ss != null) {
 			ss.setScheduledStatus("SCREENED");
 			scheduledScreeningRepository.save(ss);
 		}
 	}
-	
+
 
 }
