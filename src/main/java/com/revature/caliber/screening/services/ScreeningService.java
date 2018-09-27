@@ -1,7 +1,6 @@
 package com.revature.caliber.screening.services;
 
 import com.revature.caliber.beans.Screening;
-import com.revature.caliber.screening.wrappers.StartingWrapper;
 
 public interface ScreeningService {
 	
@@ -13,5 +12,7 @@ public interface ScreeningService {
 	 * @param screening - Screening object
 	 * @return a screening object
 	 */
-	public Screening setPending(StartingWrapper screeningInfo);
+	public Screening setPending(Screening screening);
+	
+	public Screening getScreening(int id);
 }
