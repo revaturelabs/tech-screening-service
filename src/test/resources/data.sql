@@ -109,11 +109,6 @@ COMPOSITE_SCORE, ABOUT_COMMENT, GENERAL_COMMENT, SOFT_SKILL_COMMENT,
 START_DATE, END_DATE, SOFT_SKILL_VERDICT, STATUS, SCHEDULED_SCREENING_ID) 
 values (SCREENING_SEQUENCE.NEXTVAL, 3 , 8 , 2, 50.0, 'intoComment8','generalComment8','softskillComment8', '2018-03-12', '2018-03-14', 1, 'Pending', 8);
 
-Insert into SCREENING (ID, TRAINER_ID, CANDIDATE_ID, SKILL_TYPE_ID, 
-COMPOSITE_SCORE, ABOUT_COMMENT, GENERAL_COMMENT, SOFT_SKILL_COMMENT,
-START_DATE, END_DATE, SOFT_SKILL_VERDICT, STATUS, SCHEDULED_SCREENING_ID) 
-values (SCREENING_SEQUENCE.NEXTVAL, 3 , 8 , 2, 50.0, 'intoComment8','generalComment8','softskillComment8', '2018-03-12', '2018-03-14', 1, 'Pending', 8);
-
 --------------------------------------------------------
 --  DML for Sequence VIOLATION_SEQUENCE
 --------------------------------------------------------
