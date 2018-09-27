@@ -1,0 +1,48 @@
+{
+	"info": {
+		"_postman_id": "773dfa8c-9838-45be-9f8f-d4fabde57c9f",
+		"name": "pending-request",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"_postman_id": "85f7cb49-26a2-42e3-9f0a-cd4013123f9a",
+			"name": "GetPendingScheduledScreenings",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8f14bf2a-3bed-49b9-9fa5-c42bb475060d",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Pending ScheduledScreenings are returned\", function() {",
+							"   pm.expect(pm.response.json().results).to.not.equal(null);",
+							"});",
+							"",
+							"pm.test(\"response is ok\", function () {",
+							"   pm.response.to.have.status(200);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost:10042/screening/scheduled",
+					"host": [
+						"localhost"
+					],
+					"port": "10042",
+					"path": [
+						"screening",
+						"scheduled"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

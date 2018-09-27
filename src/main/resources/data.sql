@@ -108,7 +108,6 @@ Insert into SCREENING (ID, TRAINER_ID, CANDIDATE_ID, SKILL_TYPE_ID,
 COMPOSITE_SCORE, ABOUT_COMMENT, GENERAL_COMMENT, SOFT_SKILL_COMMENT,
 START_DATE, END_DATE, SOFT_SKILL_VERDICT, STATUS, SCHEDULED_SCREENING_ID) 
 values (SCREENING_SEQUENCE.NEXTVAL, 3 , 8 , 2, 50.0, 'intoComment8','generalComment8','softskillComment8', '2018-03-12', '2018-03-14', 1, 'Pending', 8);
- 
 
 --------------------------------------------------------
 --  DML for Sequence VIOLATION_SEQUENCE
@@ -148,7 +147,6 @@ values (SOFT_SKILL_VIOLATION_SEQUENCE.NEXTVAL, 7, 3, 'Extremely distracted, was 
  
 COMMIT;
 
-
 --------------------------------------------------------
 --  DML for Sequence QUESTION_SCORE_SEQUENCE
 --------------------------------------------------------
@@ -175,3 +173,4 @@ Insert into QUESTION_SCORE (ID, QUESTION_ID, SCREENING_ID, SCORE, COMMENT, TIME)
 values (QUESTION_SCORE_SEQUENCE.NEXTVAL, 4, 2, 1,'Bad wording, not sure they understand', '2018-03-01');
 
 COMMIT;
+

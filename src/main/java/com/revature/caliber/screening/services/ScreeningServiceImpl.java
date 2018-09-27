@@ -52,6 +52,15 @@ public class ScreeningServiceImpl implements ScreeningService{
 		s.setSoftSkillCommentary(screeningInfo.getSoftSkillCommentary());
 		s.setEndDateTime(screeningInfo.getEndDateTime());
 		screeningRepository.save(s);	
+
+	public Screening setPending(Screening screening) {
+		screening.setStatus("Pending");
+		return screeningRepository.save(screening);
+	}
+
+	@Override
+	public Screening getScreening(int id) {
+		return screeningRepository.findOne(id);
 	}
 
 }

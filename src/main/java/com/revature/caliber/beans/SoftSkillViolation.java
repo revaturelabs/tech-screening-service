@@ -4,12 +4,9 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -24,37 +21,43 @@ public class SoftSkillViolation {
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="SOFT_SKILL_VIOLATION_SEQUENCE")
 	@SequenceGenerator(allocationSize=1,name="SOFT_SKILL_VIOLATION_SEQUENCE",sequenceName="SOFT_SKILL_VIOLATION_SEQUENCE")
-	@Column(name="SOFT_SKILL_VIOLATION_ID")
+	@Column(name="ID")
 	private int id;
 	
-	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name="SCREENING_ID")
-	private Screening screeningId;
-	
+	@Column(name="SCREENING_ID")
+	private int screeningId;
+
 	@Column(name="VIOLATION_TYPE_ID")
 	private int violationId;
 	
-	@Column(name="SOFT_SKILL_VIOLATION_COMMENT")
+	@Column(name="COMMENT")
 	private String comment;
 	
 	@CreationTimestamp
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="TIME")
-	private Date Time;
+	private Date time;
 	
 	public SoftSkillViolation() {
 		super();
 	}
 
-	public SoftSkillViolation(int id, Screening screeningId, int violationId, String comment, Date time) {
+	public SoftSkillViolation(int id, int screeningId, int violationId, String comment, Date time) {
 		super();
 		this.id = id;
 		this.screeningId = screeningId;
 		this.violationId = violationId;
 		this.comment = comment;
-		Time = time;
+		this.time = time;
 	}
-	
+
+	public SoftSkillViolation(int screeningId, int violationId, String comment, Date time) {
+		super();
+		this.screeningId = screeningId;
+		this.violationId = violationId;
+		this.comment = comment;
+		this.time = time;
+	}
 	public int getId() {
 		return id;
 	}
@@ -63,11 +66,11 @@ public class SoftSkillViolation {
 		this.id = id;
 	}
 
-	public Screening getScreeningId() {
+	public int getScreeningId() {
 		return screeningId;
 	}
 
-	public void setScreeningId(Screening screeningId) {
+	public void setScreeningId(int screeningId) {
 		this.screeningId = screeningId;
 	}
 
@@ -88,21 +91,21 @@ public class SoftSkillViolation {
 	}
 
 	public Date getTime() {
-		return Time;
+		return time;
 	}
 
 	public void setTime(Date time) {
-		Time = time;
+		this.time = time;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((Time == null) ? 0 : Time.hashCode());
 		result = prime * result + ((comment == null) ? 0 : comment.hashCode());
 		result = prime * result + id;
-		result = prime * result + ((screeningId == null) ? 0 : screeningId.hashCode());
+		result = prime * result + screeningId;
+		result = prime * result + ((time == null) ? 0 : time.hashCode());
 		result = prime * result + violationId;
 		return result;
 	}
@@ -116,11 +119,6 @@ public class SoftSkillViolation {
 		if (getClass() != obj.getClass())
 			return false;
 		SoftSkillViolation other = (SoftSkillViolation) obj;
-		if (Time == null) {
-			if (other.Time != null)
-				return false;
-		} else if (!Time.equals(other.Time))
-			return false;
 		if (comment == null) {
 			if (other.comment != null)
 				return false;
@@ -128,10 +126,12 @@ public class SoftSkillViolation {
 			return false;
 		if (id != other.id)
 			return false;
-		if (screeningId == null) {
-			if (other.screeningId != null)
+		if (screeningId != other.screeningId)
+			return false;
+		if (time == null) {
+			if (other.time != null)
 				return false;
-		} else if (!screeningId.equals(other.screeningId))
+		} else if (!time.equals(other.time))
 			return false;
 		if (violationId != other.violationId)
 			return false;
@@ -141,6 +141,6 @@ public class SoftSkillViolation {
 	@Override
 	public String toString() {
 		return "SoftSkillViolation [id=" + id + ", screeningId=" + screeningId + ", violationId=" + violationId
-				+ ", comment=" + comment + ", Time=" + Time + "]";
-	}	
+				+ ", comment=" + comment + ", time=" + time + "]";
+	}
 }

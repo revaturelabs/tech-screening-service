@@ -1,4 +1,3 @@
-
 package com.revature.caliber.screening.services;
 
 import org.junit.Assert;
@@ -13,6 +12,7 @@ import com.revature.caliber.beans.Screening;
 import com.revature.caliber.screening.Application;
 import com.revature.caliber.screening.data.ScreeningRepository;
 import com.revature.caliber.screening.wrappers.EndingWrapper;
+import com.revature.caliber.screening.wrappers.StartingWrapper;
 
 /**
  * Scheduled Screening Repository Testing class
@@ -58,5 +58,14 @@ public class ScreeningServiceTest {
 		ss.endScreening(ew);
 		Assert.assertEquals(sr.findOne(s.getScreeningId()).getStatus(), "SCREENED");
 	}
-
+		
+	@Test
+	public final void testServiceSave() {
+		StartingWrapper sw = new StartingWrapper();
+		sw.setScheduledScreeningId(1);
+		sw.setTrainerId(1);
+		Screening screening = ss.setPending(sw);
+		Assert.assertTrue(screening.getScreeningId() != 0);
+		Assert.assertEquals("PENDING", screening.getStatus());
+	}
 }
