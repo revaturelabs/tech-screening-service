@@ -148,7 +148,6 @@ values (SOFT_SKILL_VIOLATION_SEQUENCE.NEXTVAL, 7, 3, 'Extremely distracted, was 
  
 COMMIT;
 
-
 --------------------------------------------------------
 --  DML for Sequence QUESTION_SCORE_SEQUENCE
 --------------------------------------------------------
@@ -175,3 +174,4 @@ Insert into QUESTION_SCORE (ID, QUESTION_ID, SCREENING_ID, SCORE, COMMENT, TIME)
 values (QUESTION_SCORE_SEQUENCE.NEXTVAL, 4, 2, 1,'Bad wording, not sure they understand', '2018-03-01');
 
 COMMIT;
+

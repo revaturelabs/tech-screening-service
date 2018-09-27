@@ -265,6 +265,4 @@ public class Candidate {
 				+ ", recruiterName=" + recruiterName + ", college=" + college + ", degree=" + degree + ", major="
 				+ major + ", techScreenerName=" + techScreenerName + "]";
 	}
-
-	
 }

@@ -7,4 +7,6 @@ public enum ScheduledStatus {
 	PENDING,
 	@JsonProperty("SCREENED")
 	SCREENED
+
 }
+

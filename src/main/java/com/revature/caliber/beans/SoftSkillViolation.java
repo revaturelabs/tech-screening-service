@@ -54,7 +54,7 @@ public class SoftSkillViolation {
 		this.comment = comment;
 		Time = time;
 	}
-	
+
 	public int getId() {
 		return id;
 	}
