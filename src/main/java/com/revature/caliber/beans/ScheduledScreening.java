@@ -102,6 +102,7 @@ public class ScheduledScreening {
 		this.scheduledDate = scheduledDate;
 	}
 
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -153,5 +154,5 @@ public class ScheduledScreening {
 		return "ScheduledScreening [scheduledScreeningId=" + scheduledScreeningId + ", candidate=" + candidate
 				+ ", trainer=" + trainer + ", status=" + status + ", skillTypeId=" + skillTypeId + ", scheduledDate="
 				+ scheduledDate + "]";
-	}
+	}	
 }
