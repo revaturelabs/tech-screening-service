@@ -36,7 +36,7 @@ public class ViolationType {
 		this.violationTypeText = violationTypeText;
 		this.description = description;
 	}
-
+  
 	public int getId() {
 		return id;
 	}
@@ -100,6 +100,4 @@ public class ViolationType {
 		return "ViolationType [id=" + id + ", violationTypeText=" + violationTypeText + ", description=" + description
 				+ "]";
 	}
-
-	
 }

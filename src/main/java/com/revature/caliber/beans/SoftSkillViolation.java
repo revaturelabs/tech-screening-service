@@ -58,7 +58,6 @@ public class SoftSkillViolation {
 		this.comment = comment;
 		this.time = time;
 	}
-
 	public int getId() {
 		return id;
 	}
@@ -144,6 +143,4 @@ public class SoftSkillViolation {
 		return "SoftSkillViolation [id=" + id + ", screeningId=" + screeningId + ", violationId=" + violationId
 				+ ", comment=" + comment + ", time=" + time + "]";
 	}
-
-	
 }

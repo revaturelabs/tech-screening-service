@@ -69,9 +69,6 @@ create table if not exists question_score(
           time timestamp
 );
 
-
-
-
 DROP SEQUENCE IF EXISTS QUESTION_SCORE_SEQUENCE;
 
 CREATE SEQUENCE  IF NOT EXISTS  QUESTION_SCORE_SEQUENCE;
