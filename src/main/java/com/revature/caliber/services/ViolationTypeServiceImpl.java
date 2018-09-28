@@ -15,7 +15,7 @@ public class ViolationTypeServiceImpl implements ViolationTypeService {
 	
 	@Override
 	public ViolationType getViolationType(int id) {
-		return violationTypeRepository.findOne(id);
+		return violationTypeRepository.findById(id).orElse(new ViolationType());
 	}
 
 	@Override
