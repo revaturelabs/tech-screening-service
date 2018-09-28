@@ -30,7 +30,7 @@ public class ScheduledScreeningRepositoryTest {
 	public void saveObjectTest() {
 		ScheduledScreening scheduledScreening = new ScheduledScreening();
 		scheduledScreening.setCandidate(new Candidate());
-		scheduledScreening.getCandidate().setId(1);
+		scheduledScreening.getCandidate().setCandidateId(1);
 		scheduledScreening.setTrainer(1);
 		
 		ssr.save(scheduledScreening);
