@@ -1,6 +1,7 @@
 package com.revature.caliber.services;
 
 import com.revature.caliber.beans.ScheduledScreening;
+import com.revature.caliber.beans.ScheduledStatus;
 import com.revature.caliber.data.ScheduledScreeningRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,7 +17,7 @@ public class ScheduledScreeningServiceImpl implements ScheduledScreeningService 
 	@Override
 	public List<ScheduledScreening> findByStatus(String status) {
 		List<ScheduledScreening> simpleScheduledScreenings = null;
-		if ("PENDING".equals(status) || "SCREENED".equals(status)) {
+		if (status.equals(ScheduledStatus.PENDING) || status.equals(ScheduledStatus.SCREENED)) {
 			simpleScheduledScreenings = scheduledScreeningRepository.findByScheduledStatus(status);
 		}
 		return simpleScheduledScreenings;
@@ -26,7 +27,7 @@ public class ScheduledScreeningServiceImpl implements ScheduledScreeningService 
 	public void updateStatus(int scheduledScreeningId) {
 		ScheduledScreening ss = scheduledScreeningRepository.findById(scheduledScreeningId).orElse(null);
 		if (ss != null) {
-			ss.setScheduledStatus("SCREENED");
+			ss.setScheduledStatus(ScheduledStatus.SCREENED);
 			scheduledScreeningRepository.save(ss);
 		}
 	}
