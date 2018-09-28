@@ -1,14 +1,12 @@
 package com.revature.caliber.wrappers;
 
-import com.revature.caliber.beans.ScheduledStatus;
-
 import java.util.Date;
 
 /**
  * Wrapper class
  */
 public class EndingWrapper {
-	private ScheduledStatus status;
+	private String status;
 	private boolean softSkillVerdict;
 	private String softSkillCommentary;
 	private Date endDateTime;
@@ -16,11 +14,11 @@ public class EndingWrapper {
 	private int scheduledScreeningId;
 	private double compositeScore;
 
-	public ScheduledStatus getStatus() {
+	public String getStatus() {
 		return status;
 	}
 
-	public void setStatus(ScheduledStatus status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
 	public boolean isSoftSkillVerdict() {

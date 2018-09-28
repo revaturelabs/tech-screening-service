@@ -64,12 +64,12 @@ public class Screening {
 
 	@ApiModelProperty(value = "Enum denoting the current status of the screening")
 	@Column(name = "STATUS")
-	private ScheduledStatus status;
+	private String status;
 
 	public Screening() {
 	}
 
-	public Screening(ScheduledScreening scheduledScreening, int trainerId, int skillType, Double compositeScore, String aboutMeCommentary, String generalCommentary, String softSkillCommentary, Date startDateTime, Date endDateTime, Boolean softSkillsVerdict, ScheduledStatus status) {
+	public Screening(ScheduledScreening scheduledScreening, int trainerId, int skillType, Double compositeScore, String aboutMeCommentary, String generalCommentary, String softSkillCommentary, Date startDateTime, Date endDateTime, Boolean softSkillsVerdict, String status) {
 		this.scheduledScreening = scheduledScreening;
 		this.trainerId = trainerId;
 		this.skillType = skillType;
@@ -171,11 +171,11 @@ public class Screening {
 		this.softSkillsVerdict = softSkillsVerdict;
 	}
 
-	public ScheduledStatus getStatus() {
+	public String getStatus() {
 		return status;
 	}
 
-	public void setStatus(ScheduledStatus status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
 
