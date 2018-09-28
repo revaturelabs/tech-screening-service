@@ -29,7 +29,7 @@ public class ScheduledScreening {
 
 	@ApiModelProperty(value = "Status of the screening")
 	@Column(name = "STATUS")
-	private String scheduledStatus;
+	private ScheduledStatus scheduledStatus;
 
 	@ApiModelProperty(value = "The skill type from admin service that the candidate is training in")
 	@Column(name = "SKILL_TYPE_ID")
@@ -43,7 +43,7 @@ public class ScheduledScreening {
 		super();
 	}
 
-	public ScheduledScreening(int scheduledScreeningId, Candidate candidate, int trainer, String scheduledStatus,
+	public ScheduledScreening(int scheduledScreeningId, Candidate candidate, int trainer, ScheduledStatus scheduledStatus,
 							  int skillTypeId, Date scheduledDate) {
 		super();
 		this.scheduledScreeningId = scheduledScreeningId;
@@ -78,11 +78,11 @@ public class ScheduledScreening {
 		this.trainer = trainer;
 	}
 
-	public String getScheduledStatus() {
+	public ScheduledStatus getScheduledStatus() {
 		return scheduledStatus;
 	}
 
-	public void setScheduledStatus(String scheduledStatus) {
+	public void setScheduledStatus(ScheduledStatus scheduledStatus) {
 		this.scheduledStatus = scheduledStatus;
 	}
 
