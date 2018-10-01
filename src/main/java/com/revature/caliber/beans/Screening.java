@@ -10,7 +10,7 @@ import java.util.Objects;
 /**
  * @author Jeremy Straus | 1807-QC | Emily Higgins
  */
-@ApiModel(value = "Screening", description = "An object to represent the screening object")
+@ApiModel(value = "Screening", description = "An object to record the result of screening a candidate")
 @Entity
 @Table(name = "SCREENING")
 public class Screening {
@@ -30,7 +30,7 @@ public class Screening {
 	@Column(name = "SCREENER_ID")
 	private int screenerId;
 
-	@ApiModelProperty(value = "Id of the job path from the admin-screening-service")
+	@ApiModelProperty(value = "Id referencing a training track in the screening-admin-service")
 	@Column(name = "SKILL_TYPE_ID")
 	private int skillType;
 
@@ -38,15 +38,15 @@ public class Screening {
 	@Column(name = "COMPOSITE_SCORE")
 	private Double compositeScore;
 
-	@ApiModelProperty(value = "Comments regarding candidates introduction")
+	@ApiModelProperty(value = "Comments regarding candidate's introduction")
 	@Column(name = "ABOUT_COMMENT")
 	private String aboutMeCommentary;
 
-	@ApiModelProperty(value = "General commentary regarding the candidates screening")
+	@ApiModelProperty(value = "General commentary regarding the candidate's screening")
 	@Column(name = "GENERAL_COMMENT")
 	private String generalCommentary;
 
-	@ApiModelProperty(value = "Commentary regarding candidates soft skills")
+	@ApiModelProperty(value = "Commentary regarding candidate's soft skills")
 	@Column(name = "SOFT_SKILL_COMMENT")
 	private String softSkillCommentary;
 
@@ -58,7 +58,7 @@ public class Screening {
 	@Column(name = "END_DATE")
 	private Date endDateTime;
 
-	@ApiModelProperty(value = "Final verdict on the candidates Soft Skills")
+	@ApiModelProperty(value = "Final verdict on the candidate's soft skills")
 	@Column(name = "SOFT_SKILL_VERDICT")
 	private Boolean softSkillsVerdict;
 
