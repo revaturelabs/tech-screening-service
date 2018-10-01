@@ -1,6 +1,7 @@
 package com.revature.caliber.services;
 
 import com.revature.caliber.beans.ScheduledScreening;
+import com.revature.caliber.beans.ScheduledStatus;
 import com.revature.caliber.beans.Screening;
 import com.revature.caliber.data.ScheduledScreeningRepository;
 import com.revature.caliber.data.ScreeningRepository;
@@ -27,7 +28,7 @@ public class ScreeningServiceImpl implements ScreeningService {
 		screening.setTrainerId(screeningInfo.getTrainerId());
 		screening.setCandidate(scheduledScreening.getCandidate());
 		screening.setSkillType(screeningInfo.getSkillTypeId());
-		screening.setStatus("PENDING");
+		screening.setStatus(ScheduledStatus.PENDING);
 		return screeningRepository.save(screening);
 	}
 
