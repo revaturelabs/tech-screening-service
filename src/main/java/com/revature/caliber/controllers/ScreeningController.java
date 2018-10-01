@@ -1,9 +1,6 @@
 package com.revature.caliber.controllers;
 
-import com.revature.caliber.beans.ScheduledScreening;
-import com.revature.caliber.beans.Screening;
-import com.revature.caliber.beans.SoftSkillViolation;
-import com.revature.caliber.beans.ViolationType;
+import com.revature.caliber.beans.*;
 import com.revature.caliber.services.ScheduledScreeningService;
 import com.revature.caliber.services.ScreeningService;
 import com.revature.caliber.services.SoftSkillViolationService;
@@ -102,7 +99,7 @@ public class ScreeningController {
 	 */
 	@RequestMapping(value="/screening/scheduled", method=RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<ScheduledScreening>> getAllScheduledScreenings(){
-		List<ScheduledScreening> scheduledScreenings = scheduledScreeningService.findByStatus("PENDING");
+		List<ScheduledScreening> scheduledScreenings = scheduledScreeningService.findByStatus(ScheduledStatus.PENDING);
 		
 		return new ResponseEntity<>(scheduledScreenings, HttpStatus.OK);
 	}

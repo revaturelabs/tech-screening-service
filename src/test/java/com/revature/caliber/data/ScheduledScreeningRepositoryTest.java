@@ -3,6 +3,7 @@ package com.revature.caliber.data;
 import com.revature.caliber.Application;
 import com.revature.caliber.beans.Candidate;
 import com.revature.caliber.beans.ScheduledScreening;
+import com.revature.caliber.beans.ScheduledStatus;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,7 +41,7 @@ public class ScheduledScreeningRepositoryTest {
 	
 	@Test
 	public void findPendingTest() {
-		List<ScheduledScreening> scheduledScreenings = ssr.findByScheduledStatus("PENDING");
+		List<ScheduledScreening> scheduledScreenings = ssr.findAllByScheduledStatus(ScheduledStatus.PENDING);
 		assertTrue(scheduledScreenings != null && !scheduledScreenings.isEmpty());
 	}
 	
