@@ -49,7 +49,7 @@ public class ScreeningServiceTest {
 	public final void testEndingScreening() {
 		Screening s = new Screening();
 		Candidate c = new Candidate();
-		c.setId(1);
+		c.setCandidateId(1);
 		s.setCandidate(c);
 		s.setTrainerId(1);
 		s = sr.save(s);
