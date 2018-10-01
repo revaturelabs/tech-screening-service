@@ -56,7 +56,7 @@ public class ViolationController {
 			@ApiResponse(code = 404, message = "Violation not found"),
 			@ApiResponse(code = 200, message = "Violation deleted")
 	})
-	public ResponseEntity<String> deleteSoftSkillViolation(@PathVariable(value = "id") Integer id) {
+	public ResponseEntity<String> deleteSoftSkillViolation(@PathVariable(value = "id") int id) {
 		try {
 			softSkillViolationService.delete(id);
 		} catch (EmptyResultDataAccessException e) {
