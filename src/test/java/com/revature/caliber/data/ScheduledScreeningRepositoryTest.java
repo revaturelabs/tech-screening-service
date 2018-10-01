@@ -40,7 +40,7 @@ public class ScheduledScreeningRepositoryTest {
 	
 	@Test
 	public void findPendingTest() {
-		List<ScheduledScreening> scheduledScreenings = ssr.findByScheduledStatus("PENDING");
+		List<ScheduledScreening> scheduledScreenings = ssr.findAllByScheduledStatus("PENDING");
 		assertTrue(scheduledScreenings != null && !scheduledScreenings.isEmpty());
 	}
 	

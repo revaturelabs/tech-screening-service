@@ -15,10 +15,10 @@ public class ScheduledScreeningServiceImpl implements ScheduledScreeningService 
 	private ScheduledScreeningRepository scheduledScreeningRepository;
 
 	@Override
-	public List<ScheduledScreening> findByStatus(String status) {
+	public List<ScheduledScreening> findByStatus(ScheduledStatus status) {
 		List<ScheduledScreening> simpleScheduledScreenings = null;
 		if (status.equals(ScheduledStatus.PENDING) || status.equals(ScheduledStatus.SCREENED)) {
-			simpleScheduledScreenings = scheduledScreeningRepository.findByScheduledStatus(status);
+			simpleScheduledScreenings = scheduledScreeningRepository.findAllByScheduledStatus(status);
 		}
 		return simpleScheduledScreenings;
 	}
