@@ -1,28 +1,31 @@
 package com.revature.caliber.beans;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
-@Entity 
-@Table(name="VIOLATION_TYPE")
-@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
+import javax.persistence.*;
+import java.util.Objects;
+
+/**
+ * @author Jeremy Straus | 1807-QC | Emily Higgins
+ */
+@ApiModel(value = "Violation Type", description = "All of the possible types of violations")
+@Entity
+@Table(name = "VIOLATION_TYPE")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class ViolationType {
 
+	@ApiModelProperty(value = "Id of the violation")
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="VIOLATION_SEQUENCE")
-	@SequenceGenerator(name="VIOLATION_SEQUENCE",sequenceName="VIOLATION_SEQUENCE")
-	private int id;
-	
-	@Column(name="VIOLATION_TYPE")
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int violationId;
+
+	@ApiModelProperty(value = "Name of the violation type")
+	@Column(name = "VIOLATION_TYPE")
 	private String violationTypeText;
-	
+
+	@ApiModelProperty(value = "Description of the violation")
 	@Column(name = "DESCRIPTION")
 	private String description;
 
@@ -30,20 +33,20 @@ public class ViolationType {
 		super();
 	}
 
-	public ViolationType(int id, String violationTypeText, String description) {
+	public ViolationType(int violationId, String violationTypeText, String description) {
 		super();
-		this.id = id;
+		this.violationId = violationId;
 		this.violationTypeText = violationTypeText;
 		this.description = description;
 	}
 
 
-	public int getId() {
-		return id;
+	public int getViolationId() {
+		return violationId;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setViolationId(int violationId) {
+		this.violationId = violationId;
 	}
 
 	public String getViolationTypeText() {
@@ -63,43 +66,26 @@ public class ViolationType {
 	}
 
 	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((description == null) ? 0 : description.hashCode());
-		result = prime * result + id;
-		result = prime * result + ((violationTypeText == null) ? 0 : violationTypeText.hashCode());
-		return result;
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		ViolationType that = (ViolationType) o;
+		return getViolationId() == that.getViolationId() &&
+				Objects.equals(getViolationTypeText(), that.getViolationTypeText()) &&
+				Objects.equals(getDescription(), that.getDescription());
 	}
 
 	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		ViolationType other = (ViolationType) obj;
-		if (description == null) {
-			if (other.description != null)
-				return false;
-		} else if (!description.equals(other.description))
-			return false;
-		if (id != other.id)
-			return false;
-		if (violationTypeText == null) {
-			if (other.violationTypeText != null)
-				return false;
-		} else if (!violationTypeText.equals(other.violationTypeText))
-			return false;
-		return true;
+	public int hashCode() {
+		return Objects.hash(getViolationId(), getViolationTypeText(), getDescription());
 	}
 
 	@Override
 	public String toString() {
-		return "ViolationType [id=" + id + ", violationTypeText=" + violationTypeText + ", description=" + description
-				+ "]";
+		return "ViolationType{" +
+				"violationId=" + violationId +
+				", violationTypeText='" + violationTypeText + '\'' +
+				", description='" + description + '\'' +
+				'}';
 	}
-
 }
