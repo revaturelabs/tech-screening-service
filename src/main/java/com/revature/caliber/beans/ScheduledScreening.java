@@ -23,10 +23,6 @@ public class ScheduledScreening {
 	@JoinColumn(name = "candidate_id")
 	private Candidate candidate;
 
-	@ApiModelProperty(value = "Trainer of the Candidate")
-	@Column(name = "trainer_id")
-	private int trainer;
-
 	@ApiModelProperty(value = "Status of the screening")
 	@Column(name = "STATUS")
 	private ScheduledStatus scheduledStatus;
@@ -48,7 +44,6 @@ public class ScheduledScreening {
 		super();
 		this.scheduledScreeningId = scheduledScreeningId;
 		this.candidate = candidate;
-		this.trainer = trainer;
 		this.scheduledStatus = scheduledStatus;
 		this.skillTypeId = skillTypeId;
 		this.scheduledDate = scheduledDate;
@@ -68,14 +63,6 @@ public class ScheduledScreening {
 
 	public void setCandidate(Candidate candidate) {
 		this.candidate = candidate;
-	}
-
-	public int getTrainer() {
-		return trainer;
-	}
-
-	public void setTrainer(int trainer) {
-		this.trainer = trainer;
 	}
 
 	public ScheduledStatus getScheduledStatus() {
@@ -108,7 +95,6 @@ public class ScheduledScreening {
 		if (o == null || getClass() != o.getClass()) return false;
 		ScheduledScreening that = (ScheduledScreening) o;
 		return getScheduledScreeningId() == that.getScheduledScreeningId() &&
-				getTrainer() == that.getTrainer() &&
 				getSkillTypeId() == that.getSkillTypeId() &&
 				Objects.equals(getCandidate(), that.getCandidate()) &&
 				Objects.equals(getScheduledStatus(), that.getScheduledStatus()) &&
@@ -117,7 +103,7 @@ public class ScheduledScreening {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(getScheduledScreeningId(), getCandidate(), getTrainer(), getScheduledStatus(), getSkillTypeId(), getScheduledDate());
+		return Objects.hash(getScheduledScreeningId(), getCandidate(), getScheduledStatus(), getSkillTypeId(), getScheduledDate());
 	}
 
 	@Override
@@ -125,7 +111,6 @@ public class ScheduledScreening {
 		return "ScheduledScreening{" +
 				"scheduledScreeningId=" + scheduledScreeningId +
 				", candidate=" + candidate +
-				", trainer=" + trainer +
 				", scheduledStatus='" + scheduledStatus + '\'' +
 				", skillTypeId=" + skillTypeId +
 				", scheduledDate=" + scheduledDate +
