@@ -4,7 +4,6 @@ import com.revature.caliber.beans.SoftSkillViolation;
 import com.revature.caliber.beans.ViolationType;
 import com.revature.caliber.services.SoftSkillViolationService;
 import com.revature.caliber.services.ViolationTypeService;
-import com.revature.caliber.wrappers.ViolationFlagWrapper;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -68,19 +67,22 @@ public class ViolationController {
 	/**
 	 * Create a SoftSkillViolation for each ViolationID in the RequestBody, and associates it with the given Screening
 	 *
-	 * @param violationFlag - a ViolationFlagWrapper that contains a ViolationId, comment, time of violation, and screeningId
+	 * @param violation The new SoftSkillsViolation
 	 * @return An HttpStatus of OK signaling the successful entry of SoftSkillViolation objects.
 	 */
 	@ApiOperation(value = "Add a new violation type", response = SoftSkillViolation.class)
-	@ApiResponses(value = {@ApiResponse(code = 200, message = "Bucket added")})
+	@ApiResponses(value = {
+			@ApiResponse(code = 200, message = "Bucket added"),
+			@ApiResponse(code = 400, message = "Bad Bucket")
+	})
 	@RequestMapping(value = "/new", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<SoftSkillViolation> createSoftSkillViolationAndReturnSoftSkillViolationID(@RequestBody ViolationFlagWrapper violationFlag) {
-		SoftSkillViolation ssv = new SoftSkillViolation(violationFlag.getScreeningId(),
-				violationFlag.getViolationTypeId(),
-				violationFlag.getSoftSkillComment(),
-				violationFlag.getViolationTime());
+	public ResponseEntity<SoftSkillViolation> createSoftSkillViolationAndReturnSoftSkillViolationID(@RequestBody SoftSkillViolation violation) {
+		if (violation != null && violation != new SoftSkillViolation()) {
+			SoftSkillViolation ssv = softSkillViolationService.save(violation);
+			return new ResponseEntity<>(ssv, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
 
-		ssv = softSkillViolationService.save(ssv);
-		return new ResponseEntity<>(ssv, HttpStatus.OK);
 	}
 }
