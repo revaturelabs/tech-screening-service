@@ -39,7 +39,7 @@ public class ScheduledScreening {
 		super();
 	}
 
-	public ScheduledScreening(int scheduledScreeningId, Candidate candidate, int trainer, ScheduledStatus scheduledStatus,
+	public ScheduledScreening(int scheduledScreeningId, Candidate candidate, ScheduledStatus scheduledStatus,
 							  int skillTypeId, Date scheduledDate) {
 		super();
 		this.scheduledScreeningId = scheduledScreeningId;
