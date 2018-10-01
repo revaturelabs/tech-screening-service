@@ -12,7 +12,7 @@ public class SoftSkillViolationServiceImpl implements SoftSkillViolationService 
 
 	@Autowired
 	SoftSkillViolationRepository softSkillViolationRepository;
-	
+
 	@Override
 	public SoftSkillViolation save(SoftSkillViolation ssv) {
 		return softSkillViolationRepository.save(ssv);
@@ -20,7 +20,7 @@ public class SoftSkillViolationServiceImpl implements SoftSkillViolationService 
 
 	@Override
 	public void delete(int id) {
-		softSkillViolationRepository.delete(id);
+		softSkillViolationRepository.deleteById(id);
 	}
 
 	@Override

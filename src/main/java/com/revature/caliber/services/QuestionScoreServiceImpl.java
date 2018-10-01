@@ -9,26 +9,22 @@ import java.util.List;
 
 /**
  * The service for the Question Score part of the Screening service.
- * 
- * @author Thomas Santillan | 1805-WVU-MAY29 | Richard Orr
  *
+ * @author Thomas Santillan | 1805-WVU-MAY29 | Richard Orr
  */
 @Service
 public class QuestionScoreServiceImpl implements QuestionScoreService {
 
 	@Autowired
 	private QuestionScoreRepository questionScoreRepository;
-	
-	
 
 	@Override
 	public void save(SimpleQuestionScore simpleQuestionScore) {
 		questionScoreRepository.save(simpleQuestionScore);
 	}
-	
 
 	@Override
-	public List<SimpleQuestionScore> findByScreeningId(Integer screeningId) {
+	public List<SimpleQuestionScore> findByScreeningId(int screeningId) {
 		return questionScoreRepository.findByScreeningId(screeningId);
 	}
 

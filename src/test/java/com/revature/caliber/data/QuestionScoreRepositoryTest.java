@@ -30,10 +30,10 @@ public class QuestionScoreRepositoryTest {
 	public void saveObjectTest() {
 		SimpleQuestionScore qs = new SimpleQuestionScore();
 		qs.setQuestionId(1);
-		qs.setScreeningId(1);
+		qs.setScreening(1);
 		qsr.save(qs);
 
-		assertTrue(qs.getScreeningId() != 0);
+		assertTrue(qs.getScreening() != 0);
 	}
 	
 	@Test
