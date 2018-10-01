@@ -51,7 +51,7 @@ public class ScreeningServiceTest {
 		Candidate c = new Candidate();
 		c.setId(1);
 		s.setCandidate(c);
-		s.setTrainerId(1);
+		s.setScreenerId(1);
 		s = sr.save(s);
 		EndingWrapper ew = new EndingWrapper();
 		ew.setScreeningId(s.getScreeningId());
