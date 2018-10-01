@@ -1,6 +1,7 @@
 package com.revature.caliber.data;
 
 import com.revature.caliber.beans.ScheduledScreening;
+import com.revature.caliber.beans.ScheduledStatus;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -22,6 +23,6 @@ public interface ScheduledScreeningRepository extends JpaRepository<ScheduledScr
 	 * @return List of SimpleScheduledScreening instances associated
 	 * with the given Status string
 	 */
-	List<ScheduledScreening> findByScheduledStatus(String status);
+	List<ScheduledScreening> findAllByScheduledStatus(ScheduledStatus status);
 
 }
