@@ -19,7 +19,8 @@ public class ViolationType {
 	@ApiModelProperty(value = "Id of the violation")
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int violationId;
+	@Column(name = "VIOLATION_TYPE_ID")
+	private int violationTypeId;
 
 	@ApiModelProperty(value = "Name of the violation type")
 	@Column(name = "VIOLATION_TYPE")
@@ -33,20 +34,20 @@ public class ViolationType {
 		super();
 	}
 
-	public ViolationType(int violationId, String violationTypeText, String description) {
+	public ViolationType(int violationTypeId, String violationTypeText, String description) {
 		super();
-		this.violationId = violationId;
+		this.violationTypeId = violationTypeId;
 		this.violationTypeText = violationTypeText;
 		this.description = description;
 	}
 
 
-	public int getViolationId() {
-		return violationId;
+	public int getViolationTypeId() {
+		return violationTypeId;
 	}
 
-	public void setViolationId(int violationId) {
-		this.violationId = violationId;
+	public void setViolationTypeId(int violationTypeId) {
+		this.violationTypeId = violationTypeId;
 	}
 
 	public String getViolationTypeText() {
@@ -70,20 +71,20 @@ public class ViolationType {
 		if (this == o) return true;
 		if (o == null || getClass() != o.getClass()) return false;
 		ViolationType that = (ViolationType) o;
-		return getViolationId() == that.getViolationId() &&
+		return getViolationTypeId() == that.getViolationTypeId() &&
 				Objects.equals(getViolationTypeText(), that.getViolationTypeText()) &&
 				Objects.equals(getDescription(), that.getDescription());
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(getViolationId(), getViolationTypeText(), getDescription());
+		return Objects.hash(getViolationTypeId(), getViolationTypeText(), getDescription());
 	}
 
 	@Override
 	public String toString() {
 		return "ViolationType{" +
-				"violationId=" + violationId +
+				"violationTypeId=" + violationTypeId +
 				", violationTypeText='" + violationTypeText + '\'' +
 				", description='" + description + '\'' +
 				'}';
