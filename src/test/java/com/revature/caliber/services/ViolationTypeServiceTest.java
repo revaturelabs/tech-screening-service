@@ -35,7 +35,7 @@ public class ViolationTypeServiceTest {
 	@Test
 	public void getViolationTypeTest() {
 		ViolationType vt = vts.getViolationType(1);
-		assertTrue(vt.getViolationId() == 1);
+		assertTrue(vt.getViolationTypeId() == 1);
 	}
 	
 	@Test
