@@ -38,12 +38,12 @@ public class ScreeningController {
 	/**
 	 * Returns a list of softSkillViolation objects by ScreeningID
 	 *
-	 * @param screeningID - the unique id of a Screening
+	 * @param screeningId - the unique id of a Screening
 	 * @return List of SoftSkillViolation objects
 	 */
 	@RequestMapping(value = "/screening/{id}/violation/", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<List<SoftSkillViolation>> softSkillViolationByScreeningID(@PathVariable(value = "id") Integer id) {
-		List<SoftSkillViolation> ssv = softSkillViolationService.getAllByScreeningId(id);
+	public ResponseEntity<List<SoftSkillViolation>> softSkillViolationByScreeningID(@PathVariable(value = "id") int screeningId) {
+		List<SoftSkillViolation> ssv = softSkillViolationService.getAllByScreeningId(screeningId);
 
 		return new ResponseEntity<>(ssv, HttpStatus.OK);
 	}
@@ -51,7 +51,6 @@ public class ScreeningController {
 	/**
 	 * Get screenings based on the status provided.
 	 *
-	 * @param status - A string notifying whether the screening is pending or complete.
 	 * @return - List of SimpleScreening objects corresponding to status.
 	 */
 	@RequestMapping(value = "/screening/scheduled", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -61,6 +60,12 @@ public class ScreeningController {
 		return new ResponseEntity<>(scheduledScreenings, HttpStatus.OK);
 	}
 
+	/**
+	 * Method to start a screening
+	 *
+	 * @param screeningInfo StartingWrapper to rep
+	 * @return
+	 */
 	@RequestMapping(value = "/screening/start", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Integer> createScreening(@RequestBody StartingWrapper screeningInfo) {
 		Screening i = screeningService.setPending(screeningInfo);
@@ -95,7 +100,7 @@ public class ScreeningController {
 	/**
 	 * End a Screening and update the information by screeningId
 	 *
-	 * @param simpleScreening - the status, softSkillsVerdict, softSkillsCommentary, endDateTime, compositeScore, and screeningId of a completed screening.
+	 * @param screeningInfo - the status, softSkillsVerdict, softSkillsCommentary, endDateTime, compositeScore, and screeningId of a completed screening.
 	 * @return An HttpStatus of OK signaling the successful entry of a screening.
 	 */
 	@RequestMapping(value = "/screening/end", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)

@@ -28,10 +28,8 @@ public class QuestionScoreController {
 	 * @return Response entity with HttpStatus OK
 	 */
 	@RequestMapping(value = "/question/score", method = RequestMethod.POST)
-	public ResponseEntity<Void> questionScore(@RequestBody SimpleQuestionScore questionScore) {
-		questionScoreService
-				.save(new SimpleQuestionScore(questionScore.getQuestionId(), questionScore.getScreeningId(),
-						questionScore.getScore(), questionScore.getComment(), questionScore.getBeginTime()));
+	public ResponseEntity<Void> saveQuestionScore(@RequestBody SimpleQuestionScore questionScore) {
+		questionScoreService.save(questionScore);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
