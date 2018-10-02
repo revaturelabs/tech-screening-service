@@ -39,7 +39,7 @@ public class QuestionScoreRepositoryTest {
 	*/
 	@Test
 	public void findInterViewResultTest() {
-		List<SimpleQuestionScore> interviewResults = qsr.findByScreeningId(1);
+		List<SimpleQuestionScore> interviewResults = qsr.findAllByScreeningScreeningId(1);
 		assertTrue(interviewResults != null && !interviewResults.isEmpty());
 	}
 	

@@ -8,9 +8,9 @@ import java.util.List;
 
 /**
  * The DAO for Question Score.
- * 
- * @author Thomas Santillan| 1805-WVU-MAY29 | Richard Orr
  *
+ * @author Thomas Santillan| 1805-WVU-MAY29 | Richard Orr
+ * @author Jeremy Straus | 1807-QC | Emily Higgins
  */
 
 @Repository
@@ -18,10 +18,10 @@ public interface QuestionScoreRepository extends JpaRepository<SimpleQuestionSco
 
 	/**
 	 * Finds question scores containing given screening id
-	 * 
+	 *
 	 * @param screeningId Id of Screening
 	 * @return List of question scores
 	 */
-	List<SimpleQuestionScore> findByScreeningId(Integer screeningId);
-	
+	List<SimpleQuestionScore> findAllByScreeningScreeningId(int screeningId);
+
 }
