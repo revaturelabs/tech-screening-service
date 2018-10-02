@@ -20,6 +20,7 @@ import java.util.List;
 /**
  * @author Jeremy Straus | 1807-QC | Emily Higgins
  */
+@CrossOrigin
 @RestController
 @RequestMapping("/violation")
 @ApiModel(value = "Violation Controller", description = "A REST controller to handle HTTP requests that deal with Violations")

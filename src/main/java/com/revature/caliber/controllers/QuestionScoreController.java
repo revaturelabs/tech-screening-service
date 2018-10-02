@@ -2,6 +2,10 @@ package com.revature.caliber.controllers;
 
 import com.revature.caliber.beans.SimpleQuestionScore;
 import com.revature.caliber.services.QuestionScoreService;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,11 +15,14 @@ import java.util.List;
 
 /**
  * The controller for incoming REST requests to the Question Score part of the Screening service.
- * 
- * @author Thomas Santillan| 1805-WVU-MAY29 | Richard Orr
  *
+ * @author Thomas Santillan| 1805-WVU-MAY29 | Richard Orr
+ * @author Jeremy Straus | 1807-QC | Emily Higgins
  */
+@CrossOrigin
 @RestController
+@RequestMapping("/questionScore")
+@ApiModel(value = "Question Score Controller", description = "A REST controller to handle HTTP requests that deal with Question Scores")
 public class QuestionScoreController {
 
 	@Autowired
@@ -23,23 +30,34 @@ public class QuestionScoreController {
 
 	/**
 	 * Create a new Question Score and persist it in the database.
-	 * 
-	 * @param questionScore
+	 *
+	 * @param questionScore New object to persist
 	 * @return Response entity with HttpStatus OK
 	 */
-	@RequestMapping(value = "/question/score", method = RequestMethod.POST)
-	public ResponseEntity<Void> saveQuestionScore(@RequestBody SimpleQuestionScore questionScore) {
-		questionScoreService.save(questionScore);
-		return new ResponseEntity<>(HttpStatus.OK);
+	@ApiOperation(value = "Create a new score for a Question")
+	@ApiResponses(value = {
+			@ApiResponse(code = 200, message = "QuestionScore created"),
+			@ApiResponse(code = 400, message = "Could not create QuestionScore")
+	})
+	@RequestMapping(value = "/new", method = RequestMethod.POST)
+	public ResponseEntity<SimpleQuestionScore> saveQuestionScore(@RequestBody SimpleQuestionScore questionScore) {
+		SimpleQuestionScore newScore = questionScoreService.save(questionScore);
+		if (newScore != null) {
+			return new ResponseEntity<>(newScore, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
 	}
-	
+
 	/**
-	 * Gets scores of given id
-	 * 
+	 * Gets QuestionScores of given id
+	 *
 	 * @param screeningId Id of Screening
 	 * @return List of Question scores
 	 */
-	@RequestMapping(value = "question/score/{screeningId}", method = RequestMethod.GET)
+	@ApiOperation(value = "Get QuestionScores for a screening", response = SimpleQuestionScore.class, responseContainer = "List")
+	@ApiResponses(value = {@ApiResponse(code = 200, message = "All QuestionScores for Screening returned")})
+	@RequestMapping(value = "/{screeningId}", method = RequestMethod.GET)
 	public ResponseEntity<List<SimpleQuestionScore>> getScoresByScreeningId(
 			@PathVariable("screeningId") Integer screeningId) {
 		List<SimpleQuestionScore> scoreList = questionScoreService.findByScreeningId(screeningId);

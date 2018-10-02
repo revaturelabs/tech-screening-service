@@ -16,6 +16,9 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
+/**
+ * @author Jeremy Straus | 1807-QC | Emily Higgins
+ */
 @CrossOrigin
 @RestController
 @RequestMapping("/screening")
