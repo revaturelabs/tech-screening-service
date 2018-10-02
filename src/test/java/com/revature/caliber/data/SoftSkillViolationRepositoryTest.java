@@ -30,12 +30,12 @@ public class SoftSkillViolationRepositoryTest {
 	
 	@Test
 	public void findByScreeningScreeningIdTestNotNull() {
-		assertNotNull(ssvr.findAllByScreeningId(1));
+		assertNotNull(ssvr.findAllByScreeningScreeningId(1));
 	}
 	
 	@Test
 	public void findByScreeningScreeningIdTest() {
-		List<SoftSkillViolation> ssv = ssvr.findAllByScreeningId(1);
+		List<SoftSkillViolation> ssv = ssvr.findAllByScreeningScreeningId(1);
 		assertTrue(ssv.size() != 0);
 	}
 }
