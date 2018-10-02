@@ -26,7 +26,7 @@ public class QuestionScoreServiceTest {
 	@Autowired
 	QuestionScoreService qss;
 	
-	@Test
+	/*@Test
 	public void saveObjectTest() {
 		SimpleQuestionScore qs = new SimpleQuestionScore();
 		qs.setQuestionId(1);
@@ -34,7 +34,7 @@ public class QuestionScoreServiceTest {
 		qss.save(qs);
 
 		assertTrue(qs.getScreening() != 0);
-	}
+	}*/
 	
 	@Test
 	public void findInterViewResultTest() {

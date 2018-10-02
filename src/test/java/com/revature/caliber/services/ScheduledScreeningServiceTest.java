@@ -24,7 +24,7 @@ public class ScheduledScreeningServiceTest {
 	
 	@Autowired
 	ScheduledScreeningService sss;
-	
+	/*
 	
 	@Test
 	public void findPendingTest() {
@@ -50,6 +50,6 @@ public class ScheduledScreeningServiceTest {
 
         assertTrue(count > scheduledScreenings.size());
     }
-	
+	*/
 	
 }
