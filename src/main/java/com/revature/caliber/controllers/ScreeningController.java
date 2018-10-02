@@ -7,20 +7,18 @@ import com.revature.caliber.beans.SoftSkillViolation;
 import com.revature.caliber.services.ScheduledScreeningService;
 import com.revature.caliber.services.ScreeningService;
 import com.revature.caliber.services.SoftSkillViolationService;
-import com.revature.caliber.services.ViolationTypeService;
-import com.revature.caliber.wrappers.CommentWrapper;
-import com.revature.caliber.wrappers.EndingWrapper;
-import com.revature.caliber.wrappers.StartingWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
-
+@CrossOrigin
 @RestController
+@RequestMapping("/screening")
 public class ScreeningController {
 
 	@Autowired
@@ -32,16 +30,13 @@ public class ScreeningController {
 	@Autowired
 	SoftSkillViolationService softSkillViolationService;
 
-	@Autowired
-	ViolationTypeService violationTypeService;
-
 	/**
 	 * Returns a list of softSkillViolation objects by ScreeningID
 	 *
 	 * @param screeningId - the unique id of a Screening
 	 * @return List of SoftSkillViolation objects
 	 */
-	@RequestMapping(value = "/screening/{id}/violation/", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "/{id}/violations", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<SoftSkillViolation>> softSkillViolationByScreeningID(@PathVariable(value = "id") int screeningId) {
 		List<SoftSkillViolation> ssv = softSkillViolationService.getAllByScreeningId(screeningId);
 
@@ -51,9 +46,9 @@ public class ScreeningController {
 	/**
 	 * Get screenings based on the status provided.
 	 *
-	 * @return - List of SimpleScreening objects corresponding to status.
+	 * @return - List of ScheduledScreening objects corresponding to status.
 	 */
-	@RequestMapping(value = "/screening/scheduled", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "/scheduled", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<ScheduledScreening>> getAllScheduledScreenings() {
 		List<ScheduledScreening> scheduledScreenings = scheduledScreeningService.findByStatus(ScheduledStatus.PENDING);
 
@@ -61,53 +56,35 @@ public class ScreeningController {
 	}
 
 	/**
-	 * Method to start a screening
+	 * Method to create a new Screening
 	 *
-	 * @param screeningInfo StartingWrapper to rep
-	 * @return
+	 * @param screening Screening to
+	 * @return New screening object
 	 */
-	@RequestMapping(value = "/screening/start", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Integer> createScreening(@RequestBody StartingWrapper screeningInfo) {
-		Screening i = screeningService.setPending(screeningInfo);
-		return new ResponseEntity<>(i.getScreeningId(), HttpStatus.OK);
-	}
-
-
-	/**
-	 * Update the AboutMeCommentary variable of a Screening object
-	 *
-	 * @param comment - CommentaryWrapper object that represents a comment and screeningID
-	 * @return A ResponseEntity containing a success message and an HttpStatus of OK
-	 */
-	@RequestMapping(value = "/screening/introcomment", method = RequestMethod.POST)
-	public ResponseEntity<String> updateAboutMeCommentary(@RequestBody CommentWrapper comment) {
-		screeningService.updateAboutMeComment(comment.getComment(), comment.getScreeningId());
-		return new ResponseEntity<>("Update introComment Completed", HttpStatus.OK);
+	@PostMapping(value = "/new", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Screening> createScreening(@Valid @RequestBody Screening screening) {
+		Screening newScreen = screeningService.createScreening(screening);
+		if (newScreen != null) {
+			return new ResponseEntity<>(newScreen, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
 	}
 
 	/**
-	 * Persists general commentary to a Screening by its unique id.
+	 * Method to update a Screening. Replaces the previous mappings to add commentary, /start, and /end
 	 *
-	 * @param comment - CommentaryWrapper that represent a comment and screeningId
-	 * @return A ResponseEntity containing a success message and an HttpStatus of OK
+	 * @param screening Screening to update
+	 * @return Updated screening object
 	 */
-	@RequestMapping(value = "/screening/generalcomment", method = RequestMethod.POST)
-	public ResponseEntity<String> storeGeneralComment(@RequestBody CommentWrapper comment) {
-		screeningService.updateGeneralComment(comment.getComment(), comment.getScreeningId());
-		return new ResponseEntity<>("Update General Comment Success!", HttpStatus.OK);
-	}
-
-	/**
-	 * End a Screening and update the information by screeningId
-	 *
-	 * @param screeningInfo - the status, softSkillsVerdict, softSkillsCommentary, endDateTime, compositeScore, and screeningId of a completed screening.
-	 * @return An HttpStatus of OK signaling the successful entry of a screening.
-	 */
-	@RequestMapping(value = "/screening/end", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Void> endScreening(@RequestBody EndingWrapper screeningInfo) {
-		screeningService.endScreening(screeningInfo);
-		scheduledScreeningService.updateStatus(screeningInfo.getScheduledScreeningId());
-		return new ResponseEntity<>(HttpStatus.OK);
+	@PutMapping(value = "/update", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Screening> updateScreening(@Valid @RequestBody Screening screening) {
+		Screening updateScreening = screeningService.updateScreening(screening);
+		if (updateScreening != null) {
+			return new ResponseEntity<>(updateScreening, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
 	}
 
 }
