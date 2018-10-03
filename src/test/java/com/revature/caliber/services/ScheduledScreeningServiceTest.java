@@ -14,7 +14,7 @@ import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = {Application.class})
-@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_CLASS)
+@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 @AutoConfigureTestDatabase
 public class ScheduledScreeningServiceTest {
 	@Autowired
@@ -35,7 +35,7 @@ public class ScheduledScreeningServiceTest {
 		int lengthBefore = scheduledScreeningService.findByStatus(ScheduledStatus.PENDING).size();
 		scheduledScreeningService.updateStatus(4324);
 		int lengthAfter = scheduledScreeningService.findByStatus(ScheduledStatus.PENDING).size();
-		assertEquals(lengthBefore + 1, lengthAfter);
+		assertEquals(lengthBefore - 1, lengthAfter);
 	}
 
 	@Test
