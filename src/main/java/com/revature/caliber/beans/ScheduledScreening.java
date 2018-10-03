@@ -1,54 +1,50 @@
 package com.revature.caliber.beans;
 
-import java.util.Date;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.Date;
+import java.util.Objects;
+
+@ApiModel(value = "Scheduled Screening", description = "A Scheduled Screening with information on the skills and timing.")
 @Entity
 @Table(name = "scheduled_screening")
 public class ScheduledScreening {
-	
-	
+
+	@ApiModelProperty(value = "Id of the screening")
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="SCHEDULED_SCREENING_SEQUENCE")
-	@SequenceGenerator(allocationSize=1,name="SCHEDULED_SCREENING_SEQUENCE",sequenceName="SCHEDULED_SCREENING_SEQUENCE")
-	@Column(name = "ID")
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "SCHEDULED_SCREENING_ID")
 	private int scheduledScreeningId;
 
-	@OneToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name="candidate_id")
+	@ApiModelProperty(value = "Candidate that is being screened")
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "candidate_id")
 	private Candidate candidate;
-	
-	@Column(name = "trainer_id")
-	private int trainer;
-	
+
+	@ApiModelProperty(value = "Status of the screening")
+	@Enumerated(EnumType.STRING)
 	@Column(name = "STATUS")
-	private String scheduledStatus;
-	
+	private ScheduledStatus scheduledStatus;
+
+	@ApiModelProperty(value = "The skill type from admin service that the candidate is training in")
 	@Column(name = "SKILL_TYPE_ID")
 	private int skillTypeId;
-	
+
+	@ApiModelProperty(value = "The date of the screening")
 	@Column(name = "SCHEDULED_DATE")
 	private Date scheduledDate;
-	
+
 	public ScheduledScreening() {
 		super();
 	}
 
-	public ScheduledScreening(int scheduledScreeningId, Candidate candidate, int trainer, String scheduledStatus,
-			int skillTypeId, Date scheduledDate) {
+	public ScheduledScreening(int scheduledScreeningId, Candidate candidate, ScheduledStatus scheduledStatus,
+							  int skillTypeId, Date scheduledDate) {
 		super();
 		this.scheduledScreeningId = scheduledScreeningId;
 		this.candidate = candidate;
-		this.trainer = trainer;
 		this.scheduledStatus = scheduledStatus;
 		this.skillTypeId = skillTypeId;
 		this.scheduledDate = scheduledDate;
@@ -70,19 +66,11 @@ public class ScheduledScreening {
 		this.candidate = candidate;
 	}
 
-	public int getTrainer() {
-		return trainer;
-	}
-
-	public void setTrainer(int trainer) {
-		this.trainer = trainer;
-	}
-
-	public String getScheduledStatus() {
+	public ScheduledStatus getScheduledStatus() {
 		return scheduledStatus;
 	}
 
-	public void setScheduledStatus(String scheduledStatus) {
+	public void setScheduledStatus(ScheduledStatus scheduledStatus) {
 		this.scheduledStatus = scheduledStatus;
 	}
 
@@ -103,57 +91,30 @@ public class ScheduledScreening {
 	}
 
 	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((candidate == null) ? 0 : candidate.hashCode());
-		result = prime * result + ((scheduledDate == null) ? 0 : scheduledDate.hashCode());
-		result = prime * result + scheduledScreeningId;
-		result = prime * result + ((scheduledStatus == null) ? 0 : scheduledStatus.hashCode());
-		result = prime * result + skillTypeId;
-		result = prime * result + trainer;
-		return result;
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		ScheduledScreening that = (ScheduledScreening) o;
+		return getScheduledScreeningId() == that.getScheduledScreeningId() &&
+				getSkillTypeId() == that.getSkillTypeId() &&
+				Objects.equals(getCandidate(), that.getCandidate()) &&
+				Objects.equals(getScheduledStatus(), that.getScheduledStatus()) &&
+				Objects.equals(getScheduledDate(), that.getScheduledDate());
 	}
 
 	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		ScheduledScreening other = (ScheduledScreening) obj;
-		if (candidate == null) {
-			if (other.candidate != null)
-				return false;
-		} else if (!candidate.equals(other.candidate))
-			return false;
-		if (scheduledDate == null) {
-			if (other.scheduledDate != null)
-				return false;
-		} else if (!scheduledDate.equals(other.scheduledDate))
-			return false;
-		if (scheduledScreeningId != other.scheduledScreeningId)
-			return false;
-		if (scheduledStatus == null) {
-			if (other.scheduledStatus != null)
-				return false;
-		} else if (!scheduledStatus.equals(other.scheduledStatus))
-			return false;
-		if (skillTypeId != other.skillTypeId)
-			return false;
-		if (trainer != other.trainer)
-			return false;
-		return true;
+	public int hashCode() {
+		return Objects.hash(getScheduledScreeningId(), getCandidate(), getScheduledStatus(), getSkillTypeId(), getScheduledDate());
 	}
 
 	@Override
 	public String toString() {
-		return "ScheduledScreening [scheduledScreeningId=" + scheduledScreeningId + ", candidate=" + candidate
-				+ ", trainer=" + trainer + ", scheduledStatus=" + scheduledStatus + ", skillTypeId=" + skillTypeId
-				+ ", scheduledDate=" + scheduledDate + "]";
+		return "ScheduledScreening{" +
+				"scheduledScreeningId=" + scheduledScreeningId +
+				", candidate=" + candidate +
+				", scheduledStatus='" + scheduledStatus + '\'' +
+				", skillTypeId=" + skillTypeId +
+				", scheduledDate=" + scheduledDate +
+				'}';
 	}
-
-
 }

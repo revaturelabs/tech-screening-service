@@ -1,54 +1,63 @@
 package com.revature.caliber.beans;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
+import javax.persistence.*;
+import java.util.Objects;
 
+@ApiModel(value = "Candidate", description = "A candidate that is being screened")
 @Entity
-@Table(name="CANDIDATE")
+@Table(name = "CANDIDATE")
 public class Candidate {
 
+	@ApiModelProperty(value = "Id of the candidate")
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="CANDIDATE_SEQUENCE")
-	@SequenceGenerator(allocationSize=1,name="CANDIDATE_SEQUENCE",sequenceName="CANDIDATE_SEQUENCE")
-	@Column(name="id")
-	private int id;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "CANDIDATE_ID")
+	private int candidateId;
 
+	@ApiModelProperty(value = "Id from Salesforce which identifies the candidate")
 	@Column(name = "RESOURCE_ID")
 	private String resourceId;
 
+	@ApiModelProperty(value = "Name of the candidate")
 	@Column(name = "NAME")
 	private String name;
-	
+
+	@ApiModelProperty(value = "Email of the candidate")
 	@Column(name = "EMAIL")
 	private String email;
 
+	@ApiModelProperty(value = "Phone number of the candidate")
 	@Column(name = "PHONE_NUMBER")
 	private String phoneNumber;
 
+	@ApiModelProperty(value = "Skype username of the candidate")
 	@Column(name = "SKYPE_ID")
-	private String skypeId;	
-	
+	private String skypeId;
+
+	@ApiModelProperty(value = "Link to the candidates portfolio")
 	@Column(name = "PROFILE_URL")
 	private String profileUrl;
 
+	@ApiModelProperty(value = "Name of the recruiter for the candidate")
 	@Column(name = "RECRUITER_NAME")
 	private String recruiterName;
 
+	@ApiModelProperty(value = "College the candidate attended")
 	@Column(name = "COLLEGE")
 	private String college;
 
+	@ApiModelProperty(value = "Degree the candidate attained")
 	@Column(name = "DEGREE")
 	private String degree;
 
+	@ApiModelProperty(value = "Field the candidate majored in")
 	@Column(name = "MAJOR")
 	private String major;
 
+	@ApiModelProperty(value = "Name of the screener for the candidate")
 	@Column(name = "TECH_SCREENER_NAME")
 	private String techScreenerName;
 
@@ -56,11 +65,11 @@ public class Candidate {
 		super();
 	}
 
-	public Candidate(int id, String resourceId, String name, String email, String phoneNumber, String skypeId,
-			String profileUrl, String recruiterName, String college, String degree, String major,
-			String techScreenerName) {
+	public Candidate(int candidateId, String resourceId, String name, String email, String phoneNumber, String skypeId,
+					 String profileUrl, String recruiterName, String college, String degree, String major,
+					 String techScreenerName) {
 		super();
-		this.id = id;
+		this.candidateId = candidateId;
 		this.resourceId = resourceId;
 		this.name = name;
 		this.email = email;
@@ -74,12 +83,12 @@ public class Candidate {
 		this.techScreenerName = techScreenerName;
 	}
 
-	public int getId() {
-		return id;
+	public int getCandidateId() {
+		return candidateId;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setCandidateId(int candidateId) {
+		this.candidateId = candidateId;
 	}
 
 	public String getResourceId() {
@@ -171,100 +180,44 @@ public class Candidate {
 	}
 
 	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((college == null) ? 0 : college.hashCode());
-		result = prime * result + ((degree == null) ? 0 : degree.hashCode());
-		result = prime * result + ((email == null) ? 0 : email.hashCode());
-		result = prime * result + id;
-		result = prime * result + ((major == null) ? 0 : major.hashCode());
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + ((phoneNumber == null) ? 0 : phoneNumber.hashCode());
-		result = prime * result + ((profileUrl == null) ? 0 : profileUrl.hashCode());
-		result = prime * result + ((recruiterName == null) ? 0 : recruiterName.hashCode());
-		result = prime * result + ((resourceId == null) ? 0 : resourceId.hashCode());
-		result = prime * result + ((skypeId == null) ? 0 : skypeId.hashCode());
-		result = prime * result + ((techScreenerName == null) ? 0 : techScreenerName.hashCode());
-		return result;
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		Candidate candidate = (Candidate) o;
+		return getCandidateId() == candidate.getCandidateId() &&
+				Objects.equals(getResourceId(), candidate.getResourceId()) &&
+				Objects.equals(getName(), candidate.getName()) &&
+				Objects.equals(getEmail(), candidate.getEmail()) &&
+				Objects.equals(getPhoneNumber(), candidate.getPhoneNumber()) &&
+				Objects.equals(getSkypeId(), candidate.getSkypeId()) &&
+				Objects.equals(getProfileUrl(), candidate.getProfileUrl()) &&
+				Objects.equals(getRecruiterName(), candidate.getRecruiterName()) &&
+				Objects.equals(getCollege(), candidate.getCollege()) &&
+				Objects.equals(getDegree(), candidate.getDegree()) &&
+				Objects.equals(getMajor(), candidate.getMajor()) &&
+				Objects.equals(getTechScreenerName(), candidate.getTechScreenerName());
 	}
 
 	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Candidate other = (Candidate) obj;
-		if (college == null) {
-			if (other.college != null)
-				return false;
-		} else if (!college.equals(other.college))
-			return false;
-		if (degree == null) {
-			if (other.degree != null)
-				return false;
-		} else if (!degree.equals(other.degree))
-			return false;
-		if (email == null) {
-			if (other.email != null)
-				return false;
-		} else if (!email.equals(other.email))
-			return false;
-		if (id != other.id)
-			return false;
-		if (major == null) {
-			if (other.major != null)
-				return false;
-		} else if (!major.equals(other.major))
-			return false;
-		if (name == null) {
-			if (other.name != null)
-				return false;
-		} else if (!name.equals(other.name))
-			return false;
-		if (phoneNumber == null) {
-			if (other.phoneNumber != null)
-				return false;
-		} else if (!phoneNumber.equals(other.phoneNumber))
-			return false;
-		if (profileUrl == null) {
-			if (other.profileUrl != null)
-				return false;
-		} else if (!profileUrl.equals(other.profileUrl))
-			return false;
-		if (recruiterName == null) {
-			if (other.recruiterName != null)
-				return false;
-		} else if (!recruiterName.equals(other.recruiterName))
-			return false;
-		if (resourceId == null) {
-			if (other.resourceId != null)
-				return false;
-		} else if (!resourceId.equals(other.resourceId))
-			return false;
-		if (skypeId == null) {
-			if (other.skypeId != null)
-				return false;
-		} else if (!skypeId.equals(other.skypeId))
-			return false;
-		if (techScreenerName == null) {
-			if (other.techScreenerName != null)
-				return false;
-		} else if (!techScreenerName.equals(other.techScreenerName))
-			return false;
-		return true;
+	public int hashCode() {
+		return Objects.hash(getCandidateId(), getResourceId(), getName(), getEmail(), getPhoneNumber(), getSkypeId(), getProfileUrl(), getRecruiterName(), getCollege(), getDegree(), getMajor(), getTechScreenerName());
 	}
 
 	@Override
 	public String toString() {
-		return "Candidate [id=" + id + ", resourceId=" + resourceId + ", name=" + name + ", email=" + email
-				+ ", phoneNumber=" + phoneNumber + ", skypeId=" + skypeId + ", profileUrl=" + profileUrl
-				+ ", recruiterName=" + recruiterName + ", college=" + college + ", degree=" + degree + ", major="
-				+ major + ", techScreenerName=" + techScreenerName + "]";
+		return "Candidate{" +
+				"candidateId=" + candidateId +
+				", resourceId='" + resourceId + '\'' +
+				", name='" + name + '\'' +
+				", email='" + email + '\'' +
+				", phoneNumber='" + phoneNumber + '\'' +
+				", skypeId='" + skypeId + '\'' +
+				", profileUrl='" + profileUrl + '\'' +
+				", recruiterName='" + recruiterName + '\'' +
+				", college='" + college + '\'' +
+				", degree='" + degree + '\'' +
+				", major='" + major + '\'' +
+				", techScreenerName='" + techScreenerName + '\'' +
+				'}';
 	}
-
-
 }
