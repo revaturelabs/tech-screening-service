@@ -1,6 +1,5 @@
 package com.revature.caliber.controllers;
 
-import static org.junit.Assert.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -22,10 +21,9 @@ public class QuestionScoreControllerTest {
 	
 	@Test
 	public void testQuestionScore() {
-		SimpleQuestionScore b = new SimpleQuestionScore();
+		SimpleQuestionScore b = new SimpleQuestionScore(300, null, (double) 20, "Test", null);
 		given()
 			.port(port)
-			.contentType("application/json")
 			.body(b)
 		.when()
 			.post("/questionScore/new")
