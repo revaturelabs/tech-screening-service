@@ -1,8 +1,6 @@
 package com.revature.caliber.services;
 
 import com.revature.caliber.beans.Screening;
-import com.revature.caliber.wrappers.EndingWrapper;
-import com.revature.caliber.wrappers.StartingWrapper;
 
 /**
  * The service for the Screening part of the Screening service.
@@ -20,34 +18,19 @@ public interface ScreeningService {
 	Screening getScreening(int screeningId);
 
 	/**
-	 * Update aboutMeComment by ScreeningId
+	 * Persist a new Screening
 	 *
-	 * @param aboutMeComment - the comment to be persisted to the database.
-	 * @param screeningId    - the unique id of a screening
+	 * @param screening Screening to persist
+	 * @return The new screening object
 	 */
-	void updateAboutMeComment(String aboutMeComment, int screeningId);
+	Screening createScreening(Screening screening);
 
 	/**
-	 * Update GeneralComment By ScreeningId
+	 * Update an already persistent screening
 	 *
-	 * @param generalComment - the comment to be persisted to the database
-	 * @param screeningId    - the unique id of a screening
+	 * @param screening Screening to update
+	 * @return The updated screening object
 	 */
-	void updateGeneralComment(String generalComment, int screeningId);
-
-	/**
-	 * Update info after a Screening ends
-	 *
-	 * @param screeningInfo - Screening info to be updated after a Screening ends
-	 */
-	void endScreening(EndingWrapper screeningInfo);
-
-	/**
-	 * Set a screening as pending
-	 *
-	 * @param screeningInfo Screening info to be updated after a screening ends
-	 * @return Returns the sceening being updated
-	 */
-	Screening setPending(StartingWrapper screeningInfo);
+	Screening updateScreening(Screening screening);
 }
 

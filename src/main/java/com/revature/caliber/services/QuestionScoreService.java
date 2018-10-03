@@ -18,7 +18,7 @@ public interface QuestionScoreService {
 	 * 
 	 * @param simpleQuestionScore Question score to be saved
 	 */
-	void save(SimpleQuestionScore simpleQuestionScore);
+	SimpleQuestionScore save(SimpleQuestionScore simpleQuestionScore);
 
 	/**
 	 * Finds question scores containing given screening id

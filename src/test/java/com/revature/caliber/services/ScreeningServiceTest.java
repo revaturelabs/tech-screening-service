@@ -5,8 +5,6 @@ import com.revature.caliber.Application;
 import com.revature.caliber.beans.Candidate;
 import com.revature.caliber.beans.Screening;
 import com.revature.caliber.data.ScreeningRepository;
-import com.revature.caliber.wrappers.EndingWrapper;
-import com.revature.caliber.wrappers.StartingWrapper;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

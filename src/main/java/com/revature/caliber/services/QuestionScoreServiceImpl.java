@@ -11,6 +11,7 @@ import java.util.List;
  * The service for the Question Score part of the Screening service.
  *
  * @author Thomas Santillan | 1805-WVU-MAY29 | Richard Orr
+ * @author Jeremy Straus | 1807-QC | Emily Higgins
  */
 @Service
 public class QuestionScoreServiceImpl implements QuestionScoreService {
@@ -19,8 +20,12 @@ public class QuestionScoreServiceImpl implements QuestionScoreService {
 	private QuestionScoreRepository questionScoreRepository;
 
 	@Override
-	public void save(SimpleQuestionScore simpleQuestionScore) {
-		questionScoreRepository.save(simpleQuestionScore);
+	public SimpleQuestionScore save(SimpleQuestionScore simpleQuestionScore) {
+		if (simpleQuestionScore != null && simpleQuestionScore != new SimpleQuestionScore()) {
+			return questionScoreRepository.save(simpleQuestionScore);
+		} else {
+			return null;
+		}
 	}
 
 	@Override
