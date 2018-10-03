@@ -21,16 +21,17 @@ public class QuestionScoreControllerTest {
 	
 	@Test
 	public void testQuestionScore() {
-		SimpleQuestionScore b = new SimpleQuestionScore(300, null, (double) 20, "Test", null);
+		SimpleQuestionScore b = new SimpleQuestionScore(300, null, (double) 20, "Test", null);		
 		given()
 			.port(port)
+			.contentType("application/json")
 			.body(b)
 		.when()
 			.post("/questionScore/new")
 		.then()
 			.statusCode(200);
-
 	}
+
 
 	@Test
 	public void testGetScoresByScreeningId() {

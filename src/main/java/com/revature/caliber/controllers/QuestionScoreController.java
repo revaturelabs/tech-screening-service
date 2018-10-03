@@ -45,7 +45,7 @@ public class QuestionScoreController {
 		if (newScore != null) {
 			return new ResponseEntity<>(newScore, HttpStatus.OK);
 		} else {
-			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>(newScore, HttpStatus.BAD_REQUEST);
 		}
 	}
 
