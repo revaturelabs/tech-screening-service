@@ -15,7 +15,11 @@ public class SoftSkillViolationServiceImpl implements SoftSkillViolationService 
 
 	@Override
 	public SoftSkillViolation save(SoftSkillViolation ssv) {
-		return softSkillViolationRepository.save(ssv);
+		if (ssv != null && !(ssv.equals(new SoftSkillViolation()))) {
+			return softSkillViolationRepository.save(ssv);
+		} else {
+			return null;
+		}
 	}
 
 	@Override
