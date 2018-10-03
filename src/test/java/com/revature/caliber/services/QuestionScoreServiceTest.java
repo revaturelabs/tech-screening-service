@@ -48,7 +48,7 @@ public class QuestionScoreServiceTest {
 	@Test
 	public void findByScreeningId() {
 		Screening screening = screeningService.getScreening(4323);
-		SimpleQuestionScore score = questionScoreService.save(new SimpleQuestionScore(123, screening, 4.0, "Did well", new Date()));
+		questionScoreService.save(new SimpleQuestionScore(123, screening, 4.0, "Did well", new Date()));
 		assertEquals(1, questionScoreService.findByScreeningId(4323).size());
 	}
 }
