@@ -1,6 +1,7 @@
 package com.revature.caliber.services;
 
 import com.revature.caliber.Application;
+
 import com.revature.caliber.beans.Screening;
 import com.revature.caliber.beans.SimpleQuestionScore;
 import org.junit.Test;
