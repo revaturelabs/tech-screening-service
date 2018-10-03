@@ -103,7 +103,17 @@ public class SoftSkillViolation {
 		this.time = time;
 	}
 
-	
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		SoftSkillViolation violation = (SoftSkillViolation) o;
+		return getSoftViolationId() == violation.getSoftViolationId() &&
+				Objects.equals(getScreening(), violation.getScreening()) &&
+				Objects.equals(getViolationType(), violation.getViolationType()) &&
+				Objects.equals(getComment(), violation.getComment()) &&
+				Objects.equals(getTime(), violation.getTime());
+	}
 
 	@Override
 	public int hashCode() {
