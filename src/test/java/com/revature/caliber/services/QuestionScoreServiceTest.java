@@ -42,7 +42,7 @@ public class QuestionScoreServiceTest {
 	@Test
 	public void testSaveEmptyScore() {
 		SimpleQuestionScore score = new SimpleQuestionScore();
-		assertNotNull(questionScoreService.save(score));
+		assertNull(questionScoreService.save(score));
 	}
 
 	@Test
