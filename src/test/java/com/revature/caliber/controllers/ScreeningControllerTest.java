@@ -1,10 +1,13 @@
 package com.revature.caliber.controllers;
 
 import com.revature.caliber.Application;
+import com.revature.caliber.beans.ScheduledScreening;
 import com.revature.caliber.beans.Screening;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
+
+import java.util.Date;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -44,8 +47,8 @@ public class ScreeningControllerTest {
 
 	@Test
 	public void testCreateScreening() {
-		Screening screening = new Screening();
-
+		Screening screening = new Screening(new ScheduledScreening(),40,5,100.0,"Testing","Testing","Testing",new Date(), new Date(), true, "false");
+		//public Screening(ScheduledScreening scheduledScreening, int screenerId, int skillType, Double compositeScore, String aboutMeCommentary, String generalCommentary, String softSkillCommentary, Date startDateTime, Date endDateTime, Boolean softSkillsVerdict, String status)
 		given()
 				.port(port)
 				.contentType("application/json")
@@ -58,7 +61,17 @@ public class ScreeningControllerTest {
 
 	@Test
 	public void testUpdateScreening() {
-		fail("Not yet implemented");
+		Screening screening = new Screening();
+		screening.setScreeningId(2);
+		screening.setGeneralCommentary("Testing");
+		given()
+				.port(port)
+				.contentType("application/json")
+				.body(screening)
+				.when()
+				.put("/screening/update")
+				.then()
+				.statusCode(200);
 	}
 
 }
