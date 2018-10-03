@@ -1,9 +1,3 @@
-TRUNCATE TABLE CANDIDATE;
-TRUNCATE TABLE SCHEDULED_SCREENING;
-TRUNCATE TABLE SCREENING;
-TRUNCATE TABLE VIOLATION_TYPE;
-TRUNCATE TABLE SOFT_SKILL_VIOLATION;
-
 --------------------------------------------------------
 --  DML for Sequence CANDIDATE
 --------------------------------------------------------
