@@ -18,6 +18,15 @@ import org.springframework.test.context.junit4.SpringRunner;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
+/**
+ * Question Tests using JUnit
+ *
+ * @author Omar Guzman | 1807-QC | Emily Higgins
+ * @author Rishabh Rana | 1807-QC | Emily Higgins
+ * @author Alpha Barry | 1807-QC | Emily Higgins
+ * @author Jeremy Straus | 1807-QC | Emily Higgins
+ */
+
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = {Application.class}, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class ScreeningControllerTest {
@@ -30,7 +39,7 @@ public class ScreeningControllerTest {
 		given()
 		.port(port)
 		.when()
-		.get("/{id}/violations",2)
+		.get("/screening/{id}/violations",2)
 		.then()
 		.statusCode(200);
 	}
@@ -45,19 +54,7 @@ public class ScreeningControllerTest {
 		.statusCode(200);
 	}
 
-	@Test
-	public void testCreateScreening() {
-		Screening screening = new Screening(new ScheduledScreening(),40,5,100.0,"Testing","Testing","Testing",new Date(), new Date(), true, "false");
-		//public Screening(ScheduledScreening scheduledScreening, int screenerId, int skillType, Double compositeScore, String aboutMeCommentary, String generalCommentary, String softSkillCommentary, Date startDateTime, Date endDateTime, Boolean softSkillsVerdict, String status)
-		given()
-				.port(port)
-				.contentType("application/json")
-				.body(screening)
-				.when()
-				.post("/screening/new")
-				.then()
-				.statusCode(200);
-	}
+
 
 	@Test
 	public void testUpdateScreening() {
@@ -70,6 +67,19 @@ public class ScreeningControllerTest {
 				.body(screening)
 				.when()
 				.put("/screening/update")
+				.then()
+				.statusCode(200);
+	}
+	
+	@Test
+	public void testCreateScreening() {	
+		Screening s = new Screening();
+		given()
+				.port(port)
+				.contentType("application/json")
+				.body(s)
+				.when()
+				.post("/screening/new")
 				.then()
 				.statusCode(200);
 	}
