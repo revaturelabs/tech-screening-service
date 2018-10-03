@@ -16,13 +16,12 @@ import java.util.Objects;
 public class Screening {
 	@ApiModelProperty(value = "Id of the screening")
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SCREENING_SEQUENCE")
-	@SequenceGenerator(allocationSize = 1, name = "SCREENING_SEQUENCE", sequenceName = "SCREENING_SEQUENCE")
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
 	private int screeningId;
 
 	@ApiModelProperty(value = "The Scheduled Screening connected to the screening")
-	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "SCHEDULED_SCREENING_ID")
 	private ScheduledScreening scheduledScreening;
 
