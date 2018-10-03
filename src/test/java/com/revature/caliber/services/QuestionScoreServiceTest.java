@@ -1,46 +1,54 @@
 package com.revature.caliber.services;
 
 import com.revature.caliber.Application;
+import com.revature.caliber.beans.Screening;
 import com.revature.caliber.beans.SimpleQuestionScore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.List;
+import java.util.Date;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
-/**
- * Question Score Service Testing class
- * 
- * @author Aaron Ware | 1805-WVU-MAY29 | Richard Orr
- *
- */
-@RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest(classes=Application.class)
+@RunWith(SpringRunner.class)
+@SpringBootTest(classes = {Application.class})
+@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_CLASS)
+@AutoConfigureTestDatabase
 public class QuestionScoreServiceTest {
-	
-	
+
 	@Autowired
-	QuestionScoreService qss;
-	
-	/*@Test
-	public void saveObjectTest() {
-		SimpleQuestionScore qs = new SimpleQuestionScore();
-		qs.setQuestionId(1);
-		qs.setScreening(1);
-		qss.save(qs);
+	QuestionScoreService questionScoreService;
 
-		assertTrue(qs.getScreening() != 0);
-	}*/
-	
+	@Autowired
+	ScreeningService screeningService;
+
 	@Test
-	public void findInterViewResultTest() {
-		List<SimpleQuestionScore> interviewResults = qss.findByScreeningId(1);
-		assertTrue(interviewResults != null && !interviewResults.isEmpty());
+	public void testSave() {
+		SimpleQuestionScore score = new SimpleQuestionScore(123, null, 4.0, "Did well", new Date());
+		assertNotNull(questionScoreService.save(score));
 	}
-	
 
+	@Test
+	public void testSaveNullObject() {
+		SimpleQuestionScore score = null;
+		assertNull(questionScoreService.save(score));
+	}
+
+	@Test
+	public void testSaveEmptyScore() {
+		SimpleQuestionScore score = new SimpleQuestionScore();
+		assertNotNull(questionScoreService.save(score));
+	}
+
+	@Test
+	public void findByScreeningId() {
+		Screening screening = screeningService.getScreening(1);
+		SimpleQuestionScore score = questionScoreService.save(new SimpleQuestionScore(123, screening, 4.0, "Did well", new Date()));
+		assertEquals(score, questionScoreService.findByScreeningId(1));
+	}
 }
