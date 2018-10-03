@@ -1,8 +1,6 @@
 package com.revature.caliber.services;
 
 import com.revature.caliber.Application;
-import com.revature.caliber.beans.ViolationType;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,16 +22,17 @@ public class ViolationTypeServiceTest {
 
 	@Test
 	public void testGetViolationType() {
-		int violationTypeId = 4322;
-		ViolationType v = violationTypeService.getViolationType(violationTypeId);
-		
-		assertEquals(violationTypeId,v.getViolationTypeId());		 
+		assertNotNull(violationTypeService.getViolationType(4321));
+	}
+
+	@Test
+	public void testGetViolationTypeNull() {
+		assertNull(violationTypeService.getViolationType(1));
 	}
 
 	@Test
 	public void testGetAll() {
-		int vList = violationTypeService.getAll().size();
-		assertEquals(vList,violationTypeService.getAll().size());
+		assertEquals(3, violationTypeService.getAll().size());
 	}
 
 }
