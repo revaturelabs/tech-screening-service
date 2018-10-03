@@ -21,7 +21,7 @@ public class QuestionScoreServiceImpl implements QuestionScoreService {
 
 	@Override
 	public SimpleQuestionScore save(SimpleQuestionScore simpleQuestionScore) {
-		if (simpleQuestionScore != null && simpleQuestionScore != new SimpleQuestionScore()) {
+		if (simpleQuestionScore != null && !(simpleQuestionScore.equals(new SimpleQuestionScore()))) {
 			return questionScoreRepository.save(simpleQuestionScore);
 		} else {
 			return null;

@@ -1,6 +1,7 @@
 package com.revature.caliber.services;
 
 import com.revature.caliber.Application;
+
 import com.revature.caliber.beans.Screening;
 import com.revature.caliber.beans.SimpleQuestionScore;
 import org.junit.Test;
@@ -42,7 +43,7 @@ public class QuestionScoreServiceTest {
 	@Test
 	public void testSaveEmptyScore() {
 		SimpleQuestionScore score = new SimpleQuestionScore();
-		assertNotNull(questionScoreService.save(score));
+		assertNull(questionScoreService.save(score));
 	}
 
 	@Test
