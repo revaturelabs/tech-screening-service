@@ -32,7 +32,6 @@ public class ScheduledScreeningRepositoryTest {
 		ScheduledScreening scheduledScreening = new ScheduledScreening();
 		scheduledScreening.setCandidate(new Candidate());
 		scheduledScreening.getCandidate().setCandidateId(1);
-		scheduledScreening.setTrainer(1);
 		
 		ssr.save(scheduledScreening);
 		
