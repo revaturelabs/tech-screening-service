@@ -49,20 +49,20 @@ public class SoftSkillViolationServiceTest {
 	@Test
 	public void saveSSVTest() {
 		SoftSkillViolation ssv = new SoftSkillViolation();
-		ssv.setScreeningId(9);
+		ssv.setScreening(9);
 		
 		ssv = ssvs.save(ssv);
-		
-		assertTrue(ssv.getId() != 0);
+
+		assertTrue(ssv.getSoftViolationId() != 0);
 	}
 	
 	@Test
 	public void deleteSSVTest() {
 		SoftSkillViolation ssv = new SoftSkillViolation();
-		ssv.setScreeningId(9);
+		ssv.setScreening(9);
 		
 		ssv = ssvs.save(ssv);
-		ssvs.delete(ssv.getId());
+		ssvs.delete(ssv.getSoftViolationId());
 		
 		assertTrue(ssvs.getAllByScreeningId(9).size() == 0);
 	}

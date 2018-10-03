@@ -30,7 +30,7 @@ public class QuestionScoreServiceImpl implements QuestionScoreService {
 
 	@Override
 	public List<SimpleQuestionScore> findByScreeningId(int screeningId) {
-		return questionScoreRepository.findByScreeningId(screeningId);
+		return questionScoreRepository.findAllByScreeningScreeningId(screeningId);
 	}
 
 

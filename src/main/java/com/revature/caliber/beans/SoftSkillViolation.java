@@ -1,86 +1,91 @@
 package com.revature.caliber.beans;
 
-import java.util.Date;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import org.hibernate.annotations.CreationTimestamp;
 
+import javax.persistence.*;
+import java.util.Date;
+import java.util.Objects;
+
+/**
+ * @author Jeremy Straus | 1807-QC | Emily Higgins
+ */
+@ApiModel(value = "Soft Skills Violation", description = "Any violations that happen during the scourse of a screening")
 @Entity 
 @Table(name="SOFT_SKILL_VIOLATION")
 public class SoftSkillViolation {
-	
+
+	@ApiModelProperty(value = "Id of the violation")
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="SOFT_SKILL_VIOLATION_SEQUENCE")
 	@SequenceGenerator(allocationSize=1,name="SOFT_SKILL_VIOLATION_SEQUENCE",sequenceName="SOFT_SKILL_VIOLATION_SEQUENCE")
-	@Column(name="ID")
-	private int id;
-	
-	@Column(name="SCREENING_ID")
-	private int screeningId;
+	@Column(name = "SOFT_SKILL_VIOLATION_ID")
+	private int softViolationId;
 
-	@Column(name="VIOLATION_TYPE_ID")
-	private int violationId;
-	
+	@ApiModelProperty(value = "Id of the Screening the violation occurred in")
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "SCREENING_ID")
+	private int screening;
+
+	@ApiModelProperty(value = "Id of the ViolationType that occurred in the screening")
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "VIOLATION_TYPE_ID")
+	private int violation;
+
+	@ApiModelProperty(value = "Any comments regarding the violation")
 	@Column(name="COMMENT")
 	private String comment;
-	
+
+	@ApiModelProperty(value = "Time of the violation")
 	@CreationTimestamp
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="TIME")
 	private Date time;
-	
+
 	public SoftSkillViolation() {
 		super();
 	}
 
-	public SoftSkillViolation(int id, int screeningId, int violationId, String comment, Date time) {
+	public SoftSkillViolation(int softViolationId, int screening, int violation, String comment, Date time) {
 		super();
-		this.id = id;
-		this.screeningId = screeningId;
-		this.violationId = violationId;
+		this.softViolationId = softViolationId;
+		this.screening = screening;
+		this.violation = violation;
 		this.comment = comment;
 		this.time = time;
 	}
 
-	public SoftSkillViolation(int screeningId, int violationId, String comment, Date time) {
+	public SoftSkillViolation(int screening, int violation, String comment, Date time) {
 		super();
-		this.screeningId = screeningId;
-		this.violationId = violationId;
+		this.screening = screening;
+		this.violation = violation;
 		this.comment = comment;
 		this.time = time;
 	}
 
-	public int getId() {
-		return id;
+	public int getSoftViolationId() {
+		return softViolationId;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setSoftViolationId(int softViolationId) {
+		this.softViolationId = softViolationId;
 	}
 
-	public int getScreeningId() {
-		return screeningId;
+	public int getScreening() {
+		return screening;
 	}
 
-	public void setScreeningId(int screeningId) {
-		this.screeningId = screeningId;
+	public void setScreening(int screening) {
+		this.screening = screening;
 	}
 
-	public int getViolationId() {
-		return violationId;
+	public int getViolation() {
+		return violation;
 	}
 
-	public void setViolationId(int violationId) {
-		this.violationId = violationId;
+	public void setViolation(int violation) {
+		this.violation = violation;
 	}
 
 	public String getComment() {
@@ -100,50 +105,30 @@ public class SoftSkillViolation {
 	}
 
 	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((comment == null) ? 0 : comment.hashCode());
-		result = prime * result + id;
-		result = prime * result + screeningId;
-		result = prime * result + ((time == null) ? 0 : time.hashCode());
-		result = prime * result + violationId;
-		return result;
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		SoftSkillViolation that = (SoftSkillViolation) o;
+		return getSoftViolationId() == that.getSoftViolationId() &&
+				getScreening() == that.getScreening() &&
+				getViolation() == that.getViolation() &&
+				Objects.equals(getComment(), that.getComment()) &&
+				Objects.equals(getTime(), that.getTime());
 	}
 
 	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		SoftSkillViolation other = (SoftSkillViolation) obj;
-		if (comment == null) {
-			if (other.comment != null)
-				return false;
-		} else if (!comment.equals(other.comment))
-			return false;
-		if (id != other.id)
-			return false;
-		if (screeningId != other.screeningId)
-			return false;
-		if (time == null) {
-			if (other.time != null)
-				return false;
-		} else if (!time.equals(other.time))
-			return false;
-		if (violationId != other.violationId)
-			return false;
-		return true;
+	public int hashCode() {
+		return Objects.hash(getSoftViolationId(), getScreening(), getViolation(), getComment(), getTime());
 	}
 
 	@Override
 	public String toString() {
-		return "SoftSkillViolation [id=" + id + ", screeningId=" + screeningId + ", violationId=" + violationId
-				+ ", comment=" + comment + ", time=" + time + "]";
+		return "SoftSkillViolation{" +
+				"softViolationId=" + softViolationId +
+				", screening=" + screening +
+				", violation=" + violation +
+				", comment='" + comment + '\'' +
+				", time=" + time +
+				'}';
 	}
-
-	
 }
