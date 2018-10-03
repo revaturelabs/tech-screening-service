@@ -71,10 +71,10 @@ public class ViolationController {
 	 * @param violation The new SoftSkillsViolation
 	 * @return An HttpStatus of OK signaling the successful entry of SoftSkillViolation objects.
 	 */
-	@ApiOperation(value = "Add a new violation type", response = SoftSkillViolation.class)
+	@ApiOperation(value = "Add a new SoftSkillViolation", response = SoftSkillViolation.class)
 	@ApiResponses(value = {
-			@ApiResponse(code = 200, message = "Bucket added"),
-			@ApiResponse(code = 400, message = "Bad Bucket")
+			@ApiResponse(code = 200, message = "SoftSkillViolation added"),
+			@ApiResponse(code = 400, message = "Bad SoftSkillViolation")
 	})
 	@RequestMapping(value = "/new", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<SoftSkillViolation> createSoftSkillViolationAndReturnSoftSkillViolationID(@RequestBody SoftSkillViolation violation) {
