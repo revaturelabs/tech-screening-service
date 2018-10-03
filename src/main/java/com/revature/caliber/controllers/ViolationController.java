@@ -78,7 +78,7 @@ public class ViolationController {
 	})
 	@RequestMapping(value = "/new", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<SoftSkillViolation> createSoftSkillViolationAndReturnSoftSkillViolationID(@RequestBody SoftSkillViolation violation) {
-		if (violation != null && violation != new SoftSkillViolation()) {
+		if (violation != null && !violation.equals(new SoftSkillViolation())) {
 			SoftSkillViolation ssv = softSkillViolationService.save(violation);
 			return new ResponseEntity<>(ssv, HttpStatus.OK);
 		} else {

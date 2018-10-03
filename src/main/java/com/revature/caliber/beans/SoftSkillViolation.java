@@ -18,8 +18,7 @@ public class SoftSkillViolation {
 
 	@ApiModelProperty(value = "Id of the violation")
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="SOFT_SKILL_VIOLATION_SEQUENCE")
-	@SequenceGenerator(allocationSize=1,name="SOFT_SKILL_VIOLATION_SEQUENCE",sequenceName="SOFT_SKILL_VIOLATION_SEQUENCE")
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "SOFT_SKILL_VIOLATION_ID")
 	private int softViolationId;
 

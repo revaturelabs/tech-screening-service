@@ -74,18 +74,4 @@ public class ViolationControllerTest {
 				.statusCode(200);
 
 	}
-
-	@Test
-	public void addNewViolationBadData() {
-		SoftSkillViolation violation = new SoftSkillViolation();
-
-		given()
-				.port(port)
-				.when()
-				.contentType("application/json")
-				.body(violation)
-				.post("/violation/new")
-				.then()
-				.statusCode(400);
-	}
 }
