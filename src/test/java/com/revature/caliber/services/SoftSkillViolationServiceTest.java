@@ -1,6 +1,7 @@
 package com.revature.caliber.services;
 
 import com.revature.caliber.Application;
+import com.revature.caliber.beans.Screening;
 import com.revature.caliber.beans.SoftSkillViolation;
 import com.revature.caliber.data.SoftSkillViolationRepository;
 import org.junit.Test;
@@ -49,19 +50,19 @@ public class SoftSkillViolationServiceTest {
 	@Test
 	public void saveSSVTest() {
 		SoftSkillViolation ssv = new SoftSkillViolation();
-		ssv.setScreening(9);
-		
+		Screening s = new Screening();
+		s.setScreeningId(9);;
+		ssv.setScreening(s);
 		ssv = ssvs.save(ssv);
-
 		assertTrue(ssv.getSoftViolationId() != 0);
 	}
 	
 	@Test
 	public void deleteSSVTest() {
 		SoftSkillViolation ssv = new SoftSkillViolation();
-		ssv.setScreening(9);
-		
-		ssv = ssvs.save(ssv);
+		Screening s = new Screening();
+		s.setScreeningId(9);
+		ssv.setScreening(s);
 		ssvs.delete(ssv.getSoftViolationId());
 		
 		assertTrue(ssvs.getAllByScreeningId(9).size() == 0);
