@@ -43,6 +43,25 @@ INSERT INTO CANDIDATE (ID,EMAIL,NAME,PHONE_NUMBER,PROFILE_URL,SKYPE_ID) VALUES (
 DROP SEQUENCE  SCHEDULED_SCREENING_SEQUENCE;
 CREATE SEQUENCE    SCHEDULED_SCREENING_SEQUENCE  MINVALUE 1  INCREMENT BY 1 START WITH 1;
 
+insert into SCHEDULED_SCREENING (softViolationId, skill_type_id, trainer_id, candidate_id, status, scheduled_date) values (SCHEDULED_SCREENING_SEQUENCE.NEXTVAL, 51, 48, 1, 'SCREENED', (SYSDATE+13));
+insert into SCHEDULED_SCREENING (softViolationId, skill_type_id, trainer_id, candidate_id, status, scheduled_date) values (SCHEDULED_SCREENING_SEQUENCE.NEXTVAL, 54, 49, 2, 'SCREENED', (SYSDATE+17));
+insert into SCHEDULED_SCREENING (softViolationId, skill_type_id, trainer_id, candidate_id, status, scheduled_date) values (SCHEDULED_SCREENING_SEQUENCE.NEXTVAL, 51, 48, 3, 'SCREENED', (SYSDATE+2));
+insert into SCHEDULED_SCREENING (softViolationId, skill_type_id, trainer_id, candidate_id, status, scheduled_date) values (SCHEDULED_SCREENING_SEQUENCE.NEXTVAL, 53, 49, 4, 'PENDING', (SYSDATE+6));
+insert into SCHEDULED_SCREENING (softViolationId, skill_type_id, trainer_id, candidate_id, status, scheduled_date) values (SCHEDULED_SCREENING_SEQUENCE.NEXTVAL, 52, 21, 5, 'SCREENED', (SYSDATE+35));
+insert into SCHEDULED_SCREENING (softViolationId, skill_type_id, trainer_id, candidate_id, status, scheduled_date) values (SCHEDULED_SCREENING_SEQUENCE.NEXTVAL, 51, 48, 6, 'PENDING', (SYSDATE+6));
+insert into SCHEDULED_SCREENING (softViolationId, skill_type_id, trainer_id, candidate_id, status, scheduled_date) values (SCHEDULED_SCREENING_SEQUENCE.NEXTVAL, 52, 12, 7, 'PENDING', (SYSDATE+1));
+insert into SCHEDULED_SCREENING (softViolationId, skill_type_id, trainer_id, candidate_id, status, scheduled_date) values (SCHEDULED_SCREENING_SEQUENCE.NEXTVAL, 56, 12, 8, 'PENDING', (SYSDATE+13));
+insert into SCHEDULED_SCREENING (softViolationId, skill_type_id, trainer_id, candidate_id, status, scheduled_date) values (SCHEDULED_SCREENING_SEQUENCE.NEXTVAL, 53, 28, 9, 'SCREENED', (SYSDATE+4));
+insert into SCHEDULED_SCREENING (softViolationId, skill_type_id, trainer_id, candidate_id, status, scheduled_date) values (SCHEDULED_SCREENING_SEQUENCE.NEXTVAL, 55, 48, 10, 'PENDING', (SYSDATE+9));
+insert into SCHEDULED_SCREENING (softViolationId, skill_type_id, trainer_id, candidate_id, status, scheduled_date) values (SCHEDULED_SCREENING_SEQUENCE.NEXTVAL, 55, 51, 11, 'SCREENED', (SYSDATE+12));
+insert into SCHEDULED_SCREENING (softViolationId, skill_type_id, trainer_id, candidate_id, status, scheduled_date) values (SCHEDULED_SCREENING_SEQUENCE.NEXTVAL, 51, 51, 12, 'SCREENED', (SYSDATE+11));
+insert into SCHEDULED_SCREENING (softViolationId, skill_type_id, trainer_id, candidate_id, status, scheduled_date) values (SCHEDULED_SCREENING_SEQUENCE.NEXTVAL, 54, 51, 13, 'PENDING', (SYSDATE+9));
+insert into SCHEDULED_SCREENING (softViolationId, skill_type_id, trainer_id, candidate_id, status, scheduled_date) values (SCHEDULED_SCREENING_SEQUENCE.NEXTVAL, 53, 49, 15, 'PENDING', (SYSDATE+8));
+insert into SCHEDULED_SCREENING (softViolationId, skill_type_id, trainer_id, candidate_id, status, scheduled_date) values (SCHEDULED_SCREENING_SEQUENCE.NEXTVAL, 56, 12, 16, 'PENDING', (SYSDATE+2));
+insert into SCHEDULED_SCREENING (softViolationId, skill_type_id, trainer_id, candidate_id, status, scheduled_date) values (SCHEDULED_SCREENING_SEQUENCE.NEXTVAL, 54, 28, 17, 'PENDING', (SYSDATE+19));
+insert into SCHEDULED_SCREENING (softViolationId, skill_type_id, trainer_id, candidate_id, status, scheduled_date) values (SCHEDULED_SCREENING_SEQUENCE.NEXTVAL, 53, 48, 18, 'SCREENED', (SYSDATE+24));
+insert into SCHEDULED_SCREENING (softViolationId, skill_type_id, trainer_id, candidate_id, status, scheduled_date) values (SCHEDULED_SCREENING_SEQUENCE.NEXTVAL, 51, 49, 19, 'SCREENED', (SYSDATE+20));
+insert into SCHEDULED_SCREENING (softViolationId, skill_type_id, trainer_id, candidate_id, status, scheduled_date) values (SCHEDULED_SCREENING_SEQUENCE.NEXTVAL, 55, 48, 20, 'SCREENED', (SYSDATE+1));
 insert into SCHEDULED_SCREENING (violationTypeId, skill_type_id, trainer_id, candidate_id, status, scheduled_date) values (SCHEDULED_SCREENING_SEQUENCE.NEXTVAL, 51, 48, 1, 'SCREENED', (SYSDATE+13));
 insert into SCHEDULED_SCREENING (violationTypeId, skill_type_id, trainer_id, candidate_id, status, scheduled_date) values (SCHEDULED_SCREENING_SEQUENCE.NEXTVAL, 54, 49, 2, 'SCREENED', (SYSDATE+17));
 insert into SCHEDULED_SCREENING (violationTypeId, skill_type_id, trainer_id, candidate_id, status, scheduled_date) values (SCHEDULED_SCREENING_SEQUENCE.NEXTVAL, 51, 48, 3, 'SCREENED', (SYSDATE+2));
@@ -61,7 +80,6 @@ insert into SCHEDULED_SCREENING (violationTypeId, skill_type_id, trainer_id, can
 insert into SCHEDULED_SCREENING (violationTypeId, skill_type_id, trainer_id, candidate_id, status, scheduled_date) values (SCHEDULED_SCREENING_SEQUENCE.NEXTVAL, 54, 28, 17, 'PENDING', (SYSDATE+19));
 insert into SCHEDULED_SCREENING (violationTypeId, skill_type_id, trainer_id, candidate_id, status, scheduled_date) values (SCHEDULED_SCREENING_SEQUENCE.NEXTVAL, 53, 48, 18, 'SCREENED', (SYSDATE+24));
 insert into SCHEDULED_SCREENING (violationTypeId, skill_type_id, trainer_id, candidate_id, status, scheduled_date) values (SCHEDULED_SCREENING_SEQUENCE.NEXTVAL, 51, 49, 19, 'SCREENED', (SYSDATE+20));
-insert into SCHEDULED_SCREENING (violationTypeId, skill_type_id, trainer_id, candidate_id, status, scheduled_date) values (SCHEDULED_SCREENING_SEQUENCE.NEXTVAL, 55, 48, 20, 'SCREENED', (SYSDATE+1));
 
 --------------------------------------------------------
 --  DML for Sequence SCREENING_ID_SEQUENCE
@@ -136,19 +154,19 @@ values (VIOLATION_SEQUENCE.NEXTVAL, 'Unfocused', 'Focus was not fully on the scr
 DROP SEQUENCE  SOFT_SKILL_VIOLATION_SEQUENCE;
 CREATE SEQUENCE   SOFT_SKILL_VIOLATION_SEQUENCE MINVALUE 1 INCREMENT BY 1 START WITH 1;
 
-Insert into SOFT_SKILL_VIOLATION (ID, SCREENING_ID, VIOLATION_TYPE_ID, COMMENT, TIME) 
+Insert into SOFT_SKILL_VIOLATION (SOFT_SKILL_VIOLATION_ID, SCREENING_ID, VIOLATION_TYPE_ID, COMMENT, TIME)
 values (SOFT_SKILL_VIOLATION_SEQUENCE.NEXTVAL, 1, 1, 'After failing a question, candidate started swearing.', '2018-03-01');
-Insert into SOFT_SKILL_VIOLATION (ID, SCREENING_ID, VIOLATION_TYPE_ID, COMMENT, TIME)  
+Insert into SOFT_SKILL_VIOLATION (SOFT_SKILL_VIOLATION_ID, SCREENING_ID, VIOLATION_TYPE_ID, COMMENT, TIME)
 values (SOFT_SKILL_VIOLATION_SEQUENCE.NEXTVAL, 2, 1, 'Swore when yelling out to someone else behind him.', '2018-03-02');
-Insert into SOFT_SKILL_VIOLATION (ID, SCREENING_ID, VIOLATION_TYPE_ID, COMMENT, TIME) 
+Insert into SOFT_SKILL_VIOLATION (SOFT_SKILL_VIOLATION_ID, SCREENING_ID, VIOLATION_TYPE_ID, COMMENT, TIME)
 values (SOFT_SKILL_VIOLATION_SEQUENCE.NEXTVAL, 3, 2, 'Was wearing pajamas', '2018-03-03');
-Insert into SOFT_SKILL_VIOLATION (ID, SCREENING_ID, VIOLATION_TYPE_ID, COMMENT, TIME) 
+Insert into SOFT_SKILL_VIOLATION (SOFT_SKILL_VIOLATION_ID, SCREENING_ID, VIOLATION_TYPE_ID, COMMENT, TIME)
 values (SOFT_SKILL_VIOLATION_SEQUENCE.NEXTVAL, 5, 2, 'Wearing a graphic t-shirt.', '2018-03-04');
-Insert into SOFT_SKILL_VIOLATION (ID, SCREENING_ID, VIOLATION_TYPE_ID, COMMENT, TIME) 
+Insert into SOFT_SKILL_VIOLATION (SOFT_SKILL_VIOLATION_ID, SCREENING_ID, VIOLATION_TYPE_ID, COMMENT, TIME)
 values (SOFT_SKILL_VIOLATION_SEQUENCE.NEXTVAL, 6, 3, 'Had many people in the same room. Was drinking.', '2018-03-05');
-Insert into SOFT_SKILL_VIOLATION (ID, SCREENING_ID, VIOLATION_TYPE_ID, COMMENT, TIME)  
+Insert into SOFT_SKILL_VIOLATION (SOFT_SKILL_VIOLATION_ID, SCREENING_ID, VIOLATION_TYPE_ID, COMMENT, TIME)
 values (SOFT_SKILL_VIOLATION_SEQUENCE.NEXTVAL, 7, 3, 'He kept wandering off topic, was browsing a site.', '2018-03-06');
-Insert into SOFT_SKILL_VIOLATION (ID, SCREENING_ID, VIOLATION_TYPE_ID, COMMENT, TIME) 
+Insert into SOFT_SKILL_VIOLATION (SOFT_SKILL_VIOLATION_ID, SCREENING_ID, VIOLATION_TYPE_ID, COMMENT, TIME)
 values (SOFT_SKILL_VIOLATION_SEQUENCE.NEXTVAL, 8, 3, 'Extremely distracted, was texting.', '2018-03-07');
  
 COMMIT;
