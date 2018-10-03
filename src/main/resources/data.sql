@@ -121,13 +121,13 @@ values (SCREENING_SEQUENCE.NEXTVAL, 3 , 8 , 2, 50.0, 'intoComment8','generalComm
 DROP SEQUENCE  VIOLATION_SEQUENCE;
 CREATE SEQUENCE   VIOLATION_SEQUENCE MINVALUE 1 INCREMENT BY 1 START WITH 1;
 
-Insert into VIOLATION_TYPE (ID, violation_type, DESCRIPTION) 
+Insert into VIOLATION_TYPE (VIOLATION_TYPE_ID, VIOLATION_TYPE, DESCRIPTION)
 values (VIOLATION_SEQUENCE.NEXTVAL, 'Profanity', 'Expletives were used.');
 
-Insert into VIOLATION_TYPE (ID, violation_type, DESCRIPTION) 
+Insert into VIOLATION_TYPE (VIOLATION_TYPE_ID, VIOLATION_TYPE, DESCRIPTION)
 values (VIOLATION_SEQUENCE.NEXTVAL, 'Attire', 'Attire was not appropriate.');
 
-Insert into VIOLATION_TYPE (ID, violation_type, DESCRIPTION) 
+Insert into VIOLATION_TYPE (VIOLATION_TYPE_ID, VIOLATION_TYPE, DESCRIPTION)
 values (VIOLATION_SEQUENCE.NEXTVAL, 'Unfocused', 'Focus was not fully on the screening.');
 
 --------------------------------------------------------
