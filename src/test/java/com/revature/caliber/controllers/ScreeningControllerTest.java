@@ -1,22 +1,16 @@
 package com.revature.caliber.controllers;
 
 import com.revature.caliber.Application;
-import com.revature.caliber.beans.ScheduledScreening;
 import com.revature.caliber.beans.Screening;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
-
-import java.util.Date;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.equalTo;
 
 /**
  * Question Tests using JUnit
@@ -29,31 +23,32 @@ import static org.hamcrest.Matchers.equalTo;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = {Application.class}, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_CLASS)
+@AutoConfigureTestDatabase
 public class ScreeningControllerTest {
 
 	@LocalServerPort
 	private int port;
-	
+
 	@Test
-	public void testSoftSkillViolationByScreeningID(){
+	public void testSoftSkillViolationByScreeningID() {
 		given()
-		.port(port)
-		.when()
-		.get("/screening/{id}/violations",2)
-		.then()
-		.statusCode(200);
+				.port(port)
+				.when()
+				.get("/screening/{id}/violations", 2)
+				.then()
+				.statusCode(200);
 	}
 
 	@Test
 	public void testGetAllScheduledScreenings() {
 		given()
-		.port(port)
-		.when()
-		.get("/screening/scheduled")
-		.then()
-		.statusCode(200);
+				.port(port)
+				.when()
+				.get("/screening/scheduled")
+				.then()
+				.statusCode(200);
 	}
-
 
 
 	@Test
@@ -70,9 +65,9 @@ public class ScreeningControllerTest {
 				.then()
 				.statusCode(200);
 	}
-	
+
 	@Test
-	public void testCreateScreening() {	
+	public void testCreateEmptyScreening() {
 		Screening s = new Screening();
 		given()
 				.port(port)
@@ -81,7 +76,20 @@ public class ScreeningControllerTest {
 				.when()
 				.post("/screening/new")
 				.then()
-				.statusCode(200);
+				.statusCode(400);
 	}
 
+	@Test
+	public void testCreateNewScreening() {
+		Screening sc = new Screening(null, 3, 0, null, "Test", "Test1", null, null, null, null, null);
+
+		given()
+				.port(port)
+				.contentType("application/json")
+				.body(sc)
+				.when()
+				.post("screening/new")
+				.then()
+				.statusCode(200);
+	}
 }
