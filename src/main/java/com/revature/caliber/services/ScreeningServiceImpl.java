@@ -21,7 +21,7 @@ public class ScreeningServiceImpl implements ScreeningService {
 
 	@Override
 	public Screening createScreening(Screening screening) {
-		if (screening != null && screening != new Screening()) {
+		if (screening != null && !(screening.equals(new Screening()))) {
 			return screeningRepository.save(screening);
 		} else {
 			return null;
@@ -30,7 +30,7 @@ public class ScreeningServiceImpl implements ScreeningService {
 
 	@Override
 	public Screening updateScreening(Screening screening) {
-		if (screening != null && screening != new Screening()) {
+		if (screening != null && !(screening.equals(new Screening()))) {
 			return screeningRepository.save(screening);
 		} else {
 			return null;

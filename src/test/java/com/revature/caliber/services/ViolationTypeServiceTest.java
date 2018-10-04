@@ -1,50 +1,38 @@
 package com.revature.caliber.services;
 
 import com.revature.caliber.Application;
-import com.revature.caliber.beans.ViolationType;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.jdbc.Sql;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.context.junit4.SpringRunner;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
-/**
- * Soft Skill Violation Repository Testing class
- * 
- * @author Aaron Ware | 1805-WVU-MAY29 | Richard Orr
- *
- */
-@RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest(classes=Application.class)
-@Sql("/data.sql")
+@RunWith(SpringRunner.class)
+@SpringBootTest(classes = {Application.class})
+@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_CLASS)
+@AutoConfigureTestDatabase
 public class ViolationTypeServiceTest {
 	
 	@Autowired
-	ViolationTypeService vts;
-	
+	ViolationTypeService violationTypeService;
+
 	@Test
-	public void getViolationTypeTestNotNull() {
-		ViolationType vt = vts.getViolationType(1);
-		assertNotNull(vt);
+	public void testGetViolationType() {
+		assertNotNull(violationTypeService.getViolationType(4321));
 	}
-	
+
 	@Test
-	public void getViolationTypeTest() {
-		ViolationType vt = vts.getViolationType(1);
-		assertTrue(vt.getViolationTypeId() == 1);
+	public void testGetViolationTypeNull() {
+		assertNull(violationTypeService.getViolationType(1));
 	}
-	
+
 	@Test
-	public void getAllTestNotNull() {
-		assertNotNull(vts.getAll());
+	public void testGetAll() {
+		assertEquals(3, violationTypeService.getAll().size());
 	}
-	
-	@Test
-	public void getAllTest() {
-		assertTrue(vts.getAll().size() == 3);
-	}
+
 }

@@ -1,55 +1,48 @@
 package com.revature.caliber.services;
 
 import com.revature.caliber.Application;
-import com.revature.caliber.beans.ScheduledScreening;
+import com.revature.caliber.beans.ScheduledStatus;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.List;
+import static org.junit.Assert.assertEquals;
 
-import static org.junit.Assert.assertTrue;
-
-/**
- * Scheduled Screening Service Testing class
- * 
- * @author Aaron Ware | 1805-WVU-MAY29 | Richard Orr
- *
- */
-@RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest(classes=Application.class)
+@RunWith(SpringRunner.class)
+@SpringBootTest(classes = {Application.class})
+@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
+@AutoConfigureTestDatabase
 public class ScheduledScreeningServiceTest {
-	
 	@Autowired
-	ScheduledScreeningService sss;
-	/*
-	
-	@Test
-	public void findPendingTest() {
-		List<ScheduledScreening> scheduledScreenings = sss.findByStatus("PENDING");
-		assertTrue(scheduledScreenings != null && !scheduledScreenings.isEmpty());
-	}
-	
-	
-	@Test
-	public void findPendingTestIllegalArgument() {
-		List<ScheduledScreening> scheduledScreenings = sss.findByStatus("invalid input");
-		assertTrue(scheduledScreenings == null);
-	}
-	
-    @Test
-    public void updateStatusTest() {
-        List<ScheduledScreening> scheduledScreenings = sss.findByStatus("PENDING");
-        int count = scheduledScreenings.size();
+	ScheduledScreeningService scheduledScreeningService;
 
-        ScheduledScreening scheduledScreening = scheduledScreenings.get(0);
-        sss.updateStatus(scheduledScreening.getScheduledScreeningId());
-        scheduledScreenings = sss.findByStatus("PENDING");
+	@Test
+	public void testFindByStatusScreened() {
+		assertEquals(10, scheduledScreeningService.findByStatus(ScheduledStatus.SCREENED).size());
+	}
 
-        assertTrue(count > scheduledScreenings.size());
-    }
-	*/
-	
+	@Test
+	public void testFindByStatusPending() {
+		assertEquals(9, scheduledScreeningService.findByStatus(ScheduledStatus.PENDING).size());
+	}
+
+	@Test
+	public void testUpdateStatus() {
+		int lengthBefore = scheduledScreeningService.findByStatus(ScheduledStatus.PENDING).size();
+		scheduledScreeningService.updateStatus(4324);
+		int lengthAfter = scheduledScreeningService.findByStatus(ScheduledStatus.PENDING).size();
+		assertEquals(lengthBefore - 1, lengthAfter);
+	}
+
+	@Test
+	public void testUpdateStatusBadId() {
+		int lengthBefore = scheduledScreeningService.findByStatus(ScheduledStatus.PENDING).size();
+		scheduledScreeningService.updateStatus(1);
+		int lengthAfter = scheduledScreeningService.findByStatus(ScheduledStatus.PENDING).size();
+		assertEquals(lengthBefore, lengthAfter);
+	}
 }
