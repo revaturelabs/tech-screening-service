@@ -3,7 +3,7 @@ spring:
     name: tech-screening-service
   cloud:
     config:
-      uri: http://ec2-54-89-224-207.compute-1.amazonaws.com:8888 # ${CALIBER_CONFIG_SERVER_URL}
+      uri: ${CALIBER_CONFIG_SERVER_URL}
       fail-fast: true
  # H2
   jpa:
