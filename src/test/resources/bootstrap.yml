@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: tech-screening-service
+  cloud:
+    config:
+      uri: ${CALIBER_CONFIG_SERVER_URL}
+      fail-fast: true
+ # H2
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+eureka:
+  client:
+     enabled: false
