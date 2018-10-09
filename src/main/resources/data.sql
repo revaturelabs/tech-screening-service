@@ -1,13 +1,8 @@
--- TRUNCATE TABLE CANDIDATE;
--- TRUNCATE TABLE SCHEDULED_SCREENING;
--- TRUNCATE TABLE SCREENING;
--- TRUNCATE TABLE VIOLATION_TYPE;
--- TRUNCATE TABLE SOFT_SKILL_VIOLATION;
+
 
 --------------------------------------------------------
---  DML for Sequence CANDIDATE
+--  CANDIDATE
 --------------------------------------------------------
--- DROP SEQUENCE  CANDIDATE_SEQUENCE;
 CREATE SEQUENCE    CANDIDATE_SEQUENCE  MINVALUE 1  INCREMENT BY 1 START WITH 4321;
 
 INSERT INTO CANDIDATE (CANDIDATE_ID,EMAIL,NAME,PHONE_NUMBER,PROFILE_URL,SKYPE_ID) values (CANDIDATE_SEQUENCE.NEXTVAL, 'dschrute@mailinator.com','Schrute, Dwight','700-864-1234',null,null);
@@ -38,9 +33,8 @@ INSERT INTO CANDIDATE (CANDIDATE_ID,EMAIL,NAME,PHONE_NUMBER,PROFILE_URL,SKYPE_ID
 INSERT INTO CANDIDATE (CANDIDATE_ID,EMAIL,NAME,PHONE_NUMBER,PROFILE_URL,SKYPE_ID) VALUES (CANDIDATE_SEQUENCE.NEXTVAL, 'sgermanotta@mailinator.com','Germanotta, Stefani','700-865-7890',null,null);
 
 --------------------------------------------------------
---  DML for Sequence SCHEDULED_SCREENING
+-- SCHEDULED_SCREENING
 --------------------------------------------------------
--- DROP SEQUENCE  SCHEDULED_SCREENING_SEQUENCE;
 CREATE SEQUENCE    SCHEDULED_SCREENING_SEQUENCE  MINVALUE 1  INCREMENT BY 1 START WITH 4321;
 
 insert into SCHEDULED_SCREENING (SCHEDULED_SCREENING_ID, candidate_id, SKILL_TYPE_ID, status, scheduled_date) values (SCHEDULED_SCREENING_SEQUENCE.NEXTVAL, 4326, 1, 'SCREENED', (SYSDATE+13));
@@ -64,9 +58,8 @@ insert into SCHEDULED_SCREENING (SCHEDULED_SCREENING_ID, candidate_id, SKILL_TYP
 insert into SCHEDULED_SCREENING (SCHEDULED_SCREENING_ID, candidate_id, SKILL_TYPE_ID, status, scheduled_date) values (SCHEDULED_SCREENING_SEQUENCE.NEXTVAL, 4326, 20, 'SCREENED', (SYSDATE+1));
 
 --------------------------------------------------------
---  DML for Sequence SCREENING_ID_SEQUENCE
+-- SCREENING
 --------------------------------------------------------
--- DROP SEQUENCE  SCREENING_SEQUENCE;
 CREATE SEQUENCE    SCREENING_SEQUENCE  MINVALUE 1  INCREMENT BY 1 START WITH 4321;
 
 Insert into SCREENING (ID, SCREENER_ID, SKILL_TYPE_ID,
@@ -116,24 +109,22 @@ values (SCREENING_SEQUENCE.NEXTVAL, 3, 2, 50.0, 'intoComment8','generalComment8'
  
 
 --------------------------------------------------------
---  DML for Sequence VIOLATION_SEQUENCE
+--  VIOLATION_TYPE
 --------------------------------------------------------
--- DROP SEQUENCE  VIOLATION_SEQUENCE;
-CREATE SEQUENCE   VIOLATION_SEQUENCE MINVALUE 1 INCREMENT BY 1 START WITH 4321;
+CREATE SEQUENCE   VIOLATION_TYPE_SEQUENCE MINVALUE 1 INCREMENT BY 1 START WITH 4321;
 
 Insert into VIOLATION_TYPE (VIOLATION_TYPE_ID, violation_type, DESCRIPTION)
-values (VIOLATION_SEQUENCE.NEXTVAL, 'Profanity', 'Expletives were used.');
+values (VIOLATION_TYPE_SEQUENCE.NEXTVAL, 'Profanity', 'Expletives were used.');
 
 Insert into VIOLATION_TYPE (VIOLATION_TYPE_ID, violation_type, DESCRIPTION)
-values (VIOLATION_SEQUENCE.NEXTVAL, 'Attire', 'Attire was not appropriate.');
+values (VIOLATION_TYPE_SEQUENCE.NEXTVAL, 'Attire', 'Attire was not appropriate.');
 
 Insert into VIOLATION_TYPE (VIOLATION_TYPE_ID, violation_type, DESCRIPTION)
-values (VIOLATION_SEQUENCE.NEXTVAL, 'Unfocused', 'Focus was not fully on the screening.');
+values (VIOLATION_TYPE_SEQUENCE.NEXTVAL, 'Unfocused', 'Focus was not fully on the screening.');
 
 --------------------------------------------------------
---  DML for Sequence SOFT_SKILL_VIOLATION_SEQUENCE
+--  SOFT_SKILL_VIOLATION
 --------------------------------------------------------
--- DROP SEQUENCE  SOFT_SKILL_VIOLATION_SEQUENCE;
 CREATE SEQUENCE   SOFT_SKILL_VIOLATION_SEQUENCE MINVALUE 1 INCREMENT BY 1 START WITH 4321;
 
 Insert into SOFT_SKILL_VIOLATION (SOFT_SKILL_VIOLATION_ID, SCREENING_ID, VIOLATION_TYPE_ID, COMMENT, TIME)
@@ -155,7 +146,7 @@ COMMIT;
 
 
 --------------------------------------------------------
---  DML for Sequence QUESTION_SCORE_SEQUENCE
+--  QUESTION_SCORE
 --------------------------------------------------------
 CREATE SEQUENCE   QUESTION_SCORE_SEQUENCE MINVALUE 1 INCREMENT BY 1 START WITH 4321;
 

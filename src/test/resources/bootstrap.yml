@@ -3,7 +3,7 @@ spring:
     name: tech-screening-service
   cloud:
     config:
-      uri: ${CALIBER_CONFIG_SERVER_URL}
+      uri: ${SCREENFORCE_CONFIG_SERVER_URL}
       fail-fast: true
  # H2
   jpa:
