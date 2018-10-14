@@ -59,8 +59,10 @@ public class ViolationController {
 	})
 	public ResponseEntity<String> deleteSoftSkillViolation(@PathVariable(value = "id") int id) {
 		try {
-			softSkillViolationService.delete(id);
-		} catch (EmptyResultDataAccessException e) {
+			SoftSkillViolation skill = softSkillViolationService.findById(id);
+			softSkillViolationService.delete(skill.getSoftViolationId());
+		} catch(NullPointerException e) {
+			System.out.println(e);
 			return new ResponseEntity<>("id not found", HttpStatus.NOT_FOUND);
 		}
 		return new ResponseEntity<>("Delete Completed", HttpStatus.OK);
