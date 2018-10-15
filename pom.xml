@@ -115,7 +115,7 @@
 
 	</dependencies>
 	<build>
-		<finalName>screening-admin-service</finalName>
+		<finalName>tech-screening-service</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
