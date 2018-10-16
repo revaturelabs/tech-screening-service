@@ -31,7 +31,7 @@ public class ScreeningServiceImplTest {
 
 	@Test
 	public void testCreateScreening() {
-		Screening sc = new Screening(null, 3, 0, null, "Test", "Test1", null, null, null, null, null);
+		Screening sc = new Screening(0, null, 3, 0, null, "Test", "Test1", null, null, null, null, null);
 		assertNotNull(screeningService.createScreening(sc));
 	}
 

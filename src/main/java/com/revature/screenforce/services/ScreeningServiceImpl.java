@@ -16,6 +16,11 @@ public class ScreeningServiceImpl implements ScreeningService {
 	ScheduledScreeningRepository scheduledScreeningRepository;
 
 	@Override
+	public Screening getScreeningById(int sid) {
+		return screeningRepository.getOne(sid);
+	}
+	
+	@Override
 	public Screening getScreening(int id) {
 		return screeningRepository.findById(id).orElse(new Screening());
 	}
@@ -36,5 +41,9 @@ public class ScreeningServiceImpl implements ScreeningService {
 		} else {
 			return null;
 		}
+	}
+	@Override
+	public boolean existsById(int id) {
+		return screeningRepository.existsById(id);
 	}
 }

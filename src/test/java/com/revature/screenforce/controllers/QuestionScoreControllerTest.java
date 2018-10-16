@@ -38,13 +38,22 @@ public class QuestionScoreControllerTest {
 
 
 	@Test
-	public void testGetScoresByScreeningId() {
+	public void testGetScoresByScreeningIdFail() {
 		given()
 				.port(port)
 				.when()
 				.get("/questionScore/{screeningId}", 1)
 				.then()
+				.statusCode(404);
+	}
+	
+	@Test
+	public void testGetScoresByScreeningId() {
+		given()
+				.port(port)
+				.when()
+				.get("/questionScore/{screeningId}", 4321)
+				.then()
 				.statusCode(200);
 	}
-
 }

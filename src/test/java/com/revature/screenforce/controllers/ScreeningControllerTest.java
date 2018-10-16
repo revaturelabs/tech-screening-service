@@ -82,7 +82,7 @@ public class ScreeningControllerTest {
 
 	@Test
 	public void testCreateNewScreening() {
-		Screening sc = new Screening(null, 3, 0, null, "Test", "Test1", null, null, null, null, null);
+		Screening sc = new Screening(0, null, 3, 0, null, "Test", "Test1", null, null, null, null, null);
 
 		given()
 				.port(port)

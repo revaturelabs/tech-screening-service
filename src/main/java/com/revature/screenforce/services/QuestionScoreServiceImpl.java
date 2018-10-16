@@ -33,6 +33,10 @@ public class QuestionScoreServiceImpl implements QuestionScoreService {
 	public List<SimpleQuestionScore> findByScreeningId(int screeningId) {
 		return questionScoreRepository.findAllByScreeningScreeningId(screeningId);
 	}
+	@Override
+	public boolean existsById(int id) {
+		return questionScoreRepository.existsById(id);
+	}
 
 
 }
