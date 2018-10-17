@@ -31,10 +31,10 @@ import javax.persistence.EntityNotFoundException;
 public class QuestionScoreController {
 
 	@Autowired
-	private QuestionScoreService questionScoreService;
+	QuestionScoreService questionScoreService;
 	
 	@Autowired
-	private ScreeningService screeningService;
+	ScreeningService screeningService;
 
 	/**
 	 * Create a new Question Score and persist it in the database.

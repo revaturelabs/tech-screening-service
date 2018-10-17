@@ -72,6 +72,7 @@ public class Screening {
 	public Screening(int screeningId, ScheduledScreening scheduledScreening, int screenerId, int skillType,
 			Double compositeScore, String aboutMeCommentary, String generalCommentary, String softSkillCommentary,
 			Date startDateTime, Date endDateTime, Boolean softSkillsVerdict, String status) {
+		super();
 		this.screeningId = screeningId;
 		this.scheduledScreening = scheduledScreening;
 		this.screenerId = screenerId;

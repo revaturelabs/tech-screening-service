@@ -30,6 +30,26 @@ public class ScreeningControllerTest {
 
 	@LocalServerPort
 	private int port;
+	
+	@Test
+	public void testGetScreeningByID() {
+		given()
+				.port(port)
+				.when()
+				.get("/screening/{id}", 4321)
+				.then()
+				.statusCode(200);
+	}
+	
+	@Test
+	public void testGetScreeningByIDFail() {
+		given()
+				.port(port)
+				.when()
+				.get("/screening/{id}", 1)
+				.then()
+				.statusCode(404);
+	}
 
 	@Test
 	public void testSoftSkillViolationByScreeningID() {

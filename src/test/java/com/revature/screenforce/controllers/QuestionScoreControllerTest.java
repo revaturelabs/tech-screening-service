@@ -22,7 +22,6 @@ public class QuestionScoreControllerTest {
 	@LocalServerPort
 	private int port;
 
-
 	@Test
 	public void testQuestionScore() {
 		SimpleQuestionScore b = new SimpleQuestionScore(300, null, (double) 20, "Test", null);

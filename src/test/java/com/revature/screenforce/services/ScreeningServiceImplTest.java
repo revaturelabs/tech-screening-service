@@ -14,6 +14,8 @@ import com.revature.screenforce.services.ScreeningServiceImpl;
 
 import static org.junit.Assert.*;
 
+import javax.transaction.Transactional;
+
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = {Application.class})
@@ -23,6 +25,19 @@ public class ScreeningServiceImplTest {
 	@Autowired
 	ScreeningServiceImpl screeningService;
 
+	@Test
+	@Transactional
+	public void testGetScreeningById() {
+		Screening sc = screeningService.getScreeningById(4321);
+		assertNotNull(sc);
+	}
+	
+	@Test
+	public void testGetScreeningByIdNull() {
+		Screening sc = screeningService.getScreeningById(1);
+		assertNull(sc);
+	}
+	
 	@Test
 	public void testGetScreening() {
 		double sum = screeningService.getScreening(4322).getCompositeScore();
