@@ -42,6 +42,19 @@ public class ScreeningController {
 	/**
 	 * Returns a list of softSkillViolation objects by ScreeningID
 	 *
+	 * @return All Sreening Object
+	 */
+	@ApiOperation(value = "Get a Screening", response = Screening.class, responseContainer = "List")
+	@ApiResponses(value = {@ApiResponse(code = 200, message = "Retrieved All Screening")})
+	@RequestMapping(method = RequestMethod.GET)
+	public ResponseEntity<List<Screening>> getAllScreening() {
+		List<Screening> ssv = screeningService.getAllScreening();
+			return new ResponseEntity<>(ssv, HttpStatus.OK);
+	}
+	
+	/**
+	 * Returns a list of softSkillViolation objects by ScreeningID
+	 *
 	 * @param screeningId - the unique id of a Screening
 	 * @return Sreening Object
 	 */
@@ -85,7 +98,6 @@ public class ScreeningController {
 	@RequestMapping(value = "/scheduled", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<ScheduledScreening>> getAllScheduledScreenings() {
 		List<ScheduledScreening> scheduledScreenings = scheduledScreeningService.findByStatus(ScheduledStatus.PENDING);
-
 		return new ResponseEntity<>(scheduledScreenings, HttpStatus.OK);
 	}
 
@@ -116,7 +128,8 @@ public class ScreeningController {
 	 * @return Updated screening object
 	 */
 	@ApiOperation(value = "Update a screening", response = Screening.class)
-	@ApiResponses(value = { @ApiResponse(code = 200, message = "Screening updated"),
+	@ApiResponses(value = { 
+			@ApiResponse(code = 200, message = "Screening updated"),
 			@ApiResponse(code = 403, message = "Bad request, screening not updated") })
 //	needs to be updated to path params. 
 	@PutMapping(value = "/update", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -128,5 +141,4 @@ public class ScreeningController {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 	}
-
 }

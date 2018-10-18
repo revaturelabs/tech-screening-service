@@ -1,5 +1,7 @@
 package com.revature.screenforce.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +16,12 @@ public class ScreeningServiceImpl implements ScreeningService {
 
 	@Autowired
 	ScheduledScreeningRepository scheduledScreeningRepository;
-
+	
+	@Override
+	public List<Screening> getAllScreening() {
+		return screeningRepository.findAll();
+	}
+	
 	@Override
 	public Screening getScreeningById(int sid) {
 		return screeningRepository.getOne(sid);
