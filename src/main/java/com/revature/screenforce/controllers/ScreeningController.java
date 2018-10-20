@@ -44,9 +44,9 @@ public class ScreeningController {
 	 *
 	 * @return All Sreening Object
 	 */
-	@ApiOperation(value = "Get a Screening", response = Screening.class, responseContainer = "List")
+	@ApiOperation(value = "Get all Screening", response = Screening.class, responseContainer = "List")
 	@ApiResponses(value = {@ApiResponse(code = 200, message = "Retrieved All Screening")})
-	@RequestMapping(method = RequestMethod.GET)
+	@RequestMapping(value= "/all", method = RequestMethod.GET)
 	public ResponseEntity<List<Screening>> getAllScreening() {
 		List<Screening> ssv = screeningService.getAllScreening();
 			return new ResponseEntity<>(ssv, HttpStatus.OK);
@@ -109,7 +109,7 @@ public class ScreeningController {
 	 */
 	@ApiOperation(value = "Add a new Screening", response = Screening.class)
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Screening added"),
-			@ApiResponse(code = 403, message = "Bad request, screening not added") })
+			@ApiResponse(code = 400, message = "Bad request, screening not added") })
 	@PostMapping(value = "/new", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Screening> createScreening(@Valid @RequestBody Screening screening) {
 		Screening newScreen = screeningService.createScreening(screening);

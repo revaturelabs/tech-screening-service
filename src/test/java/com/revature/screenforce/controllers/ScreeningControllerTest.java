@@ -32,6 +32,16 @@ public class ScreeningControllerTest {
 	private int port;
 	
 	@Test
+	public void testGetAllScreening() {
+		given()
+				.port(port)
+				.when()
+				.get("/screening/all")
+				.then()
+				.statusCode(200);
+	}
+	
+	@Test
 	public void testGetScreeningByID() {
 		given()
 				.port(port)
@@ -103,7 +113,6 @@ public class ScreeningControllerTest {
 	@Test
 	public void testCreateNewScreening() {
 		Screening sc = new Screening(0, null, 3, 0, null, "Test", "Test1", null, null, null, null, null);
-
 		given()
 				.port(port)
 				.contentType("application/json")
