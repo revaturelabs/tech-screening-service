@@ -58,7 +58,7 @@ public class ScreeningController {
 	 * @param screeningId - the unique id of a Screening
 	 * @return Sreening Object
 	 */
-	@ApiOperation(value = "Get a Screening", response = Screening.class, responseContainer = "List")
+	@ApiOperation(value = "Get a Screening", response = Screening.class)
 	@ApiResponses(value = { 
 			@ApiResponse(code = 200, message = "Retrieved Screening"), 
 			@ApiResponse(code = 404, message = "Screening Not Found")
@@ -69,7 +69,7 @@ public class ScreeningController {
 		if(ssv != null ) {
 			return new ResponseEntity<>(ssv, HttpStatus.OK);
 		}
-		return new ResponseEntity<Screening>(ssv, HttpStatus.NOT_FOUND);
+		return new ResponseEntity<>(ssv, HttpStatus.NOT_FOUND);
 	}
 
 	/**
@@ -130,7 +130,7 @@ public class ScreeningController {
 	@ApiOperation(value = "Update a screening", response = Screening.class)
 	@ApiResponses(value = { 
 			@ApiResponse(code = 200, message = "Screening updated"),
-			@ApiResponse(code = 403, message = "Bad request, screening not updated") })
+			@ApiResponse(code = 400, message = "Bad request, screening not updated") })
 //	needs to be updated to path params. 
 	@PutMapping(value = "/update", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Screening> updateScreening(@Valid @RequestBody Screening screening) {
