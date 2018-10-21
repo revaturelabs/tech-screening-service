@@ -1,6 +1,9 @@
 spring:
   application:
     name: tech-screening-service
+  cloud:
+    config:
+      enabled: false
 # H2
   jpa:
     hibernate:
