@@ -64,7 +64,6 @@ public class ViolationControllerTest {
 	@Test
 	public void addNewViolation() {
 		SoftSkillViolation violation = new SoftSkillViolation(321, null, null, "Terrible boyo", new Date());
-
 		given()
 				.port(port)
 				.when()
@@ -73,6 +72,20 @@ public class ViolationControllerTest {
 				.post("/violation/new")
 				.then()
 				.statusCode(200);
+
+	}
+	
+	@Test
+	public void addNewViolationFail() {
+		SoftSkillViolation violation = new SoftSkillViolation();
+		given()
+				.port(port)
+				.when()
+				.contentType("application/json")
+				.body(violation)
+				.post("/violation/new")
+				.then()
+				.statusCode(400);
 
 	}
 }
