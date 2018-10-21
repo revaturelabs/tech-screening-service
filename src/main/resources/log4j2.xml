@@ -2,7 +2,7 @@
 <Configuration>
 	<Appenders>
 		<!-- Appends to the socket for splunk -->
-		<Socket name="socket" host="${SPLUNK_URL}" port="15000">
+		<!-- 34.207.200.7 // ${SPLUNK_URL} -->
 			<PatternLayout pattern="%p: %m%n" charset="UTF-8" />
 		</Socket>
 		<Console name="console" target="SYSTEM_OUT">
