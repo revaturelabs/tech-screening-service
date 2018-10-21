@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration>
 	<Appenders>
-		<Socket name="socket" host="34.207.200.7" port="15000">
+		<!-- Appends to the socket for splunk -->
+		<Socket name="socket" host="${SPLUNK_URL}" port="15000">
 			<PatternLayout pattern="%p: %m%n" charset="UTF-8" />
 		</Socket>
-		<Http name="http" url="34.207.200.7:8080"
-			token="eabf6dd8-01fa-4095-90e5-5beb037b0757">
-			<PatternLayout pattern="%m" />
-		</Http>
 		<Console name="console" target="SYSTEM_OUT">
 			<!-- Ref for pattern https://logging.apache.org/log4j/2.x/manual/layouts.html -->
 			<PatternLayout>
@@ -22,6 +19,7 @@
 				<Pattern>%d [%t] %p %c - %m%n</Pattern>
 			</PatternLayout>
 			<Policies>
+				<!-- Ref Trigger Policy of Log4j2 -->
 				<OnStartupTriggeringPolicy />
 				<TimeBasedTriggeringPolicy />
 				<SizeBasedTriggeringPolicy size="100 MB" />
@@ -51,7 +49,7 @@
 				<TimeBasedTriggeringPolicy />
 				<SizeBasedTriggeringPolicy size="50 MB" />
 			</Policies>
-			<!-- maximum of 10 files for each log -->
+			<!-- maximum of 20 files for each log -->
 			<DefaultRolloverStrategy max="20" />
 		</RollingFile>
 		<RollingFile name="debug" fileName="./logs/app-debug.log"
@@ -87,12 +85,11 @@
 			<AppenderRef ref="error" level="error" />
 			<AppenderRef ref="debug" level="debug" />
 			<AppenderRef ref="fatal" level="fatal" />
-			<AppenderRef ref="socket"/>
+			<AppenderRef ref="socket" />
 		</Root>
 		<!-- Custom Logger for Splunk -->
 		<Logger name="splunk.logger" additivity="false" level="info">
 			<AppenderRef ref="socket" />
-			<AppenderRef ref="http" />
 		</Logger>
 	</Loggers>
 </Configuration>
