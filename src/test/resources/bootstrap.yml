@@ -1,10 +1,13 @@
 spring:
   application:
     name: tech-screening-service
- # H2
+# H2
   jpa:
     hibernate:
       ddl-auto: create-drop
 eureka:
   client:
      enabled: false
+     
+server:
+  port: 8184
