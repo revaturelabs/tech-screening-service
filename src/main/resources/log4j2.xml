@@ -3,7 +3,7 @@
 	<Appenders>
 		<!-- Appends to the socket for splunk -->
 		<!--  env ${SPLUNK_URL} -->
-		<Socket name="socket" host="${SPLUNK_URL}" port="15000">
+		<Socket name="socket" host="${env:SPLUNK_URL}" port="15000">
 			<PatternLayout pattern="%p: %m%n" charset="UTF-8" />
 		</Socket>
 		<Console name="console" target="SYSTEM_OUT">
