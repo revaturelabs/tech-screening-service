@@ -46,7 +46,7 @@ public class ScreeningController {
 	 */
 	@ApiOperation(value = "Get all Screening", response = Screening.class, responseContainer = "List")
 	@ApiResponses(value = {@ApiResponse(code = 200, message = "Retrieved All Screening")})
-	@RequestMapping(value= "/all", method = RequestMethod.GET)
+	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<Screening>> getAllScreening() {
 		List<Screening> ssv = screeningService.getAllScreening();
 			return new ResponseEntity<>(ssv, HttpStatus.OK);
@@ -133,9 +133,8 @@ public class ScreeningController {
 			@ApiResponse(code = 400, message = "Bad request, screening not updated") })
 	@PutMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Screening> updateScreening(@PathVariable(value = "id") int id, @RequestBody Screening newSc) {
-		screeningService.getScreeningById(id);
-		Screening updateScreening = screeningService.updateScreening(newSc);
-		if (updateScreening != null) {
+		if (screeningService.existsById(id)) {
+			Screening updateScreening = screeningService.updateScreening(newSc);
 			return new ResponseEntity<>(updateScreening, HttpStatus.OK);
 		} else {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);

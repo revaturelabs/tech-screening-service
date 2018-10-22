@@ -45,9 +45,9 @@ public class ScreeningControllerTest {
 	
 	@Before
 	public void setup() {
-		candDef = new Candidate(0, "elawrence@mailinator.com","Lawrence, Elaine","700-864-8901","www.me.com","e@skype", "","","","","","");
-		ssDef =  new ScheduledScreening(0, candDef, ScheduledStatus.PENDING, 6, new Date());
-		scDef = new Screening (4321, ssDef, 3,2, (Double)50d,"intoComment","generalComment","softSkillComment", new Date(), new Date(), false, "Completed");
+		//candDef = new Candidate(0, "elawrence@mailinator.com","Lawrence, Elaine","700-864-8901","www.me.com","e@skype", "","","","","","");
+		//ssDef =  new ScheduledScreening(0, candDef, ScheduledStatus.PENDING, 6, new Date());
+		scDef = new Screening (4321, null, 3,2, (Double)50d,"intoComment","generalComment","softSkillComment", new Date(), new Date(), false, "Completed");
 	}
 	
 	@Test
@@ -55,7 +55,7 @@ public class ScreeningControllerTest {
 		given()
 				.port(port)
 				.when()
-				.get("/screening/all")
+				.get("/screening")
 				.then()
 				.statusCode(200);
 	}
@@ -143,7 +143,7 @@ public class ScreeningControllerTest {
 
 	@Test
 	public void testCreateNewScreening() {
-		Screening sc = new Screening(0, null, 3, 0, null, "Test", "Test1", null, null, null, null, null);
+		Screening sc = scDef;
 		given()
 				.port(port)
 				.contentType("application/json")
