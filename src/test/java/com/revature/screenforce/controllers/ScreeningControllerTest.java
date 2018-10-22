@@ -20,6 +20,7 @@ import static io.restassured.RestAssured.given;
  * @author Rishabh Rana | 1807-QC | Emily Higgins
  * @author Alpha Barry | 1807-QC | Emily Higgins
  * @author Jeremy Straus | 1807-QC | Emily Higgins
+ * 
  */
 
 @RunWith(SpringRunner.class)
@@ -81,7 +82,7 @@ public class ScreeningControllerTest {
 				.statusCode(200);
 	}
 
-
+	@Ignore
 	@Test
 	public void testUpdateScreening() {
 		Screening screening = new Screening();
