@@ -24,7 +24,14 @@ public class ScreeningServiceImpl implements ScreeningService {
 	
 	@Override
 	public Screening getScreeningById(int sid) {
-		return screeningRepository.getOne(sid);
+//		return screeningRepository.getOne(sid);
+		Screening sc = null;
+		try {
+			sc = screeningRepository.getOne(sid);
+		} catch (Exception e) {
+			return sc;
+		}
+		return sc;
 	}
 	
 	@Override
