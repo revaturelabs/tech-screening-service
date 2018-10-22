@@ -30,7 +30,7 @@ public class QuestionScoreControllerTest {
 				.contentType("application/json")
 				.body(b)
 				.when()
-				.post("/questionScore/new")
+				.post("/questionScore")
 				.then()
 				.statusCode(200);
 	}
@@ -43,7 +43,7 @@ public class QuestionScoreControllerTest {
 				.contentType("application/json")
 				.body(b)
 				.when()
-				.post("/questionScore/new")
+				.post("/questionScore")
 				.then()
 				.statusCode(400);
 	}

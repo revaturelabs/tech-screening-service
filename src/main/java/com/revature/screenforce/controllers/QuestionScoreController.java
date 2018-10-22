@@ -47,7 +47,7 @@ public class QuestionScoreController {
 			@ApiResponse(code = 200, message = "QuestionScore created"),
 			@ApiResponse(code = 400, message = "Could not create QuestionScore")
 	})
-	@RequestMapping(value = "/new", method = RequestMethod.POST)
+	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<SimpleQuestionScore> saveQuestionScore(@RequestBody SimpleQuestionScore questionScore) {
 		SimpleQuestionScore newScore = questionScoreService.save(questionScore);
 		if (newScore != null) {

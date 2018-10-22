@@ -79,7 +79,7 @@ public class ViolationController {
 			@ApiResponse(code = 200, message = "SoftSkillViolation added"),
 			@ApiResponse(code = 400, message = "Bad SoftSkillViolation")
 	})
-	@RequestMapping(value = "/new", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<SoftSkillViolation> createSoftSkillViolationAndReturnSoftSkillViolationID(@RequestBody SoftSkillViolation violation) {
 		if (violation != null && !violation.equals(new SoftSkillViolation())) {
 			SoftSkillViolation ssv = softSkillViolationService.save(violation);
