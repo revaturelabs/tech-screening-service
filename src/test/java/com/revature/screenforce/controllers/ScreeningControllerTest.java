@@ -1,5 +1,6 @@
 package com.revature.screenforce.controllers;
 
+import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,9 +11,14 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.revature.screenforce.Application;
+import com.revature.screenforce.beans.Candidate;
+import com.revature.screenforce.beans.ScheduledScreening;
+import com.revature.screenforce.beans.ScheduledStatus;
 import com.revature.screenforce.beans.Screening;
 
 import static io.restassured.RestAssured.given;
+
+import java.util.Date;
 
 /**
  * Question Tests using JUnit
@@ -32,6 +38,17 @@ public class ScreeningControllerTest {
 
 	@LocalServerPort
 	private int port;
+	
+	Screening scDef;
+	ScheduledScreening ssDef;
+	Candidate candDef;
+	
+	@Before
+	public void setup() {
+		candDef = new Candidate(0, "elawrence@mailinator.com","Lawrence, Elaine","700-864-8901","www.me.com","e@skype", "","","","","","");
+		ssDef =  new ScheduledScreening(0, candDef, ScheduledStatus.PENDING, 6, new Date());
+		scDef = new Screening (4321, ssDef, 3,2, (Double)50d,"intoComment","generalComment","softSkillComment", new Date(), new Date(), false, "Completed");
+	}
 	
 	@Test
 	public void testGetAllScreening() {
@@ -83,20 +100,32 @@ public class ScreeningControllerTest {
 				.statusCode(200);
 	}
 
-	@Ignore
 	@Test
 	public void testUpdateScreening() {
-		Screening screening = new Screening();
-		screening.setScreeningId(2);
+		Screening screening = scDef;
 		screening.setGeneralCommentary("Testing");
 		given()
 				.port(port)
 				.contentType("application/json")
 				.body(screening)
 				.when()
-				.put("/screening/update")
+				.put("/screening/4321")
 				.then()
 				.statusCode(200);
+	}
+	
+	@Test
+	public void testUpdateScreeningFail() {
+		Screening screening = scDef;
+		screening.setGeneralCommentary("Testing");
+		given()
+				.port(port)
+				.contentType("application/json")
+				.body(screening)
+				.when()
+				.put("/screening/9921")
+				.then()
+				.statusCode(400);
 	}
 
 	@Test
