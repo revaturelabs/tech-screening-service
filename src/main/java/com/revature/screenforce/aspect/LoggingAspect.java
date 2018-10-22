@@ -13,18 +13,17 @@ import org.springframework.stereotype.Component;
 @Component
 @Aspect
 public class LoggingAspect {
-    private Logger log;
-    
+
     @Around("everything()")
-    public Object log(ProceedingJoinPoint pjp) {
+    public Object log(ProceedingJoinPoint pjp) throws Throwable {
         Object obj = null;
-        log = LogManager.getLogger(pjp.getTarget().getClass());
+        Logger log = LogManager.getLogger(pjp.getTarget().getClass());
         log.info("Method with signature: "+pjp.getSignature());
         log.info("With arguments: "+Arrays.toString(pjp.getArgs()));
      
         try {
             obj = pjp.proceed();
-        } catch (Throwable e) {
+        } catch (Exception e) {
             log.error(e.getMessage());
             for(StackTraceElement s : e.getStackTrace()) {
                 log.warn(s);
@@ -35,5 +34,5 @@ public class LoggingAspect {
     }   
     
     @Pointcut("execution(* com.revature.screenforce..*(..))")
-    public void everything() { /* Empty method for Aspect Pointcut */ }
+	public void everything() { /* Empty method for Aspect Pointcut */ }
 }
