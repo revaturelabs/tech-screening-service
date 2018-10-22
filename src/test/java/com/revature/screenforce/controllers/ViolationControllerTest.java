@@ -69,7 +69,7 @@ public class ViolationControllerTest {
 				.when()
 				.contentType("application/json")
 				.body(violation)
-				.post("/violation/new")
+				.post("/violation")
 				.then()
 				.statusCode(200);
 
@@ -83,7 +83,7 @@ public class ViolationControllerTest {
 				.when()
 				.contentType("application/json")
 				.body(violation)
-				.post("/violation/new")
+				.post("/violation")
 				.then()
 				.statusCode(400);
 

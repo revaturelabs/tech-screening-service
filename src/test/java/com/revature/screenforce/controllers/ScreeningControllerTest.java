@@ -136,7 +136,7 @@ public class ScreeningControllerTest {
 				.contentType("application/json")
 				.body(s)
 				.when()
-				.post("/screening/new")
+				.post("/screening")
 				.then()
 				.statusCode(400);
 	}
@@ -149,7 +149,7 @@ public class ScreeningControllerTest {
 				.contentType("application/json")
 				.body(sc)
 				.when()
-				.post("screening/new")
+				.post("screening")
 				.then()
 				.statusCode(200);
 	}

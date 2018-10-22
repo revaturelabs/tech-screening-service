@@ -95,6 +95,7 @@ public class ScreeningController {
 	 */
 	@ApiOperation(value = "Get all pending Scheduled Screenings", response = ScheduledScreening.class, responseContainer = "List")
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Retrieved all Scheduled Screenings") })
+	// making it scheduled into having the status coming in as Paramater would be a better way.
 	@RequestMapping(value = "/scheduled", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<ScheduledScreening>> getAllScheduledScreenings() {
 		List<ScheduledScreening> scheduledScreenings = scheduledScreeningService.findByStatus(ScheduledStatus.PENDING);
@@ -110,7 +111,7 @@ public class ScreeningController {
 	@ApiOperation(value = "Add a new Screening", response = Screening.class)
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Screening added"),
 			@ApiResponse(code = 400, message = "Bad request, screening not added") })
-	@PostMapping(value = "/new", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Screening> createScreening(@Valid @RequestBody Screening screening) {
 		Screening newScreen = screeningService.createScreening(screening);
 		if (newScreen != null) {
