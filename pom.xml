@@ -11,7 +11,30 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
 		<spring-cloud.version>Finchley.SR1</spring-cloud.version>
+		<sonar.projectKey>screenforce:tech-screening-service</sonar.projectKey>
+		<sonar.projectName>Screenforce Tech Screening Service</sonar.projectName>
+		<sonar.projectVersion>2.1</sonar.projectVersion>
+		<sonar.sourceEncoding>UTF-8</sonar.sourceEncoding>
+
 	</properties>
+
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>0.8.3</version>
+				<reportSets>
+					<reportSet>
+						<reports>
+							<!-- select non-aggregate reports -->
+							<report>report</report>
+						</reports>
+					</reportSet>
+				</reportSets>
+			</plugin>
+		</plugins>
+	</reporting>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -117,7 +140,24 @@
 			<artifactId>jaxb-api</artifactId>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/org.sonarsource.scanner.maven/sonar-maven-plugin -->
+		<dependency>
+			<groupId>org.sonarsource.scanner.maven</groupId>
+			<artifactId>sonar-maven-plugin</artifactId>
+			<version>3.5.0.1254</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.jacoco/jacoco-maven-plugin -->
+		<dependency>
+			<groupId>org.jacoco</groupId>
+			<artifactId>jacoco-maven-plugin</artifactId>
+			<version>0.8.2</version>
+		</dependency>
+
+
+
 	</dependencies>
+
 	<build>
 		<finalName>tech-screening-service</finalName>
 		<plugins>
