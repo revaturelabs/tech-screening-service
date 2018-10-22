@@ -16,6 +16,7 @@ import com.revature.screenforce.services.ScreeningService;
 
 import java.util.Date;
 
+import static org.assertj.core.api.Assertions.assertThatNullPointerException;
 import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
@@ -53,5 +54,16 @@ public class QuestionScoreServiceTest {
 		Screening screening = screeningService.getScreening(4323);
 		questionScoreService.save(new SimpleQuestionScore(123, screening, 4.0, "Did well", new Date()));
 		assertEquals(1, questionScoreService.findByScreeningId(4323).size());
+	}
+	
+	@Test
+	public void existById() {
+		assertTrue(questionScoreService.existsById(4321));
+	}
+	
+	@Test
+	public void existByIdFail() {
+		questionScoreService.existsById(0);
+		assertThatNullPointerException();
 	}
 }

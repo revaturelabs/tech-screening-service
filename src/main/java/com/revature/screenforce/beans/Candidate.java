@@ -6,6 +6,15 @@ import io.swagger.annotations.ApiModelProperty;
 import javax.persistence.*;
 import java.util.Objects;
 
+/*
+ * Missing Data in data.sql for
+ * Recruiter
+ * College
+ * Degree
+ * Major
+ * TechScreenerName
+ */
+
 @ApiModel(value = "Candidate", description = "A candidate that is being screened")
 @Entity
 @Table(name = "CANDIDATE")

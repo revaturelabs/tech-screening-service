@@ -22,7 +22,6 @@ public class QuestionScoreControllerTest {
 	@LocalServerPort
 	private int port;
 
-
 	@Test
 	public void testQuestionScore() {
 		SimpleQuestionScore b = new SimpleQuestionScore(300, null, (double) 20, "Test", null);
@@ -35,16 +34,38 @@ public class QuestionScoreControllerTest {
 				.then()
 				.statusCode(200);
 	}
+	
+	@Test
+	public void testQuestionScoreFail() {
+		SimpleQuestionScore b = new SimpleQuestionScore();
+		given()
+				.port(port)
+				.contentType("application/json")
+				.body(b)
+				.when()
+				.post("/questionScore/new")
+				.then()
+				.statusCode(400);
+	}
 
 
 	@Test
-	public void testGetScoresByScreeningId() {
+	public void testGetScoresByScreeningIdFail() {
 		given()
 				.port(port)
 				.when()
 				.get("/questionScore/{screeningId}", 1)
 				.then()
+				.statusCode(404);
+	}
+	
+	@Test
+	public void testGetScoresByScreeningId() {
+		given()
+				.port(port)
+				.when()
+				.get("/questionScore/{screeningId}", 4321)
+				.then()
 				.statusCode(200);
 	}
-
 }

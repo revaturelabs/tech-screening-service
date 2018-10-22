@@ -9,10 +9,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import com.revature.screenforce.beans.Screening;
 import com.revature.screenforce.beans.SimpleQuestionScore;
 import com.revature.screenforce.services.QuestionScoreService;
+import com.revature.screenforce.services.ScreeningService;
 
 import java.util.List;
+
+import javax.persistence.EntityNotFoundException;
 
 /**
  * The controller for incoming REST requests to the Question Score part of the Screening service.
@@ -27,7 +31,10 @@ import java.util.List;
 public class QuestionScoreController {
 
 	@Autowired
-	private QuestionScoreService questionScoreService;
+	QuestionScoreService questionScoreService;
+	
+	@Autowired
+	ScreeningService screeningService;
 
 	/**
 	 * Create a new Question Score and persist it in the database.
@@ -57,12 +64,22 @@ public class QuestionScoreController {
 	 * @return List of Question scores
 	 */
 	@ApiOperation(value = "Get QuestionScores for a screening", response = SimpleQuestionScore.class, responseContainer = "List")
-	@ApiResponses(value = {@ApiResponse(code = 200, message = "All QuestionScores for Screening returned")})
+	@ApiResponses(value = {
+			@ApiResponse(code = 200, message = "All QuestionScores for Screening returned"),
+			@ApiResponse(code = 404, message = "Screening ID not found.")
+			})
 	@RequestMapping(value = "/{screeningId}", method = RequestMethod.GET)
 	public ResponseEntity<List<SimpleQuestionScore>> getScoresByScreeningId(
 			@PathVariable("screeningId") Integer screeningId) {
-		List<SimpleQuestionScore> scoreList = questionScoreService.findByScreeningId(screeningId);
-		return new ResponseEntity<>(scoreList, HttpStatus.OK);
+		List<SimpleQuestionScore> scoreList = null;
+		if(!screeningService.existsById(screeningId))
+		{
+			return new ResponseEntity<>(scoreList, HttpStatus.NOT_FOUND);
+		}
+		else {
+			scoreList = questionScoreService.findByScreeningId(screeningId);
+			return new ResponseEntity<>(scoreList, HttpStatus.OK);
+		}
 	}
 
 }
