@@ -4,6 +4,9 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.util.Date;
 import java.util.Objects;
 
@@ -13,6 +16,7 @@ import java.util.Objects;
 @ApiModel(value = "Screening", description = "An object to record the result of screening a candidate")
 @Entity
 @Table(name = "SCREENING")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Screening {
 	@ApiModelProperty(value = "Id of the screening")
 	@Id

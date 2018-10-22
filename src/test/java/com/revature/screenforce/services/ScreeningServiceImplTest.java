@@ -1,5 +1,6 @@
 package com.revature.screenforce.services;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,13 +10,16 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.revature.screenforce.Application;
+import com.revature.screenforce.beans.ScheduledScreening;
 import com.revature.screenforce.beans.Screening;
 import com.revature.screenforce.services.ScreeningServiceImpl;
 
+import static org.assertj.core.api.Assertions.assertThatNullPointerException;
 import static org.junit.Assert.*;
 
-import javax.transaction.Transactional;
+import java.util.Date;
 
+import javax.transaction.Transactional;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = {Application.class})
@@ -24,7 +28,16 @@ import javax.transaction.Transactional;
 public class ScreeningServiceImplTest {
 	@Autowired
 	ScreeningServiceImpl screeningService;
-
+	
+	Screening sc18;
+	ScheduledScreening ss;
+	
+	@Before
+	public void setup() {
+		ScheduledScreening ss = new ScheduledScreening();
+		sc18 = new Screening (0, null, 3,2, (Double)50d,"intoComment","generalComment","softSkillComment", new Date(), new Date(), false, "Completed");
+	}
+	
 	@Test
 	@Transactional
 	public void testGetScreeningById() {
@@ -33,8 +46,9 @@ public class ScreeningServiceImplTest {
 	}
 	
 	@Test
+	@Transactional
 	public void testGetScreeningByIdNull() {
-		Screening sc = screeningService.getScreeningById(1);
+		Screening sc = screeningService.getScreeningById(9999);
 		assertNull(sc);
 	}
 	
@@ -46,8 +60,8 @@ public class ScreeningServiceImplTest {
 
 	@Test
 	public void testCreateScreening() {
-		Screening sc = new Screening(0, null, 3, 0, null, "Test", "Test1", null, null, null, null, null);
-		assertNotNull(screeningService.createScreening(sc));
+//		Screening sc = new Screening(0, null, 3, 0, null, "Test", "Test1", null, null, null, null, null);
+		assertNotNull(screeningService.createScreening(sc18));
 	}
 
 	@Test
@@ -82,5 +96,23 @@ public class ScreeningServiceImplTest {
 	public void testUpdateEmptyScreening() {
 		Screening screening = new Screening();
 		assertNull(screeningService.updateScreening(screening));
+	}
+	
+	@Test
+	public void existById() {
+		assertTrue(screeningService.existsById(4321));
+	}
+	
+	@Test
+	public void existByIdFail() {
+		screeningService.existsById(0);
+		assertThatNullPointerException();
+	}
+	
+	@Test
+	public void findAllScreening() {
+		int firstSc = screeningService.getAllScreening().size();
+		screeningService.createScreening(sc18);
+		assertEquals((firstSc+1), screeningService.getAllScreening().size());
 	}
 }

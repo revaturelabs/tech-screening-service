@@ -34,6 +34,19 @@ public class QuestionScoreControllerTest {
 				.then()
 				.statusCode(200);
 	}
+	
+	@Test
+	public void testQuestionScoreFail() {
+		SimpleQuestionScore b = new SimpleQuestionScore();
+		given()
+				.port(port)
+				.contentType("application/json")
+				.body(b)
+				.when()
+				.post("/questionScore/new")
+				.then()
+				.statusCode(400);
+	}
 
 
 	@Test
