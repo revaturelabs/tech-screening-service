@@ -33,4 +33,8 @@ public class SoftSkillViolationServiceImpl implements SoftSkillViolationService 
 		return softSkillViolationRepository.findAllByScreeningScreeningId(screeningId);
 	}
 
+	@Override
+	public SoftSkillViolation findById(int id) {
+		return softSkillViolationRepository.getOne(id);
+	}
 }

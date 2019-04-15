@@ -46,7 +46,7 @@ public class ViolationControllerTest {
 		given()
 				.port(port)
 				.when()
-				.delete("/violation/{id}", 1)
+				.delete("/violation/{id}", 4321)
 				.then()
 				.statusCode(200);
 	}
@@ -64,15 +64,28 @@ public class ViolationControllerTest {
 	@Test
 	public void addNewViolation() {
 		SoftSkillViolation violation = new SoftSkillViolation(321, null, null, "Terrible boyo", new Date());
-
 		given()
 				.port(port)
 				.when()
 				.contentType("application/json")
 				.body(violation)
-				.post("/violation/new")
+				.post("/violation")
 				.then()
 				.statusCode(200);
+
+	}
+	
+	@Test
+	public void addNewViolationFail() {
+		SoftSkillViolation violation = new SoftSkillViolation();
+		given()
+				.port(port)
+				.when()
+				.contentType("application/json")
+				.body(violation)
+				.post("/violation")
+				.then()
+				.statusCode(400);
 
 	}
 }

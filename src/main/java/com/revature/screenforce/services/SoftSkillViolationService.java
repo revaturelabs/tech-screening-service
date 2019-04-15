@@ -12,6 +12,13 @@ import com.revature.screenforce.beans.SoftSkillViolation;
  */
 public interface SoftSkillViolationService {
 	/**
+	 * Find a SoftSkillViolation from the database
+	 *
+	 * @param id SoftSkillViolation Id to find SSV from the database
+	 * @return Persistent SoftSkillViolation object
+	 */
+	SoftSkillViolation findById(int id);
+	/**
 	 * Save a SoftSkillViolation to the database
 	 *
 	 * @param ssv SoftSkillViolation to save to the database

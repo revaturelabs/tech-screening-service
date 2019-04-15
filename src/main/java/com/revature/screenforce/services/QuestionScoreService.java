@@ -27,5 +27,6 @@ public interface QuestionScoreService {
 	 * @return List of question scores
 	 */
 	List<SimpleQuestionScore> findByScreeningId(int screeningId);
+	boolean existsById(int id);
 
 }

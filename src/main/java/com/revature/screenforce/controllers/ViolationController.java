@@ -54,14 +54,16 @@ public class ViolationController {
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	@ApiOperation(value = "Delete a violation by Id")
 	@ApiResponses(value = {
-			@ApiResponse(code = 404, message = "Violation not found"),
-			@ApiResponse(code = 200, message = "Violation deleted")
+			@ApiResponse(code = 200, message = "Violation deleted"),
+			@ApiResponse(code = 404, message = "Violation not found")
 	})
 	public ResponseEntity<String> deleteSoftSkillViolation(@PathVariable(value = "id") int id) {
 		try {
-			softSkillViolationService.delete(id);
-		} catch (EmptyResultDataAccessException e) {
-			return new ResponseEntity<>("id not found", HttpStatus.NOT_FOUND);
+			SoftSkillViolation skill = softSkillViolationService.findById(id);
+			softSkillViolationService.delete(skill.getSoftViolationId());
+		} catch(NullPointerException e) {
+			System.out.println(e);
+			return new ResponseEntity<>("ID not found", HttpStatus.NOT_FOUND);
 		}
 		return new ResponseEntity<>("Delete Completed", HttpStatus.OK);
 	}
@@ -77,7 +79,7 @@ public class ViolationController {
 			@ApiResponse(code = 200, message = "SoftSkillViolation added"),
 			@ApiResponse(code = 400, message = "Bad SoftSkillViolation")
 	})
-	@RequestMapping(value = "/new", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<SoftSkillViolation> createSoftSkillViolationAndReturnSoftSkillViolationID(@RequestBody SoftSkillViolation violation) {
 		if (violation != null && !violation.equals(new SoftSkillViolation())) {
 			SoftSkillViolation ssv = softSkillViolationService.save(violation);

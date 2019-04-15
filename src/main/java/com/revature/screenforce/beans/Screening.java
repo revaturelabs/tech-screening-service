@@ -4,6 +4,9 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.util.Date;
 import java.util.Objects;
 
@@ -13,6 +16,7 @@ import java.util.Objects;
 @ApiModel(value = "Screening", description = "An object to record the result of screening a candidate")
 @Entity
 @Table(name = "SCREENING")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Screening {
 	@ApiModelProperty(value = "Id of the screening")
 	@Id
@@ -66,9 +70,14 @@ public class Screening {
 	private String status;
 
 	public Screening() {
+		super();
 	}
 
-	public Screening(ScheduledScreening scheduledScreening, int screenerId, int skillType, Double compositeScore, String aboutMeCommentary, String generalCommentary, String softSkillCommentary, Date startDateTime, Date endDateTime, Boolean softSkillsVerdict, String status) {
+	public Screening(int screeningId, ScheduledScreening scheduledScreening, int screenerId, int skillType,
+			Double compositeScore, String aboutMeCommentary, String generalCommentary, String softSkillCommentary,
+			Date startDateTime, Date endDateTime, Boolean softSkillsVerdict, String status) {
+		super();
+		this.screeningId = screeningId;
 		this.scheduledScreening = scheduledScreening;
 		this.screenerId = screenerId;
 		this.skillType = skillType;
