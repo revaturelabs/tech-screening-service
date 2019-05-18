@@ -10,7 +10,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
-		<spring-cloud.version>Finchley.SR1</spring-cloud.version>
+		<spring-cloud.version>Finchley.SR2</spring-cloud.version>
 		<sonar.projectKey>screenforce:tech-screening-service</sonar.projectKey>
 		<sonar.projectName>Screenforce Tech Screening Service</sonar.projectName>
 		<sonar.projectVersion>2.1</sonar.projectVersion>
@@ -31,7 +31,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.0.3.RELEASE</version>
+		<version>2.0.6.RELEASE</version>
 	</parent>
 
 	<repositories>
@@ -98,10 +98,10 @@
 			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
 			<scope>runtime</scope>
 		</dependency>
-		<dependency>
+	<!-- 	<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-config-client</artifactId>
-		</dependency>
+		</dependency> -->
 
 		<!-- H2 Database (In-Memory) -->
 		<dependency>
