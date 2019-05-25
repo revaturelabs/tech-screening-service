@@ -18,6 +18,8 @@ import java.util.Objects;
 @Table(name = "SCREENING")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Screening {
+	
+	//variables
 	@ApiModelProperty(value = "Id of the screening")
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -69,6 +71,7 @@ public class Screening {
 	@Column(name = "STATUS")
 	private String status;
 
+	//constructor
 	public Screening() {
 		super();
 	}
@@ -91,6 +94,7 @@ public class Screening {
 		this.status = status;
 	}
 
+	//getters and setters
 	public int getScreeningId() {
 		return screeningId;
 	}
@@ -187,6 +191,7 @@ public class Screening {
 		this.status = status;
 	}
 
+	//equals and hashcode
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
@@ -205,12 +210,13 @@ public class Screening {
 				Objects.equals(getSoftSkillsVerdict(), screening.getSoftSkillsVerdict()) &&
 				Objects.equals(getStatus(), screening.getStatus());
 	}
-
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(getScreeningId(), getScheduledScreening(), getScreenerId(), getSkillType(), getCompositeScore(), getAboutMeCommentary(), getGeneralCommentary(), getSoftSkillCommentary(), getStartDateTime(), getEndDateTime(), getSoftSkillsVerdict(), getStatus());
 	}
 
+	//toString
 	@Override
 	public String toString() {
 		return "Screening{" +
