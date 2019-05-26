@@ -13,6 +13,10 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 
+/**
+ * Provides an aspect to modularize the logging concern for the service.
+ * @author Shane Flynn | 1903-Tampa | Emily Higgins
+ */
 @Component
 @Aspect
 public class LoggingAspect {
