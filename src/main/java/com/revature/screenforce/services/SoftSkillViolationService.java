@@ -18,6 +18,7 @@ public interface SoftSkillViolationService {
 	 * @return Persistent SoftSkillViolation object
 	 */
 	SoftSkillViolation findById(int id);
+	
 	/**
 	 * Save a SoftSkillViolation to the database
 	 *
