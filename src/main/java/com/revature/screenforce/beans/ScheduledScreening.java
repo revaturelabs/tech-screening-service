@@ -12,6 +12,7 @@ import java.util.Objects;
 @Table(name = "scheduled_screening")
 public class ScheduledScreening {
 
+	//variables
 	@ApiModelProperty(value = "Id of the screening")
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -36,10 +37,10 @@ public class ScheduledScreening {
 	@Column(name = "SCHEDULED_DATE")
 	private Date scheduledDate;
 
+	//constructors
 	public ScheduledScreening() {
 		super();
 	}
-
 	public ScheduledScreening(int scheduledScreeningId, Candidate candidate, ScheduledStatus scheduledStatus,
 							  int skillTypeId, Date scheduledDate) {
 		super();
@@ -50,6 +51,7 @@ public class ScheduledScreening {
 		this.scheduledDate = scheduledDate;
 	}
 
+	//getters and setters
 	public int getScheduledScreeningId() {
 		return scheduledScreeningId;
 	}
@@ -90,6 +92,7 @@ public class ScheduledScreening {
 		this.scheduledDate = scheduledDate;
 	}
 
+	//equals and hashcode
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
@@ -101,12 +104,12 @@ public class ScheduledScreening {
 				Objects.equals(getScheduledStatus(), that.getScheduledStatus()) &&
 				Objects.equals(getScheduledDate(), that.getScheduledDate());
 	}
-
 	@Override
 	public int hashCode() {
 		return Objects.hash(getScheduledScreeningId(), getCandidate(), getScheduledStatus(), getSkillTypeId(), getScheduledDate());
 	}
 
+	//toString
 	@Override
 	public String toString() {
 		return "ScheduledScreening{" +
