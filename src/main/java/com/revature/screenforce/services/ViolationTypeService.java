@@ -24,5 +24,7 @@ public interface ViolationTypeService {
 	 * 
 	 * @return List of all ViolationTypes
 	 */
+	
+	//5/28 JU
 	List<ViolationType> getAll();
 }

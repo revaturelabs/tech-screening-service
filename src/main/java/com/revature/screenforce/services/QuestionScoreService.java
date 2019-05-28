@@ -3,6 +3,7 @@ package com.revature.screenforce.services;
 import java.util.List;
 
 import com.revature.screenforce.beans.SimpleQuestionScore;
+import com.revature.screenforce.beans.ViolationType;
 
 /**
  * The service for the Question Score part of the Screening service.
@@ -28,5 +29,8 @@ public interface QuestionScoreService {
 	 */
 	List<SimpleQuestionScore> findByScreeningId(int screeningId);
 	boolean existsById(int id);
+	
+	//5/28 JU
+	List<SimpleQuestionScore> getAll();
 
 }

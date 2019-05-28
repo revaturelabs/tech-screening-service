@@ -6,11 +6,13 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.revature.screenforce.beans.Screening;
 import com.revature.screenforce.beans.SimpleQuestionScore;
+import com.revature.screenforce.beans.SoftSkillViolation;
 import com.revature.screenforce.services.QuestionScoreService;
 import com.revature.screenforce.services.ScreeningService;
 
@@ -30,12 +32,12 @@ import javax.persistence.EntityNotFoundException;
 @ApiModel(value = "Question Score Controller", description = "A REST controller to handle HTTP requests that deal with Question Scores")
 public class QuestionScoreController {
 
-	@Autowired
-	QuestionScoreService questionScoreService;
-	
-	@Autowired
-	ScreeningService screeningService;
+	//variables 
+	@Autowired QuestionScoreService questionScoreService;	
+	@Autowired ScreeningService screeningService;
 
+	
+	//methods
 	/**
 	 * Create a new Question Score and persist it in the database.
 	 *
@@ -57,6 +59,13 @@ public class QuestionScoreController {
 		}
 	}
 
+	//5/28 JU - adding GET method to pull all quesiton scores
+	@RequestMapping(value = "/all", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<List<SimpleQuestionScore>> getSimpleQuestionScores() {
+		List<SimpleQuestionScore> simpleQuestionScoreList = questionScoreService.getAll();
+		return new ResponseEntity<>(simpleQuestionScoreList, HttpStatus.OK);
+	}
+	
 	/**
 	 * Gets QuestionScores of given id
 	 *
