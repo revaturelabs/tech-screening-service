@@ -59,7 +59,7 @@ public class QuestionScoreController {
 		}
 	}
 
-	//5/28 JU - adding GET method to pull all quesiton scores
+	//5/28 JU - adding GET method to pull all question scores
 	@RequestMapping(value = "/all", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<SimpleQuestionScore>> getSimpleQuestionScores() {
 		List<SimpleQuestionScore> simpleQuestionScoreList = questionScoreService.getAll();
