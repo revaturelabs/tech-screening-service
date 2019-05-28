@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.revature.screenforce.beans.SoftSkillViolation;
+import com.revature.screenforce.beans.ViolationType;
 import com.revature.screenforce.data.SoftSkillViolationRepository;
 
 import java.util.List;
@@ -36,5 +37,9 @@ public class SoftSkillViolationServiceImpl implements SoftSkillViolationService 
 	@Override
 	public SoftSkillViolation findById(int id) {
 		return softSkillViolationRepository.getOne(id);
+	}
+	
+	public List<SoftSkillViolation> getAll() {
+		return softSkillViolationRepository.findAll();
 	}
 }
