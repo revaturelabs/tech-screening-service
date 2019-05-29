@@ -98,10 +98,8 @@
 			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
 			<scope>runtime</scope>
 		</dependency>
-	<!-- 	<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-config-client</artifactId>
-		</dependency> -->
+		<!-- <dependency> <groupId>org.springframework.cloud</groupId> <artifactId>spring-cloud-config-client</artifactId> 
+			</dependency> -->
 
 		<!-- H2 Database (In-Memory) -->
 		<dependency>
@@ -205,6 +203,19 @@
 					<mainClass>com.revature.screenforce.Application</mainClass>
 					<addResources>true</addResources>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.sonarsource.scanner.maven</groupId>
+				<artifactId>sonar-maven-plugin</artifactId>
+				<version>3.5.0.1254</version>
+				<executions>
+					<execution>
+						<phase>verify</phase>
+						<goals>
+							<goal>sonar</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
