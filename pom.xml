@@ -34,13 +34,6 @@
 		<version>2.1.2.RELEASE</version>
 	</parent>
 
-	<repositories>
-		<repository>
-			<id>splunk-artifactory</id>
-			<name>Splunk Releases</name>
-			<url>http://splunk.jfrog.io/splunk/ext-releases-local</url>
-		</repository>
-	</repositories>
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
@@ -49,11 +42,6 @@
 				<version>${spring-cloud.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
-			</dependency>
-			<dependency>
-				<groupId>com.splunk.logging</groupId>
-				<artifactId>splunk-library-javalogging</artifactId>
-				<version>1.6.0</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
@@ -153,10 +141,6 @@
 		<dependency>
 			<groupId>javax.xml.bind</groupId>
 			<artifactId>jaxb-api</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.splunk.logging</groupId>
-			<artifactId>splunk-library-javalogging</artifactId>
 		</dependency>
 	</dependencies>
 
