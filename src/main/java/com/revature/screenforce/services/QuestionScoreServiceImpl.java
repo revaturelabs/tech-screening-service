@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.revature.screenforce.beans.SimpleQuestionScore;
+import com.revature.screenforce.beans.SoftSkillViolation;
 import com.revature.screenforce.data.QuestionScoreRepository;
 
 import java.util.List;
@@ -39,5 +40,8 @@ public class QuestionScoreServiceImpl implements QuestionScoreService {
 		return questionScoreRepository.existsById(id);
 	}
 
-
+	//5/28 JU - addition for back-end re-factor
+	public List<SimpleQuestionScore> getAll() {
+		return questionScoreRepository.findAll();
+	}
 }
