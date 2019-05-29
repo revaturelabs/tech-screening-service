@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration>
 	<Appenders>
-		<!-- Appends to the socket for splunk -->
-		<!--  env ${SPLUNK_URL} -->
-		<Socket name="socket" host="${env:SPLUNK_URL}" port="15000">
-			<PatternLayout pattern="%p: %m%n" charset="UTF-8" />
-		</Socket>
+
 		<Console name="console" target="SYSTEM_OUT">
 			<!-- Ref for pattern https://logging.apache.org/log4j/2.x/manual/layouts.html -->
 			<PatternLayout>
@@ -88,9 +84,5 @@
 			<AppenderRef ref="fatal" level="fatal" />
 			<AppenderRef ref="socket" />
 		</Root>
-		<!-- Custom Logger for Splunk -->
-		<Logger name="splunk.logger" additivity="false" level="info">
-			<AppenderRef ref="socket" />
-		</Logger>
 	</Loggers>
 </Configuration>
