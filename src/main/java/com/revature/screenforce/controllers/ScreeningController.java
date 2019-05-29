@@ -46,6 +46,7 @@ public class ScreeningController {
 	 */
 	@ApiOperation(value = "Get all Screening", response = Screening.class, responseContainer = "List")
 	@ApiResponses(value = {@ApiResponse(code = 200, message = "Retrieved All Screening")})
+	
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<Screening>> getAllScreening() {
 		List<Screening> ssv = screeningService.getAllScreening();

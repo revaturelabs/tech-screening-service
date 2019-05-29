@@ -16,6 +16,7 @@ import java.util.Objects;
 @Table(name = "QUESTION_SCORE")
 public class SimpleQuestionScore {
 
+	//variables
 	@ApiModelProperty(value = "Id of the Question Score")
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -49,6 +50,7 @@ public class SimpleQuestionScore {
 	@Column(name = "TIME")
 	private Date beginTime;
 
+	//constructor
 	public SimpleQuestionScore(Integer questionId, Screening screeningId, Double score, String comment, Date beginTime) {
 		super();
 		this.questionId = questionId;
@@ -57,11 +59,11 @@ public class SimpleQuestionScore {
 		this.comment = comment;
 		this.beginTime = beginTime;
 	}
-
 	public SimpleQuestionScore() {
 		super();
 	}
 
+	//getters and setters
 	public int getQuestionScoreId() {
 		return questionScoreId;
 	}
@@ -118,6 +120,7 @@ public class SimpleQuestionScore {
 		this.bucketId = bucketId;
 	}
 
+	//equals and hashcode
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
@@ -131,12 +134,12 @@ public class SimpleQuestionScore {
 				Objects.equals(getComment(), score1.getComment()) &&
 				Objects.equals(getBeginTime(), score1.getBeginTime());
 	}
-
 	@Override
 	public int hashCode() {
 		return Objects.hash(getQuestionScoreId(), getQuestionId(), getBucketId(), getScreening(), getScore(), getComment(), getBeginTime());
 	}
 
+	//toString
 	@Override
 	public String toString() {
 		return "SimpleQuestionScore{" +
