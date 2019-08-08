@@ -42,3 +42,13 @@ eureka:
    #  statusPageUrl: http://${SCREENFORCE_INSTANCE_HOSTNAME:localhost}:${server.port}/info
    #  healthCheckUrl: http://${SCREENFORCE_INSTANCE_HOSTNAME:localhost}:${server.port}/health
 
+---
+spring:
+    profiles: dev
+
+eureka:
+    client:
+        service-url:
+            defaultZone: http://screenforce-dev-48599218.us-east-1.elb.amazonaws.com/eureka
+    instance:
+        prefer-ip-address: true      
