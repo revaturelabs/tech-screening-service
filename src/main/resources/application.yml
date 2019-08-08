@@ -46,6 +46,10 @@ eureka:
 spring:
     profiles: dev
 
+server:
+    servlet:
+        context-path: /screening
+
 eureka:
     client:
         service-url:
