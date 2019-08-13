@@ -21,16 +21,16 @@ import java.util.List;
 /**
  * @author Jeremy Straus | 1807-QC | Emily Higgins
  */
+
 @CrossOrigin
 @RestController
 @RequestMapping("/violation")
 @ApiModel(value = "Violation Controller", description = "A REST controller to handle HTTP requests that deal with Violations")
 public class ViolationController {
-	@Autowired
-	SoftSkillViolationService softSkillViolationService;
-
-	@Autowired
-	ViolationTypeService violationTypeService;
+	
+	//variables
+	@Autowired SoftSkillViolationService softSkillViolationService;
+	@Autowired ViolationTypeService violationTypeService;
 
 	/**
 	 * Returns a list of ViolationType objects representing all held in the database
@@ -44,6 +44,14 @@ public class ViolationController {
 		List<ViolationType> vios = violationTypeService.getAll();
 		return new ResponseEntity<>(vios, HttpStatus.OK);
 	}
+	
+	//5/28 JU - adding get method to pull all soft skill violations. 
+	@RequestMapping(value = "/all", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<List<SoftSkillViolation>> getSoftSkillViolations() {
+		List<SoftSkillViolation> softSkillViolationList = softSkillViolationService.getAll();
+		return new ResponseEntity<>(softSkillViolationList, HttpStatus.OK);
+	}
+	
 
 	/**
 	 * Delete a soft skill violation by its unique id

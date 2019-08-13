@@ -1,4 +1,6 @@
 spring:
+    main:
+     allow-bean-definition-overriding: true
    #Configure Test H2 Database
     datasource:
         driver-class-name: org.h2.Driver
@@ -11,14 +13,6 @@ spring:
             ddl-auto: update
 server:
     port: 8183
-
-security:
-    basic:
-        enabled: false
-
-management:
-    security:
-        enabled: false
 
 
    #  endpoints:
@@ -37,11 +31,6 @@ eureka:
     client:
         service-url:
             defaultZone: ${SCREENFORCE_EUREKA_SERVER_URL}
-    instance:
-   #  hostName: ${SCREENFORCE_INSTANCE_HOSTNAME:localhost}
-   #  statusPageUrl: http://${SCREENFORCE_INSTANCE_HOSTNAME:localhost}:${server.port}/info
-   #  healthCheckUrl: http://${SCREENFORCE_INSTANCE_HOSTNAME:localhost}:${server.port}/health
-
 ---
 spring:
     profiles: dev

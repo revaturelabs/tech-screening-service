@@ -40,12 +40,13 @@ public class ScreeningController {
 	SoftSkillViolationService softSkillViolationService;
 
 	/**
-	 * Returns a list of softSkillViolation objects by ScreeningID
+	 * Returns a list Screening objects
 	 *
-	 * @return All Sreening Object
+	 * @return List of Screening objects
 	 */
 	@ApiOperation(value = "Get all Screening", response = Screening.class, responseContainer = "List")
 	@ApiResponses(value = {@ApiResponse(code = 200, message = "Retrieved All Screening")})
+	
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<Screening>> getAllScreening() {
 		List<Screening> ssv = screeningService.getAllScreening();
@@ -53,10 +54,10 @@ public class ScreeningController {
 	}
 	
 	/**
-	 * Returns a list of softSkillViolation objects by ScreeningID
+	 * Returns a single Screening record by ScreeningID
 	 *
 	 * @param screeningId - the unique id of a Screening
-	 * @return Sreening Object
+	 * @return Screening Object
 	 */
 	@ApiOperation(value = "Get a Screening", response = Screening.class)
 	@ApiResponses(value = { 
@@ -105,7 +106,7 @@ public class ScreeningController {
 	/**
 	 * Method to create a new Screening
 	 *
-	 * @param screening Screening to
+	 * @param Screening to create
 	 * @return New screening object
 	 */
 	@ApiOperation(value = "Add a new Screening", response = Screening.class)
@@ -122,8 +123,7 @@ public class ScreeningController {
 	}
 
 	/**
-	 * Method to update a Screening. Replaces the previous mappings to add
-	 * commentary, /start, and /end
+	 * Method to update a Screening. 
 	 *
 	 * @param screeningId to update
 	 * @return Updated screening object

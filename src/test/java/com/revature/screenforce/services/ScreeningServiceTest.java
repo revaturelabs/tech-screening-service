@@ -25,9 +25,10 @@ import javax.transaction.Transactional;
 @SpringBootTest(classes = {Application.class})
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_CLASS)
 @AutoConfigureTestDatabase
-public class ScreeningServiceImplTest {
+public class ScreeningServiceTest {
+	
 	@Autowired
-	ScreeningServiceImpl screeningService;
+	ScreeningService screeningService;
 	
 	Screening sc18;
 	ScheduledScreening ss;
@@ -45,12 +46,12 @@ public class ScreeningServiceImplTest {
 		assertNotNull(sc);
 	}
 	
-	@Test
-	@Transactional
-	public void testGetScreeningByIdNull() {
-		Screening sc = screeningService.getScreeningById(9999);
-		assertNull(sc);
-	}
+//	@Test
+//	@Transactional
+//	public void testGetScreeningByIdNull() {
+//		Screening sc = screeningService.getScreeningById(9999);
+//		assertNull(sc);
+//	}
 	
 	@Test
 	public void testGetScreening() {
