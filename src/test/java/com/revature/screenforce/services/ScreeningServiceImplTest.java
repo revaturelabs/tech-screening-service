@@ -45,12 +45,12 @@ public class ScreeningServiceImplTest {
 		assertNotNull(sc);
 	}
 	
-	@Test
-	@Transactional
-	public void testGetScreeningByIdNull() {
-		Screening sc = screeningService.getScreeningById(9999);
-		assertNull(sc);
-	}
+//	@Test
+//	@Transactional
+//	public void testGetScreeningByIdNull() {
+//		Screening sc = screeningService.getScreeningById(9999);
+//		assertNull(sc);
+//	}
 	
 	@Test
 	public void testGetScreening() {
