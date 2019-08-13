@@ -25,9 +25,10 @@ import javax.transaction.Transactional;
 @SpringBootTest(classes = {Application.class})
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_CLASS)
 @AutoConfigureTestDatabase
-public class ScreeningServiceImplTest {
+public class ScreeningServiceTest {
+	
 	@Autowired
-	ScreeningServiceImpl screeningService;
+	ScreeningService screeningService;
 	
 	Screening sc18;
 	ScheduledScreening ss;

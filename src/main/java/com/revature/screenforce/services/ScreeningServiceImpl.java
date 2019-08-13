@@ -11,17 +11,18 @@ import com.revature.screenforce.data.ScreeningRepository;
 
 @Service
 public class ScreeningServiceImpl implements ScreeningService {
+	
 	@Autowired
 	ScreeningRepository screeningRepository;
 
 	@Autowired
 	ScheduledScreeningRepository scheduledScreeningRepository;
-	
+
 	@Override
 	public List<Screening> getAllScreening() {
 		return screeningRepository.findAll();
 	}
-	
+
 	@Override
 	public Screening getScreeningById(int sid) {
 //		return screeningRepository.getOne(sid);
@@ -33,7 +34,7 @@ public class ScreeningServiceImpl implements ScreeningService {
 		}
 		return sc;
 	}
-	
+
 	@Override
 	public Screening getScreening(int id) {
 		return screeningRepository.findById(id).orElse(new Screening());
@@ -56,6 +57,7 @@ public class ScreeningServiceImpl implements ScreeningService {
 			return null;
 		}
 	}
+
 	@Override
 	public boolean existsById(int id) {
 		return screeningRepository.existsById(id);

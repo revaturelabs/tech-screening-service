@@ -19,6 +19,7 @@ import static org.junit.Assert.assertEquals;
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 @AutoConfigureTestDatabase
 public class ScheduledScreeningServiceTest {
+	
 	@Autowired
 	ScheduledScreeningService scheduledScreeningService;
 

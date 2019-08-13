@@ -31,11 +31,6 @@ eureka:
     client:
         service-url:
             defaultZone: ${SCREENFORCE_EUREKA_SERVER_URL}
-    instance:
-   #  hostName: ${SCREENFORCE_INSTANCE_HOSTNAME:localhost}
-   #  statusPageUrl: http://${SCREENFORCE_INSTANCE_HOSTNAME:localhost}:${server.port}/info
-   #  healthCheckUrl: http://${SCREENFORCE_INSTANCE_HOSTNAME:localhost}:${server.port}/health
-
 ---
 spring:
     profiles: dev

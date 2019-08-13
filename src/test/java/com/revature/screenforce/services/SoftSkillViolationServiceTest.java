@@ -22,7 +22,7 @@ import static org.junit.Assert.assertNull;
 @SpringBootTest(classes = {Application.class})
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 @AutoConfigureTestDatabase
-public class SoftSkillViolationServiceImplTest {
+public class SoftSkillViolationServiceTest {
 
 	@Autowired
 	SoftSkillViolationService softSkillViolationService;

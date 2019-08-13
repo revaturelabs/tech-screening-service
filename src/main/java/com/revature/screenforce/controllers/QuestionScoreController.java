@@ -32,7 +32,6 @@ import javax.persistence.EntityNotFoundException;
 @ApiModel(value = "Question Score Controller", description = "A REST controller to handle HTTP requests that deal with Question Scores")
 public class QuestionScoreController {
 
-	//variables 
 	@Autowired QuestionScoreService questionScoreService;	
 	@Autowired ScreeningService screeningService;
 
