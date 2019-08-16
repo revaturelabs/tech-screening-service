@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.revature.screenforce.beans.SimpleQuestionScore;
-import com.revature.screenforce.beans.SoftSkillViolation;
 import com.revature.screenforce.data.QuestionScoreRepository;
 
 import java.util.List;
@@ -18,8 +17,12 @@ import java.util.List;
 @Service
 public class QuestionScoreServiceImpl implements QuestionScoreService {
 
-	@Autowired
 	private QuestionScoreRepository questionScoreRepository;
+	
+	@Autowired
+	public QuestionScoreServiceImpl(QuestionScoreRepository questionScoreRepository) {
+		this.questionScoreRepository = questionScoreRepository;
+	}
 
 	@Override
 	public SimpleQuestionScore save(SimpleQuestionScore simpleQuestionScore) {
