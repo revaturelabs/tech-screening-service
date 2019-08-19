@@ -68,4 +68,15 @@ public class QuestionScoreControllerTest {
 				.then()
 				.statusCode(200);
 	}
+	
+	//Richard & Wilbur: adding unimplemented end-point test.
+	@Test
+	public void testGetSimpleQuestionScoreList() {
+		given()
+				.port(port)
+				.when()
+				.get("questionScore/all")
+				.then()
+				.statusCode(200);
+	}
 }
