@@ -16,6 +16,7 @@ import com.revature.screenforce.services.SoftSkillViolationService;
 import java.util.Date;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
 @RunWith(SpringRunner.class)
@@ -68,4 +69,11 @@ public class SoftSkillViolationServiceTest {
 		int lengthAfter = softSkillViolationService.getAllByScreeningId(4321).size();
 		assertEquals(lengthBefore - 1, lengthAfter);
 	}
+	
+	//Wilber: implemented get all test
+	@Test
+	public void testGetAllNotNull() {
+		assertNotNull(softSkillViolationService.getAll());
+	}
+	
 }
