@@ -76,4 +76,12 @@ public class SoftSkillViolationServiceTest {
 		assertNotNull(softSkillViolationService.getAll());
 	}
 	
+	//Richard: implemented find by ID test.
+	@Test
+	public void testFindById() {
+		SoftSkillViolation violation = softSkillViolationService.getAll().get(0);
+		assertNotNull(softSkillViolationService.findById(violation.getSoftViolationId()));
+		//assertEquals(violation, softSkillViolationService.findById(violation.getSoftViolationId()));
+	}
+	
 }
