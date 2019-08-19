@@ -16,6 +16,7 @@ import com.revature.screenforce.services.ViolationTypeService;
 import java.util.Date;
 
 import static io.restassured.RestAssured.given;
+import static org.junit.Assert.assertNotNull;
 
 /**
  * @author Jeremy Straus | 1807-QC | Emily Higgins
@@ -27,6 +28,8 @@ import static io.restassured.RestAssured.given;
 public class ViolationControllerTest {
 	@Autowired
 	ViolationTypeService violationTypeService;
+	@Autowired
+	ViolationController violationController;
 
 	@LocalServerPort
 	int port;
@@ -87,5 +90,16 @@ public class ViolationControllerTest {
 				.then()
 				.statusCode(400);
 
+	}
+	
+	//Richard: Built getSoftSkillViolation test.
+	@Test
+	public void testGetSoftSkillViolation() {
+		given()
+			.port(port)
+			.when()
+			.get("/violation/all")
+			.then()
+			.statusCode(200);
 	}
 }
