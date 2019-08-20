@@ -17,19 +17,12 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.revature.screenforce.Application;
 import com.revature.screenforce.beans.SimpleQuestionScore;
 import com.revature.screenforce.data.QuestionScoreRepository;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = {Application.class})
-@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_CLASS)
-@AutoConfigureTestDatabase
 public class QuestionScoreServiceTest {
 	
 	@Mock
@@ -84,8 +77,7 @@ public class QuestionScoreServiceTest {
 		questionScoreService.existsById(0);
 	}
 	
-	//5/28 JU - addition for back-end re-factor
-	// 8-20-19 test added
+	// 8-20-19 test added for: 5/28 JU - addition for back-end re-factor
 	@Test
 	public void testGetAll() {
 		ArrayList<SimpleQuestionScore> testList = new ArrayList<>();

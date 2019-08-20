@@ -14,20 +14,13 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.revature.screenforce.Application;
 import com.revature.screenforce.beans.ScheduledScreening;
 import com.revature.screenforce.beans.ScheduledStatus;
 import com.revature.screenforce.data.ScheduledScreeningRepository;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = {Application.class})
-@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_CLASS)
-@AutoConfigureTestDatabase
 public class ScheduledScreeningServiceTest {
 	
 	@Mock
