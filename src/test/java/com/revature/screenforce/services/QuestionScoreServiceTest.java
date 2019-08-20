@@ -1,6 +1,5 @@
 package com.revature.screenforce.services;
 
-import static org.assertj.core.api.Assertions.assertThatNullPointerException;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
@@ -12,7 +11,6 @@ import static org.mockito.Mockito.when;
 import java.util.ArrayList;
 import java.util.Date;
 
-import org.apache.commons.jxpath.ri.model.beans.NullPointer;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

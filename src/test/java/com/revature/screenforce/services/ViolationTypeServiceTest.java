@@ -4,7 +4,6 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.mockito.Mockito.when;
-import static org.mockito.Mockito.anyInt;
 
 import java.util.ArrayList;
 import java.util.Optional;

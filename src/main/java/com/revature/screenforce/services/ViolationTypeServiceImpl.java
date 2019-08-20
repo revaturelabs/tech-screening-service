@@ -15,6 +15,7 @@ public class ViolationTypeServiceImpl implements ViolationTypeService {
 	
 	@Autowired
 	public ViolationTypeServiceImpl(ViolationTypeRepository violationTypeRepository) {
+		super();
 		this.violationTypeRepository = violationTypeRepository;
 	}
 	

@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.revature.screenforce.beans.Screening;
-import com.revature.screenforce.data.ScheduledScreeningRepository;
 import com.revature.screenforce.data.ScreeningRepository;
 
 @Service
@@ -16,6 +15,7 @@ public class ScreeningServiceImpl implements ScreeningService {
 	
 	@Autowired
 	public ScreeningServiceImpl(ScreeningRepository screeningRepository) {
+		super();
 		this.screeningRepository = screeningRepository;
 	}
 
