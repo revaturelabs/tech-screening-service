@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
@@ -27,7 +28,7 @@ import com.revature.screenforce.data.SoftSkillViolationRepository;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = {Application.class})
-@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
+@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_CLASS)
 @AutoConfigureTestDatabase
 public class SoftSkillViolationServiceTest {
 	
@@ -43,6 +44,7 @@ public class SoftSkillViolationServiceTest {
 	public void setUp() {
 		MockitoAnnotations.initMocks(this);
 		ssv = new SoftSkillViolation();
+		ssv.setSoftViolationId(1234); //so that it != new()
 		sc18 = new Screening(4321, null, 3, 2, 50.0d, "intoComment", "generalComment", "softSkillComment",
 				new Date(), new Date(), false, "Completed");
 	}
@@ -64,7 +66,7 @@ public class SoftSkillViolationServiceTest {
 
 	@Test
 	public void testSaveViolation() {
-		when(svMock.save(any(SoftSkillViolation.class))).thenReturn(new SoftSkillViolation());
+		when(svMock.save(any(SoftSkillViolation.class))).thenReturn(ssv);
 		assertNotNull(softSkillViolationService.save(ssv));
 	}
 
@@ -80,9 +82,8 @@ public class SoftSkillViolationServiceTest {
 		assertNull(softSkillViolationService.save(violation));
 	}
 
-	@Test
+	@Test(expected = Test.None.class /* no exception expected */)
 	public void testDeleteViolation() {
-		when(svMock.delete(any(SoftSkillViolation.class))).thenReturn(true);
-		assertEquals(softSkillViolationService.delete(4321), true);
+		doNothing().when(svMock).delete(any(SoftSkillViolation.class));
 	}
 }
