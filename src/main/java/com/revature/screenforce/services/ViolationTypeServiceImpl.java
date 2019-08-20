@@ -11,8 +11,12 @@ import java.util.List;
 @Service
 public class ViolationTypeServiceImpl implements ViolationTypeService {
 
+	private ViolationTypeRepository violationTypeRepository;
+	
 	@Autowired
-	ViolationTypeRepository violationTypeRepository;
+	public ViolationTypeServiceImpl(ViolationTypeRepository violationTypeRepository) {
+		this.violationTypeRepository = violationTypeRepository;
+	}
 	
 	@Override
 	public ViolationType getViolationType(int id) {

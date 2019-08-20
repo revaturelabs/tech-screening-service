@@ -18,8 +18,13 @@ import java.util.List;
 @Service
 public class QuestionScoreServiceImpl implements QuestionScoreService {
 
-	@Autowired
 	private QuestionScoreRepository questionScoreRepository;
+
+	@Autowired
+	public QuestionScoreServiceImpl(QuestionScoreRepository questionScoreRepository) {
+		super();
+		this.questionScoreRepository = questionScoreRepository;
+	}
 
 	@Override
 	public SimpleQuestionScore save(SimpleQuestionScore simpleQuestionScore) {

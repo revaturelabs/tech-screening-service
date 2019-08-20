@@ -15,7 +15,7 @@ public class ScreeningServiceImpl implements ScreeningService {
 	private ScreeningRepository screeningRepository;
 	
 	@Autowired
-	public void setScreeningRepository(ScreeningRepository screeningRepository) {
+	public ScreeningServiceImpl(ScreeningRepository screeningRepository) {
 		this.screeningRepository = screeningRepository;
 	}
 

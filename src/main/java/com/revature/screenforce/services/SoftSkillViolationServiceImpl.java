@@ -15,7 +15,7 @@ public class SoftSkillViolationServiceImpl implements SoftSkillViolationService 
 	private SoftSkillViolationRepository softSkillViolationRepository;
 	
 	@Autowired
-	public void setSoftSkillViolationRepository(SoftSkillViolationRepository softSkillViolationRepository) {
+	public SoftSkillViolationServiceImpl(SoftSkillViolationRepository softSkillViolationRepository) {
 		this.softSkillViolationRepository = softSkillViolationRepository;
 	}
 
