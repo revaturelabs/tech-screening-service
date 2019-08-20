@@ -12,8 +12,13 @@ import java.util.List;
 @Service
 public class ScheduledScreeningServiceImpl implements ScheduledScreeningService {
 
-	@Autowired
 	private ScheduledScreeningRepository scheduledScreeningRepository;
+
+	@Autowired
+	public ScheduledScreeningServiceImpl(ScheduledScreeningRepository scheduledScreeningRepository) {
+		super();
+		this.scheduledScreeningRepository = scheduledScreeningRepository;
+	}
 
 	@Override
 	public List<ScheduledScreening> findByStatus(ScheduledStatus status) {
