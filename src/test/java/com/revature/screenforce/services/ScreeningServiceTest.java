@@ -1,67 +1,69 @@
 package com.revature.screenforce.services;
 
+import static org.assertj.core.api.Assertions.assertThatNullPointerException;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.Mockito.when;
+
+import java.util.ArrayList;
+import java.util.Date;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.revature.screenforce.Application;
-import com.revature.screenforce.beans.ScheduledScreening;
 import com.revature.screenforce.beans.Screening;
-import com.revature.screenforce.services.ScreeningServiceImpl;
-
-import static org.assertj.core.api.Assertions.assertThatNullPointerException;
-import static org.junit.Assert.*;
-
-import java.util.Date;
-
-import javax.transaction.Transactional;
+import com.revature.screenforce.data.ScreeningRepository;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = {Application.class})
+@SpringBootTest
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_CLASS)
 @AutoConfigureTestDatabase
 public class ScreeningServiceTest {
-	
-	@Autowired
-	ScreeningService screeningService;
-	
-	Screening sc18;
-	ScheduledScreening ss;
-	
+
+	@Mock
+	private ScreeningRepository srMock;
+
+	@InjectMocks
+	private ScreeningServiceImpl screeningService;
+
+	private Screening sc18;
+
 	@Before
 	public void setup() {
-		ScheduledScreening ss = new ScheduledScreening();
-		sc18 = new Screening (0, null, 3,2, (Double)50d,"intoComment","generalComment","softSkillComment", new Date(), new Date(), false, "Completed");
+		MockitoAnnotations.initMocks(this);
+		sc18 = new Screening(4321, null, 3, 2, 50.0d, "intoComment", "generalComment", "softSkillComment",
+				new Date(), new Date(), false, "Completed");
 	}
-	
+
 	@Test
-	@Transactional
 	public void testGetScreeningById() {
-		Screening sc = screeningService.getScreeningById(4321);
-		assertNotNull(sc);
+		when(srMock.getOne(4321)).thenReturn(sc18);
+		assertNotNull(screeningService.getScreeningById(4321));
 	}
-	
-//	@Test
-//	@Transactional
-//	public void testGetScreeningByIdNull() {
-//		Screening sc = screeningService.getScreeningById(9999);
-//		assertNull(sc);
-//	}
-	
+
 	@Test
 	public void testGetScreening() {
-		double sum = screeningService.getScreening(4322).getCompositeScore();
-		assertEquals(50.0, sum, 0);
+		when(srMock.getOne(4321)).thenReturn(sc18);
+		when(srMock.getOne(9999)).thenReturn(null);
+		assertEquals(4321, sc18.getScreeningId(), 0);
+		assertNotNull(screeningService.getScreening(9999));
 	}
 
 	@Test
 	public void testCreateScreening() {
-//		Screening sc = new Screening(0, null, 3, 0, null, "Test", "Test1", null, null, null, null, null);
+		when(srMock.save(any(Screening.class))).thenReturn(new Screening());
 		assertNotNull(screeningService.createScreening(sc18));
 	}
 
@@ -79,12 +81,9 @@ public class ScreeningServiceTest {
 
 	@Test
 	public void testUpdateScreening() {
-		Screening screening = screeningService.getScreening(4322);
-		double expected = 55.0;
-		screening.setCompositeScore(55.0);
-		screeningService.updateScreening(screening);
-		double actual = screeningService.getScreening(4322).getCompositeScore();
-		assertEquals(expected, actual, 0);
+		when(srMock.save(any(Screening.class))).thenReturn(sc18);
+		sc18.setCompositeScore(55.0);
+		assertEquals(screeningService.updateScreening(sc18).getCompositeScore(), 55.0, 0);
 	}
 
 	@Test
@@ -98,22 +97,24 @@ public class ScreeningServiceTest {
 		Screening screening = new Screening();
 		assertNull(screeningService.updateScreening(screening));
 	}
-	
+
 	@Test
 	public void existById() {
+		when(srMock.existsById(anyInt())).thenReturn(true);
 		assertTrue(screeningService.existsById(4321));
 	}
-	
-	@Test
+
+	@Test(expected = NullPointerException.class)
 	public void existByIdFail() {
+		when(srMock.existsById(0)).thenThrow(new NullPointerException());
 		screeningService.existsById(0);
-		assertThatNullPointerException();
 	}
-	
+
 	@Test
 	public void findAllScreening() {
-		int firstSc = screeningService.getAllScreening().size();
-		screeningService.createScreening(sc18);
-		assertEquals((firstSc+1), screeningService.getAllScreening().size());
+		ArrayList<Screening> testList = new ArrayList<>();
+		testList.add(sc18);
+		when(srMock.findAll()).thenReturn(testList);
+		assertNotNull(screeningService.getAllScreenings());
 	}
 }

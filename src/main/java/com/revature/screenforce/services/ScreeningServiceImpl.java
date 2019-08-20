@@ -12,20 +12,20 @@ import com.revature.screenforce.data.ScreeningRepository;
 @Service
 public class ScreeningServiceImpl implements ScreeningService {
 	
+	private ScreeningRepository screeningRepository;
+	
 	@Autowired
-	ScreeningRepository screeningRepository;
-
-	@Autowired
-	ScheduledScreeningRepository scheduledScreeningRepository;
+	public void setScreeningRepository(ScreeningRepository screeningRepository) {
+		this.screeningRepository = screeningRepository;
+	}
 
 	@Override
-	public List<Screening> getAllScreening() {
+	public List<Screening> getAllScreenings() {
 		return screeningRepository.findAll();
 	}
 
 	@Override
 	public Screening getScreeningById(int sid) {
-//		return screeningRepository.getOne(sid);
 		Screening sc = null;
 		try {
 			sc = screeningRepository.getOne(sid);
