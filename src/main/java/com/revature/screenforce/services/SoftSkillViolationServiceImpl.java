@@ -12,8 +12,12 @@ import java.util.List;
 @Service
 public class SoftSkillViolationServiceImpl implements SoftSkillViolationService {
 
+	private SoftSkillViolationRepository softSkillViolationRepository;
+	
 	@Autowired
-	SoftSkillViolationRepository softSkillViolationRepository;
+	public void setSoftSkillViolationRepository(SoftSkillViolationRepository softSkillViolationRepository) {
+		this.softSkillViolationRepository = softSkillViolationRepository;
+	}
 
 	@Override
 	public SoftSkillViolation save(SoftSkillViolation ssv) {
