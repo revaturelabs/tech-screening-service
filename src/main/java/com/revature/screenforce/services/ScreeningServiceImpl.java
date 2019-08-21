@@ -13,13 +13,14 @@ public class ScreeningServiceImpl implements ScreeningService {
 	
 	private ScreeningRepository screeningRepository;
 
+
 	@Autowired
 	public ScreeningServiceImpl (ScreeningRepository screeningRepository) {
 		this.screeningRepository = screeningRepository;
 	}
 	
 	@Override
-	public List<Screening> getAllScreening() {
+	public List<Screening> getAllScreenings() {
 		return screeningRepository.findAll();
 	}
 

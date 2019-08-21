@@ -63,7 +63,7 @@ public class ScreeningController {
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<Screening>> getAllScreening() {
-		List<Screening> ssv = screeningService.getAllScreening();
+		List<Screening> ssv = screeningService.getAllScreenings();
 			return new ResponseEntity<>(ssv, HttpStatus.OK);
 	}
 	

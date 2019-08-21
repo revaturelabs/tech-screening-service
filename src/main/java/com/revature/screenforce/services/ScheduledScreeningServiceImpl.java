@@ -19,6 +19,7 @@ public class ScheduledScreeningServiceImpl implements ScheduledScreeningService 
 		this.scheduledScreeningRepository = scheduledScreeningRepository;
 	}
 
+
 	@Override
 	public List<ScheduledScreening> findByStatus(ScheduledStatus status) {
 		List<ScheduledScreening> simpleScheduledScreenings = null;
