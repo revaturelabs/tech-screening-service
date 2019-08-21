@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.revature.screenforce.beans.Screening;
-import com.revature.screenforce.data.ScheduledScreeningRepository;
 import com.revature.screenforce.data.ScreeningRepository;
 
 @Service
@@ -26,14 +25,7 @@ public class ScreeningServiceImpl implements ScreeningService {
 
 	@Override
 	public Screening getScreeningById(int sid) {
-//		return screeningRepository.getOne(sid);
-		Screening sc = null;
-		try {
-			sc = screeningRepository.getOne(sid);
-		} catch (Exception e) {
-			return sc;
-		}
-		return sc;
+		return screeningRepository.findById(sid).orElse(null);
 	}
 
 	@Override
@@ -41,6 +33,9 @@ public class ScreeningServiceImpl implements ScreeningService {
 		return screeningRepository.findById(id).orElse(new Screening());
 	}
 
+	/*
+	 * TODO: Check if a ScheduledScreening/Candidate exist before adding the new Screening.
+	 */
 	@Override
 	public Screening createScreening(Screening screening) {
 		if (screening != null && !(screening.equals(new Screening()))) {

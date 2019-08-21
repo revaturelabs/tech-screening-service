@@ -1,14 +1,22 @@
 package com.revature.screenforce.controllers;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
+import java.util.List;
+
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 
 import com.revature.screenforce.beans.ScheduledScreening;
 import com.revature.screenforce.beans.ScheduledStatus;
@@ -18,8 +26,10 @@ import com.revature.screenforce.services.ScheduledScreeningService;
 import com.revature.screenforce.services.ScreeningService;
 import com.revature.screenforce.services.SoftSkillViolationService;
 
-import javax.validation.Valid;
-import java.util.List;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 
 /**
  * @author Jeremy Straus | 1807-QC | Emily Higgins
@@ -74,7 +84,7 @@ public class ScreeningController {
 		if(ssv != null ) {
 			return new ResponseEntity<>(ssv, HttpStatus.OK);
 		}
-		return new ResponseEntity<>(ssv, HttpStatus.NOT_FOUND);
+		throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Screening Not Found");
 	}
 
 	/**
@@ -89,7 +99,9 @@ public class ScreeningController {
 	public ResponseEntity<List<SoftSkillViolation>> softSkillViolationByScreeningID(
 			@PathVariable(value = "id") int screeningId) {
 		List<SoftSkillViolation> ssv = softSkillViolationService.getAllByScreeningId(screeningId);
-
+		if(ssv.isEmpty()) {
+			return new ResponseEntity<>(HttpStatus.OK);
+		}
 		return new ResponseEntity<>(ssv, HttpStatus.OK);
 	}
 
@@ -112,6 +124,7 @@ public class ScreeningController {
 	 *
 	 * @param Screening to create
 	 * @return New screening object
+	 * TODO: Check if a ScheduledScreening/Candidate exist before adding the new Screening 
 	 */
 	@ApiOperation(value = "Add a new Screening", response = Screening.class)
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Screening added"),
