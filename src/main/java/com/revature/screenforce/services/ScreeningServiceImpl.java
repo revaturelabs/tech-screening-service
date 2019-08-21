@@ -6,26 +6,26 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.revature.screenforce.beans.Screening;
-import com.revature.screenforce.data.ScheduledScreeningRepository;
 import com.revature.screenforce.data.ScreeningRepository;
 
 @Service
 public class ScreeningServiceImpl implements ScreeningService {
 	
-	@Autowired
-	ScreeningRepository screeningRepository;
+	private ScreeningRepository screeningRepository;
+
 
 	@Autowired
-	ScheduledScreeningRepository scheduledScreeningRepository;
-
+	public ScreeningServiceImpl (ScreeningRepository screeningRepository) {
+		this.screeningRepository = screeningRepository;
+	}
+	
 	@Override
-	public List<Screening> getAllScreening() {
+	public List<Screening> getAllScreenings() {
 		return screeningRepository.findAll();
 	}
 
 	@Override
 	public Screening getScreeningById(int sid) {
-//		return screeningRepository.getOne(sid);
 		Screening sc = null;
 		try {
 			sc = screeningRepository.getOne(sid);
