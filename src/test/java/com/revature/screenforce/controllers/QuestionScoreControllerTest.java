@@ -69,7 +69,6 @@ public class QuestionScoreControllerTest {
 				.statusCode(200);
 	}
 	
-	//Richard & Wilbur: adding unimplemented end-point test.
 	@Test
 	public void testGetSimpleQuestionScoreList() {
 		given()
