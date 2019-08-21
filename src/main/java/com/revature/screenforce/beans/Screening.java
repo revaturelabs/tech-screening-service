@@ -27,7 +27,7 @@ public class Screening {
 	private int screeningId;
 
 	@ApiModelProperty(value = "The Scheduled Screening connected to the screening")
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
 	@JoinColumn(name = "SCHEDULED_SCREENING_ID")
 	private ScheduledScreening scheduledScreening;
 
