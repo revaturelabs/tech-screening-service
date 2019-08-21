@@ -18,10 +18,9 @@ import com.revature.screenforce.data.QuestionScoreRepository;
 public class QuestionScoreServiceImpl implements QuestionScoreService {
 
 	private QuestionScoreRepository questionScoreRepository;
-
+	
 	@Autowired
 	public QuestionScoreServiceImpl(QuestionScoreRepository questionScoreRepository) {
-		super();
 		this.questionScoreRepository = questionScoreRepository;
 	}
 

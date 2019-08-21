@@ -12,13 +12,13 @@ import com.revature.screenforce.data.ScreeningRepository;
 public class ScreeningServiceImpl implements ScreeningService {
 	
 	private ScreeningRepository screeningRepository;
-	
+
+
 	@Autowired
-	public ScreeningServiceImpl(ScreeningRepository screeningRepository) {
-		super();
+	public ScreeningServiceImpl (ScreeningRepository screeningRepository) {
 		this.screeningRepository = screeningRepository;
 	}
-
+	
 	@Override
 	public List<Screening> getAllScreenings() {
 		return screeningRepository.findAll();

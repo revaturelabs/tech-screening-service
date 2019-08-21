@@ -30,14 +30,18 @@ import java.util.List;
 @ApiModel(value = "Screening Controller", description = "A REST controller to handle HTTP requests that deal with Screenings and ScheduledScreenings")
 public class ScreeningController {
 
-	@Autowired
-	ScheduledScreeningService scheduledScreeningService;
+	private ScheduledScreeningService scheduledScreeningService;
 
-	@Autowired
-	ScreeningService screeningService;
+	private ScreeningService screeningService;
 
+	private SoftSkillViolationService softSkillViolationService;
+	
 	@Autowired
-	SoftSkillViolationService softSkillViolationService;
+	public ScreeningController(ScheduledScreeningService scheduledScreeningService, ScreeningService screeningService, SoftSkillViolationService softSkillViolationService) {
+		this.scheduledScreeningService = scheduledScreeningService;
+		this.screeningService = screeningService;
+		this.softSkillViolationService = softSkillViolationService;
+	}
 
 	/**
 	 * Returns a list Screening objects

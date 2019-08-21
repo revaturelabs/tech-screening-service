@@ -11,11 +11,11 @@ import java.util.List;
 @Service
 public class ViolationTypeServiceImpl implements ViolationTypeService {
 
+	//removed field injection and implemented constructor injection
 	private ViolationTypeRepository violationTypeRepository;
 	
 	@Autowired
-	public ViolationTypeServiceImpl(ViolationTypeRepository violationTypeRepository) {
-		super();
+	public ViolationTypeServiceImpl (ViolationTypeRepository violationTypeRepository) {
 		this.violationTypeRepository = violationTypeRepository;
 	}
 	
