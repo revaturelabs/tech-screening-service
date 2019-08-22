@@ -22,13 +22,11 @@ import javax.validation.Valid;
 import java.util.List;
 
 /**
- * @author Jeremy Straus | 1807-QC | Emily Higgins </br>
- * 
- *  Controller for accessing and modifying Screening objects.
+ *  Controller for accessing and modifying Screening objects. </br>
  *  
+ *  @author Jeremy Straus | 1807-QC | Emily Higgins
  *  @see com.revature.screenforce.beans.Screening
  *  @see com.revature.screenforce.beans.ScreeningService.Impl
-
  */
 @CrossOrigin
 @RestController

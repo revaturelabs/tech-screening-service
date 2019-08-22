@@ -22,11 +22,11 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
-/**
+/** 
+ * The controller for incoming REST requests to the Question Score part of the Screening service. </br>
+ * 
  * @author Thomas Santillan| 1805-WVU-MAY29 | Richard Orr
  * @author Jeremy Straus | 1807-QC | Emily Higgins </br>
- * 
- * The controller for incoming REST requests to the Question Score part of the Screening service.
  */
 @CrossOrigin
 @RestController

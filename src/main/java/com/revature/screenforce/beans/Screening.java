@@ -10,11 +10,11 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.Date;
 import java.util.Objects;
 
-/**
- * @author Jeremy Straus | 1807-QC | Emily Higgins
- * 
+/** 
  * The Screening class, meant to represent the technical Screening of a Candidate.  It must be associated with a 
  * ScheduledScreening
+ * 
+ * @author Jeremy Straus | 1807-QC | Emily Higgins
  */
 @ApiModel(value = "Screening", description = "An object to record the result of screening a candidate")
 @Entity

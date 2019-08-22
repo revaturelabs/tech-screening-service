@@ -9,10 +9,10 @@ import com.revature.screenforce.data.QuestionScoreRepository;
 import java.util.List;
 
 /**
+ * The service for the Question Score part of the Screening service. </br>
  * @author Thomas Santillan | 1805-WVU-MAY29 | Richard Orr
- * @author Jeremy Straus | 1807-QC | Emily Higgins </br>
+ * @author Jeremy Straus | 1807-QC | Emily Higgins 
  * 
- * The service for the Question Score part of the Screening service.
  */
 @Service
 public class QuestionScoreServiceImpl implements QuestionScoreService {

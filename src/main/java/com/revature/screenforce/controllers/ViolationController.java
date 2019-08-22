@@ -24,9 +24,9 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
 /**
- * @author Jeremy Straus | 1807-QC | Emily Higgins </br>
+ * The Controller for accessing and modifying soft skill violations. </br>
  * 
- * The Controller for accessing and modifying soft skill violations.
+ * @author Jeremy Straus | 1807-QC | Emily Higgins
  */
 
 @CrossOrigin

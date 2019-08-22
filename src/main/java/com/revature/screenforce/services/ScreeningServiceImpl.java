@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.revature.screenforce.beans.Screening;
-import com.revature.screenforce.data.ScheduledScreeningRepository;
 import com.revature.screenforce.data.ScreeningRepository;
 
 /**
