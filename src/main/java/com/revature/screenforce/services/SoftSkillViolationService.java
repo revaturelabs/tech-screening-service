@@ -6,10 +6,10 @@ import com.revature.screenforce.beans.SoftSkillViolation;
 import com.revature.screenforce.beans.ViolationType;
 
 /**
- * Business logic for Soft Skill Violations operations
- *
  * @author Aaron Ware | 1805-WVU-MAY29 | Richard Orr
- * @author Jeremy Straus | 1807-QC | Emily Higgins
+ * @author Jeremy Straus | 1807-QC | Emily Higgins </br>
+ * 
+ * Business logic for Soft Skill Violations operations
  */
 public interface SoftSkillViolationService {
 	/**
@@ -44,6 +44,8 @@ public interface SoftSkillViolationService {
 	List<SoftSkillViolation> getAllByScreeningId(int screeningId);
 	
 	
-	//5/28 JU - adding for re-factor
+	/*
+	 * Returns all possible soft skill violations.
+	 */
 	List<SoftSkillViolation> getAll();
 }

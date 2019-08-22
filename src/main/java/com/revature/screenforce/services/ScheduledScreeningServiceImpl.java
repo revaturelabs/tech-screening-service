@@ -9,16 +9,31 @@ import com.revature.screenforce.data.ScheduledScreeningRepository;
 
 import java.util.List;
 
+/**
+ * The implementation of the Scheduled Screening Service.
+ */
 @Service
 public class ScheduledScreeningServiceImpl implements ScheduledScreeningService {
 
+	/** The scheduled screening repository. */
 	private ScheduledScreeningRepository scheduledScreeningRepository;
 	
+	/**
+	 * Instantiates a new scheduled screening service.  Autowired.
+	 *
+	 * @param scheduledScreeningRepository the scheduled screening repository
+	 */
 	@Autowired
 	public ScheduledScreeningServiceImpl (ScheduledScreeningRepository scheduledScreeningRepository) {
 		this.scheduledScreeningRepository = scheduledScreeningRepository;
 	}
 
+	/**
+	 * Find all scheduled screenings by status.
+	 *
+	 * @param status the status
+	 * @return the list
+	 */
 	@Override
 	public List<ScheduledScreening> findByStatus(ScheduledStatus status) {
 		List<ScheduledScreening> simpleScheduledScreenings = null;
@@ -28,6 +43,11 @@ public class ScheduledScreeningServiceImpl implements ScheduledScreeningService 
 		return simpleScheduledScreenings;
 	}
 
+	/**
+	 * Sets the status of a scheduled screening to SCREENED.
+	 *
+	 * @param scheduledScreeningId the scheduled screening id
+	 */
 	@Override
 	public void updateStatus(int scheduledScreeningId) {
 		ScheduledScreening ss = scheduledScreeningRepository.findById(scheduledScreeningId).orElse(null);
@@ -36,6 +56,5 @@ public class ScheduledScreeningServiceImpl implements ScheduledScreeningService 
 			scheduledScreeningRepository.save(ss);
 		}
 	}
-
 
 }
