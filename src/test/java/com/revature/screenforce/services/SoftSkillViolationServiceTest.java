@@ -20,7 +20,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.revature.screenforce.beans.Screening;
 import com.revature.screenforce.beans.SoftSkillViolation;
-
 import com.revature.screenforce.data.SoftSkillViolationRepository;
 
 @RunWith(SpringRunner.class)
@@ -80,19 +79,4 @@ public class SoftSkillViolationServiceTest {
 	public void testDeleteViolation() {
 		doNothing().when(svMock).delete(any(SoftSkillViolation.class));
 	}
-	
-	//Wilber: implemented get all test
-	@Test
-	public void testGetAllNotNull() {
-		assertNotNull(softSkillViolationService.getAll());
-	}
-	
-	//Richard: implemented find by ID test.
-	@Test
-	public void testFindById() {
-		SoftSkillViolation violation = softSkillViolationService.getAll().get(0);
-		assertNotNull(softSkillViolationService.findById(violation.getSoftViolationId()));
-		//assertEquals(violation, softSkillViolationService.findById(violation.getSoftViolationId()));
-	}
-	
 }
