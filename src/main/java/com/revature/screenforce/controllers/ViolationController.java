@@ -1,22 +1,27 @@
 package com.revature.screenforce.controllers;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.screenforce.beans.SoftSkillViolation;
 import com.revature.screenforce.beans.ViolationType;
 import com.revature.screenforce.services.SoftSkillViolationService;
 import com.revature.screenforce.services.ViolationTypeService;
 
-import java.util.List;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 
 /**
  * @author Jeremy Straus | 1807-QC | Emily Higgins
@@ -29,8 +34,14 @@ import java.util.List;
 public class ViolationController {
 	
 	//variables
-	@Autowired SoftSkillViolationService softSkillViolationService;
-	@Autowired ViolationTypeService violationTypeService;
+	private SoftSkillViolationService softSkillViolationService;
+	private ViolationTypeService violationTypeService;
+	
+	@Autowired
+	public ViolationController(SoftSkillViolationService softSkillViolationService, ViolationTypeService violationTypeService) {
+		this.softSkillViolationService = softSkillViolationService;
+		this.violationTypeService = violationTypeService;
+	}
 
 	/**
 	 * Returns a list of ViolationType objects representing all held in the database

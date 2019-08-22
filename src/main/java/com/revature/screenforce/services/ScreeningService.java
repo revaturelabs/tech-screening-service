@@ -19,7 +19,7 @@ public interface ScreeningService {
 	 */
 	Screening getScreening(int screeningId);
 	Screening getScreeningById(int sid);
-	List<Screening> getAllScreening();
+	List<Screening> getAllScreenings();
 	/**
 	 * Persist a new Screening
 	 *

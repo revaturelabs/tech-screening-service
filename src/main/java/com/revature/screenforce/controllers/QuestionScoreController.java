@@ -1,24 +1,26 @@
 package com.revature.screenforce.controllers;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
-import com.revature.screenforce.beans.Screening;
 import com.revature.screenforce.beans.SimpleQuestionScore;
-import com.revature.screenforce.beans.SoftSkillViolation;
 import com.revature.screenforce.services.QuestionScoreService;
 import com.revature.screenforce.services.ScreeningService;
 
-import java.util.List;
-
-import javax.persistence.EntityNotFoundException;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 
 /**
  * The controller for incoming REST requests to the Question Score part of the Screening service.
@@ -32,8 +34,14 @@ import javax.persistence.EntityNotFoundException;
 @ApiModel(value = "Question Score Controller", description = "A REST controller to handle HTTP requests that deal with Question Scores")
 public class QuestionScoreController {
 
-	@Autowired QuestionScoreService questionScoreService;	
-	@Autowired ScreeningService screeningService;
+	private QuestionScoreService questionScoreService;	
+	private ScreeningService screeningService;
+	
+	@Autowired
+	public QuestionScoreController(QuestionScoreService questionScoreService, ScreeningService screeningService) {
+		this.questionScoreService = questionScoreService;
+		this.screeningService = screeningService;
+	}
 
 	
 	//methods
