@@ -23,10 +23,10 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
 /**
- * The controller for incoming REST requests to the Question Score part of the Screening service.
- *
  * @author Thomas Santillan| 1805-WVU-MAY29 | Richard Orr
- * @author Jeremy Straus | 1807-QC | Emily Higgins
+ * @author Jeremy Straus | 1807-QC | Emily Higgins </br>
+ * 
+ * The controller for incoming REST requests to the Question Score part of the Screening service.
  */
 @CrossOrigin
 @RestController
@@ -34,9 +34,18 @@ import io.swagger.annotations.ApiResponses;
 @ApiModel(value = "Question Score Controller", description = "A REST controller to handle HTTP requests that deal with Question Scores")
 public class QuestionScoreController {
 
+	/** The question score service. */
 	private QuestionScoreService questionScoreService;	
+	
+	/** The screening service. */
 	private ScreeningService screeningService;
 	
+	/**
+	 * Instantiates a new question score controller.
+	 *
+	 * @param questionScoreService the question score service
+	 * @param screeningService the screening service
+	 */
 	@Autowired
 	public QuestionScoreController(QuestionScoreService questionScoreService, ScreeningService screeningService) {
 		this.questionScoreService = questionScoreService;
@@ -44,7 +53,6 @@ public class QuestionScoreController {
 	}
 
 	
-	//methods
 	/**
 	 * Create a new Question Score and persist it in the database.
 	 *
@@ -66,7 +74,13 @@ public class QuestionScoreController {
 		}
 	}
 
-	//5/28 JU - adding GET method to pull all question scores
+	/**
+	 * Gets the simple question scores...
+	 * 
+	 * All of them.
+	 *
+	 * @return the simple question scores
+	 */
 	@RequestMapping(value = "/all", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<SimpleQuestionScore>> getSimpleQuestionScores() {
 		List<SimpleQuestionScore> simpleQuestionScoreList = questionScoreService.getAll();
@@ -74,7 +88,7 @@ public class QuestionScoreController {
 	}
 	
 	/**
-	 * Gets QuestionScores of given id
+	 * Gets QuestionScores of given id.
 	 *
 	 * @param screeningId Id of Screening
 	 * @return List of Question scores

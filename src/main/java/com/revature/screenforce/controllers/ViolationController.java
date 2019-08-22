@@ -24,7 +24,9 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
 /**
- * @author Jeremy Straus | 1807-QC | Emily Higgins
+ * @author Jeremy Straus | 1807-QC | Emily Higgins </br>
+ * 
+ * The Controller for accessing and modifying soft skill violations.
  */
 
 @CrossOrigin
@@ -33,10 +35,18 @@ import io.swagger.annotations.ApiResponses;
 @ApiModel(value = "Violation Controller", description = "A REST controller to handle HTTP requests that deal with Violations")
 public class ViolationController {
 	
-	//variables
+	/** The soft skill violation service. */
 	private SoftSkillViolationService softSkillViolationService;
+	
+	/** The violation type service. */
 	private ViolationTypeService violationTypeService;
 	
+	/**
+	 * Instantiates a new violation controller.
+	 *
+	 * @param softSkillViolationService the soft skill violation service
+	 * @param violationTypeService the violation type service
+	 */
 	@Autowired
 	public ViolationController(SoftSkillViolationService softSkillViolationService, ViolationTypeService violationTypeService) {
 		this.softSkillViolationService = softSkillViolationService;
@@ -44,7 +54,7 @@ public class ViolationController {
 	}
 
 	/**
-	 * Returns a list of ViolationType objects representing all held in the database
+	 * Returns a list of ViolationType objects representing all held in the database.
 	 *
 	 * @return List of ViolationType objects
 	 */
@@ -56,7 +66,12 @@ public class ViolationController {
 		return new ResponseEntity<>(vios, HttpStatus.OK);
 	}
 	
-	//5/28 JU - adding get method to pull all soft skill violations. 
+	/**
+	 * Added: 5/28 JU 
+	 * Gets the soft skill violations.
+	 *
+	 * @return the soft skill violations
+	 */
 	@RequestMapping(value = "/all", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<SoftSkillViolation>> getSoftSkillViolations() {
 		List<SoftSkillViolation> softSkillViolationList = softSkillViolationService.getAll();
@@ -65,7 +80,7 @@ public class ViolationController {
 	
 
 	/**
-	 * Delete a soft skill violation by its unique id
+	 * Delete a soft skill violation by its unique id.
 	 *
 	 * @param id - the unique id of the SoftSkillViolation object to be deleted
 	 * @return A ResponseEntity that contains a delete completed message and an HttpStatus of OK.
@@ -88,7 +103,7 @@ public class ViolationController {
 	}
 
 	/**
-	 * Create a SoftSkillViolation for each ViolationID in the RequestBody, and associates it with the given Screening
+	 * Create a SoftSkillViolation for each ViolationID in the RequestBody, and associates it with the given Screening.
 	 *
 	 * @param violation The new SoftSkillsViolation
 	 * @return An HttpStatus of OK signaling the successful entry of SoftSkillViolation objects.
