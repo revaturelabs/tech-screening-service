@@ -13,5 +13,3 @@ script:
   - mvn test -B
   # SonarQube/SonarCloud - other script steps might be done before running the actual analysis
   - sonar-scanner -Dsonar.verbose=true -X
-  # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
-  - mvn clean verify
