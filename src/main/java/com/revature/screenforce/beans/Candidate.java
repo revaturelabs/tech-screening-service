@@ -30,7 +30,7 @@ public class Candidate {
 	@Column(name = "CANDIDATE_ID")
 	private int candidateId;
 
-	/** ID from Salesforse which identifies the candidate */
+	/** ID from SALESFORCE which identifies the candidate */
 	@ApiModelProperty(value = "Id from Salesforce which identifies the candidate")
 	@Column(name = "RESOURCE_ID")
 	private String resourceId;

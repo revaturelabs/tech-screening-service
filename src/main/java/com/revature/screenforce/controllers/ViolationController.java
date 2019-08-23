@@ -67,7 +67,6 @@ public class ViolationController {
 	}
 	
 	/**
-	 * Added: 5/28 JU 
 	 * Gets the soft skill violations.
 	 *
 	 * @return the soft skill violations

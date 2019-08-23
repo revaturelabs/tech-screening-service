@@ -9,7 +9,7 @@ import com.revature.screenforce.data.ViolationTypeRepository;
 import java.util.List;
 
 /**
- * The implemenation of the ViolationTypeService.
+ * The implementation of the ViolationTypeService.
  */
 @Service
 public class ViolationTypeServiceImpl implements ViolationTypeService {
