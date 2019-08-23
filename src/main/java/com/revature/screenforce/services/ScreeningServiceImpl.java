@@ -33,7 +33,7 @@ public class ScreeningServiceImpl implements ScreeningService {
 	 * @return the all screening
 	 */
 	@Override
-	public List<Screening> getAllScreening() {
+	public List<Screening> getAllScreenings() {
 		return screeningRepository.findAll();
 	}
 
