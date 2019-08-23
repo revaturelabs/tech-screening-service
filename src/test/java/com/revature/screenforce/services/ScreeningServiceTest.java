@@ -32,7 +32,7 @@ public class ScreeningServiceTest {
 	private ScreeningServiceImpl screeningService;
 
 	private Screening sc18;
-
+  
 	@Before
 	public void setup() {
 		MockitoAnnotations.initMocks(this);
