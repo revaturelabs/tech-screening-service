@@ -92,7 +92,6 @@ public class ViolationControllerTest {
 
 	}
 	
-	//Richard: Built getSoftSkillViolation test.
 	@Test
 	public void testGetSoftSkillViolation() {
 		given()
