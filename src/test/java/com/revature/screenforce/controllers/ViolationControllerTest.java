@@ -26,10 +26,6 @@ import static org.junit.Assert.assertNotNull;
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_CLASS)
 @AutoConfigureTestDatabase
 public class ViolationControllerTest {
-	@Autowired
-	ViolationTypeService violationTypeService;
-	@Autowired
-	ViolationController violationController;
 
 	@LocalServerPort
 	int port;
