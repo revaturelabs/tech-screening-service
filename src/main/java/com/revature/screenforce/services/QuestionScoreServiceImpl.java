@@ -1,12 +1,12 @@
 package com.revature.screenforce.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.revature.screenforce.beans.SimpleQuestionScore;
 import com.revature.screenforce.data.QuestionScoreRepository;
-
-import java.util.List;
 
 /**
  * The implementation of the question score service. </br>
