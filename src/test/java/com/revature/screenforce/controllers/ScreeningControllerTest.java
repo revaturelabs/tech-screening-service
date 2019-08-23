@@ -43,8 +43,6 @@ public class ScreeningControllerTest {
 	
 	@Before
 	public void setup() {
-		//candDef = new Candidate(0, "elawrence@mailinator.com","Lawrence, Elaine","700-864-8901","www.me.com","e@skype", "","","","","","");
-		//ssDef =  new ScheduledScreening(0, candDef, ScheduledStatus.PENDING, 6, new Date());
 		scDef = new Screening (4321, null, 3,2, (Double)50d,"intoComment","generalComment","softSkillComment", new Date(), new Date(), false, "Completed");
 	}
 	
