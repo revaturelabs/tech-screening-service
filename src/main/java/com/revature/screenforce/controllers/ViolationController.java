@@ -77,14 +77,12 @@ public class ViolationController {
 			@ApiResponse(code = 404, message = "Violation not found")
 	})
 	public ResponseEntity<String> deleteSoftSkillViolation(@PathVariable(value = "id") int id) {
-		try {
-			SoftSkillViolation skill = softSkillViolationService.findById(id);
+		SoftSkillViolation skill = softSkillViolationService.findById(id);
+		if(skill != null) {
 			softSkillViolationService.delete(skill.getSoftViolationId());
-		} catch(NullPointerException e) {
-			System.out.println(e);
-			return new ResponseEntity<>("ID not found", HttpStatus.NOT_FOUND);
-		}
-		return new ResponseEntity<>("Delete Completed", HttpStatus.OK);
+			return new ResponseEntity<>("Delete Completed", HttpStatus.OK);
+		} 
+		return new ResponseEntity<>("ID not found", HttpStatus.NOT_FOUND);
 	}
 
 	/**
