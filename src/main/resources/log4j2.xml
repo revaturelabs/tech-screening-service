@@ -1,22 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration>
 	<Appenders>
-
-		<Console name="console" target="SYSTEM_OUT">
-			<!-- Ref for pattern https://logging.apache.org/log4j/2.x/manual/layouts.html -->
+		<RollingFile name="error" fileName="./logs/app-error.log"
+			filePattern="logs/$${date:yyyy-MM}/app-%d{MM-dd-yyyy}-error.log.gz">
 			<PatternLayout>
-				<Pattern>%d %-5p [%t] %C{2} (%F:%L) - %m%n</Pattern>
+				<Pattern>%d [%t] %p %c - %m%n</Pattern>
 			</PatternLayout>
-		</Console>
-		<!-- http://logging.apache.org/log4j/2.x/manual/appenders.html#RollingFileAppender -->
-		<!-- log.gz is compressed logs -->
+			<!-- file size for a log is limit to 50MB -->
+			<Policies>
+				<OnStartupTriggeringPolicy />
+				<TimeBasedTriggeringPolicy />
+				<SizeBasedTriggeringPolicy size="50 MB" />
+			</Policies>
+			<!-- maximum of 10 files for each log -->
+			<DefaultRolloverStrategy max="20" />
+		</RollingFile>
 		<RollingFile name="trace" fileName="./logs/app-trace.log"
 			filePattern="logs/$${date:yyyy-MM}/app-%d{MM-dd-yyyy}-trace.log.gz">
 			<PatternLayout>
 				<Pattern>%d [%t] %p %c - %m%n</Pattern>
 			</PatternLayout>
 			<Policies>
-				<!-- Ref Trigger Policy of Log4j2 -->
 				<OnStartupTriggeringPolicy />
 				<TimeBasedTriggeringPolicy />
 				<SizeBasedTriggeringPolicy size="100 MB" />
@@ -33,20 +37,6 @@
 				<TimeBasedTriggeringPolicy />
 				<SizeBasedTriggeringPolicy size="50 MB" />
 			</Policies>
-			<DefaultRolloverStrategy max="20" />
-		</RollingFile>
-		<RollingFile name="error" fileName="./logs/app-error.log"
-			filePattern="logs/$${date:yyyy-MM}/app-%d{MM-dd-yyyy}-error.log.gz">
-			<PatternLayout>
-				<Pattern>%d [%t] %p %c - %m%n</Pattern>
-			</PatternLayout>
-			<!-- file size for a log is limit to 50MB -->
-			<Policies>
-				<OnStartupTriggeringPolicy />
-				<TimeBasedTriggeringPolicy />
-				<SizeBasedTriggeringPolicy size="50 MB" />
-			</Policies>
-			<!-- maximum of 20 files for each log -->
 			<DefaultRolloverStrategy max="20" />
 		</RollingFile>
 		<RollingFile name="debug" fileName="./logs/app-debug.log"
@@ -76,7 +66,6 @@
 	</Appenders>
 	<Loggers>
 		<Root level="all">
-			<AppenderRef ref="console" level="info" />
 			<AppenderRef ref="trace" level="trace" />
 			<AppenderRef ref="info" level="info" />
 			<AppenderRef ref="error" level="error" />
