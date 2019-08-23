@@ -12,6 +12,6 @@ script:
   - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
   - mvn test -B
   # SonarQube/SonarCloud - other script steps might be done before running the actual analysis
-  - sonar-scanner
+  - sonar-scanner -Dsonar.verbose=true -X
   # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
-  - mvn clean verify sonar:sonar -Pcoverage -Dsonar.projectKey=screenforce:tech-screening-service
+  - mvn clean verify
