@@ -6,7 +6,7 @@ addons:
   sonarcloud:
     organization: "revaturelabs-screenforce" # the key of the org
     token:
-      secure: "*********" # encrypted value of your token
+      secure: ${sonar-cloud-token} # encrypted value of your token
 # Optional: for accessing full SCM history
 git:
   depth: false
@@ -16,4 +16,4 @@ script:
   # SonarQube/SonarCloud - other script steps might be done before running the actual analysis
   - sonar-scanner
   # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
-  - mvn clean verify sonar:sonar -Pcoverage -Dsonar.projectKey=myorg_myrepo
+  - mvn clean verify sonar:sonar -Pcoverage -Dsonar.projectKey=screenforce:tech-screening-service
