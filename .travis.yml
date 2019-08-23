@@ -5,8 +5,6 @@ addons:
   # https://docs.travis-ci.com/user/sonarcloud/
   sonarcloud:
     organization: "revaturelabs-screenforce" # the key of the org
-    token:
-      secure: "\$sonar-cloud-token" # encrypted value of your token
 # Optional: for accessing full SCM history
 git:
   depth: false
