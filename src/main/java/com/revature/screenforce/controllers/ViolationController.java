@@ -80,8 +80,7 @@ public class ViolationController {
 		try {
 			SoftSkillViolation skill = softSkillViolationService.findById(id);
 			softSkillViolationService.delete(skill.getSoftViolationId());
-		} catch(NullPointerException e) {
-			System.out.println(e);
+		} catch(Exception e) {
 			return new ResponseEntity<>("ID not found", HttpStatus.NOT_FOUND);
 		}
 		return new ResponseEntity<>("Delete Completed", HttpStatus.OK);

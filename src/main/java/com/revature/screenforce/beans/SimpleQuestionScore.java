@@ -32,7 +32,7 @@ public class SimpleQuestionScore {
 	private int bucketId;
 
 	@ApiModelProperty(value = "Id of the screening the question was asked on")
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
 	@JoinColumn(name = "SCREENING_ID")
 	private Screening screening;
 

@@ -23,12 +23,12 @@ public class SoftSkillViolation {
 	private int softViolationId;
 
 	@ApiModelProperty(value = "Id of the Screening the violation occurred in")
-	@ManyToOne(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER, cascade=CascadeType.PERSIST)
 	@JoinColumn(name = "SCREENING_ID")
 	private Screening screening;
 
 	@ApiModelProperty(value = "Id of the ViolationType that occurred in the screening")
-	@ManyToOne(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER, cascade=CascadeType.PERSIST)
 	@JoinColumn(name = "VIOLATION_TYPE_ID")
 	private ViolationType violationType;
 
