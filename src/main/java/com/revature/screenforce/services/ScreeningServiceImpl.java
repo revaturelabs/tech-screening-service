@@ -34,9 +34,6 @@ public class ScreeningServiceImpl implements ScreeningService {
 		return screeningRepository.findById(id).orElse(new Screening());
 	}
 
-	/*
-	 * TODO: Check if a ScheduledScreening/Candidate exist before adding the new Screening.
-	 */
 	@Override
 	public Screening createScreening(Screening screening) {
 		if (screening != null && !(screening.equals(new Screening()))) {

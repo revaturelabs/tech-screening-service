@@ -98,8 +98,12 @@ public class ScreeningController {
 	@RequestMapping(value = "/{id}/violations", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<SoftSkillViolation>> softSkillViolationByScreeningID(
 			@PathVariable(value = "id") int screeningId) {
-		List<SoftSkillViolation> ssv = softSkillViolationService.getAllByScreeningId(screeningId);
-		return new ResponseEntity<>(ssv, HttpStatus.OK);
+		if(screeningService.existsById(screeningId)) {
+			List<SoftSkillViolation> ssv = softSkillViolationService.getAllByScreeningId(screeningId);
+			return new ResponseEntity<>(ssv, HttpStatus.OK);
+		} else {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No screening of that id exists");
+		}
 	}
 
 	/**
