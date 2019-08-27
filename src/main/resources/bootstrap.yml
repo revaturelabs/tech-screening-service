@@ -1,10 +1,10 @@
 spring:
-  application:
-    name: tech-screening-service
-  cloud:
-    config:
-      uri: ${SCREENFORCE_CONFIG_SERVER_URL}
-      fail-fast: true
+    application:
+        name: tech-screening-service
+   #cloud:
+   # config:
+   #   uri: ${SCREENFORCE_CONFIG_SERVER_URL}
+   #   fail-fast: true
 
 
       

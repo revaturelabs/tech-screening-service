@@ -4,6 +4,9 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.util.Date;
 import java.util.Objects;
 
@@ -13,7 +16,10 @@ import java.util.Objects;
 @ApiModel(value = "Screening", description = "An object to record the result of screening a candidate")
 @Entity
 @Table(name = "SCREENING")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Screening {
+	
+	//variables
 	@ApiModelProperty(value = "Id of the screening")
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -65,10 +71,16 @@ public class Screening {
 	@Column(name = "STATUS")
 	private String status;
 
+	//constructor
 	public Screening() {
+		super();
 	}
 
-	public Screening(ScheduledScreening scheduledScreening, int screenerId, int skillType, Double compositeScore, String aboutMeCommentary, String generalCommentary, String softSkillCommentary, Date startDateTime, Date endDateTime, Boolean softSkillsVerdict, String status) {
+	public Screening(int screeningId, ScheduledScreening scheduledScreening, int screenerId, int skillType,
+			Double compositeScore, String aboutMeCommentary, String generalCommentary, String softSkillCommentary,
+			Date startDateTime, Date endDateTime, Boolean softSkillsVerdict, String status) {
+		super();
+		this.screeningId = screeningId;
 		this.scheduledScreening = scheduledScreening;
 		this.screenerId = screenerId;
 		this.skillType = skillType;
@@ -82,6 +94,7 @@ public class Screening {
 		this.status = status;
 	}
 
+	//getters and setters
 	public int getScreeningId() {
 		return screeningId;
 	}
@@ -178,6 +191,7 @@ public class Screening {
 		this.status = status;
 	}
 
+	//equals and hashcode
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
@@ -196,12 +210,13 @@ public class Screening {
 				Objects.equals(getSoftSkillsVerdict(), screening.getSoftSkillsVerdict()) &&
 				Objects.equals(getStatus(), screening.getStatus());
 	}
-
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(getScreeningId(), getScheduledScreening(), getScreenerId(), getSkillType(), getCompositeScore(), getAboutMeCommentary(), getGeneralCommentary(), getSoftSkillCommentary(), getStartDateTime(), getEndDateTime(), getSoftSkillsVerdict(), getStatus());
 	}
 
+	//toString
 	@Override
 	public String toString() {
 		return "Screening{" +

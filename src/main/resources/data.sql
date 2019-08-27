@@ -1,5 +1,4 @@
-
-
+/* screening service */
 --------------------------------------------------------
 --  CANDIDATE
 --------------------------------------------------------
@@ -56,6 +55,7 @@ insert into SCHEDULED_SCREENING (SCHEDULED_SCREENING_ID, candidate_id, SKILL_TYP
 insert into SCHEDULED_SCREENING (SCHEDULED_SCREENING_ID, candidate_id, SKILL_TYPE_ID, status, scheduled_date) values (SCHEDULED_SCREENING_SEQUENCE.NEXTVAL, 4326, 51, 'SCREENED', (SYSDATE+24));
 insert into SCHEDULED_SCREENING (SCHEDULED_SCREENING_ID, candidate_id, SKILL_TYPE_ID, status, scheduled_date) values (SCHEDULED_SCREENING_SEQUENCE.NEXTVAL, 4325, 52, 'SCREENED', (SYSDATE+20));
 insert into SCHEDULED_SCREENING (SCHEDULED_SCREENING_ID, candidate_id, SKILL_TYPE_ID, status, scheduled_date) values (SCHEDULED_SCREENING_SEQUENCE.NEXTVAL, 4326, 51, 'SCREENED', (SYSDATE+1));
+
 
 --------------------------------------------------------
 -- SCREENING

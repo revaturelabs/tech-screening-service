@@ -1,18 +1,26 @@
 package com.revature.screenforce.controllers;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.revature.screenforce.beans.SimpleQuestionScore;
+import com.revature.screenforce.services.QuestionScoreService;
+import com.revature.screenforce.services.ScreeningService;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
-import com.revature.screenforce.beans.SimpleQuestionScore;
-import com.revature.screenforce.services.QuestionScoreService;
-
-import java.util.List;
 
 /**
  * The controller for incoming REST requests to the Question Score part of the Screening service.
@@ -26,9 +34,17 @@ import java.util.List;
 @ApiModel(value = "Question Score Controller", description = "A REST controller to handle HTTP requests that deal with Question Scores")
 public class QuestionScoreController {
 
+	private QuestionScoreService questionScoreService;	
+	private ScreeningService screeningService;
+	
 	@Autowired
-	private QuestionScoreService questionScoreService;
+	public QuestionScoreController(QuestionScoreService questionScoreService, ScreeningService screeningService) {
+		this.questionScoreService = questionScoreService;
+		this.screeningService = screeningService;
+	}
 
+	
+	//methods
 	/**
 	 * Create a new Question Score and persist it in the database.
 	 *
@@ -40,7 +56,7 @@ public class QuestionScoreController {
 			@ApiResponse(code = 200, message = "QuestionScore created"),
 			@ApiResponse(code = 400, message = "Could not create QuestionScore")
 	})
-	@RequestMapping(value = "/new", method = RequestMethod.POST)
+	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<SimpleQuestionScore> saveQuestionScore(@RequestBody SimpleQuestionScore questionScore) {
 		SimpleQuestionScore newScore = questionScoreService.save(questionScore);
 		if (newScore != null) {
@@ -50,6 +66,13 @@ public class QuestionScoreController {
 		}
 	}
 
+	//5/28 JU - adding GET method to pull all question scores
+	@RequestMapping(value = "/all", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<List<SimpleQuestionScore>> getSimpleQuestionScores() {
+		List<SimpleQuestionScore> simpleQuestionScoreList = questionScoreService.getAll();
+		return new ResponseEntity<>(simpleQuestionScoreList, HttpStatus.OK);
+	}
+	
 	/**
 	 * Gets QuestionScores of given id
 	 *
@@ -57,12 +80,22 @@ public class QuestionScoreController {
 	 * @return List of Question scores
 	 */
 	@ApiOperation(value = "Get QuestionScores for a screening", response = SimpleQuestionScore.class, responseContainer = "List")
-	@ApiResponses(value = {@ApiResponse(code = 200, message = "All QuestionScores for Screening returned")})
+	@ApiResponses(value = {
+			@ApiResponse(code = 200, message = "All QuestionScores for Screening returned"),
+			@ApiResponse(code = 404, message = "Screening ID not found.")
+			})
 	@RequestMapping(value = "/{screeningId}", method = RequestMethod.GET)
 	public ResponseEntity<List<SimpleQuestionScore>> getScoresByScreeningId(
 			@PathVariable("screeningId") Integer screeningId) {
-		List<SimpleQuestionScore> scoreList = questionScoreService.findByScreeningId(screeningId);
-		return new ResponseEntity<>(scoreList, HttpStatus.OK);
+		List<SimpleQuestionScore> scoreList = null;
+		if(!screeningService.existsById(screeningId))
+		{
+			return new ResponseEntity<>(scoreList, HttpStatus.NOT_FOUND);
+		}
+		else {
+			scoreList = questionScoreService.findByScreeningId(screeningId);
+			return new ResponseEntity<>(scoreList, HttpStatus.OK);
+		}
 	}
 
 }

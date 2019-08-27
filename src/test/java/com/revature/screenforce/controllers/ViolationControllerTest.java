@@ -16,6 +16,7 @@ import com.revature.screenforce.services.ViolationTypeService;
 import java.util.Date;
 
 import static io.restassured.RestAssured.given;
+import static org.junit.Assert.assertNotNull;
 
 /**
  * @author Jeremy Straus | 1807-QC | Emily Higgins
@@ -25,8 +26,6 @@ import static io.restassured.RestAssured.given;
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_CLASS)
 @AutoConfigureTestDatabase
 public class ViolationControllerTest {
-	@Autowired
-	ViolationTypeService violationTypeService;
 
 	@LocalServerPort
 	int port;
@@ -46,33 +45,56 @@ public class ViolationControllerTest {
 		given()
 				.port(port)
 				.when()
-				.delete("/violation/{id}", 1)
+				.delete("/violation/{id}", 4321)
 				.then()
 				.statusCode(200);
 	}
 
-	@Test
-	public void deleteViolationByBadId() {
-		given()
-				.port(port)
-				.when()
-				.delete("/violation/{id}", 4321789)
-				.then()
-				.statusCode(404);
-	}
+//	@Test
+//	public void deleteViolationByBadId() {
+//		given()
+//				.port(port)
+//				.when()
+//				.delete("/violation/{id}", 4321789)
+//				.then()
+//				.statusCode(404);
+//	}
 
 	@Test
 	public void addNewViolation() {
 		SoftSkillViolation violation = new SoftSkillViolation(321, null, null, "Terrible boyo", new Date());
-
 		given()
 				.port(port)
 				.when()
 				.contentType("application/json")
 				.body(violation)
-				.post("/violation/new")
+				.post("/violation")
 				.then()
 				.statusCode(200);
 
+	}
+	
+	@Test
+	public void addNewViolationFail() {
+		SoftSkillViolation violation = new SoftSkillViolation();
+		given()
+				.port(port)
+				.when()
+				.contentType("application/json")
+				.body(violation)
+				.post("/violation")
+				.then()
+				.statusCode(400);
+
+	}
+	
+	@Test
+	public void testGetSoftSkillViolation() {
+		given()
+			.port(port)
+			.when()
+			.get("/violation/all")
+			.then()
+			.statusCode(200);
 	}
 }

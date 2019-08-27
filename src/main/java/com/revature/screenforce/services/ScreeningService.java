@@ -1,5 +1,7 @@
 package com.revature.screenforce.services;
 
+import java.util.List;
+
 import com.revature.screenforce.beans.Screening;
 
 /**
@@ -16,7 +18,8 @@ public interface ScreeningService {
 	 * @return The screening with the matching Id
 	 */
 	Screening getScreening(int screeningId);
-
+	Screening getScreeningById(int sid);
+	List<Screening> getAllScreenings();
 	/**
 	 * Persist a new Screening
 	 *
@@ -32,5 +35,6 @@ public interface ScreeningService {
 	 * @return The updated screening object
 	 */
 	Screening updateScreening(Screening screening);
+	boolean existsById(int id);
 }
 

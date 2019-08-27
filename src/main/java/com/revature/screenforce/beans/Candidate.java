@@ -6,11 +6,21 @@ import io.swagger.annotations.ApiModelProperty;
 import javax.persistence.*;
 import java.util.Objects;
 
+/*
+ * Missing Data in data.sql for
+ * Recruiter
+ * College
+ * Degree
+ * Major
+ * TechScreenerName
+ */
+
 @ApiModel(value = "Candidate", description = "A candidate that is being screened")
 @Entity
 @Table(name = "CANDIDATE")
 public class Candidate {
 
+	//variables 
 	@ApiModelProperty(value = "Id of the candidate")
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -61,6 +71,7 @@ public class Candidate {
 	@Column(name = "TECH_SCREENER_NAME")
 	private String techScreenerName;
 
+	//constructors
 	public Candidate() {
 		super();
 	}
@@ -83,6 +94,7 @@ public class Candidate {
 		this.techScreenerName = techScreenerName;
 	}
 
+	//getters and setters
 	public int getCandidateId() {
 		return candidateId;
 	}
@@ -179,6 +191,7 @@ public class Candidate {
 		this.techScreenerName = techScreenerName;
 	}
 
+	//equals and hashcode
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
@@ -203,6 +216,7 @@ public class Candidate {
 		return Objects.hash(getCandidateId(), getResourceId(), getName(), getEmail(), getPhoneNumber(), getSkypeId(), getProfileUrl(), getRecruiterName(), getCollege(), getDegree(), getMajor(), getTechScreenerName());
 	}
 
+	//toString
 	@Override
 	public String toString() {
 		return "Candidate{" +

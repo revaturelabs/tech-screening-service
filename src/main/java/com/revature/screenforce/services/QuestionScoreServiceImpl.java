@@ -1,12 +1,12 @@
 package com.revature.screenforce.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.revature.screenforce.beans.SimpleQuestionScore;
 import com.revature.screenforce.data.QuestionScoreRepository;
-
-import java.util.List;
 
 /**
  * The service for the Question Score part of the Screening service.
@@ -17,8 +17,12 @@ import java.util.List;
 @Service
 public class QuestionScoreServiceImpl implements QuestionScoreService {
 
-	@Autowired
 	private QuestionScoreRepository questionScoreRepository;
+	
+	@Autowired
+	public QuestionScoreServiceImpl(QuestionScoreRepository questionScoreRepository) {
+		this.questionScoreRepository = questionScoreRepository;
+	}
 
 	@Override
 	public SimpleQuestionScore save(SimpleQuestionScore simpleQuestionScore) {
@@ -33,6 +37,14 @@ public class QuestionScoreServiceImpl implements QuestionScoreService {
 	public List<SimpleQuestionScore> findByScreeningId(int screeningId) {
 		return questionScoreRepository.findAllByScreeningScreeningId(screeningId);
 	}
+	
+	@Override
+	public boolean existsById(int id) {
+		return questionScoreRepository.existsById(id);
+	}
 
-
+	//5/28 JU - addition for back-end re-factor
+	public List<SimpleQuestionScore> getAll() {
+		return questionScoreRepository.findAll();
+	}
 }

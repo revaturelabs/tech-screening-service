@@ -3,6 +3,7 @@ package com.revature.screenforce.services;
 import java.util.List;
 
 import com.revature.screenforce.beans.SoftSkillViolation;
+import com.revature.screenforce.beans.ViolationType;
 
 /**
  * Business logic for Soft Skill Violations operations
@@ -11,6 +12,14 @@ import com.revature.screenforce.beans.SoftSkillViolation;
  * @author Jeremy Straus | 1807-QC | Emily Higgins
  */
 public interface SoftSkillViolationService {
+	/**
+	 * Find a SoftSkillViolation from the database
+	 *
+	 * @param id SoftSkillViolation Id to find SSV from the database
+	 * @return Persistent SoftSkillViolation object
+	 */
+	SoftSkillViolation findById(int id);
+	
 	/**
 	 * Save a SoftSkillViolation to the database
 	 *
@@ -33,4 +42,8 @@ public interface SoftSkillViolationService {
 	 * @return List of SoftSkillViolations with the same screeningId
 	 */
 	List<SoftSkillViolation> getAllByScreeningId(int screeningId);
+	
+	
+	//5/28 JU - adding for re-factor
+	List<SoftSkillViolation> getAll();
 }

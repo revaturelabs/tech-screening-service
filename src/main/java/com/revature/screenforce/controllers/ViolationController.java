@@ -1,36 +1,47 @@
 package com.revature.screenforce.controllers;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.screenforce.beans.SoftSkillViolation;
 import com.revature.screenforce.beans.ViolationType;
 import com.revature.screenforce.services.SoftSkillViolationService;
 import com.revature.screenforce.services.ViolationTypeService;
 
-import java.util.List;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 
 /**
  * @author Jeremy Straus | 1807-QC | Emily Higgins
  */
+
 @CrossOrigin
 @RestController
 @RequestMapping("/violation")
 @ApiModel(value = "Violation Controller", description = "A REST controller to handle HTTP requests that deal with Violations")
 public class ViolationController {
+	
+	//variables
+	private SoftSkillViolationService softSkillViolationService;
+	private ViolationTypeService violationTypeService;
+	
 	@Autowired
-	SoftSkillViolationService softSkillViolationService;
-
-	@Autowired
-	ViolationTypeService violationTypeService;
+	public ViolationController(SoftSkillViolationService softSkillViolationService, ViolationTypeService violationTypeService) {
+		this.softSkillViolationService = softSkillViolationService;
+		this.violationTypeService = violationTypeService;
+	}
 
 	/**
 	 * Returns a list of ViolationType objects representing all held in the database
@@ -44,6 +55,14 @@ public class ViolationController {
 		List<ViolationType> vios = violationTypeService.getAll();
 		return new ResponseEntity<>(vios, HttpStatus.OK);
 	}
+	
+	//5/28 JU - adding get method to pull all soft skill violations. 
+	@RequestMapping(value = "/all", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<List<SoftSkillViolation>> getSoftSkillViolations() {
+		List<SoftSkillViolation> softSkillViolationList = softSkillViolationService.getAll();
+		return new ResponseEntity<>(softSkillViolationList, HttpStatus.OK);
+	}
+	
 
 	/**
 	 * Delete a soft skill violation by its unique id
@@ -54,14 +73,16 @@ public class ViolationController {
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	@ApiOperation(value = "Delete a violation by Id")
 	@ApiResponses(value = {
-			@ApiResponse(code = 404, message = "Violation not found"),
-			@ApiResponse(code = 200, message = "Violation deleted")
+			@ApiResponse(code = 200, message = "Violation deleted"),
+			@ApiResponse(code = 404, message = "Violation not found")
 	})
 	public ResponseEntity<String> deleteSoftSkillViolation(@PathVariable(value = "id") int id) {
 		try {
-			softSkillViolationService.delete(id);
-		} catch (EmptyResultDataAccessException e) {
-			return new ResponseEntity<>("id not found", HttpStatus.NOT_FOUND);
+			SoftSkillViolation skill = softSkillViolationService.findById(id);
+			softSkillViolationService.delete(skill.getSoftViolationId());
+		} catch(NullPointerException e) {
+			System.out.println(e);
+			return new ResponseEntity<>("ID not found", HttpStatus.NOT_FOUND);
 		}
 		return new ResponseEntity<>("Delete Completed", HttpStatus.OK);
 	}
@@ -77,7 +98,7 @@ public class ViolationController {
 			@ApiResponse(code = 200, message = "SoftSkillViolation added"),
 			@ApiResponse(code = 400, message = "Bad SoftSkillViolation")
 	})
-	@RequestMapping(value = "/new", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<SoftSkillViolation> createSoftSkillViolationAndReturnSoftSkillViolationID(@RequestBody SoftSkillViolation violation) {
 		if (violation != null && !violation.equals(new SoftSkillViolation())) {
 			SoftSkillViolation ssv = softSkillViolationService.save(violation);
