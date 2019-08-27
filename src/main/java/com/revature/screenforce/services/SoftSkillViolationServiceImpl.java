@@ -18,8 +18,7 @@ public class SoftSkillViolationServiceImpl implements SoftSkillViolationService 
 	private SoftSkillViolationRepository softSkillViolationRepository;
 	
 	/**
-	 * Instantiates a new soft skill violation service impl.  Autowired.
-	 *
+	 * Instantiates a new soft skill violation service impl.
 	 * @param softSkillViolationRepository the soft skill violation repository
 	 */
 	@Autowired

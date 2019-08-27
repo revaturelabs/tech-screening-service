@@ -8,8 +8,7 @@ import com.revature.screenforce.beans.SimpleQuestionScore;
  * The interface for the Question Score part of the Screening service.
  * 
  * @author Thomas Santillan | 1805-WVU-MAY29 | Richard Orr
- * @author Jeremy Straus | 1807-QC | Emily Higgins </br>
- * 
+ * @author Jeremy Straus | 1807-QC | Emily Higgins 
  */
 public interface QuestionScoreService {
 
@@ -30,7 +29,7 @@ public interface QuestionScoreService {
 	List<SimpleQuestionScore> findByScreeningId(int screeningId);
 	
 	/**
-	 * Check if the score exist by id.
+	 * Check if the score exists by id.
 	 *
 	 * @param id the id
 	 * @return true, if successful

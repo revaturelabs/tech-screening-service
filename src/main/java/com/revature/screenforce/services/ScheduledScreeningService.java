@@ -6,8 +6,8 @@ import com.revature.screenforce.beans.ScheduledScreening;
 import com.revature.screenforce.beans.ScheduledStatus;
 
 /**
- * Business logic for Scheduled Screening operations </br>
- * @author Jeremy Straus | 1807-QC | Emily Higgins </br>
+ * Business logic for Scheduled Screening operations
+ * @author Jeremy Straus | 1807-QC | Emily Higgins
  */
 public interface ScheduledScreeningService {
 

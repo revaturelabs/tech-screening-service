@@ -6,14 +6,6 @@ import io.swagger.annotations.ApiModelProperty;
 import javax.persistence.*;
 import java.util.Objects;
 
-/*
- * Missing Data in data.sql for
- * Recruiter
- * College
- * Degree
- * Major
- * TechScreenerName
- */
 
 /**
  * The Class Candidate, meant to represent a Candidate that is being screened.

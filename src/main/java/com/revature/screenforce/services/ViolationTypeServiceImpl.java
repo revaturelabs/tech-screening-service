@@ -18,8 +18,7 @@ public class ViolationTypeServiceImpl implements ViolationTypeService {
 	private ViolationTypeRepository violationTypeRepository;
 	
 	/**
-	 * Instantiates a new violation type service impl.  Autowired.
-	 *
+	 * Instantiates a new violation type service impl.
 	 * @param violationTypeRepository the violation type repository
 	 */
 	@Autowired

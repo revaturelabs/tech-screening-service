@@ -5,7 +5,7 @@ import java.util.List;
 import com.revature.screenforce.beans.Screening;
 
 /**
- * The service for the Screening part of the Screening service. </br>
+ * The service for the Screening part of the Screening service.
  * @author Jakob LaSorella | 1805-WVU-MAY29 | Richard Orr
  * @author Jeremy Straus | 1807-QC | Emily Higgins
  * 

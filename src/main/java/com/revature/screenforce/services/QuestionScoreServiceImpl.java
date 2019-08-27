@@ -9,7 +9,7 @@ import com.revature.screenforce.beans.SimpleQuestionScore;
 import com.revature.screenforce.data.QuestionScoreRepository;
 
 /**
- * The implementation of the question score service. </br>
+ * The implementation of the question score service.
  * @author Thomas Santillan | 1805-WVU-MAY29 | Richard Orr
  * @author Jeremy Straus | 1807-QC | Emily Higgins 
  * 
@@ -21,7 +21,7 @@ public class QuestionScoreServiceImpl implements QuestionScoreService {
 	private QuestionScoreRepository questionScoreRepository;
 	
 	/**
-	 * Instantiates a new question score service.  Autowired.
+	 * Instantiates a new question score service.
 	 *
 	 * @param questionScoreRepository the question score repository
 	 */
@@ -31,7 +31,7 @@ public class QuestionScoreServiceImpl implements QuestionScoreService {
 	}
 
 	/**
-	 * Save a new simple question score.
+	 * Saves a new simple question score.
 	 *
 	 * @param simpleQuestionScore the simple question score
 	 * @return the simple question score
@@ -46,7 +46,7 @@ public class QuestionScoreServiceImpl implements QuestionScoreService {
 	}
 
 	/**
-	 * Find by screening id.
+	 * Find a screening by it's id.
 	 *
 	 * @param screeningId the screening id
 	 * @return the list
@@ -57,7 +57,7 @@ public class QuestionScoreServiceImpl implements QuestionScoreService {
 	}
 	
 	/**
-	 * Check if it exists by id.
+	 * Check if a screening exists by id.
 	 *
 	 * @param id the id
 	 * @return true, if successful

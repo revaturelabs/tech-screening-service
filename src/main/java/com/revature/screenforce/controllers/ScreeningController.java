@@ -22,7 +22,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 /**
- *  Controller for accessing and modifying Screening objects. </br>
+ *  Controller for accessing and modifying Screening objects.
  *  
  *  @author Jeremy Straus | 1807-QC | Emily Higgins
  *  @see com.revature.screenforce.beans.Screening

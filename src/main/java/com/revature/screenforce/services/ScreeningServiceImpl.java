@@ -18,8 +18,7 @@ public class ScreeningServiceImpl implements ScreeningService {
 	private ScreeningRepository screeningRepository;
 
 	/**
-	 * Instantiates a new screening service impl.  Autowired.
-	 *
+	 * Instantiates a new screening service impl. 
 	 * @param screeningRepository the screening repository
 	 */
 	@Autowired
@@ -66,7 +65,7 @@ public class ScreeningServiceImpl implements ScreeningService {
 	}
 
 	/**
-	 * Creates the passed screening.  NB: This will also persist the attached Scheduled Screening and the associated Candidate
+	 * Creates the passed screening.
 	 *
 	 * @param screening the screening
 	 * @return the screening

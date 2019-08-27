@@ -19,7 +19,7 @@ public class ScheduledScreeningServiceImpl implements ScheduledScreeningService 
 	private ScheduledScreeningRepository scheduledScreeningRepository;
 	
 	/**
-	 * Instantiates a new scheduled screening service.  Autowired.
+	 * Instantiates a new scheduled screening service.
 	 *
 	 * @param scheduledScreeningRepository the scheduled screening repository
 	 */

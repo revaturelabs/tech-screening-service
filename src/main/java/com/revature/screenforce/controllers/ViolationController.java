@@ -24,7 +24,7 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
 /**
- * The Controller for accessing and modifying soft skill violations. </br>
+ * The Controller for accessing and modifying soft skill violations.
  * 
  * @author Jeremy Straus | 1807-QC | Emily Higgins
  */
@@ -54,7 +54,7 @@ public class ViolationController {
 	}
 
 	/**
-	 * Returns a list of ViolationType objects representing all held in the database.
+	 * Returns a list of all ViolationType objects held in the database.
 	 *
 	 * @return List of ViolationType objects
 	 */
@@ -67,7 +67,7 @@ public class ViolationController {
 	}
 	
 	/**
-	 * Gets the soft skill violations.
+	 * Returns a list of all Violations held in the databse.
 	 *
 	 * @return the soft skill violations
 	 */
