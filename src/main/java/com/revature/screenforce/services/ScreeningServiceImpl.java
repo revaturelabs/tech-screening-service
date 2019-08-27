@@ -29,7 +29,7 @@ public class ScreeningServiceImpl implements ScreeningService {
 	/**
 	 * Gets all screenings.
 	 *
-	 * @return the all screening
+	 * @return all screenings
 	 */
 	@Override
 	public List<Screening> getAllScreenings() {

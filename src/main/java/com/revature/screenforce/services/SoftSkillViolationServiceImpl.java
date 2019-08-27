@@ -55,7 +55,7 @@ public class SoftSkillViolationServiceImpl implements SoftSkillViolationService 
 	 * Gets all soft skill violations by screening id.
 	 *
 	 * @param screeningId the screening id
-	 * @return the all by screening id
+	 * @return list of SoftSkillViolations by screening id
 	 */
 	@Override
 	public List<SoftSkillViolation> getAllByScreeningId(int screeningId) {
@@ -74,10 +74,10 @@ public class SoftSkillViolationServiceImpl implements SoftSkillViolationService 
 	}
 	
 	/**
-	 * Hilarious auto generated description: Gets the all. </br></br>
+	 * Hilarious auto generated description: Gets the all.
 	 * What it actually does: returns all soft skill violations.
 	 *
-	 * @return the all
+	 * @return list of all SoftSkillViolations
 	 */
 	public List<SoftSkillViolation> getAll() {
 		return softSkillViolationRepository.findAll();

@@ -44,7 +44,7 @@ public class ScreeningController {
 	private SoftSkillViolationService softSkillViolationService;
 	
 	/**
-	 * Instantiates a new screening controller.  Autowired.
+	 * Instantiates a new screening controller.
 	 *
 	 * @param scheduledScreeningService the scheduled screening service
 	 * @param screeningService the screening service

@@ -46,7 +46,7 @@ public class QuestionScoreServiceImpl implements QuestionScoreService {
 	}
 
 	/**
-	 * Find a screening by it's id.
+	 * Find a screening by its id.
 	 *
 	 * @param screeningId the screening id
 	 * @return the list
@@ -70,7 +70,7 @@ public class QuestionScoreServiceImpl implements QuestionScoreService {
 	/**
 	 * Gets all simple question scores.
 	 *
-	 * @return the all
+	 * @return List of SimpleQuestionScore
 	 */
 	public List<SimpleQuestionScore> getAll() {
 		return questionScoreRepository.findAll();

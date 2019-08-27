@@ -45,7 +45,7 @@ public interface SoftSkillViolationService {
 	
 	
 	/*
-	 * Returns all possible soft skill violations.
+	 * Returns all soft skill violations.
 	 */
 	List<SoftSkillViolation> getAll();
 }
