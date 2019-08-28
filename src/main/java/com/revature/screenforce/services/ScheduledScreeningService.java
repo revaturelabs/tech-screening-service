@@ -28,5 +28,5 @@ public interface ScheduledScreeningService {
 	 */
 
 	void updateStatus(int scheduledScreeningId);
-
+	boolean existsById(int id);
 }

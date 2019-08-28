@@ -19,7 +19,10 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.revature.screenforce.beans.ScheduledScreening;
+import com.revature.screenforce.beans.ScheduledStatus;
 import com.revature.screenforce.beans.Screening;
+import com.revature.screenforce.data.ScheduledScreeningRepository;
 import com.revature.screenforce.data.ScreeningRepository;
 
 @RunWith(SpringRunner.class)
@@ -32,11 +35,22 @@ public class ScreeningServiceTest {
 	private ScreeningServiceImpl screeningService;
 
 	private Screening sc18;
+	
+	@Mock
+	private ScheduledScreeningRepository ssMock;
+	
+	@InjectMocks
+	private ScheduledScreeningServiceImpl scheduledScreeningService;
+	
+	private ScheduledScreening schScreening;
 
 	@Before
 	public void setup() {
 		MockitoAnnotations.initMocks(this);
-		sc18 = new Screening(4321, null, 3, 2, 50.0d, "intoComment", "generalComment", "softSkillComment",
+		
+		schScreening = new ScheduledScreening(1, null, ScheduledStatus.PENDING, 6, new Date());
+		
+		sc18 = new Screening(4321, schScreening, 3, 2, 50.0d, "intoComment", "generalComment", "softSkillComment",
 				new Date(), new Date(), false, "Completed");
 	}
 

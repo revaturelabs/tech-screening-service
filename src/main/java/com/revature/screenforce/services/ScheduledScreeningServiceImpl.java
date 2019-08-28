@@ -38,5 +38,9 @@ public class ScheduledScreeningServiceImpl implements ScheduledScreeningService 
 		}
 	}
 
+	@Override
+	public boolean existsById(int id) {
+		return scheduledScreeningRepository.existsById(id);
+	}
 
 }

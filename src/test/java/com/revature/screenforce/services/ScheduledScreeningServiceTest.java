@@ -1,11 +1,14 @@
 package com.revature.screenforce.services;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Optional;
 
 import org.junit.Before;
@@ -16,6 +19,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.revature.screenforce.beans.Candidate;
 import com.revature.screenforce.beans.ScheduledScreening;
 import com.revature.screenforce.beans.ScheduledStatus;
 import com.revature.screenforce.data.ScheduledScreeningRepository;
@@ -31,10 +35,12 @@ public class ScheduledScreeningServiceTest {
 	
 	private ScheduledScreening schScreening;
 	
+	private Candidate candidate;
+	
 	@Before
 	public void setup() {
 		MockitoAnnotations.initMocks(this);
-		schScreening = new ScheduledScreening();
+		schScreening = new ScheduledScreening(1, candidate, ScheduledStatus.PENDING, 6, new Date());
 		schScreening.setSkillTypeId(1234);
 	}
 	
@@ -67,5 +73,17 @@ public class ScheduledScreeningServiceTest {
 		scheduledScreeningService.updateStatus(1);
 		int lengthAfter = scheduledScreeningService.findByStatus(ScheduledStatus.PENDING).size();
 		assertEquals(lengthBefore, lengthAfter);
+	}
+	
+	@Test
+	public void existById() {
+		when(ssMock.existsById(anyInt())).thenReturn(true);
+		assertTrue(scheduledScreeningService.existsById(1));
+	}
+
+	@Test(expected = NullPointerException.class)
+	public void existByIdFail() {
+		when(ssMock.existsById(0)).thenThrow(new NullPointerException());
+		scheduledScreeningService.existsById(0);
 	}
 }
