@@ -44,13 +44,7 @@ public class ScreeningServiceImpl implements ScreeningService {
 	 */
 	@Override
 	public Screening getScreeningById(int sid) {
-		Screening sc = null;
-		try {
-			sc = screeningRepository.getOne(sid);
-		} catch (Exception e) {
-			return sc;
-		}
-		return sc;
+		return screeningRepository.findById(sid).orElse(null);
 	}
 
 	/**
@@ -63,6 +57,7 @@ public class ScreeningServiceImpl implements ScreeningService {
 	public Screening getScreening(int id) {
 		return screeningRepository.findById(id).orElse(new Screening());
 	}
+
 
 	/**
 	 * Creates the passed screening.

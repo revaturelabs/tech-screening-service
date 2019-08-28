@@ -70,7 +70,7 @@ public class SoftSkillViolationServiceImpl implements SoftSkillViolationService 
 	 */
 	@Override
 	public SoftSkillViolation findById(int id) {
-		return softSkillViolationRepository.getOne(id);
+		return softSkillViolationRepository.findById(id).orElse(null);
 	}
 	
 	/**

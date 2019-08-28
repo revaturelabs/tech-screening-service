@@ -39,6 +39,16 @@ public class ViolationControllerTest {
 				.then()
 				.statusCode(200);
 	}
+	
+	@Test
+	public void testGetAllViolations() {
+		given()
+				.port(port)
+				.when()
+				.get("/violation/all")
+				.then()
+				.statusCode(200);
+	}
 
 	@Test
 	public void deleteViolationById() {
@@ -49,16 +59,16 @@ public class ViolationControllerTest {
 				.then()
 				.statusCode(200);
 	}
-
-//	@Test
-//	public void deleteViolationByBadId() {
-//		given()
-//				.port(port)
-//				.when()
-//				.delete("/violation/{id}", 4321789)
-//				.then()
-//				.statusCode(404);
-//	}
+	
+	@Test
+	public void deleteViolationByIdInvalidID() {
+		given()
+				.port(port)
+				.when()
+				.delete("/violation/{id}", 0)
+				.then()
+				.statusCode(404);
+	}
 
 	@Test
 	public void addNewViolation() {

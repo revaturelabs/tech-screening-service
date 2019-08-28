@@ -10,6 +10,7 @@ import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Optional;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -42,7 +43,7 @@ public class ScreeningServiceTest {
 
 	@Test
 	public void testGetScreeningById() {
-		when(srMock.getOne(4321)).thenReturn(sc18);
+		when(srMock.findById(4321)).thenReturn(Optional.of(new Screening()));
 		assertNotNull(screeningService.getScreeningById(4321));
 	}
 
