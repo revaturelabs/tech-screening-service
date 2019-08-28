@@ -1,7 +1,11 @@
 package com.revature.screenforce.controllers;
 
+import static io.restassured.RestAssured.given;
+import static org.assertj.core.api.Assertions.assertThat;
+
+import java.util.Date;
+
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -13,12 +17,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 import com.revature.screenforce.Application;
 import com.revature.screenforce.beans.Candidate;
 import com.revature.screenforce.beans.ScheduledScreening;
-import com.revature.screenforce.beans.ScheduledStatus;
 import com.revature.screenforce.beans.Screening;
-
-import static io.restassured.RestAssured.given;
-
-import java.util.Date;
+import com.revature.screenforce.beans.SoftSkillViolation;
 
 /**
  * Question Tests using JUnit
@@ -39,14 +39,10 @@ public class ScreeningControllerTest {
 	@LocalServerPort
 	private int port;
 	
-	Screening scDef;
-	ScheduledScreening ssDef;
-	Candidate candDef;
+	private Screening scDef;
 	
 	@Before
 	public void setup() {
-		//candDef = new Candidate(0, "elawrence@mailinator.com","Lawrence, Elaine","700-864-8901","www.me.com","e@skype", "","","","","","");
-		//ssDef =  new ScheduledScreening(0, candDef, ScheduledStatus.PENDING, 6, new Date());
 		scDef = new Screening (4321, null, 3,2, (Double)50d,"intoComment","generalComment","softSkillComment", new Date(), new Date(), false, "Completed");
 	}
 	
@@ -70,24 +66,50 @@ public class ScreeningControllerTest {
 				.statusCode(200);
 	}
 	
-//	@Test
-//	public void testGetScreeningByIDFail() {
-//		given()
-//				.port(port)
-//				.when()
-//				.get("/screening/{id}", 1)
-//				.then()
-//				.statusCode(404);
-//	}
-
 	@Test
-	public void testSoftSkillViolationByScreeningID() {
+	public void testGetScreeningByIDFail() {
 		given()
 				.port(port)
 				.when()
-				.get("/screening/{id}/violations", 2)
+				.get("/screening/{id}", 1)
 				.then()
-				.statusCode(200);
+				.statusCode(404);
+	}
+	
+	@Test
+	public void testSoftSkillViolationByScreeningID() {
+		SoftSkillViolation[] test = given()
+				.port(port)
+				.when()
+				.get("/screening/{id}/violations", 4321)
+				.then()
+				.statusCode(200)
+				.extract()
+				.as(SoftSkillViolation[].class);
+				assertThat(test.length).isGreaterThan(0);
+	}
+
+	@Test
+	public void testSoftSkillViolationByScreeningIDNoViolationsReturnsEmpty() {
+		SoftSkillViolation[] test = given()
+				.port(port)
+				.when()
+				.get("/screening/{id}/violations", 4324)
+				.then()
+				.statusCode(200)
+				.extract()
+				.as(SoftSkillViolation[].class);
+				assertThat(test.length).isEqualTo(0);
+	}
+
+	@Test
+	public void testSoftSkillViolationByScreeningIDNoScreeningOfThatID() {
+		given()
+				.port(port)
+				.when()
+				.get("/screening/{id}/violations", 0)
+				.then()
+				.statusCode(404);
 	}
 
 	@Test
@@ -149,7 +171,7 @@ public class ScreeningControllerTest {
 				.contentType("application/json")
 				.body(sc)
 				.when()
-				.post("screening")
+				.post("/screening")
 				.then()
 				.statusCode(200);
 	}
