@@ -113,7 +113,11 @@ public class ScreeningController {
 	public ResponseEntity<List<SoftSkillViolation>> softSkillViolationByScreeningID(
 			@PathVariable(value = "id") int screeningId) {
 		List<SoftSkillViolation> ssv = softSkillViolationService.getAllByScreeningId(screeningId);
-		return new ResponseEntity<>(ssv, HttpStatus.OK);
+		if(screeningService.existsById(screeningId)) {
+			return new ResponseEntity<>(ssv, HttpStatus.OK);
+		} else {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No screening of that id exists");
+		}
 	}
 
 	/**

@@ -75,28 +75,41 @@ public class ScreeningControllerTest {
 				.then()
 				.statusCode(404);
 	}
-
-	@Test
-	public void testSoftSkillViolationByScreeningID() {
-		given()
-				.port(port)
-				.when()
-				.get("/screening/{id}/violations", 2)
-				.then()
-				.statusCode(200);
-	}
 	
 	@Test
-	public void testSoftSkillViolationByScreeningIDNoScreeningOfThatID() {
+	public void testSoftSkillViolationByScreeningID() {
 		SoftSkillViolation[] test = given()
 				.port(port)
 				.when()
-				.get("/screening/{id}/violations", 0)
+				.get("/screening/{id}/violations", 4321)
+				.then()
+				.statusCode(200)
+				.extract()
+				.as(SoftSkillViolation[].class);
+				assertThat(test.length).isGreaterThan(0);
+	}
+
+	@Test
+	public void testSoftSkillViolationByScreeningIDNoViolationsReturnsEmpty() {
+		SoftSkillViolation[] test = given()
+				.port(port)
+				.when()
+				.get("/screening/{id}/violations", 4324)
 				.then()
 				.statusCode(200)
 				.extract()
 				.as(SoftSkillViolation[].class);
 				assertThat(test.length).isEqualTo(0);
+	}
+
+	@Test
+	public void testSoftSkillViolationByScreeningIDNoScreeningOfThatID() {
+		given()
+				.port(port)
+				.when()
+				.get("/screening/{id}/violations", 0)
+				.then()
+				.statusCode(404);
 	}
 
 	@Test
