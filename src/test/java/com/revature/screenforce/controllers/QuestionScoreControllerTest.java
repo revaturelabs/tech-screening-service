@@ -21,6 +21,16 @@ public class QuestionScoreControllerTest {
 
 	@LocalServerPort
 	private int port;
+	
+	@Test
+	public void testGetAllQuestion() {
+		given()
+			.port(port)
+			.when()
+			.get("/questionScore/all")
+			.then()
+			.statusCode(200);
+	}
 
 	@Test
 	public void testQuestionScore() {
@@ -65,6 +75,16 @@ public class QuestionScoreControllerTest {
 				.port(port)
 				.when()
 				.get("/questionScore/{screeningId}", 4321)
+				.then()
+				.statusCode(200);
+	}
+	
+	@Test
+	public void testGetSimpleQuestionScoreList() {
+		given()
+				.port(port)
+				.when()
+				.get("questionScore/all")
 				.then()
 				.statusCode(200);
 	}

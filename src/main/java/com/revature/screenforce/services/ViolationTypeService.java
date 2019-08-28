@@ -6,9 +6,8 @@ import com.revature.screenforce.beans.ViolationType;
 
 /**
  * Business logic for Violation Type operations
- * 
  * @author Aaron Ware | 1805-WVU-MAY29 | Richard Orr
- * @author Jeremy Straus | 1807-QC | Emily Higgins
+ * @author Jeremy Straus | 1807-QC | Emily Higgins 
  */
 public interface ViolationTypeService {
 	/**
@@ -25,6 +24,5 @@ public interface ViolationTypeService {
 	 * @return List of all ViolationTypes
 	 */
 	
-	//5/28 JU
 	List<ViolationType> getAll();
 }

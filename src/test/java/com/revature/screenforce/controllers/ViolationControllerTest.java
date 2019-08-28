@@ -16,6 +16,7 @@ import com.revature.screenforce.services.ViolationTypeService;
 import java.util.Date;
 
 import static io.restassured.RestAssured.given;
+import static org.junit.Assert.assertNotNull;
 
 /**
  * @author Jeremy Straus | 1807-QC | Emily Higgins
@@ -25,8 +26,6 @@ import static io.restassured.RestAssured.given;
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_CLASS)
 @AutoConfigureTestDatabase
 public class ViolationControllerTest {
-	@Autowired
-	ViolationTypeService violationTypeService;
 
 	@LocalServerPort
 	int port;
@@ -40,6 +39,16 @@ public class ViolationControllerTest {
 				.then()
 				.statusCode(200);
 	}
+	
+	@Test
+	public void testGetAllViolations() {
+		given()
+				.port(port)
+				.when()
+				.get("/violation/all")
+				.then()
+				.statusCode(200);
+	}
 
 	@Test
 	public void deleteViolationById() {
@@ -50,16 +59,16 @@ public class ViolationControllerTest {
 				.then()
 				.statusCode(200);
 	}
-
-//	@Test
-//	public void deleteViolationByBadId() {
-//		given()
-//				.port(port)
-//				.when()
-//				.delete("/violation/{id}", 4321789)
-//				.then()
-//				.statusCode(404);
-//	}
+	
+	@Test
+	public void deleteViolationByIdInvalidID() {
+		given()
+				.port(port)
+				.when()
+				.delete("/violation/{id}", 0)
+				.then()
+				.statusCode(404);
+	}
 
 	@Test
 	public void addNewViolation() {
@@ -87,5 +96,15 @@ public class ViolationControllerTest {
 				.then()
 				.statusCode(400);
 
+	}
+	
+	@Test
+	public void testGetSoftSkillViolation() {
+		given()
+			.port(port)
+			.when()
+			.get("/violation/all")
+			.then()
+			.statusCode(200);
 	}
 }
