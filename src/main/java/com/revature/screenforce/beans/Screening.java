@@ -29,10 +29,9 @@ public class Screening {
 	@Column(name = "id")
 	private int screeningId;
 
-  /** The Screening Scheduled to take place on @see startDateTime; these are either PENDING if it has not been completed or SCREENED if it has. */
+	/** The Screening Scheduled to take place on @see startDateTime; these are either PENDING if it has not been completed or SCREENED if it has. */
 	@ApiModelProperty(value = "The Scheduled Screening connected to the screening")
 	@ManyToOne(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
-
 	@JoinColumn(name = "SCHEDULED_SCREENING_ID")
 	private ScheduledScreening scheduledScreening;
 
@@ -46,7 +45,7 @@ public class Screening {
 	@Column(name = "SKILL_TYPE_ID")
 	private int skillType;
 
-	/** The total score the candidate recieved. */
+	/** The total score the candidate received. */
 	@ApiModelProperty(value = "The total score the candidate recieved")
 	@Column(name = "COMPOSITE_SCORE")
 	private Double compositeScore;
@@ -56,7 +55,7 @@ public class Screening {
 	@Column(name = "ABOUT_COMMENT")
 	private String aboutMeCommentary;
 
-	/** eneral commentary regarding the candidate's screening. */
+	/** General commentary regarding the candidate's screening. */
 	@ApiModelProperty(value = "General commentary regarding the candidate's screening")
 	@Column(name = "GENERAL_COMMENT")
 	private String generalCommentary;

@@ -15,8 +15,6 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.revature.screenforce.Application;
-import com.revature.screenforce.beans.Candidate;
-import com.revature.screenforce.beans.ScheduledScreening;
 import com.revature.screenforce.beans.Screening;
 import com.revature.screenforce.beans.SoftSkillViolation;
 
@@ -175,4 +173,5 @@ public class ScreeningControllerTest {
 				.then()
 				.statusCode(200);
 	}
+	
 }
