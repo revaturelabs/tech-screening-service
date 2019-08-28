@@ -15,6 +15,8 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.revature.screenforce.Application;
+import com.revature.screenforce.beans.Candidate;
+import com.revature.screenforce.beans.ScheduledScreening;
 import com.revature.screenforce.beans.Screening;
 import com.revature.screenforce.beans.SoftSkillViolation;
 
@@ -76,38 +78,25 @@ public class ScreeningControllerTest {
 
 	@Test
 	public void testSoftSkillViolationByScreeningID() {
-		SoftSkillViolation[] test = given()
+		given()
 				.port(port)
 				.when()
-				.get("/screening/{id}/violations", 4321)
+				.get("/screening/{id}/violations", 2)
 				.then()
-				.statusCode(200)
-				.extract()
-				.as(SoftSkillViolation[].class);
-				assertThat(test.length).isGreaterThan(0);
+				.statusCode(200);
 	}
 	
 	@Test
-	public void testSoftSkillViolationByScreeningIDNoViolationsReturnsEmpty() {
+	public void testSoftSkillViolationByScreeningIDNoScreeningOfThatID() {
 		SoftSkillViolation[] test = given()
 				.port(port)
 				.when()
-				.get("/screening/{id}/violations", 4324)
+				.get("/screening/{id}/violations", 0)
 				.then()
 				.statusCode(200)
 				.extract()
 				.as(SoftSkillViolation[].class);
 				assertThat(test.length).isEqualTo(0);
-	}
-	
-	@Test
-	public void testSoftSkillViolationByScreeningIDNoScreeningOfThatID() {
-		given()
-				.port(port)
-				.when()
-				.get("/screening/{id}/violations", 0)
-				.then()
-				.statusCode(404);
 	}
 
 	@Test

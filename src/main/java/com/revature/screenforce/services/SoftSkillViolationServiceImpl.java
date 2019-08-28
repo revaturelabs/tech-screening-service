@@ -42,6 +42,7 @@ public class SoftSkillViolationServiceImpl implements SoftSkillViolationService 
 		return softSkillViolationRepository.findById(id).orElse(null);
 	}
 	
+	//5/28 JU - addition for back-end re-factor
 	public List<SoftSkillViolation> getAll() {
 		return softSkillViolationRepository.findAll();
 	}
