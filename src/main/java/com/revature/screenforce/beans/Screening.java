@@ -4,6 +4,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -29,6 +30,7 @@ public class Screening {
 	@ApiModelProperty(value = "The Scheduled Screening connected to the screening")
 	@ManyToOne(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
 	@JoinColumn(name = "SCHEDULED_SCREENING_ID")
+	@NotNull
 	private ScheduledScreening scheduledScreening;
 
 	@ApiModelProperty(value = "Id of the person screening the candidate")

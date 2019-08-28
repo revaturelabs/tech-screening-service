@@ -30,7 +30,7 @@ info:
 eureka:
     client:
         service-url:
-            defaultZone: ${SCREENFORCE_EUREKA_SERVER_URL}
+            defaultZone: http://localhost:8761/eureka/ #${SCREENFORCE_EUREKA_SERVER_URL}
 ---
 spring:
     profiles: dev

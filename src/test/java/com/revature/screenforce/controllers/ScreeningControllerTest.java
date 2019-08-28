@@ -5,6 +5,7 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.test.annotation.DirtiesContext;
@@ -19,6 +20,10 @@ import com.revature.screenforce.beans.Screening;
 import static io.restassured.RestAssured.given;
 
 import java.util.Date;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 
 /**
  * Question Tests using JUnit
@@ -40,14 +45,16 @@ public class ScreeningControllerTest {
 	private int port;
 	
 	Screening scDef;
+	Screening scDefNullSS;
 	ScheduledScreening ssDef;
 	Candidate candDef;
 	
 	@Before
 	public void setup() {
-		//candDef = new Candidate(0, "elawrence@mailinator.com","Lawrence, Elaine","700-864-8901","www.me.com","e@skype", "","","","","","");
-		//ssDef =  new ScheduledScreening(0, candDef, ScheduledStatus.PENDING, 6, new Date());
-		scDef = new Screening (4321, null, 3,2, (Double)50d,"intoComment","generalComment","softSkillComment", new Date(), new Date(), false, "Completed");
+		candDef = new Candidate(0, "elawrence@mailinator.com","Lawrence, Elaine","700-864-8901","www.me.com","e@skype", "","","","","","");
+		ssDef =  new ScheduledScreening(0, candDef, ScheduledStatus.PENDING, 6, new Date());
+		scDef = new Screening (4321, ssDef, 3,2, (Double)50d,"intoComment","generalComment","softSkillComment", new Date(), new Date(), false, "Completed");
+		scDefNullSS = new Screening (4322, null, 3,2, (Double)50d,"intoComment","generalComment","softSkillComment", new Date(), new Date(), false, "Completed");
 	}
 	
 	@Test
@@ -153,4 +160,18 @@ public class ScreeningControllerTest {
 				.then()
 				.statusCode(200);
 	}
+	
+	@Test
+	public void testCreateNewScreeningNullSS() {
+		Screening sc = scDefNullSS;
+		given()
+				.port(port)
+				.contentType("application/json")
+				.body(sc)
+				.when()
+				.post("screening")
+				.then()
+				.statusCode(400);
+	}
+	
 }
