@@ -32,7 +32,11 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
 /**
- * @author Jeremy Straus | 1807-QC | Emily Higgins
+ *  Controller for accessing and modifying Screening objects.
+ *  
+ *  @author Jeremy Straus | 1807-QC | Emily Higgins
+ *  @see com.revature.screenforce.beans.Screening
+ *  @see com.revature.screenforce.beans.ScreeningService.Impl
  */
 @CrossOrigin
 @RestController
@@ -40,12 +44,22 @@ import io.swagger.annotations.ApiResponses;
 @ApiModel(value = "Screening Controller", description = "A REST controller to handle HTTP requests that deal with Screenings and ScheduledScreenings")
 public class ScreeningController {
 
+	/** The scheduled screening service. */
 	private ScheduledScreeningService scheduledScreeningService;
 
+	/** The screening service. */
 	private ScreeningService screeningService;
 
+	/** The soft skill violation service. */
 	private SoftSkillViolationService softSkillViolationService;
 	
+	/**
+	 * Instantiates a new screening controller.
+	 *
+	 * @param scheduledScreeningService the scheduled screening service
+	 * @param screeningService the screening service
+	 * @param softSkillViolationService the soft skill violation service
+	 */
 	@Autowired
 	public ScreeningController(ScheduledScreeningService scheduledScreeningService, ScreeningService screeningService, SoftSkillViolationService softSkillViolationService) {
 		this.scheduledScreeningService = scheduledScreeningService;
@@ -54,7 +68,7 @@ public class ScreeningController {
 	}
 
 	/**
-	 * Returns a list Screening objects
+	 * Returns a list Screening objects.
 	 *
 	 * @return List of Screening objects
 	 */
@@ -68,9 +82,9 @@ public class ScreeningController {
 	}
 	
 	/**
-	 * Returns a single Screening record by ScreeningID
+	 * Returns a single Screening record by ScreeningID.
 	 *
-	 * @param screeningId - the unique id of a Screening
+	 * @param id the id
 	 * @return Screening Object
 	 */
 	@ApiOperation(value = "Get a Screening", response = Screening.class)
@@ -88,7 +102,7 @@ public class ScreeningController {
 	}
 
 	/**
-	 * Returns a list of softSkillViolation objects by ScreeningID
+	 * Returns a list of softSkillViolation objects by ScreeningID.
 	 *
 	 * @param screeningId - the unique id of a Screening
 	 * @return List of SoftSkillViolation objects
@@ -117,9 +131,9 @@ public class ScreeningController {
 	}
 
 	/**
-	 * Method to create a new Screening
+	 * Method to create a new Screening.
 	 *
-	 * @param Screening to create
+	 * @param screening the screening
 	 * @return New screening object
 	 * TODO: Check if a ScheduledScreening/Candidate exist before adding the new Screening 
 	 */
@@ -139,7 +153,8 @@ public class ScreeningController {
 	/**
 	 * Method to update a Screening. 
 	 *
-	 * @param screeningId to update
+	 * @param id the id
+	 * @param newSc the new screening
 	 * @return Updated screening object
 	 */
 	@ApiOperation(value = "Update a screening", response = Screening.class)
