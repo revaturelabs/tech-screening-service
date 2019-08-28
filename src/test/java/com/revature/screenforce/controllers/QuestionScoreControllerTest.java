@@ -78,4 +78,14 @@ public class QuestionScoreControllerTest {
 				.then()
 				.statusCode(200);
 	}
+	
+	@Test
+	public void testGetSimpleQuestionScoreList() {
+		given()
+				.port(port)
+				.when()
+				.get("questionScore/all")
+				.then()
+				.statusCode(200);
+	}
 }
