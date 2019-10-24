@@ -10,7 +10,7 @@ import java.util.Objects;
 
 /**
  * The Class SimpleQuestionScore, meant to represent the score a candidate received on a question.
- *
+ * 
  * @author Jeremy Straus | 1807-QC | Emily Higgins
  */
 @ApiModel(value = "Question Score", description = "Object representing the score a candidate received on a question")
