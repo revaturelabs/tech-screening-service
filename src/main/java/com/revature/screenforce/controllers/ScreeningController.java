@@ -38,7 +38,7 @@ import io.swagger.annotations.ApiResponses;
  *  @see com.revature.screenforce.beans.Screening
  *  @see com.revature.screenforce.beans.ScreeningService.Impl
  */
-@CrossOrigin
+
 @RestController
 @RequestMapping("/screening")
 @ApiModel(value = "Screening Controller", description = "A REST controller to handle HTTP requests that deal with Screenings and ScheduledScreenings")

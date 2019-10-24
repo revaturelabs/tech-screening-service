@@ -28,7 +28,7 @@ import io.swagger.annotations.ApiResponses;
  * @author Thomas Santillan| 1805-WVU-MAY29 | Richard Orr
  * @author Jeremy Straus | 1807-QC | Emily Higgins 
  */
-@CrossOrigin
+
 @RestController
 @RequestMapping("/questionScore")
 @ApiModel(value = "Question Score Controller", description = "A REST controller to handle HTTP requests that deal with Question Scores")
