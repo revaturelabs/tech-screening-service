@@ -30,7 +30,7 @@ public class SimpleQuestionScore {
 	@Column(name = "QUESTION_ID")
 	private int questionId;
 
-	/** The (category) id. */
+	/** The category id. */
 	@ApiModelProperty(value = "Id of the category containing the question")
 	@Column(name = "CATEGORY_ID")
 	private int categoryId;
@@ -192,16 +192,16 @@ public class SimpleQuestionScore {
 	}
 
 	/**
-	 * Gets the (category) id.
+	 * Gets the category id.
 	 *
-	 * @return thew (category) id
+	 * @return new category id
 	 */
 	public int getCategoryId() {
 		return categoryId;
 	}
 
 	/**
-	 * Sets the (category) id.
+	 * Sets the category id.
 	 *
 	 * @param categoryId the new category id
 	 */
