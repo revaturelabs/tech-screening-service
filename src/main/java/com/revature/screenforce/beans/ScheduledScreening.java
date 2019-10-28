@@ -9,7 +9,7 @@ import java.util.Objects;
 
 /**
  * The Class ScheduledScreening, meant to represent a Scheduled Screening, which is associated with a Candidate and
- *  a skill type or "Track."  They are either PENDING or SCREENING, and have an attached date.
+ *  a skill type or Track.  They are either PENDING or SCREENING, and have an attached date.
  */
 @ApiModel(value = "Scheduled Screening", description = "A Scheduled Screening with the tracks tested and the time of the screening.")
 @Entity
@@ -128,18 +128,18 @@ public class ScheduledScreening {
 	}
 
 	/**
-	 * Gets the (track) id.
+	 * Gets the track id.
 	 *
-	 * @return the (track) id
+	 * @return the track id
 	 */
 	public int getTrackId() {
 		return trackId;
 	}
 
 	/**
-	 * Sets the (track) id.
+	 * Sets the track id.
 	 *
-	 * @param trackId the new (track) id
+	 * @param trackId the new track id
 	 */
 	public void setTrackId(int trackId) {
 		this.trackId = trackId;

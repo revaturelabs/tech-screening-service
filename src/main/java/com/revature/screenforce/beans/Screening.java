@@ -46,7 +46,7 @@ public class Screening {
 	private int track;
 
 	/** The total score the candidate received. */
-	@ApiModelProperty(value = "The total score the candidate recieved")
+	@ApiModelProperty(value = "The total score the candidate received")
 	@Column(name = "COMPOSITE_SCORE")
 	private Double compositeScore;
 
@@ -55,7 +55,7 @@ public class Screening {
 	@Column(name = "ABOUT_COMMENT")
 	private String aboutMeCommentary;
 
-	/** eneral commentary regarding the candidate's screening. */
+	/** General commentary regarding the candidate's screening. */
 	@ApiModelProperty(value = "General commentary regarding the candidate's screening")
 	@Column(name = "GENERAL_COMMENT")
 	private String generalCommentary;
@@ -181,18 +181,18 @@ public class Screening {
 	}
 
 	/**
-	 * Gets the (track).
+	 * Gets the track.
 	 *
-	 * @return the (track).
+	 * @return the track.
 	 */
 	public int getTrack() {
 		return track;
 	}
 
 	/**
-	 * Sets the (track).
+	 * Sets the track.
 	 *
-	 * @param (track) the new (track).
+	 * @param track the new track.
 	 */
 	public void setTrack(int track) {
 		this.track = track;
