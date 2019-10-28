@@ -10,7 +10,7 @@ import java.util.Objects;
 
 /**
  * The Class SimpleQuestionScore, meant to represent the score a candidate received on a question.
- *
+ * 
  * @author Jeremy Straus | 1807-QC | Emily Higgins
  */
 @ApiModel(value = "Question Score", description = "Object representing the score a candidate received on a question")
@@ -30,10 +30,10 @@ public class SimpleQuestionScore {
 	@Column(name = "QUESTION_ID")
 	private int questionId;
 
-	/** The bucket (category) id. */
-	@ApiModelProperty(value = "Id of the bucket containing the question")
-	@Column(name = "BUCKET_ID")
-	private int bucketId;
+	/** The category id. */
+	@ApiModelProperty(value = "Id of the category containing the question")
+	@Column(name = "CATEGORY_ID")
+	private int categoryId;
 
 	/** The ID of the screening in which the question was asked. */
 	@ApiModelProperty(value = "The ID of the screening in which the question was asked.")
@@ -192,21 +192,21 @@ public class SimpleQuestionScore {
 	}
 
 	/**
-	 * Gets the bucket id.
+	 * Gets the category id.
 	 *
-	 * @return the bucket id
+	 * @return the category id
 	 */
-	public int getBucketId() {
-		return bucketId;
+	public int getCategoryId() {
+		return categoryId;
 	}
 
 	/**
-	 * Sets the bucket id.
+	 * Sets the category id.
 	 *
-	 * @param bucketId the new bucket id
+	 * @param categoryId the new category id
 	 */
-	public void setBucketId(int bucketId) {
-		this.bucketId = bucketId;
+	public void setCategoryId(int categoryId) {
+		this.categoryId = categoryId;
 	}
 
 	/**
@@ -222,7 +222,7 @@ public class SimpleQuestionScore {
 		SimpleQuestionScore score1 = (SimpleQuestionScore) o;
 		return getQuestionScoreId() == score1.getQuestionScoreId() &&
 				getQuestionId() == score1.getQuestionId() &&
-				getBucketId() == score1.getBucketId() &&
+				getCategoryId() == score1.getCategoryId() &&
 				Objects.equals(getScreening(), score1.getScreening()) &&
 				Objects.equals(getScore(), score1.getScore()) &&
 				Objects.equals(getComment(), score1.getComment()) &&
@@ -236,7 +236,7 @@ public class SimpleQuestionScore {
 	 */
 	@Override
 	public int hashCode() {
-		return Objects.hash(getQuestionScoreId(), getQuestionId(), getBucketId(), getScreening(), getScore(), getComment(), getBeginTime());
+		return Objects.hash(getQuestionScoreId(), getQuestionId(), getCategoryId(), getScreening(), getScore(), getComment(), getBeginTime());
 	}
 
 	/**
@@ -249,7 +249,7 @@ public class SimpleQuestionScore {
 		return "SimpleQuestionScore{" +
 				"questionScoreId=" + questionScoreId +
 				", questionId=" + questionId +
-				", bucketId=" + bucketId +
+				", categoryId=" + categoryId +
 				", screening=" + screening +
 				", score=" + score +
 				", comment='" + comment + '\'' +
