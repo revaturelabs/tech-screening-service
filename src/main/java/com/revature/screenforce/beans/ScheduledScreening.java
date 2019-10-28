@@ -9,7 +9,7 @@ import java.util.Objects;
 
 /**
  * The Class ScheduledScreening, meant to represent a Scheduled Screening, which is associated with a Candidate and
- *  a skill type or Track.  They are either PENDING or SCREENING, and have an attached date.
+ *  Track.  They are either PENDING or SCREENING, and have an attached date.
  */
 @ApiModel(value = "Scheduled Screening", description = "A Scheduled Screening with the tracks tested and the time of the screening.")
 @Entity
