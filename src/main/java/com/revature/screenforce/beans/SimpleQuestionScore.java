@@ -194,7 +194,7 @@ public class SimpleQuestionScore {
 	/**
 	 * Gets the category id.
 	 *
-	 * @return thew category id
+	 * @return the category id
 	 */
 	public int getCategoryId() {
 		return categoryId;
