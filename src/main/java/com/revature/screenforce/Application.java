@@ -23,7 +23,7 @@ public class Application {
 	
 	/**
 	 * Implements Swagger2 on all end points within this service
-	 * 
+	 *  
 	 * @param DocumentationType - the version and type of documentation 
 	 * @return Docket - contains information regarding end points
 	 * @author Germy Louis | 1903-Tampa | Emily Higgins

@@ -35,7 +35,7 @@ public class ScheduledScreeningServiceTest {
 	public void setup() {
 		MockitoAnnotations.initMocks(this);
 		schScreening = new ScheduledScreening();
-		schScreening.setSkillTypeId(1234);
+		schScreening.setTrackId(1234);
 	}
 	
 	@Test

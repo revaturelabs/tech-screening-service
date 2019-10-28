@@ -9,9 +9,9 @@ import java.util.Objects;
 
 /**
  * The Class ScheduledScreening, meant to represent a Scheduled Screening, which is associated with a Candidate and
- *  a skill type or Track.  They are either PENDING or SCREENING, and have an attached date.
+ *  Track.  They are either PENDING or SCREENING, and have an attached date.
  */
-@ApiModel(value = "Scheduled Screening", description = "A Scheduled Screening with the skill types tested and the time of the screening.")
+@ApiModel(value = "Scheduled Screening", description = "A Scheduled Screening with the tracks tested and the time of the screening.")
 @Entity
 @Table(name = "scheduled_screening")
 public class ScheduledScreening {
@@ -37,10 +37,10 @@ public class ScheduledScreening {
 	@Column(name = "STATUS")
 	private ScheduledStatus scheduledStatus;
 
-	/** The skill type from the AdminService that the candidate is training in. */
-	@ApiModelProperty(value = "The skill type from the AdminService that the candidate is training in")
-	@Column(name = "SKILL_TYPE_ID")
-	private int skillTypeId;
+	/** The track from the AdminService that the candidate is training in. */
+	@ApiModelProperty(value = "The track from the AdminService that the candidate is training in")
+	@Column(name = "TRACK_ID")
+	private int trackId;
 
 	/** The date of the screening. */
 	@ApiModelProperty(value = "The date of the screening")
@@ -60,16 +60,16 @@ public class ScheduledScreening {
 	 * @param scheduledScreeningId the scheduled screening id
 	 * @param candidate the candidate
 	 * @param scheduledStatus the scheduled status
-	 * @param skillTypeId the skill type id
+	 * @param trackId the track id
 	 * @param scheduledDate the scheduled date
 	 */
 	public ScheduledScreening(int scheduledScreeningId, Candidate candidate, ScheduledStatus scheduledStatus,
-							  int skillTypeId, Date scheduledDate) {
+							  int trackId, Date scheduledDate) {
 		super();
 		this.scheduledScreeningId = scheduledScreeningId;
 		this.candidate = candidate;
 		this.scheduledStatus = scheduledStatus;
-		this.skillTypeId = skillTypeId;
+		this.trackId = trackId;
 		this.scheduledDate = scheduledDate;
 	}
 
@@ -128,21 +128,21 @@ public class ScheduledScreening {
 	}
 
 	/**
-	 * Gets the skill type id.
+	 * Gets the track id.
 	 *
-	 * @return the skill type id
+	 * @return the track id
 	 */
-	public int getSkillTypeId() {
-		return skillTypeId;
+	public int getTrackId() {
+		return trackId;
 	}
 
 	/**
-	 * Sets the skill type id.
+	 * Sets the track id.
 	 *
-	 * @param skillTypeId the new skill type id
+	 * @param trackId the new track id
 	 */
-	public void setSkillTypeId(int skillTypeId) {
-		this.skillTypeId = skillTypeId;
+	public void setTrackId(int trackId) {
+		this.trackId = trackId;
 	}
 
 	/**
@@ -175,7 +175,7 @@ public class ScheduledScreening {
 		if (o == null || getClass() != o.getClass()) return false;
 		ScheduledScreening that = (ScheduledScreening) o;
 		return getScheduledScreeningId() == that.getScheduledScreeningId() &&
-				getSkillTypeId() == that.getSkillTypeId() &&
+				getTrackId() == that.getTrackId() &&
 				Objects.equals(getCandidate(), that.getCandidate()) &&
 				Objects.equals(getScheduledStatus(), that.getScheduledStatus()) &&
 				Objects.equals(getScheduledDate(), that.getScheduledDate());
@@ -188,7 +188,7 @@ public class ScheduledScreening {
 	 */
 	@Override
 	public int hashCode() {
-		return Objects.hash(getScheduledScreeningId(), getCandidate(), getScheduledStatus(), getSkillTypeId(), getScheduledDate());
+		return Objects.hash(getScheduledScreeningId(), getCandidate(), getScheduledStatus(), getTrackId(), getScheduledDate());
 	}
 
 	/**
@@ -202,7 +202,7 @@ public class ScheduledScreening {
 				"scheduledScreeningId=" + scheduledScreeningId +
 				", candidate=" + candidate +
 				", scheduledStatus='" + scheduledStatus + '\'' +
-				", skillTypeId=" + skillTypeId +
+				", trackId=" + trackId +
 				", scheduledDate=" + scheduledDate +
 				'}';
 	}

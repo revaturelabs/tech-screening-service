@@ -13,7 +13,7 @@ import java.util.Objects;
  *
  * @author Jeremy Straus | 1807-QC | Emily Higgins
  */
-@ApiModel(value = "Soft Skills Violation", description = "Any violations that happen during the scourse of a screening")
+@ApiModel(value = "Soft Skills Violation", description = "Any violations that happen during the course of a screening")
 @Entity 
 @Table(name="SOFT_SKILL_VIOLATION")
 public class SoftSkillViolation {

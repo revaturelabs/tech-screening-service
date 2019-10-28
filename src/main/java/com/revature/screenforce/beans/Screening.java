@@ -42,11 +42,11 @@ public class Screening {
 
 	/** Id referencing a training track in the screening-admin-service. */
 	@ApiModelProperty(value = "Id referencing a training track in the screening-admin-service")
-	@Column(name = "SKILL_TYPE_ID")
-	private int skillType;
+	@Column(name = "TRACK_ID")
+	private int track;
 
-	/** The total score the candidate recieved. */
-	@ApiModelProperty(value = "The total score the candidate recieved")
+	/** The total score the candidate received. */
+	@ApiModelProperty(value = "The total score the candidate received")
 	@Column(name = "COMPOSITE_SCORE")
 	private Double compositeScore;
 
@@ -55,7 +55,7 @@ public class Screening {
 	@Column(name = "ABOUT_COMMENT")
 	private String aboutMeCommentary;
 
-	/** eneral commentary regarding the candidate's screening. */
+	/** General commentary regarding the candidate's screening. */
 	@ApiModelProperty(value = "General commentary regarding the candidate's screening")
 	@Column(name = "GENERAL_COMMENT")
 	private String generalCommentary;
@@ -98,7 +98,7 @@ public class Screening {
 	 * @param screeningId the screening id
 	 * @param scheduledScreening the scheduled screening
 	 * @param screenerId the screener id
-	 * @param skillType the skill type
+	 * @param track the track type
 	 * @param compositeScore the composite score
 	 * @param aboutMeCommentary the about me commentary
 	 * @param generalCommentary the general commentary
@@ -108,14 +108,14 @@ public class Screening {
 	 * @param softSkillsVerdict the soft skills verdict
 	 * @param status the status
 	 */
-	public Screening(int screeningId, ScheduledScreening scheduledScreening, int screenerId, int skillType,
+	public Screening(int screeningId, ScheduledScreening scheduledScreening, int screenerId, int track,
 			Double compositeScore, String aboutMeCommentary, String generalCommentary, String softSkillCommentary,
 			Date startDateTime, Date endDateTime, Boolean softSkillsVerdict, String status) {
 		super();
 		this.screeningId = screeningId;
 		this.scheduledScreening = scheduledScreening;
 		this.screenerId = screenerId;
-		this.skillType = skillType;
+		this.track = track;
 		this.compositeScore = compositeScore;
 		this.aboutMeCommentary = aboutMeCommentary;
 		this.generalCommentary = generalCommentary;
@@ -181,21 +181,21 @@ public class Screening {
 	}
 
 	/**
-	 * Gets the skill type.
+	 * Gets the track.
 	 *
-	 * @return the skill type
+	 * @return the track.
 	 */
-	public int getSkillType() {
-		return skillType;
+	public int getTrack() {
+		return track;
 	}
 
 	/**
-	 * Sets the skill type.
+	 * Sets the track.
 	 *
-	 * @param skillType the new skill type
+	 * @param track the new track.
 	 */
-	public void setSkillType(int skillType) {
-		this.skillType = skillType;
+	public void setTrack(int track) {
+		this.track = track;
 	}
 
 	/**
@@ -355,7 +355,7 @@ public class Screening {
 		Screening screening = (Screening) o;
 		return getScreeningId() == screening.getScreeningId() &&
 				getScreenerId() == screening.getScreenerId() &&
-				getSkillType() == screening.getSkillType() &&
+				getTrack() == screening.getTrack() &&
 				Objects.equals(getScheduledScreening(), screening.getScheduledScreening()) &&
 				Objects.equals(getCompositeScore(), screening.getCompositeScore()) &&
 				Objects.equals(getAboutMeCommentary(), screening.getAboutMeCommentary()) &&
@@ -374,7 +374,7 @@ public class Screening {
 	 */
 	@Override
 	public int hashCode() {
-		return Objects.hash(getScreeningId(), getScheduledScreening(), getScreenerId(), getSkillType(), getCompositeScore(), getAboutMeCommentary(), getGeneralCommentary(), getSoftSkillCommentary(), getStartDateTime(), getEndDateTime(), getSoftSkillsVerdict(), getStatus());
+		return Objects.hash(getScreeningId(), getScheduledScreening(), getScreenerId(), getTrack(), getCompositeScore(), getAboutMeCommentary(), getGeneralCommentary(), getSoftSkillCommentary(), getStartDateTime(), getEndDateTime(), getSoftSkillsVerdict(), getStatus());
 	}
 
 	/**
@@ -388,7 +388,7 @@ public class Screening {
 				"screeningId=" + screeningId +
 				", scheduledScreening=" + scheduledScreening +
 				", screenerId=" + screenerId +
-				", skillType=" + skillType +
+				", track=" + track +
 				", compositeScore=" + compositeScore +
 				", aboutMeCommentary='" + aboutMeCommentary + '\'' +
 				", generalCommentary='" + generalCommentary + '\'' +
