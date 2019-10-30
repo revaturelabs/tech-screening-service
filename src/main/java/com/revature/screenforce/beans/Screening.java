@@ -1,14 +1,22 @@
 package com.revature.screenforce.beans;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import java.time.LocalDateTime;
+import java.util.Objects;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import java.util.Date;
-import java.util.Objects;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 /** 
  * The Screening class, meant to represent the technical Screening of a Candidate.  It must be associated with a 
@@ -68,12 +76,12 @@ public class Screening {
 	/** Starting date and time of the screening. */
 	@ApiModelProperty(value = "Starting date and time of the screening")
 	@Column(name = "START_DATE")
-	private Date startDateTime;
+	private LocalDateTime startDateTime;
 
 	/** Ending date and time of the screening. */
 	@ApiModelProperty(value = "Ending date and time of the screening")
 	@Column(name = "END_DATE")
-	private Date endDateTime;
+	private LocalDateTime endDateTime;
 
 	/** Final verdict on the candidate's soft skills. */
 	@ApiModelProperty(value = "Final verdict on the candidate's soft skills")
@@ -110,7 +118,7 @@ public class Screening {
 	 */
 	public Screening(int screeningId, ScheduledScreening scheduledScreening, int screenerId, int track,
 			Double compositeScore, String aboutMeCommentary, String generalCommentary, String softSkillCommentary,
-			Date startDateTime, Date endDateTime, Boolean softSkillsVerdict, String status) {
+			LocalDateTime startDateTime, LocalDateTime endDateTime, Boolean softSkillsVerdict, String status) {
 		super();
 		this.screeningId = screeningId;
 		this.scheduledScreening = scheduledScreening;
@@ -275,7 +283,7 @@ public class Screening {
 	 *
 	 * @return the start date time
 	 */
-	public Date getStartDateTime() {
+	public LocalDateTime getStartDateTime() {
 		return startDateTime;
 	}
 
@@ -284,7 +292,7 @@ public class Screening {
 	 *
 	 * @param startDateTime the new start date time
 	 */
-	public void setStartDateTime(Date startDateTime) {
+	public void setStartDateTime(LocalDateTime startDateTime) {
 		this.startDateTime = startDateTime;
 	}
 
@@ -293,7 +301,7 @@ public class Screening {
 	 *
 	 * @return the end date time
 	 */
-	public Date getEndDateTime() {
+	public LocalDateTime getEndDateTime() {
 		return endDateTime;
 	}
 
@@ -302,7 +310,7 @@ public class Screening {
 	 *
 	 * @param endDateTime the new end date time
 	 */
-	public void setEndDateTime(Date endDateTime) {
+	public void setEndDateTime(LocalDateTime endDateTime) {
 		this.endDateTime = endDateTime;
 	}
 
