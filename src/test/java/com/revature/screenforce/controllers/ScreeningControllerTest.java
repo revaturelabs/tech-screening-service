@@ -3,6 +3,9 @@ package com.revature.screenforce.controllers;
 import static io.restassured.RestAssured.given;
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.Date;
 
 import org.junit.Before;
@@ -43,7 +46,10 @@ public class ScreeningControllerTest {
 	
 	@Before
 	public void setup() {
-		scDef = new Screening (4321, null, 3,2, (Double)50d,"intoComment","generalComment","softSkillComment", new Date(), new Date(), false, "Completed");
+		LocalDate currentDate = LocalDate.now(); 
+		LocalTime currentTime = LocalTime.now();
+		LocalDateTime fromDateAndTime = LocalDateTime.of(currentDate, currentTime);
+		scDef = new Screening (4321, null, 3,2, (Double)50d,"intoComment","generalComment","softSkillComment", fromDateAndTime,fromDateAndTime, false, "Completed");
 	}
 	
 	@Test

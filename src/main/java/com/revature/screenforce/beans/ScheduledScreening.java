@@ -4,7 +4,8 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.*;
-import java.util.Date;
+
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 /**
@@ -45,7 +46,7 @@ public class ScheduledScreening {
 	/** The date of the screening. */
 	@ApiModelProperty(value = "The date of the screening")
 	@Column(name = "SCHEDULED_DATE")
-	private Date scheduledDate;
+	private LocalDateTime scheduledDate;
 
 	/**
 	 * Instantiates a new scheduled screening.
@@ -64,7 +65,7 @@ public class ScheduledScreening {
 	 * @param scheduledDate the scheduled date
 	 */
 	public ScheduledScreening(int scheduledScreeningId, Candidate candidate, ScheduledStatus scheduledStatus,
-							  int trackId, Date scheduledDate) {
+							  int trackId, LocalDateTime scheduledDate) {
 		super();
 		this.scheduledScreeningId = scheduledScreeningId;
 		this.candidate = candidate;
@@ -150,7 +151,7 @@ public class ScheduledScreening {
 	 *
 	 * @return the scheduled date
 	 */
-	public Date getScheduledDate() {
+	public LocalDateTime getScheduledDate() {
 		return scheduledDate;
 	}
 
@@ -159,7 +160,7 @@ public class ScheduledScreening {
 	 *
 	 * @param scheduledDate the new scheduled date
 	 */
-	public void setScheduledDate(Date scheduledDate) {
+	public void setScheduledDate(LocalDateTime scheduledDate) {
 		this.scheduledDate = scheduledDate;
 	}
 

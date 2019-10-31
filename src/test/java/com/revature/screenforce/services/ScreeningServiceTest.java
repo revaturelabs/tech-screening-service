@@ -8,6 +8,9 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.when;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Optional;
@@ -37,8 +40,11 @@ public class ScreeningServiceTest {
 	@Before
 	public void setup() {
 		MockitoAnnotations.initMocks(this);
+		LocalDate currentDate = LocalDate.now(); 
+		LocalTime currentTime = LocalTime.now();
+		LocalDateTime fromDateAndTime = LocalDateTime.of(currentDate, currentTime);
 		sc18 = new Screening(4321, null, 3, 2, 50.0d, "intoComment", "generalComment", "softSkillComment",
-				new Date(), new Date(), false, "Completed");
+				fromDateAndTime,fromDateAndTime, false, "Completed");
 	}
 
 	@Test
