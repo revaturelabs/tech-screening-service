@@ -1,12 +1,20 @@
 package com.revature.screenforce.beans;
 
+import java.time.LocalDateTime;
+import java.util.Objects;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import org.hibernate.annotations.CreationTimestamp;
-
-import javax.persistence.*;
-import java.util.Date;
-import java.util.Objects;
 
 /**
  * The Class SoftSkillViolation, meant to represent and record any violations that occurred during a screening.
@@ -44,10 +52,8 @@ public class SoftSkillViolation {
 
 	/** Time of the violation. */
 	@ApiModelProperty(value = "Time of the violation")
-	@CreationTimestamp
-	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="TIME")
-	private Date time;
+	private LocalDateTime time;
 
 	/**
 	 * Instantiates a new soft skill violation.
@@ -65,7 +71,7 @@ public class SoftSkillViolation {
 	 * @param comment the comment
 	 * @param time the time
 	 */
-	public SoftSkillViolation(int softViolationId, Screening screening, ViolationType violationType, String comment, Date time) {
+	public SoftSkillViolation(int softViolationId, Screening screening, ViolationType violationType, String comment, LocalDateTime time) {
 		super();
 		this.softViolationId = softViolationId;
 		this.screening = screening;
@@ -82,7 +88,7 @@ public class SoftSkillViolation {
 	 * @param comment the comment
 	 * @param time the time
 	 */
-	public SoftSkillViolation(Screening screening, ViolationType violationType, String comment, Date time) {
+	public SoftSkillViolation(Screening screening, ViolationType violationType, String comment, LocalDateTime time) {
 		super();
 		this.screening = screening;
 		this.violationType = violationType;
@@ -167,7 +173,7 @@ public class SoftSkillViolation {
 	 *
 	 * @return the time
 	 */
-	public Date getTime() {
+	public LocalDateTime getTime() {
 		return time;
 	}
 
@@ -176,7 +182,7 @@ public class SoftSkillViolation {
 	 *
 	 * @param time the new time
 	 */
-	public void setTime(Date time) {
+	public void setTime(LocalDateTime time) {
 		this.time = time;
 	}
 

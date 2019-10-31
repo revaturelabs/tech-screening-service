@@ -8,8 +8,8 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.when;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -36,7 +36,8 @@ public class QuestionScoreServiceTest {
 	@Before
 	public void setup() {
 		MockitoAnnotations.initMocks(this);
-		score = new SimpleQuestionScore(123, null, 4.0, "Did well", new Date());
+		LocalDateTime currentDate = LocalDateTime.now(); 
+		score = new SimpleQuestionScore(123, null, 4.0, "Did well", currentDate);
 	}
 
 	@Test
