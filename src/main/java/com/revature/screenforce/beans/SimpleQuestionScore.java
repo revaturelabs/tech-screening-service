@@ -1,15 +1,28 @@
 package com.revature.screenforce.beans;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-import org.hibernate.annotations.CreationTimestamp;
-
-import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.CreationTimestamp;
+
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 /**
- * The Class SimpleQuestionScore, meant to represent the score a candidate received on a question.
+ * The Class SimpleQuestionScore, meant to represent the score a candidate
+ * received on a question.
  * 
  * @author Jeremy Straus | 1807-QC | Emily Higgins
  */
@@ -53,21 +66,20 @@ public class SimpleQuestionScore {
 
 	/** Time question was asked */
 	@ApiModelProperty(value = "Time question was asked")
-	@CreationTimestamp
-	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "TIME")
-	private Date beginTime;
+	private LocalDateTime beginTime;
 
 	/**
 	 * Instantiates a new simple question score.
 	 *
-	 * @param questionId the question id
+	 * @param questionId  the question id
 	 * @param screeningId the screening id
-	 * @param score the score
-	 * @param comment the comment
-	 * @param beginTime the begin time
+	 * @param score       the score
+	 * @param comment     the comment
+	 * @param beginTime   the begin time
 	 */
-	public SimpleQuestionScore(Integer questionId, Screening screeningId, Double score, String comment, Date beginTime) {
+	public SimpleQuestionScore(Integer questionId, Screening screeningId, Double score, String comment,
+			LocalDateTime beginTime) {
 		super();
 		this.questionId = questionId;
 		this.screening = screeningId;
@@ -75,7 +87,7 @@ public class SimpleQuestionScore {
 		this.comment = comment;
 		this.beginTime = beginTime;
 	}
-	
+
 	/**
 	 * Instantiates a new simple question score.
 	 */
@@ -178,7 +190,7 @@ public class SimpleQuestionScore {
 	 *
 	 * @return the begin time
 	 */
-	public Date getBeginTime() {
+	public LocalDateTime getBeginTime() {
 		return beginTime;
 	}
 
@@ -187,7 +199,7 @@ public class SimpleQuestionScore {
 	 *
 	 * @param beginTime the new begin time
 	 */
-	public void setBeginTime(Date beginTime) {
+	public void setBeginTime(LocalDateTime beginTime) {
 		this.beginTime = beginTime;
 	}
 
@@ -217,18 +229,17 @@ public class SimpleQuestionScore {
 	 */
 	@Override
 	public boolean equals(Object o) {
-		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
+		if (this == o)
+			return true;
+		if (o == null || getClass() != o.getClass())
+			return false;
 		SimpleQuestionScore score1 = (SimpleQuestionScore) o;
-		return getQuestionScoreId() == score1.getQuestionScoreId() &&
-				getQuestionId() == score1.getQuestionId() &&
-				getCategoryId() == score1.getCategoryId() &&
-				Objects.equals(getScreening(), score1.getScreening()) &&
-				Objects.equals(getScore(), score1.getScore()) &&
-				Objects.equals(getComment(), score1.getComment()) &&
-				Objects.equals(getBeginTime(), score1.getBeginTime());
+		return getQuestionScoreId() == score1.getQuestionScoreId() && getQuestionId() == score1.getQuestionId()
+				&& getCategoryId() == score1.getCategoryId() && Objects.equals(getScreening(), score1.getScreening())
+				&& Objects.equals(getScore(), score1.getScore()) && Objects.equals(getComment(), score1.getComment())
+				&& Objects.equals(getBeginTime(), score1.getBeginTime());
 	}
-	
+
 	/**
 	 * Hash code.
 	 *
@@ -236,7 +247,8 @@ public class SimpleQuestionScore {
 	 */
 	@Override
 	public int hashCode() {
-		return Objects.hash(getQuestionScoreId(), getQuestionId(), getCategoryId(), getScreening(), getScore(), getComment(), getBeginTime());
+		return Objects.hash(getQuestionScoreId(), getQuestionId(), getCategoryId(), getScreening(), getScore(),
+				getComment(), getBeginTime());
 	}
 
 	/**
@@ -246,14 +258,8 @@ public class SimpleQuestionScore {
 	 */
 	@Override
 	public String toString() {
-		return "SimpleQuestionScore{" +
-				"questionScoreId=" + questionScoreId +
-				", questionId=" + questionId +
-				", categoryId=" + categoryId +
-				", screening=" + screening +
-				", score=" + score +
-				", comment='" + comment + '\'' +
-				", beginTime=" + beginTime +
-				'}';
+		return "SimpleQuestionScore{" + "questionScoreId=" + questionScoreId + ", questionId=" + questionId
+				+ ", categoryId=" + categoryId + ", screening=" + screening + ", score=" + score + ", comment='"
+				+ comment + '\'' + ", beginTime=" + beginTime + '}';
 	}
 }

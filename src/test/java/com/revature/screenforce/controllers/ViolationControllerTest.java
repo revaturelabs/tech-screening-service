@@ -1,8 +1,12 @@
 package com.revature.screenforce.controllers;
 
+import static io.restassured.RestAssured.given;
+
+import java.time.LocalDateTime;
+import java.util.Date;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;
@@ -11,12 +15,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.revature.screenforce.Application;
 import com.revature.screenforce.beans.SoftSkillViolation;
-import com.revature.screenforce.services.ViolationTypeService;
-
-import java.util.Date;
-
-import static io.restassured.RestAssured.given;
-import static org.junit.Assert.assertNotNull;
 
 /**
  * @author Jeremy Straus | 1807-QC | Emily Higgins
@@ -72,7 +70,8 @@ public class ViolationControllerTest {
 
 	@Test
 	public void addNewViolation() {
-		SoftSkillViolation violation = new SoftSkillViolation(321, null, null, "Terrible boyo", new Date());
+		LocalDateTime currentDate = LocalDateTime.now();
+		SoftSkillViolation violation = new SoftSkillViolation(321, null, null, "Terrible boyo", currentDate);
 		given()
 				.port(port)
 				.when()
